@@ -1,5 +1,8 @@
 
 var dashboardLinkContainer = document.querySelector(".links");
+var mobileMenuButton = document.querySelector("#mobile-menu-button");
+var fullScreenButton = document.querySelector("#full-screen-button");
+var appWindow = document.querySelector(".glass");
 
 
 function createMainMenu() {
@@ -17,7 +20,47 @@ function createMainMenu() {
         </div>`
     });
 
+
+
     setHomepage();
+}
+
+
+function createMobileMenu() {
+
+    var mobileMenuContainer = document.querySelector(".mobile-menu-container");
+
+    mobileMenuContainer.innerHTML = '';
+
+    Object.values(deshboardMenuItems).map(item => {
+        mobileMenuContainer.innerHTML += `
+        <div class="mobile-menu-items">
+            <div class="link-icon-box">
+                <i class="${item.icon}"></i>
+            </div>
+            <h3 id="mobile-menu-text">${item.text}</h3>
+        </div>`
+    });
+
+}
+
+
+fullScreenMode();
+
+function fullScreenMode() {
+
+    fullScreenButton.addEventListener("click", () => {
+
+        if (appWindow.className == "glass full-screen") {
+            appWindow.classList.remove("full-screen");
+            fullScreenButton.className = "fas fa-compress-arrows-alt";
+        }
+        else {
+            appWindow.classList.add("full-screen");
+            fullScreenButton.className = "fas fa-compress-arrows-alt";
+
+        }
+    });
 }
 
 
@@ -36,9 +79,11 @@ createMainMenu();
 
 
 
+
+
+
+
 var dashboardLinks = document.querySelectorAll(".link");
-
-
 
 function removeActivePageClass() {
 
@@ -64,6 +109,55 @@ function selectPages() {
 }
 
 selectPages();
+
+
+
+createMobileMenu();
+
+displayMobileMenu();
+
+
+var mobileMenuContainer = document.querySelector(".mobile-menu-container");
+
+function displayMobileMenu() {
+
+    mobileMenuButton.addEventListener("click", () => {
+
+        mobileMenuShowHide();
+
+    })
+
+
+}
+
+function mobileMenuShowHide() {
+    if (mobileMenuContainer.className == "mobile-menu-container disabled") {
+        mobileMenuContainer.classList.remove("disabled");
+    }
+    else {
+        mobileMenuContainer.classList.add("disabled");
+    }
+}
+
+
+var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
+
+
+function selectMobilePages() {
+
+    for (let i = 0; i < mobileMenuElements.length; i++) {
+
+        mobileMenuElements[i].addEventListener('click', () => {
+            actualPageIcon.className = deshboardMenuItems[i].icon;
+            actualPageContainer.innerHTML = deshboardMenuItems[i].text;
+            loadMenuMethods(deshboardMenuItems[i].method);
+            mobileMenuShowHide();
+        })
+    }
+
+}
+
+selectMobilePages();
 
 
 
@@ -127,7 +221,7 @@ function showHideDashboard() {
         var showIconClass = "fas fa-angle-double-right";
         var hideIconClass = "fas fa-angle-double-left";
         var dashboardPanel = document.querySelector(".dashboard");
-        var dashboardHeader = document.querySelector(".dashboard-header>i");
+        var dashboardHeader = document.querySelector("#show-hide-button");
 
         if (show) {
             show = false;
