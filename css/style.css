@@ -42,7 +42,6 @@ main {
 
 .glass {
   background: white;
-  min-height: 80vh;
   width: 60%;
   max-width: 1000px;
   min-width: 780px;
@@ -207,6 +206,9 @@ main {
   margin-top: 0.5rem;
 }
 
+.links {
+  margin-bottom: 2rem;
+}
 .link-icon-box {
   width: 3.25rem;
   text-align: center;
@@ -290,6 +292,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   padding: 0.2rem 2rem 0.2rem 2rem;
   background: linear-gradient(
     to right bottom,
@@ -301,8 +304,22 @@ main {
   border-radius: 1rem;
 }
 
+.page-icon {
+  display: flex;
+  align-items: center;
+}
+
+#mobile-menu-button {
+  font-size: 2rem;
+  color: var(--active-icon-color);
+}
+
+#active-page-name {
+  font-size: 2rem;
+}
+
 #active-page-icon {
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--active-icon-color);
 }
 
@@ -378,10 +395,10 @@ main {
     rgba(255, 255, 255, 0.5)
   );
   border-radius: 1rem;
-  margin: 2rem 0 0 0;
+  margin: 1rem 0 0 0;
   padding: 2rem;
   box-shadow: 3px 3px 20px rgba(122, 122, 122, 0.2);
-  height: 75vh;
+  height: 100%;
 }
 
 .add-new-block {
@@ -706,4 +723,64 @@ main {
   width: 20%;
   max-width: 5rem;
   margin-right: 1rem;
+}
+
+@media (max-height: 930px) {
+  .glass {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .glass {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+}
+
+@media (max-height: 930px) {
+  .glass {
+    height: 100vh;
+  }
+}
+
+@media (max-height: 850px) {
+  .link-icon-box i {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 760px) {
+  #dashboard {
+    display: none;
+  }
+  .pages {
+    display: flex;
+    width: 100%;
+    max-width: none;
+  }
+  main {
+    width: 100%;
+  }
+  .circle {
+    display: none;
+  }
+  .glass {
+    min-width: 0;
+  }
+
+  #active-page-icon {
+    display: none;
+  }
+
+  #active-page-name {
+    font-size: 1.4rem;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
 }
