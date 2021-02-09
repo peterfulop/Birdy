@@ -7,7 +7,6 @@ var appWindow = document.querySelector(".glass");
 
 function createMainMenu() {
 
-
     dashboardLinkContainer.innerHTML = '';
 
     Object.values(deshboardMenuItems).map(item => {
@@ -20,11 +19,8 @@ function createMainMenu() {
         </div>`
     });
 
-
-
     setHomepage();
 }
-
 
 function createMobileMenu() {
 
@@ -63,7 +59,6 @@ function fullScreenMode() {
     });
 }
 
-
 var actualPageContainer = document.querySelector("#active-page-name");
 var actualPageIcon = document.querySelector("#active-page-icon");
 
@@ -76,12 +71,6 @@ function setHomepage() {
 }
 
 createMainMenu();
-
-
-
-
-
-
 
 var dashboardLinks = document.querySelectorAll(".link");
 
@@ -110,8 +99,6 @@ function selectPages() {
 
 selectPages();
 
-
-
 createMobileMenu();
 
 displayMobileMenu();
@@ -122,12 +109,8 @@ var mobileMenuContainer = document.querySelector(".mobile-menu-container");
 function displayMobileMenu() {
 
     mobileMenuButton.addEventListener("click", () => {
-
         mobileMenuShowHide();
-
     })
-
-
 }
 
 function mobileMenuShowHide() {
@@ -141,7 +124,6 @@ function mobileMenuShowHide() {
 
 
 var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
-
 
 function selectMobilePages() {
 
@@ -158,7 +140,6 @@ function selectMobilePages() {
 }
 
 selectMobilePages();
-
 
 
 function loadMenuMethods(methodName) {
@@ -266,15 +247,14 @@ var createNewTextInput;
 
 /* -------------------------- */
 
-var answerBoxInput;
-var answerBoxAcceptButton;
-var answerBox;
-var answerBoxText;
-var questionBox;
-var questionBoxText;
-var excerciseHeaderBox;
-//var excerciseStartButton;
-var excerciseInputSection;
+// var answerBoxInput;
+// var answerBoxAcceptButton;
+// var answerBox;
+// var answerBoxText;
+// var questionBox;
+// var questionBoxText;
+// var excerciseHeaderBox;
+// var excerciseInputSection;
 
 
 function menu_load_home() {
@@ -318,6 +298,7 @@ function menu_load_profile() {
         </form>
     `
 }
+
 function menu_load_dictionaries() {
 
     Menu_Clear_MainContent();
@@ -549,9 +530,6 @@ function menu_load_signout() {
 }
 
 
-
-
-
 function createNewDictionary() {
     if (createNewDictionaryButton) {
         createNewDictionaryButton.addEventListener('click', () => {
@@ -574,6 +552,7 @@ function backToNewDictionary() {
 };
 
 
+var excerciseStartButton;
 
 function excerciseLoadSettings() {
 
@@ -598,8 +577,6 @@ function excerciseLoadSettings() {
     excerciseStartSelectmethod();
 
 }
-
-
 
 /* Szótárlista létrehozása, és feltöltése ****************************************************/
 
@@ -722,7 +699,6 @@ function runtimeNameSelectmethod() {
     })
 }
 
-
 function validateCountInput() {
 
     var maxValue = setEnabledWordsCount();
@@ -751,25 +727,20 @@ function excerciseStartSelectmethod() {
 
     excerciseStartButton.addEventListener("click", () => {
 
-        startExcerciseMethod();
-
         var dictIndex = dictionaryNameSelect.value;
         var excIndex = excerciseNameSelect.value;
         var timeIndex = runtimeNameSelect.value;
         var countIndex = setCountManual.value;
 
-        console.log(dictionarires[dictIndex].name);
-        console.log(excerciseTypes[excIndex].name);
-        console.log(excerciseRunTime[timeIndex].name);
-        console.log(countIndex);
+
+        displayExcerciseContainer();
+
+        startExcerciseMethod(dictIndex, excIndex, timeIndex, countIndex);
 
 
     })
 }
 /* ******************************************************************************************* */
-
-
-
 
 
 
@@ -782,116 +753,213 @@ function setEnabledWordsCount() {
 
 
 
-function startExcerciseMethod() {
+
+/* EXCERCISE metódus felépítése ******************************************************************/
+
+var indexPuffer = [];
+var finalArray = [];
+
+var questionBox;
+var questionBoxText;
+
+var answerBox;
+var answerBoxText;
+
+var excerciseInputSection;
+var answerBoxInput;
+var answerBoxAcceptButton;
+
+var minutesLabel;
+var secondsLabel;
+
+var numberOfExcercise;
+var countOfNumbers;
+
+function displayExcerciseContainer() {
+
 
     Menu_Clear_MainContent();
 
+    mainContent.innerHTML = `
+        <div class="excercise-box">
+        <div class="excercise-header-info">
+            <div class="header-section-text-1">
+            <label id="minutes">00</label>:<label id="seconds">00</label>
+            </div>
+
+            <div class="header-section-text-2">
+                <span id="number-of-excercise">1</span>/<span id="count-of-numbers">1</span>
+            </div>
+
+            <div class="header-section-text-3">
+                <span>0</span><i class="fas fa-star" id="point-star-icon"></i>
+            </div>
+        </div>
+
+        <div class="question-answer-boxes">
+            <div class="questions-section-box">
+                <div class="question-box-value">
+                    <p></p>
+                </div>
+            </div>
+
+            <div class="answer-section-box">
+                <div class="answer-box-value hidden">
+                    <p></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="excercise-input-section">
+            <div class="answer-box-input">
+                <input type="text" class="form-control" id="answer-box-input" value="" required>
+            </div>
+            <div class="button-box">
+                <div class="answer-box-button-left">
+                    <button class="btn btn-success" id="answer-button-accept"
+                        type="">Tovább!</button>
+                    <button class="btn btn-secondary" id="answer-button-next" type=""><i
+                            class="fas fa-step-forward"></i></button>
+                    <button class="btn btn-danger" type=""><i class="fas fa-stop"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+
+    questionBox = document.querySelector(".question-box-value");
+    questionBoxText = document.querySelector(".question-box-value > p");
+
+    answerBox = document.querySelector(".answer-box-value");
+    answerBoxText = document.querySelector(".answer-box-value > p");
+
+    excerciseInputSection = document.querySelector(".excercise-input-section");
+    answerBoxInput = document.querySelector("#answer-box-input");
+    answerBoxAcceptButton = document.querySelector("#answer-button-accept");
+
+    minutesLabel = document.querySelector("#minutes");
+    secondsLabel = document.querySelector("#seconds");
+
+    numberOfExcercise = document.querySelector("#number-of-excercise");
+    countOfNumbers = document.querySelector("#count-of-numbers");
+
+}
+
+
+
+var totalSeconds = 0;
+
+
+function setTime() {
+
+    ++totalSeconds;
+
+    secondsLabel.innerHTML = pad(totalSeconds % 60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+
+}
+
+
+function pad(val) {
+
+    var valString = val + "";
+    if (valString.length < 2) {
+        return "0" + valString;
+    } else {
+        return valString;
+    }
+
 }
 
 
 
 
-
-
-
-
-
-
-
-class Excercise {
-
+function startExcerciseMethod(dictIndex, excIndex, timeIndex, countIndex) {
 
     indexPuffer = [];
     finalArray = [];
-    maxNumber = dictionarires[0].lexicon.length;
-    randomIndex = Math.floor(Math.random() * this.maxNumber);
+    totalSeconds = 0;
 
-    constructor() {
-        console.log("excercise fut....");
-    }
-
-    startExcercise() {
-
-        if (excerciseStartButton) {
-            excerciseStartButton.addEventListener("click", () => {
-                excerciseHeaderBox.classList.add("disabled");
-                excerciseInputSection.classList.remove("disabled");
-                this.askSomething();
-            })
-        }
-
-    }
-
-    askSomething() {
-
-        if (this.indexPuffer.length == this.maxNumber) {
-            alert("nincs több kérdés!");
-        }
-
-        else {
-
-            this.hideQuestionBox();
-            while (this.indexPuffer.includes(this.randomIndex)) {
-                this.randomIndex = Math.floor(Math.random() * this.maxNumber);
-            }
-
-            this.indexPuffer.push(this.randomIndex);
-
-            var randomText = dictionarires[0].lexicon[this.randomIndex];
-
-            this.finalArray = randomText.split(";");
-            questionBoxText.innerHTML = this.finalArray[1];
-
-            this.sendAnswerToScreen();
-            setTimeout(this.showQuestionBox, 1000);
-
-        }
-
-    }
-
-    sendAnswerToScreen() {
-
-        if (answerBoxAcceptButton) {
-
-            answerBoxAcceptButton.addEventListener('click', () => {
-
-                if (answerBoxInput.value != "") {
-                    answerBox.classList.remove('disabled');
-                    answerBoxText.innerHTML = answerBoxInput.value;
-                    answerBoxInput.value = "";
-                    this.askSomething();
-                    setTimeout(this.hideAnswerBox, 1000);
-                }
-
-            })
-        }
-    }
-
-
-
-
-
-
-    answerValidation(userinput) {
-        console.log(userinput);
-
-    };
-
-
-    hideAnswerBox() {
-        answerBox.classList.add('disabled')
-    }
-
-    hideQuestionBox() {
-        questionBox.classList.add("disabled");
-    }
-
-    showQuestionBox() {
-        questionBox.classList.remove("disabled");
-    }
-
+    askSomething();
+    setInterval(setTime, 1000);
 
 }
 
 
+
+var maxNumber = dictionarires[0].lexicon.length;
+var randomIndex = Math.floor(Math.random() * maxNumber);
+
+
+function askSomething() {
+
+
+
+
+
+
+    if (indexPuffer.length == maxNumber) {
+        alert("Nincs több kérdés!");
+    }
+
+    else {
+
+        hideQuestionBox();
+
+        while (indexPuffer.includes(randomIndex)) {
+            randomIndex = Math.floor(Math.random() * maxNumber);
+        }
+
+        indexPuffer.push(randomIndex);
+
+        var randomText = dictionarires[0].lexicon[randomIndex];
+
+        finalArray = randomText.split(";");
+        questionBoxText.innerHTML = finalArray[1];
+
+        numberOfExcercise.innerHTML = indexPuffer.length;
+        countOfNumbers.innerHTML = maxNumber;
+
+        sendAnswerToScreen();
+        showQuestionBox();
+
+    }
+
+}
+
+function sendAnswerToScreen() {
+
+    if (answerBoxAcceptButton) {
+
+        answerBoxAcceptButton.addEventListener('click', () => {
+
+            if (answerBoxInput.value != "") {
+                answerBox.classList.remove('hidden');
+                answerBoxText.innerHTML = answerBoxInput.value;
+                answerBoxInput.value = "";
+                setTimeout(hideAnswerBox, 1000);
+                setTimeout(askSomething, 1000);
+            }
+        })
+    }
+}
+
+
+function answerValidation(userinput) {
+    console.log(userinput);
+
+};
+
+
+function hideAnswerBox() {
+    answerBox.classList.add('hidden');
+}
+
+function hideQuestionBox() {
+    questionBox.classList.add("disabled");
+}
+
+function showQuestionBox() {
+    questionBox.classList.remove("disabled");
+}
 

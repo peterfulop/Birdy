@@ -603,7 +603,6 @@ main {
   height: 100%;
   display: flex;
   flex-direction: column;
-  margin: 1rem;
 }
 
 .excercise-header-start {
@@ -622,7 +621,30 @@ main {
 .excercise-header-info {
   display: flex;
   justify-content: space-between;
-  margin: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
+  color: #a7abb1;
+}
+
+.header-section-text-1 {
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+}
+.header-section-text-2 {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+}
+
+.header-section-text-3 {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+#point-star-icon {
+  margin-left: 0.5rem;
+  color: rgb(255, 196, 0);
 }
 
 .question-answer-boxes {
@@ -634,6 +656,9 @@ main {
   overflow: auto;
   padding: 1rem;
   margin-bottom: 1rem;
+  background: rgba(205, 230, 235, 0.5);
+
+  border-radius: 1rem;
 }
 
 .questions-section-box {
@@ -669,9 +694,11 @@ main {
   border-top-right-radius: 2rem;
   background-color: rgb(255, 255, 255);
   padding: 2rem;
-  margin-bottom: 1rem;
-  transition: 1s;
   box-shadow: 2px 2px 20px rgba(122, 122, 122, 0.1);
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 .answer-box-value.correct {
