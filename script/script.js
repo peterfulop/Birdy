@@ -49,7 +49,8 @@ function fullScreenMode() {
 
         if (appWindow.className == "glass full-screen") {
             appWindow.classList.remove("full-screen");
-            fullScreenButton.className = "fas fa-compress-arrows-alt";
+            fullScreenButton.className = "fas fa-expand-arrows-alt";
+
         }
         else {
             appWindow.classList.add("full-screen");
@@ -247,14 +248,6 @@ var createNewTextInput;
 
 /* -------------------------- */
 
-// var answerBoxInput;
-// var answerBoxAcceptButton;
-// var answerBox;
-// var answerBoxText;
-// var questionBox;
-// var questionBoxText;
-// var excerciseHeaderBox;
-// var excerciseInputSection;
 
 
 function menu_load_home() {
@@ -262,7 +255,6 @@ function menu_load_home() {
     Menu_Clear_MainContent();
 
 }
-
 
 
 function menu_load_profile() {
@@ -316,14 +308,11 @@ function menu_load_dictionaries() {
                 <div class="create-new-block-form">
                     <form>
                         <div class="mb-1">
-                            <!--<label for="" class="form-label">Name of the new Dictionary:</label>-->
                             <input type="text" class="form-control" id= "create-new-text-input" placeholder="Name of the new Dictionary">
                         </div>
                     </form>
                 </div>
                 <div class="create-new-block-buttons">
-                    <!--<i class="fas fa-check-circle" id="accept-button"></i>-->
-                    <!--<i class="fas fa-times-circle" id="clear-button"></i>-->
                     <button type="button" class="btn btn-success" id="create-new-accept"><i class="fas fa-check"></i></button>
                     <button type="button" class="btn btn-danger" id="create-new-close"><i class="fas fa-times"></i></button>
                 </div>
@@ -335,10 +324,12 @@ function menu_load_dictionaries() {
             <div class="view-menu-bar-text">
             <p>Szótárak</p>
             </div>
-            <div class="view-menu-bar-sort">
-                <i class="fas fa-th-list"></i>
-                <i class="fas fa-th"></i>
-             </div>
+
+            <div class="mb-1 dictionaries-search-bar">
+                <input type="text" class="form-control" id= "create-new-text-input" placeholder="Search...">
+                <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
+            </div>
+
         </div>
 
         <div class="dictionary-list-block">
@@ -356,19 +347,17 @@ function menu_load_dictionaries() {
             <div class="dictionary-list-item">
                 <div class="dictionary-list-item-1">
                     <div class="dictionary-list-item-details">
-                        <i class="fas fa-book-open"></i>
+                        <i class="fas fa-bookmark"></i>
                         <h6>${item.name}</h6>
                     </div>
                     <div class="dictionary-list-item-count">
-                        <h6>${item.count}</h6>
-                    </div>
-                    <div class="dictionary-list-item-date">
-                        <span>${item.relaseDate}</span>
+                        <p>${item.lexicon.length}</p>
                     </div>
                 </div>    
-
-                <div class="dictionary-list-item-button">
-                    <button type="button" class="btn btn-info">Details</button>
+                <div class="btn-group dictionary-list-item-button" role="group" aria-label="Basic example">
+                    <button type="button" class="btn open-content"><i class="fab fa-readme"></i></button>
+                    <button type="button" class="btn edit-content"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn delete-content"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
             </div>
         `
@@ -528,7 +517,6 @@ function menu_load_signout() {
     Menu_Clear_MainContent();
 
 }
-
 
 function createNewDictionary() {
     if (createNewDictionaryButton) {
@@ -883,6 +871,9 @@ function startExcerciseMethod(dictIndex, excIndex, timeIndex, countIndex) {
     askSomething();
     setInterval(setTime, 1000);
 
+    var timer = new Timer();
+
+    timer.start()
 }
 
 
@@ -892,10 +883,6 @@ var randomIndex = Math.floor(Math.random() * maxNumber);
 
 
 function askSomething() {
-
-
-
-
 
 
     if (indexPuffer.length == maxNumber) {

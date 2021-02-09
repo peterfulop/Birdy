@@ -410,6 +410,9 @@ main {
   );
   transition: 1s;
 }
+.view-menu-bar-create {
+  margin: 0rem 0.8rem;
+}
 
 .add-new-block i {
   font-size: 2rem;
@@ -466,13 +469,22 @@ main {
 .view-menu-bar-header {
   display: flex;
   justify-content: space-between;
-  width: 100%;
   height: 3rem;
   font-size: 1.5rem;
+  margin: 0rem 1rem;
+}
+
+.dictionaries-search-bar {
+  display: flex;
+}
+
+#search-dictionary-button {
+  margin-left: 0.5rem;
 }
 
 .view-menu-bar-text p {
   color: rgb(54, 53, 53);
+  margin-right: 1rem;
 }
 
 .view-menu-bar-sort i {
@@ -502,7 +514,7 @@ main {
   width: 100%;
   margin: 1rem 0;
   padding-bottom: 1rem;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #414141;
 }
 
 .dictionary-list-item-1 {
@@ -510,13 +522,14 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-right: 0.5rem;
+  margin-right: 2rem;
 }
 
 .dictionary-list-item-details {
-  width: 50%;
   display: flex;
   align-items: center;
+  width: 100%;
+  margin-right: 1rem;
 }
 
 .dictionary-list-item-date {
@@ -526,8 +539,14 @@ main {
 
 .dictionary-list-item-count {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   width: 10%;
+}
+
+.dictionary-list-item-count p {
+  margin: 0;
+  font-weight: 100;
+  color: #414141;
 }
 
 .dictionary-list-item-details i {
@@ -536,8 +555,57 @@ main {
   color: var(--default-icon-color);
 }
 
+.dictionary-list-item-button {
+  display: flex;
+}
+
 .dictionary-list-item-button button {
-  width: 110px;
+  width: 3rem;
+  color: white;
+}
+
+.open-content {
+  background-color: #46bfd8;
+  border-color: #46bfd8;
+  color: white;
+}
+.open-content:hover {
+  background-color: #3daac0;
+  border-color: #3daac0;
+  color: white;
+}
+.open-content:focus {
+  box-shadow: 0 0 0 0.25rem rgb(70 191 216 / 25%);
+}
+
+.edit-content {
+  background-color: #ffc107;
+  border-color: #ffc107;
+  color: white;
+}
+.edit-content:hover {
+  background-color: #e9af00;
+  border: 2px;
+  border-color: #e9af00;
+  color: white;
+}
+
+.edit-content:focus {
+  box-shadow: 0 0 0 0.25rem rgb(255 193 7 / 25%);
+}
+
+.delete-content {
+  background-color: #dc3545;
+  border-color: #dc3545;
+  color: white;
+}
+.delete-content:hover {
+  background-color: #c71a2c;
+  border-color: #c71a2c;
+  color: white;
+}
+.delete-content:focus {
+  box-shadow: 0 0 0 0.25rem rgb(220 53 69 / 25%);
 }
 
 /**/
