@@ -256,7 +256,6 @@ function menu_load_home() {
 
 }
 
-
 function menu_load_profile() {
 
     Menu_Clear_MainContent();
@@ -506,6 +505,11 @@ function menu_load_listening() {
 
 }
 
+function menu_load_records() {
+    Menu_Clear_MainContent();
+
+}
+
 function menu_load_settings() {
 
     Menu_Clear_MainContent();
@@ -565,6 +569,7 @@ function excerciseLoadSettings() {
     excerciseStartSelectmethod();
 
 }
+
 
 /* Szótárlista létrehozása, és feltöltése ****************************************************/
 
@@ -646,19 +651,21 @@ function createExcerciseRunTimeDDList(contener) {
         </div>
         <div class="mb-3 disabled" id="set-word-count-section">
             <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
-            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value="1">
+            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value="${wordCount}">
             <div  class="form-text"></div>
         </div>
     `
     loadRunTimeSelector();
+
 }
+
 
 function updateRunTimeCount() {
 
     console.log("frissítem!");
     var wordCount = setEnabledWordsCount();
     setCountManual.max = wordCount;
-    setCountManual.value = 1;
+    setCountManual.value = wordCount;
 }
 
 function loadRunTimeSelector() {
@@ -672,7 +679,6 @@ function loadRunTimeSelector() {
 function runtimeNameSelectmethod() {
 
     var countManualBox = document.querySelector("#set-word-count-section");
-
 
     runtimeNameSelect.addEventListener("change", () => {
         console.log(runtimeNameSelect.value);
@@ -696,6 +702,9 @@ function validateCountInput() {
         if (setCountManual.value > maxValue) {
             setCountManual.value = maxValue;
         }
+        if (setCountManual.value <= 0) {
+            setCountManual.value = 1;
+        }
     })
 }
 /* ******************************************************************************************* */
@@ -715,32 +724,35 @@ function excerciseStartSelectmethod() {
 
     excerciseStartButton.addEventListener("click", () => {
 
-        var dictIndex = dictionaryNameSelect.value;
-        var excIndex = excerciseNameSelect.value;
-        var timeIndex = runtimeNameSelect.value;
-        var countIndex = setCountManual.value;
-
-
+        defineExcercise();
         displayExcerciseContainer();
-
-        startExcerciseMethod(dictIndex, excIndex, timeIndex, countIndex);
-
+        startExcerciseMethod();
 
     })
+
 }
+
+var defineExcercise = () => {
+
+    return excInfo = {
+        maxValue: dictionarires[dictionaryNameSelect.value].lexicon.length,
+        dictionary: dictionaryNameSelect.value,
+        excIndex: excerciseNameSelect.value,
+        timeIndex: runtimeNameSelect.value,
+        countIndex: setCountManual.value
+    };
+}
+
 /* ******************************************************************************************* */
-
-
 
 
 function setEnabledWordsCount() {
     return dictionarires[dictionaryNameSelect.value].lexicon.length;
 }
 
-
-
-
-
+function randomIntGenerator(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
 
 /* EXCERCISE metódus felépítése ******************************************************************/
 
@@ -834,9 +846,7 @@ function displayExcerciseContainer() {
 }
 
 
-
 var totalSeconds = 0;
-
 
 function setTime() {
 
@@ -846,7 +856,6 @@ function setTime() {
     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
 
 }
-
 
 function pad(val) {
 
@@ -859,58 +868,66 @@ function pad(val) {
 
 }
 
-
-
-
-function startExcerciseMethod(dictIndex, excIndex, timeIndex, countIndex) {
-
+function clearExcercisePuffers() {
     indexPuffer = [];
     finalArray = [];
     totalSeconds = 0;
+}
 
+function startExcerciseMethod() {
+
+    clearExcercisePuffers();
     askSomething();
     setInterval(setTime, 1000);
 
-    var timer = new Timer();
-
-    timer.start()
 }
 
-
-
-var maxNumber = dictionarires[0].lexicon.length;
-var randomIndex = Math.floor(Math.random() * maxNumber);
-
-
 function askSomething() {
+
+    var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
+    var randomIndex = randomIntGenerator(0, maxNumber - 1);
+
+    if (excInfo.timeIndex == 2 && indexPuffer.length == maxNumber) {
+
+        clearExcercisePuffers();
+        maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
+        randomIndex = randomIntGenerator(0, maxNumber - 1);
+    }
+
+    console.log("indexPuffer: " + indexPuffer.length);
+    console.log("finalArray: " + finalArray.length);
 
 
     if (indexPuffer.length == maxNumber) {
         alert("Nincs több kérdés!");
     }
-
     else {
 
         hideQuestionBox();
 
         while (indexPuffer.includes(randomIndex)) {
-            randomIndex = Math.floor(Math.random() * maxNumber);
+            randomIndex = randomIntGenerator(0, maxNumber - 1);
         }
 
         indexPuffer.push(randomIndex);
 
-        var randomText = dictionarires[0].lexicon[randomIndex];
+        var randomText = dictionarires[excInfo.dictionary].lexicon[randomIndex];
+        console.log("randomText: " + randomText);
 
         finalArray = randomText.split(";");
-        questionBoxText.innerHTML = finalArray[1];
 
+        var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
+
+        console.log("questionIndex: " + questionIndex);
+
+        questionBoxText.innerHTML = finalArray[questionIndex];
         numberOfExcercise.innerHTML = indexPuffer.length;
         countOfNumbers.innerHTML = maxNumber;
 
         sendAnswerToScreen();
         showQuestionBox();
-
     }
+
 
 }
 
@@ -927,6 +944,7 @@ function sendAnswerToScreen() {
                 setTimeout(hideAnswerBox, 1000);
                 setTimeout(askSomething, 1000);
             }
+
         })
     }
 }
@@ -934,9 +952,7 @@ function sendAnswerToScreen() {
 
 function answerValidation(userinput) {
     console.log(userinput);
-
 };
-
 
 function hideAnswerBox() {
     answerBox.classList.add('hidden');
