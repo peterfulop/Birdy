@@ -1,3 +1,9 @@
+var state = {
+    selectedDictionary: "",
+    dictionaryID: "",
+    dictionaries: dictionaries
+}
+
 
 var dashboardLinkContainer = document.querySelector(".links");
 var mobileMenuButton = document.querySelector("#mobile-menu-button");
@@ -9,7 +15,7 @@ function createMainMenu() {
 
     dashboardLinkContainer.innerHTML = '';
 
-    Object.values(deshboardMenuItems).map(item => {
+    Object.values(dashboardMenuItems).map(item => {
         dashboardLinkContainer.innerHTML += `
         <div class="link wide">
             <div class="link-icon-box">
@@ -28,7 +34,7 @@ function createMobileMenu() {
 
     mobileMenuContainer.innerHTML = '';
 
-    Object.values(deshboardMenuItems).map(item => {
+    Object.values(dashboardMenuItems).map(item => {
         mobileMenuContainer.innerHTML += `
         <div class="mobile-menu-items">
             <div class="link-icon-box">
@@ -55,7 +61,6 @@ function fullScreenMode() {
         else {
             appWindow.classList.add("full-screen");
             fullScreenButton.className = "fas fa-compress-arrows-alt";
-
         }
     });
 }
@@ -67,8 +72,8 @@ var actualPageIcon = document.querySelector("#active-page-icon");
 function setHomepage() {
     var firstElement = document.querySelector(".links> div:nth-child(1) > div > i");
     firstElement.classList.add("active-page");
-    actualPageContainer.innerHTML = deshboardMenuItems[0].text;
-    actualPageIcon.className = deshboardMenuItems[0].icon;
+    actualPageContainer.innerHTML = dashboardMenuItems[0].text;
+    actualPageIcon.className = dashboardMenuItems[0].icon;
 }
 
 createMainMenu();
@@ -91,9 +96,9 @@ function selectPages() {
             var activeIcon = dashboardLinks[i].querySelector("div > i");
             removeActivePageClass();
             activeIcon.classList.add("active-page");
-            actualPageIcon.className = deshboardMenuItems[i].icon;
-            actualPageContainer.innerHTML = deshboardMenuItems[i].text;
-            loadMenuMethods(deshboardMenuItems[i].method);
+            actualPageIcon.className = dashboardMenuItems[i].icon;
+            actualPageContainer.innerHTML = dashboardMenuItems[i].text;
+            loadMenuMethods(dashboardMenuItems[i].method);
         })
     }
 }
@@ -131,9 +136,9 @@ function selectMobilePages() {
     for (let i = 0; i < mobileMenuElements.length; i++) {
 
         mobileMenuElements[i].addEventListener('click', () => {
-            actualPageIcon.className = deshboardMenuItems[i].icon;
-            actualPageContainer.innerHTML = deshboardMenuItems[i].text;
-            loadMenuMethods(deshboardMenuItems[i].method);
+            actualPageIcon.className = dashboardMenuItems[i].icon;
+            actualPageContainer.innerHTML = dashboardMenuItems[i].text;
+            loadMenuMethods(dashboardMenuItems[i].method);
             mobileMenuShowHide();
         })
     }
@@ -154,8 +159,6 @@ function loadMenuMethods(methodName) {
 var hideableText = document.querySelectorAll("#hideable");
 
 function hideMainMenuText() {
-
-
     hideableText.forEach(element => {
         element.style.display = "none";
     });
@@ -226,7 +229,6 @@ function showHideDashboard() {
 }
 
 
-
 /*  MAIN CONTENT */
 
 var mainContent = document.querySelector(".main-content");
@@ -236,7 +238,6 @@ function Menu_Clear_MainContent() {
     mainContent.innerHTML = '';
 }
 
-
 /* IMPORTANT VARAIBLES */
 
 var createNewDictionaryButton;
@@ -245,9 +246,9 @@ var createNewBlock;
 var createNewAcceptBtn;
 var createNewClearBtn;
 var createNewTextInput;
+//var openDictionaryButtons;
 
 /* -------------------------- */
-
 
 
 function menu_load_home() {
@@ -325,7 +326,7 @@ function menu_load_dictionaries() {
             </div>
 
             <div class="mb-1 dictionaries-search-bar">
-                <input type="text" class="form-control" id= "create-new-text-input" placeholder="Search...">
+                <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
                 <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
             </div>
 
@@ -335,28 +336,45 @@ function menu_load_dictionaries() {
             <div class="dictionary-list-items">
             </div>
         </div>
+        <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
+             <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">2 <span class="sr-only"></span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
     `
 
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
 
-    Object.values(dictionarires).map(item => {
+    Object.values(dictionaries).map(dictionary => {
         content.innerHTML +=
             `
             <div class="dictionary-list-item">
                 <div class="dictionary-list-item-1">
                     <div class="dictionary-list-item-details">
                         <i class="fas fa-bookmark"></i>
-                        <h6>${item.name}</h6>
+                        <h6>${dictionary.name}</h6>
                     </div>
                     <div class="dictionary-list-item-count">
-                        <p>${item.lexicon.length}</p>
+                        <p>${dictionary.lexicon.length}</p>
                     </div>
                 </div>    
                 <div class="btn-group dictionary-list-item-button" role="group" aria-label="Basic example">
-                    <button type="button" class="btn open-content"><i class="fab fa-readme"></i></button>
-                    <button type="button" class="btn edit-content"><i class="fas fa-edit"></i></button>
-                    <button type="button" class="btn delete-content"><i class="fas fa-trash-alt"></i></i></button>
+                    <button type="button" class="btn open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
+                    <button type="button" class="btn edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
             </div>
         `
@@ -369,9 +387,11 @@ function menu_load_dictionaries() {
     createNewClearBtn = document.querySelector("#create-new-close");
     createNewTextInput = document.querySelector("#create-new-text-input");
 
+
     /* Load Enabled Methods */
     createNewDictionary();
     backToNewDictionary();
+    selectDictionaryMethod();
 }
 
 function menu_load_addwords() {
@@ -544,6 +564,153 @@ function backToNewDictionary() {
 };
 
 
+
+function selectDictionaryMethod() {
+
+    var dictionaryContentButtons = document.querySelectorAll('.content-action');
+    var ID;
+
+    for (const element of dictionaryContentButtons) {
+        element.addEventListener('click', () => {
+            ID = element.dataset.dictid;
+            state.selectedDictionary = ID;
+
+            var buttonName = element.id;
+
+            switch (buttonName) {
+                case 'open-content':
+                    openDictionary();
+                    break;
+                case 'edit-content':
+                    editDictionary();
+                    break;
+                case 'delete-content':
+                    deleteDictionary();
+                    break;
+                default:
+                    break;
+            }
+        })
+    };
+}
+
+function openDictionary() {
+
+    console.log("Open Dictionary");
+
+    for (let i = 0; i < dictionaries.length; i++) {
+
+        if (dictionaries[i].id === state.selectedDictionary) {
+            state.dictionaryID = i;
+            console.log(state.dictionaryID);
+            console.log(dictionaries[i].id);
+            console.log(dictionaries[i].name);
+            console.log(dictionaries[i].relaseDate);
+
+            renderDinctionaryContent();
+        }
+    }
+}
+
+function editDictionary() {
+
+    console.log("Edit Dictionary");
+
+    for (let i = 0; i < dictionaries.length; i++) {
+
+        if (dictionaries[i].id === state.selectedDictionary) {
+            console.log(dictionaries[i].id);
+            console.log(dictionaries[i].name);
+            console.log(dictionaries[i].relaseDate);
+        }
+    }
+}
+
+function deleteDictionary() {
+
+    console.log("Delete Dictionary");
+
+    for (let i = 0; i < dictionaries.length; i++) {
+        if (dictionaries[i].id === state.selectedDictionary) {
+            console.log(dictionaries[i].id);
+            console.log(dictionaries[i].name);
+            console.log(dictionaries[i].relaseDate);
+        }
+    }
+}
+
+
+
+function renderDinctionaryContent() {
+
+
+    mainContent.innerHTML = '';
+
+    mainContent.innerHTML = `
+    <h4 class="text-center mb-4">Szótár tartalma</h4>
+
+        <div class="mb-2 dictionaries-search-bar">
+            <input type="text" class="form-control" id="dictionaries-search-input"
+                placeholder="Search...">
+            <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i
+                    class="fas fa-search"></i></button>
+        </div>
+
+        <div class="dictionary-item-list"></div>
+
+        <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
+            <nav aria-label="...">
+                <ul class="pagination">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item active">
+                        <a class="page-link" href="#">2 <span class="sr-only"></span></a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    `
+
+
+    var dictionaryItemList = document.querySelector('.dictionary-item-list');
+
+    var counter = 1;
+    Object.values(state.dictionaries[state.dictionaryID].lexicon).map(item => {
+        dictionaryItemList.innerHTML += `
+        <div class="dictionary-item mb-1">
+            <div class="dictionary-item-count">
+                <span>${counter}.</span>
+            </div>
+            <div class="dictionary-item-words">
+                <div class="dictionary-first-word mr-1">${item.array[0]}</div >
+    <div class="dictionary-second-word mr-1">${item.array[1]}</div>
+            </div >
+        <div class="dictionary-item-buttons">
+            <i class="fas fa-edit"></i>
+        </div>
+        </div >
+        `
+        counter++;
+    });
+
+
+
+
+
+
+}
+
+
+
+
+
 var excerciseStartButton;
 
 function excerciseLoadSettings() {
@@ -576,12 +743,12 @@ function excerciseLoadSettings() {
 function createDictionaryDDList(contener) {
 
     contener.innerHTML += `
-        <div class="select-dictionary">
+        <div class= "select-dictionary">
             <label for="" class="form-label">Válassz egy szótárt:</label>
             <select class="form-select" id="dictionary-name-select">
             </select>
         </div>
-    `
+        `
     loadDictionarySelector();
 }
 
@@ -589,8 +756,8 @@ function loadDictionarySelector() {
 
     var content = document.querySelector("#dictionary-name-select");
     content.innerHTML = '';
-    Object.values(dictionarires).map(item => {
-        content.innerHTML += `<option value="${item.value}">${item.name}</option>`;
+    Object.values(dictionaries).map(item => {
+        content.innerHTML += `<option value = "${item.value}" data-dictid="${item.id}"> ${item.name}</option> `;
     });
 
     dictionaryNameSelect = document.querySelector("#dictionary-name-select");
@@ -611,12 +778,12 @@ function dictionaryNameSelectmethod() {
 function createExcerciseTypeDDList(contener) {
 
     contener.innerHTML += `
-        <div class="select-dictionary">
+    <div class= "select-dictionary">
             <label for="" class="form-label">Gyakorlási forma:</label>
             <select class="form-select" id="excercise-name-select">
             </select>
         </div>
-    `
+        `
     loadExcerciseSelector();
 }
 
@@ -625,7 +792,7 @@ function loadExcerciseSelector() {
     var content = document.querySelector("#excercise-name-select");
     content.innerHTML = '';
     Object.values(excerciseTypes).map(item => {
-        content.innerHTML += `<option value="${item.value}">${item.name}</option>`;
+        content.innerHTML += `<option value = "${item.value}" > ${item.name}</option>`;
     });
 }
 function excerciseNameSelectmethod() {
@@ -644,7 +811,7 @@ function createExcerciseRunTimeDDList(contener) {
     var wordCount = setEnabledWordsCount();
 
     contener.innerHTML += `
-        <div class="select-dictionary">
+    <div class= "select-dictionary">
             <label for="" class="form-label">Gyakorlás hossza:</label>
             <select class="form-select" id="runtime-name-select">
             </select>
@@ -652,20 +819,20 @@ function createExcerciseRunTimeDDList(contener) {
         <div class="mb-3 disabled" id="set-word-count-section">
             <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
             <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value="${wordCount}">
-            <div  class="form-text"></div>
+                <div class="form-text"></div>
         </div>
     `
     loadRunTimeSelector();
 
 }
 
-
 function updateRunTimeCount() {
 
-    console.log("frissítem!");
+    console.log("frissítem! ");
     var wordCount = setEnabledWordsCount();
     setCountManual.max = wordCount;
     setCountManual.value = wordCount;
+
 }
 
 function loadRunTimeSelector() {
@@ -734,12 +901,22 @@ function excerciseStartSelectmethod() {
 
 var defineExcercise = () => {
 
+    console.log(dictionaries[dictionaryNameSelect.value].lexicon.length);
+    console.log(dictionaryNameSelect.value);
+    console.log(excerciseNameSelect.value);
+    console.log(runtimeNameSelect.value);
+    console.log(setCountManual.value);
+
+
     return excInfo = {
-        maxValue: dictionarires[dictionaryNameSelect.value].lexicon.length,
+
+        maxValue: dictionaries[dictionaryNameSelect.value].lexicon.length,
         dictionary: dictionaryNameSelect.value,
         excIndex: excerciseNameSelect.value,
         timeIndex: runtimeNameSelect.value,
         countIndex: setCountManual.value
+
+
     };
 }
 
@@ -747,7 +924,7 @@ var defineExcercise = () => {
 
 
 function setEnabledWordsCount() {
-    return dictionarires[dictionaryNameSelect.value].lexicon.length;
+    return dictionaries[dictionaryNameSelect.value].lexicon.length;
 }
 
 function randomIntGenerator(min, max) {
@@ -757,7 +934,6 @@ function randomIntGenerator(min, max) {
 /* EXCERCISE metódus felépítése ******************************************************************/
 
 var indexPuffer = [];
-var finalArray = [];
 
 var questionBox;
 var questionBoxText;
@@ -782,49 +958,49 @@ function displayExcerciseContainer() {
 
     mainContent.innerHTML = `
         <div class="excercise-box">
-        <div class="excercise-header-info">
-            <div class="header-section-text-1">
-            <label id="minutes">00</label>:<label id="seconds">00</label>
-            </div>
+                <div class="excercise-header-info">
+                    <div class="header-section-text-1">
+                        <label id="minutes">00</label>:<label id="seconds">00</label>
+                    </div>
 
-            <div class="header-section-text-2">
-                <span id="number-of-excercise">1</span>/<span id="count-of-numbers">1</span>
-            </div>
+                    <div class="header-section-text-2">
+                        <span id="number-of-excercise">1</span>/<span id="count-of-numbers">1</span>
+                    </div>
 
-            <div class="header-section-text-3">
-                <span>0</span><i class="fas fa-star" id="point-star-icon"></i>
-            </div>
-        </div>
-
-        <div class="question-answer-boxes">
-            <div class="questions-section-box">
-                <div class="question-box-value">
-                    <p></p>
+                    <div class="header-section-text-3">
+                        <span>0</span><i class="fas fa-star" id="point-star-icon"></i>
+                    </div>
                 </div>
-            </div>
 
-            <div class="answer-section-box">
-                <div class="answer-box-value hidden">
-                    <p></p>
-                </div>
-            </div>
-        </div>
+                <div class="question-answer-boxes">
+                    <div class="questions-section-box">
+                        <div class="question-box-value">
+                            <p></p>
+                        </div>
+                    </div>
 
-        <div class="excercise-input-section">
-            <div class="answer-box-input">
-                <input type="text" class="form-control" id="answer-box-input" value="" required>
-            </div>
-            <div class="button-box">
-                <div class="answer-box-button-left">
-                    <button class="btn btn-success" id="answer-button-accept"
-                        type="">Tovább!</button>
-                    <button class="btn btn-secondary" id="answer-button-next" type=""><i
-                            class="fas fa-step-forward"></i></button>
-                    <button class="btn btn-danger" type=""><i class="fas fa-stop"></i></button>
+                    <div class="answer-section-box">
+                        <div class="answer-box-value hidden">
+                            <p></p>
+                        </div>
+                    </div>
                 </div>
+
+                <div class="excercise-input-section">
+                    <div class="answer-box-input">
+                        <input type="text" class="form-control" id="answer-box-input" value="" required>
             </div>
-        </div>
-    </div>
+                        <div class="button-box">
+                            <div class="answer-box-button-left">
+                                <button class="btn btn-success" id="answer-button-accept"
+                                    type="">Tovább!</button>
+                                <button class="btn btn-secondary" id="answer-button-next" type=""><i
+                                    class="fas fa-step-forward"></i></button>
+                                <button class="btn btn-danger" type=""><i class="fas fa-stop"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
     `
 
     questionBox = document.querySelector(".question-box-value");
@@ -870,7 +1046,6 @@ function pad(val) {
 
 function clearExcercisePuffers() {
     indexPuffer = [];
-    finalArray = [];
     totalSeconds = 0;
 }
 
@@ -895,7 +1070,6 @@ function askSomething() {
     }
 
     console.log("indexPuffer: " + indexPuffer.length);
-    console.log("finalArray: " + finalArray.length);
 
 
     if (indexPuffer.length == maxNumber) {
@@ -911,16 +1085,14 @@ function askSomething() {
 
         indexPuffer.push(randomIndex);
 
-        var randomText = dictionarires[excInfo.dictionary].lexicon[randomIndex];
-        console.log("randomText: " + randomText);
-
-        finalArray = randomText.split(";");
+        var randomText = dictionaries[excInfo.dictionary].lexicon[randomIndex].array;
 
         var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
 
-        console.log("questionIndex: " + questionIndex);
+        console.log("question: " + randomText[0] + ' - ' + randomText[1]);
 
-        questionBoxText.innerHTML = finalArray[questionIndex];
+        questionBoxText.innerHTML = randomText[questionIndex];
+
         numberOfExcercise.innerHTML = indexPuffer.length;
         countOfNumbers.innerHTML = maxNumber;
 
@@ -949,7 +1121,6 @@ function sendAnswerToScreen() {
     }
 }
 
-
 function answerValidation(userinput) {
     console.log(userinput);
 };
@@ -964,5 +1135,19 @@ function hideQuestionBox() {
 
 function showQuestionBox() {
     questionBox.classList.remove("disabled");
+}
+
+
+
+
+
+
+///** RANDOM ID GENERATOR */ //
+
+function generateID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
 }
 
