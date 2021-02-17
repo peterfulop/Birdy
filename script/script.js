@@ -1,6 +1,7 @@
 var state = {
     selectedDictionary: "",
     dictionaryID: "",
+    dictionaryName: "",
     dictionaries: dictionaries
 }
 
@@ -319,10 +320,11 @@ function menu_load_dictionaries() {
             </div>
 
         </div>
+        <h5 class="text-center mb-2">Szótárak listája</h5>
 
         <div class="view-menu-bar-header">
+
             <div class="view-menu-bar-text">
-            <p>Szótárak</p>
             </div>
 
             <div class="mb-1 dictionaries-search-bar">
@@ -365,16 +367,13 @@ function menu_load_dictionaries() {
                 <div class="dictionary-list-item-1">
                     <div class="dictionary-list-item-details">
                         <i class="fas fa-bookmark"></i>
-                        <h6>${dictionary.name}</h6>
-                    </div>
-                    <div class="dictionary-list-item-count">
-                        <p>${dictionary.lexicon.length}</p>
+                        <h6>${dictionary.name} <small>[${dictionary.lexicon.length}]</small></h6>
                     </div>
                 </div>    
-                <div class="btn-group dictionary-list-item-button" role="group" aria-label="Basic example">
-                    <button type="button" class="btn open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
-                    <button type="button" class="btn edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
-                    <button type="button" class="btn delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
+                <div class="btn-group btn-sm dictionary-list-item-button" role="group" aria-label="Basic example">
+                    <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
+                    <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
             </div>
         `
@@ -445,78 +444,6 @@ function menu_load_brainteaser() {
     Menu_Clear_MainContent();
 
     excerciseLoadSettings();
-
-
-    // mainContent.innerHTML = `
-    // <div class="excercise-box">
-    //     <div class="excercise-header-start">
-    //         <button class="btn btn-success" id="excercise-button-start" type="">Start!</button>
-    //     </div>
-
-    //     <div class="question-answer-boxes">
-
-    //         <div class="excercise-header-info ">
-
-    //             <div class="header-section-text-1">
-    //             <p>Pontszám: <span>0</span></p>
-    //             </div>
-
-    //             <div class="header-section-text-2">
-    //             <p>Kérdés:<span>1</span></p>
-    //             </div>
-
-    //             <div class="header-section-text-3">
-    //             <p>Idő:<span>00:00</span></p>
-    //             </div>
-
-    //         </div>
-
-    //         <div class="questions-section-box">
-    //             <div class="question-box-value disabled">
-    //                 <p></p>
-    //             </div>
-    //         </div>
-
-    //         <div class="answer-section-box">
-    //             <div class="answer-box-value disabled">
-    //                 <p></p>
-    //             </div>
-    //         </div>
-    //     </div>
-
-    //     <div class="excercise-input-section disabled">
-    //         <div class="answer-box-input">
-    //             <input type="text" class="form-control" id="answer-box-input" value="" required>
-    //         </div>
-    //                 <div class="button-box">
-    //         <div class="answer-box-button-left">
-    //             <button class="btn btn-success" id="answer-button-accept" type="">Tovább!</button>
-    //             <button class="btn btn-secondary" id="answer-button-next" type=""><i class="fas fa-step-forward"></i></button>
-    //             <button class="btn btn-danger" type=""><i class="fas fa-stop"></i></button>
-    //         </div>
-    //     </div>
-    //     </div>
-
-    //  </div>
-    // `
-
-
-    // excerciseHeaderBox = document.querySelector(".excercise-header-start");
-    // excerciseStartButton = document.querySelector("#excercise-button-start");
-
-    // questionBox = document.querySelector(".question-box-value");
-    // questionBoxText = document.querySelector(".question-box-value > p");
-
-    // excerciseInputSection = document.querySelector(".excercise-input-section");
-
-    // answerBoxInput = document.querySelector("#answer-box-input");
-    // answerBoxAcceptButton = document.querySelector("#answer-button-accept");
-    // answerBox = document.querySelector(".answer-box-value");
-    // answerBoxText = document.querySelector(".answer-box-value > p");
-
-    // var e = new Excercise();
-    // e.startExcercise();
-
 }
 
 function menu_load_listening() {
@@ -602,6 +529,7 @@ function openDictionary() {
 
         if (dictionaries[i].id === state.selectedDictionary) {
             state.dictionaryID = i;
+            state.dictionaryName = dictionaries[i].name;
             console.log(state.dictionaryID);
             console.log(dictionaries[i].id);
             console.log(dictionaries[i].name);
@@ -647,7 +575,7 @@ function renderDinctionaryContent() {
     mainContent.innerHTML = '';
 
     mainContent.innerHTML = `
-    <h4 class="text-center mb-4">Szótár tartalma</h4>
+    <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
 
         <div class="mb-2 dictionaries-search-bar">
             <input type="text" class="form-control" id="dictionaries-search-input"
@@ -685,30 +613,133 @@ function renderDinctionaryContent() {
     Object.values(state.dictionaries[state.dictionaryID].lexicon).map(item => {
         dictionaryItemList.innerHTML += `
         <div class="dictionary-item mb-1">
+
             <div class="dictionary-item-count">
                 <span>${counter}.</span>
             </div>
+
             <div class="dictionary-item-words">
-                <div class="dictionary-first-word mr-1">${item.array[0]}</div >
-    <div class="dictionary-second-word mr-1">${item.array[1]}</div>
-            </div >
-        <div class="dictionary-item-buttons">
-            <i class="fas fa-edit"></i>
+                <div class="dictionary-first-word mr-1">
+                    <span class="dictionary-text-content enabled" data-inputid="0_${counter}">${item.array[0]}</span>
+                    <input type="text" class="dictionary-edit-content disabled" data-inputid="0_${counter}" data-wordid="0" value="${item.array[0]}">
+                    <div class="dictionary-item-buttons">
+                    <i class="fas fa-edit edit-actual-word" data-inputid="0_${counter}" data-wordid="0"></i>
+                    <i class="fas fa-check save-edit disabled" data-inputid="0_${counter}" data-wordid="0"></i>
+                    <!--<i class="fas fa-volume-up"></i>-->
+                </div>
+                </div>
+                
+                    <div class="dictionary-second-word mr-1">
+                    <span class="dictionary-text-content enabled" data-inputid="1_${counter}">${item.array[1]}</span>
+                    <input type="text" class="dictionary-edit-content disabled" data-inputid="1_${counter}" data-wordid="1" value="${item.array[1]}">
+                    <div class="dictionary-item-buttons listen">
+                    <i class="fas fa-edit edit-actual-word" data-inputid="1_${counter}" data-wordid="1"></i>
+                    <i class="fas fa-check save-edit disabled" data-inputid="1_${counter}" data-wordid="0"></i>
+                    <!--<i class="fas fa-volume-up"></i>-->
+                </div>
+                </div>
+                
+            </div>
+
         </div>
-        </div >
         `
         counter++;
     });
 
 
-
-
-
+    editSelectedWord();
+    saveEditedWord();
 
 }
 
 
+function editSelectedWord() {
 
+
+    var editBtn = document.querySelectorAll('.edit-actual-word');
+    var inputs = document.querySelectorAll('.dictionary-edit-content');
+    var labels = document.querySelectorAll('.dictionary-text-content');
+    var saveButtons = document.querySelectorAll('.save-edit');
+
+    for (const button of editBtn) {
+
+
+        button.onclick = function () {
+
+            inputID = button.dataset.inputid;
+            button.classList.add("disabled");
+
+            for (const saveBtn of saveButtons) {
+                if (saveBtn.dataset.inputid === inputID) {
+                    saveBtn.classList.remove("disabled");
+                }
+            }
+
+            for (const input of inputs) {
+
+                if (input.dataset.inputid === inputID) {
+
+                    input.classList.remove("disabled");
+                }
+
+            }
+
+            for (const label of labels) {
+
+                if (label.dataset.inputid === inputID) {
+
+                    label.classList.add("disabled");
+                }
+            }
+
+
+        }
+
+    }
+
+}
+
+function saveEditedWord() {
+
+
+    var editBtn = document.querySelectorAll('.edit-actual-word');
+    var inputs = document.querySelectorAll('.dictionary-edit-content');
+    var labels = document.querySelectorAll('.dictionary-text-content');
+    var saveButtons = document.querySelectorAll('.save-edit');
+
+    for (const button of saveButtons) {
+
+        button.onclick = function () {
+
+            inputID = button.dataset.inputid;
+            button.classList.add("disabled");
+
+            for (const input of inputs) {
+                if (input.dataset.inputid === inputID) {
+                    input.classList.add("disabled");
+                }
+            }
+
+            for (const label of labels) {
+
+                if (label.dataset.inputid === inputID) {
+                    label.classList.remove("disabled");
+                }
+            }
+
+            for (const buton of editBtn) {
+
+                if (buton.dataset.inputid === inputID) {
+                    buton.classList.remove("disabled");
+                }
+            }
+
+
+        }
+
+    }
+
+}
 
 
 var excerciseStartButton;
@@ -901,12 +932,6 @@ function excerciseStartSelectmethod() {
 
 var defineExcercise = () => {
 
-    console.log(dictionaries[dictionaryNameSelect.value].lexicon.length);
-    console.log(dictionaryNameSelect.value);
-    console.log(excerciseNameSelect.value);
-    console.log(runtimeNameSelect.value);
-    console.log(setCountManual.value);
-
 
     return excInfo = {
 
@@ -988,7 +1013,7 @@ function displayExcerciseContainer() {
 
                 <div class="excercise-input-section">
                     <div class="answer-box-input">
-                        <input type="text" class="form-control" id="answer-box-input" value="" required>
+                        <input type="text" class="form-control" id="answer-box-input" value=""  tabindex="0" required>
             </div>
                         <div class="button-box">
                             <div class="answer-box-button-left">
@@ -1052,7 +1077,12 @@ function clearExcercisePuffers() {
 function startExcerciseMethod() {
 
     clearExcercisePuffers();
+
     askSomething();
+    skipAnswer();
+    answerEventClick();
+    answerEventEnter();
+
     setInterval(setTime, 1000);
 
 }
@@ -1096,30 +1126,66 @@ function askSomething() {
         numberOfExcercise.innerHTML = indexPuffer.length;
         countOfNumbers.innerHTML = maxNumber;
 
-        sendAnswerToScreen();
         showQuestionBox();
+        answerBoxInput.focus();
+
     }
 
-
 }
+
 
 function sendAnswerToScreen() {
 
-    if (answerBoxAcceptButton) {
 
-        answerBoxAcceptButton.addEventListener('click', () => {
-
-            if (answerBoxInput.value != "") {
-                answerBox.classList.remove('hidden');
-                answerBoxText.innerHTML = answerBoxInput.value;
-                answerBoxInput.value = "";
-                setTimeout(hideAnswerBox, 1000);
-                setTimeout(askSomething, 1000);
-            }
-
-        })
-    }
 }
+
+
+function answerEventClick() {
+    answerBoxAcceptButton.addEventListener('click', () => {
+        if (answerBoxInput.value != "") {
+            sendAnswer();
+        }
+    })
+}
+
+function answerEventEnter() {
+    answerBoxInput.addEventListener("keyup", (event) => {
+        if (answerBoxInput.value != "" && event.keyCode === 13) {
+            sendAnswer();
+            console.log("enter")
+        }
+    })
+}
+
+
+function skipAnswer() {
+
+
+    var skipButton = document.querySelector('#answer-button-next');
+
+    skipButton.addEventListener('click', () => {
+        answerBox.classList.remove('hidden');
+        answerBoxText.innerHTML = answerBoxInput.value;
+        answerBoxInput.value = "";
+        hideAnswerBox();
+        askSomething();
+
+    });
+
+
+
+}
+
+
+function sendAnswer() {
+
+    answerBox.classList.remove('hidden');
+    answerBoxText.innerHTML = answerBoxInput.value;
+    answerBoxInput.value = "";
+    setTimeout(hideAnswerBox, 1000);
+    setTimeout(askSomething, 1000);
+}
+
 
 function answerValidation(userinput) {
     console.log(userinput);

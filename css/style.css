@@ -395,13 +395,13 @@ main {
 }
 
 .add-new-block {
-  height: 4rem;
+  height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 2rem;
   cursor: pointer;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background: linear-gradient(
     to left top,
     rgba(255, 255, 255, 1),
@@ -466,8 +466,6 @@ main {
 }
 
 .view-menu-bar-header {
-  display: flex;
-  justify-content: space-between;
   height: 3rem;
   font-size: 1.5rem;
   margin: 0rem 1rem;
@@ -498,11 +496,11 @@ main {
 
 .dictionary-list-block {
   display: block;
-  overflow: auto;
+  /*overflow: auto;*/
 }
 
 .dictionary-list-items {
-  overflow: auto;
+  /*overflow: auto;*/
   max-height: 60vh;
   padding: 1rem;
 }
@@ -821,10 +819,11 @@ main {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid lightblue;
+  font-size: 0.9rem;
 }
 
-.dictionary-item-count {
-}
+/* .dictionary-item-count {
+} */
 
 .dictionary-item-1 {
   display: flex;
@@ -836,16 +835,28 @@ main {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  font-size: 0.9rem;
 }
+
+.dictionary-text-content {
+}
+
 .dictionary-first-word {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   background: cornsilk;
   padding: 0.8rem;
   margin: 0.5rem;
   width: 50%;
   border-radius: 1rem;
+  text-align: start;
 }
 .dictionary-second-word {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   background: rgb(225, 225, 225);
   padding: 0.8rem;
   margin: 0.5rem;
@@ -854,12 +865,15 @@ main {
 }
 
 .dictionary-item-buttons {
+  display: flex;
   text-align: center;
   font-size: 1.2rem;
-  width: 5%;
   color: var(--default-icon-color);
+  align-items: center;
+  margin-left: 1rem;
 }
-.dictionary-item-buttons:hover i {
+
+.dictionary-item-buttons i:hover {
   cursor: pointer;
   color: var(--active-icon-color);
 }
@@ -872,8 +886,22 @@ main {
   background: var(--default-icon-color);
   border-color: var(--default-icon-color);
 }
-/*
 
+.dictionary-edit-content {
+  border: none;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.protected {
+  background: none;
+}
+
+.unprotected {
+  background: white;
+}
+
+/*
 
 
 
@@ -971,9 +999,27 @@ main {
     flex-wrap: wrap;
   }
 
+  .dictionary-item-words {
+    font-size: 0.8rem;
+  }
   .dictionary-first-word,
   .dictionary-second-word {
     width: 100%;
+  }
+  .dictionary-list-item-details i {
+    display: none;
+  }
+
+  .dictionary-list-item {
+    flex-wrap: wrap;
+    justify-content: space-between;
     font-size: 0.8rem;
+  }
+  .dictionary-list-item-count {
+    justify-content: flex-start;
+  }
+
+  .dictionary-list-item-button {
+    padding: 0;
   }
 }

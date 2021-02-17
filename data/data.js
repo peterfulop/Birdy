@@ -66,39 +66,31 @@ var dictionaries = [
         lexicon: [
             {
                 array: ['apple', 'alma'],
-                a: 'apple',
-                b: 'alma',
                 id: 0
             },
             {
                 array: ['car', 'auto'],
-                a: 'car',
-                b: 'auto',
                 id: 1
             },
             {
-                array: ['value', 'érték'],
-                a: 'value',
-                b: 'érték',
+                array: ['How can I help you?', 'Miben segíthetek?'],
                 id: 2
             },
             {
                 array: ['dream', 'álom'],
-                a: 'dream',
-                b: 'álom',
                 id: 3
             },
             {
                 array: ['red', 'piros'],
-                a: 'red',
-                b: 'piros',
                 id: 4
             },
             {
                 array: ['watch', 'óra'],
-                a: 'watch',
-                b: 'óra',
                 id: 5
+            },
+            {
+                array: ['I think this is the beginning of a beautiful friendship', 'Úgy gondolom, ez egy csodálatos barátság kezdete!'],
+                id: 6
             }
         ]
     },
@@ -111,34 +103,24 @@ var dictionaries = [
         lexicon: [
             {
                 array: ['pomo', 'alma'],
-                a: 'pomo',
-                b: 'alma',
                 id: 0
             },
             {
                 array: ['auto', 'autó'],
-                a: 'auto',
-                b: 'autó',
                 id: 1
             },
             {
                 array: ['automobilista', 'autós'],
-                a: 'automobilista',
-                b: 'autós',
                 id: 2
             },
 
             {
                 array: ['pane', 'kenyér'],
-                a: 'pane',
-                b: 'kenyér',
                 id: 3
             },
 
             {
                 array: ['vigneto', 'ószőlőra'],
-                a: 'vigneto',
-                b: 'szőlő',
                 id: 4
             }
 
@@ -153,20 +135,14 @@ var dictionaries = [
         lexicon: [
             {
                 array: ['pomme', 'alma'],
-                a: 'pomme',
-                b: 'alma',
                 id: 0
             },
             {
                 array: ['amour', 'szerelem'],
-                a: 'amour',
-                b: 'szerelem',
                 id: 1
             },
             {
                 array: ['bonne journée', 'jó napot kívánok'],
-                a: 'bonne journée',
-                b: 'jó napot kívánok',
                 id: 2
             }
         ]
@@ -180,38 +156,26 @@ var dictionaries = [
         lexicon: [
             {
                 array: ['pistola', 'pistola'],
-                a: 'pistola',
-                b: 'pisztoly',
                 id: 0
             },
             {
                 array: ['autopista', 'országút'],
-                a: 'autopista',
-                b: 'országút',
                 id: 1
             },
             {
                 array: ['juego de niños', 'juego de niños'],
-                a: 'juego de niños',
-                b: 'juego de niños',
                 id: 2
             },
             {
                 array: ['libertad', 'szabadság'],
-                a: 'libertad',
-                b: 'szabadság',
                 id: 3
             },
             {
                 array: ['rojo', 'rojo'],
-                a: 'rojo',
-                b: 'rojo',
                 id: 4
             },
             {
                 array: ['banco', 'bank'],
-                a: 'banco',
-                b: 'bank',
                 id: 5
             }
         ]
