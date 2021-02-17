@@ -584,6 +584,18 @@ function renderDinctionaryContent() {
                     class="fas fa-search"></i></button>
         </div>
 
+        
+        <div class="dictionary-content-toolbar  mb-3 mt-3 d-flex justify-content-around">
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="edit-content-checker">
+            <label class="form-check-label" for="edit-content-checker">Editot mode</label>
+            </div>
+            <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="listen-content-checker">
+            <label class="form-check-label" for="listen-content-checker">Listening mode</label>
+            </div>
+        </div>
+
         <div class="dictionary-item-list"></div>
 
         <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
@@ -623,9 +635,9 @@ function renderDinctionaryContent() {
                     <span class="dictionary-text-content enabled" data-inputid="0_${counter}">${item.array[0]}</span>
                     <input type="text" class="dictionary-edit-content disabled" data-inputid="0_${counter}" data-wordid="0" value="${item.array[0]}">
                     <div class="dictionary-item-buttons">
-                    <i class="fas fa-edit edit-actual-word" data-inputid="0_${counter}" data-wordid="0"></i>
+                    <i class="fas fa-edit edit-actual-word disabled" data-inputid="0_${counter}" data-wordid="0"></i>
                     <i class="fas fa-check save-edit disabled" data-inputid="0_${counter}" data-wordid="0"></i>
-                    <!--<i class="fas fa-volume-up"></i>-->
+                    <i class="fas fa-volume-up listening-mode disabled" data-inputid="0_${counter}" data-wordid="0"></i>
                 </div>
                 </div>
                 
@@ -633,9 +645,9 @@ function renderDinctionaryContent() {
                     <span class="dictionary-text-content enabled" data-inputid="1_${counter}">${item.array[1]}</span>
                     <input type="text" class="dictionary-edit-content disabled" data-inputid="1_${counter}" data-wordid="1" value="${item.array[1]}">
                     <div class="dictionary-item-buttons listen">
-                    <i class="fas fa-edit edit-actual-word" data-inputid="1_${counter}" data-wordid="1"></i>
-                    <i class="fas fa-check save-edit disabled" data-inputid="1_${counter}" data-wordid="0"></i>
-                    <!--<i class="fas fa-volume-up"></i>-->
+                    <i class="fas fa-edit edit-actual-word disabled" data-inputid="1_${counter}" data-wordid="1"></i>
+                    <i class="fas fa-check save-edit disabled" data-inputid="1_${counter}" data-wordid="1"></i>
+                    <i class="fas fa-volume-up listening-mode disabled" data-inputid="1_${counter}" data-wordid="1"></i>
                 </div>
                 </div>
                 
@@ -649,6 +661,56 @@ function renderDinctionaryContent() {
 
     editSelectedWord();
     saveEditedWord();
+
+    enabledEditorMode();
+
+    enabledListeningMode();
+
+
+}
+
+
+function enabledEditorMode() {
+
+    var editorModeButton = document.getElementById('edit-content-checker');
+    var editBtn = document.querySelectorAll('.edit-actual-word');
+
+    editorModeButton.addEventListener("change", () => {
+        if (editorModeButton.checked) {
+            for (const button of editBtn) {
+                button.classList.remove("disabled");
+            }
+        }
+
+        else {
+            for (const button of editBtn) {
+                button.classList.add("disabled");
+            }
+        }
+    })
+
+
+}
+
+
+function enabledListeningMode() {
+
+    var listeningModeButton = document.getElementById('listen-content-checker');
+    var listenBtn = document.querySelectorAll('.listening-mode');
+
+    listeningModeButton.addEventListener("change", () => {
+        if (listeningModeButton.checked) {
+            for (const button of listenBtn) {
+                button.classList.remove("disabled");
+                enabledEditorMode();
+            }
+        }
+        else {
+            for (const button of listenBtn) {
+                button.classList.add("disabled");
+            }
+        }
+    })
 
 }
 
@@ -714,9 +776,13 @@ function saveEditedWord() {
             inputID = button.dataset.inputid;
             button.classList.add("disabled");
 
+            var newInput;
+
+
             for (const input of inputs) {
                 if (input.dataset.inputid === inputID) {
                     input.classList.add("disabled");
+                    newInput = input.value;
                 }
             }
 
@@ -724,6 +790,8 @@ function saveEditedWord() {
 
                 if (label.dataset.inputid === inputID) {
                     label.classList.remove("disabled");
+                    label.innerHTML = newInput;
+
                 }
             }
 
@@ -731,6 +799,7 @@ function saveEditedWord() {
 
                 if (buton.dataset.inputid === inputID) {
                     buton.classList.remove("disabled");
+
                 }
             }
 

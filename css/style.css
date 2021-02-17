@@ -870,7 +870,13 @@ main {
   font-size: 1.2rem;
   color: var(--default-icon-color);
   align-items: center;
-  margin-left: 1rem;
+  /*margin-right: 1rem;*/
+}
+
+.listening-mode,
+.edit-actual-word,
+.save-edit {
+  margin-left: 0.8rem;
 }
 
 .dictionary-item-buttons i:hover {
