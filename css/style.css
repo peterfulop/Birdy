@@ -409,9 +409,6 @@ main {
   );
   transition: 1s;
 }
-.view-menu-bar-create {
-  margin: 0rem 0.8rem;
-}
 
 .add-new-block i {
   font-size: 2rem;
@@ -502,7 +499,6 @@ main {
 .dictionary-list-items {
   /*overflow: auto;*/
   max-height: 60vh;
-  padding: 1rem;
 }
 .dictionary-list-item {
   display: flex;

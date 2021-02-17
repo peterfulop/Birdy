@@ -179,6 +179,159 @@ var dictionaries = [
                 id: 5
             }
         ]
+    },
+    {
+        id: generateID(),
+        name: "Angol-Magyar Testrészek",
+        table: "Angol-Magyar-Testreszek",
+        relaseDate: "2021.02.17",
+        value: 4,
+        lexicon: [
+            {
+                array: ['head', 'fej'],
+                id: 0
+            },
+            {
+                array: ['tongue', 'nyelv'],
+                id: 1
+            },
+            {
+                array: ['ear', 'fül'],
+                id: 2
+            },
+            {
+                array: ['chest', 'mellkas'],
+                id: 3
+            },
+            {
+                array: ['fingers', 'ujjak'],
+                id: 4
+            },
+            {
+                array: ['wrist', 'csukló'],
+                id: 5
+            },
+            {
+                array: ['chin', 'áll'],
+                id: 6
+            },
+            {
+                array: ['stomach', 'has'],
+                id: 7
+            },
+            {
+                array: ['navel', 'köldök'],
+                id: 8
+            },
+            {
+                array: ['waist', 'derék'],
+                id: 9
+            },
+            {
+                array: ['cheek', 'orca'],
+                id: 10
+            },
+            {
+                array: ['face', 'arc'],
+                id: 11
+            },
+            {
+                array: ['elbow', 'könyök'],
+                id: 12
+            },
+            {
+                array: ['knee', 'térd'],
+                id: 13
+            },
+            {
+                array: ['heel', 'sarok'],
+                id: 14
+            },
+            {
+                array: ['forearm', 'alkar'],
+                id: 15
+            },
+            {
+                array: ['rim', 'talp'],
+                id: 16
+            },
+            {
+                array: ['hand', 'kéz'],
+                id: 17
+            },
+            {
+                array: ['hair', 'haj'],
+                id: 18
+            },
+            {
+                array: ['eyelashes', 'szempillák'],
+                id: 19
+            },
+            {
+                array: ['pupil', 'pupilla'],
+                id: 20
+            },
+            {
+                array: ['neck', 'nyak'],
+                id: 21
+            },
+            {
+                array: ['eyelid', 'szemhéj'],
+                id: 22
+            },
+            {
+                array: ['lip', 'ajak'],
+                id: 23
+            },
+            {
+                array: ['mouth', 'száj'],
+                id: 24
+            },
+            {
+                array: ['nose', 'orr'],
+                id: 25
+            },
+            {
+                array: ['iris', 'írisz'],
+                id: 26
+            },
+            {
+                array: ['eyebrow', 'szemöldök'],
+                id: 27
+            },
+            {
+                array: ['forehead', 'homlok'],
+                id: 28
+            },
+            {
+                array: ['The wite of the eye', 'szemfehérje'],
+                id: 29
+            },
+            {
+                array: ['shoulder', 'váll'],
+                id: 30
+            },
+            {
+                array: ['armpit', 'hónalj'],
+                id: 31
+            },
+            {
+                array: ['back', 'hát'],
+                id: 32
+            },
+            {
+                array: ['buttocks', 'fenék'],
+                id: 33
+            },
+            {
+                array: ['calf', 'vádli'],
+                id: 34
+            },
+            {
+                array: ['shin', 'lábszár,sípcsont'],
+                id: 35
+            }
+        ]
     }
 ]
 

@@ -299,7 +299,17 @@ function menu_load_dictionaries() {
 
     mainContent.innerHTML =
         `
-        <div class="view-menu-bar-create">
+        
+
+        <h5 class="text-center mb-4">Szótárak listája</h5>
+
+
+        <div class="mb-2 dictionaries-search-bar">
+            <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
+            <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="view-menu-bar-create mt-3 mb-2">
 
             <div class="add-new-block">
                 <i class="fas fa-plus-square" id="add-button"></i>
@@ -313,25 +323,12 @@ function menu_load_dictionaries() {
                         </div>
                     </form>
                 </div>
+
                 <div class="create-new-block-buttons">
                     <button type="button" class="btn btn-success" id="create-new-accept"><i class="fas fa-check"></i></button>
                     <button type="button" class="btn btn-danger" id="create-new-close"><i class="fas fa-times"></i></button>
                 </div>
             </div>
-
-        </div>
-        <h5 class="text-center mb-2">Szótárak listája</h5>
-
-        <div class="view-menu-bar-header">
-
-            <div class="view-menu-bar-text">
-            </div>
-
-            <div class="mb-1 dictionaries-search-bar">
-                <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
-                <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
-            </div>
-
         </div>
 
         <div class="dictionary-list-block">
@@ -575,13 +572,15 @@ function renderDinctionaryContent() {
     mainContent.innerHTML = '';
 
     mainContent.innerHTML = `
-    <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
+        <div class="d-flex">
+            <button type="button" class="btn bg-info bt-sm text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
+        </div>
+            <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
 
         <div class="mb-2 dictionaries-search-bar">
             <input type="text" class="form-control" id="dictionaries-search-input"
                 placeholder="Search...">
-            <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i
-                    class="fas fa-search"></i></button>
+            <button type="button" class="btn btn-secondary" id="search-dictionary-button"><i class="fas fa-search"></i></button>
         </div>
 
         
@@ -596,7 +595,8 @@ function renderDinctionaryContent() {
             </div>
         </div>
 
-        <div class="dictionary-item-list"></div>
+        <div class="dictionary-item-list">
+        </div>
 
         <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
             <nav aria-label="...">
@@ -659,6 +659,14 @@ function renderDinctionaryContent() {
     });
 
 
+
+
+    var backButton = document.getElementById('back-dictionary-button');
+
+    backButton.addEventListener('click', () => {
+        menu_load_dictionaries();
+    })
+
     editSelectedWord();
     saveEditedWord();
 
@@ -685,6 +693,7 @@ function enabledEditorMode() {
         else {
             for (const button of editBtn) {
                 button.classList.add("disabled");
+
             }
         }
     })
@@ -717,16 +726,19 @@ function enabledListeningMode() {
 
 function editSelectedWord() {
 
-
     var editBtn = document.querySelectorAll('.edit-actual-word');
     var inputs = document.querySelectorAll('.dictionary-edit-content');
     var labels = document.querySelectorAll('.dictionary-text-content');
     var saveButtons = document.querySelectorAll('.save-edit');
 
+
+
     for (const button of editBtn) {
 
-
         button.onclick = function () {
+
+            var editorModeButton = document.getElementById('edit-content-checker');
+            editorModeButton.disabled = true;
 
             inputID = button.dataset.inputid;
             button.classList.add("disabled");
@@ -754,10 +766,11 @@ function editSelectedWord() {
                 }
             }
 
-
         }
 
     }
+
+
 
 }
 
@@ -773,11 +786,13 @@ function saveEditedWord() {
 
         button.onclick = function () {
 
+            var editorModeButton = document.getElementById('edit-content-checker');
+            editorModeButton.disabled = false;
+
             inputID = button.dataset.inputid;
             button.classList.add("disabled");
 
             var newInput;
-
 
             for (const input of inputs) {
                 if (input.dataset.inputid === inputID) {
@@ -802,16 +817,17 @@ function saveEditedWord() {
 
                 }
             }
-
-
         }
-
     }
+
 
 }
 
 
+
+
 var excerciseStartButton;
+
 
 function excerciseLoadSettings() {
 
