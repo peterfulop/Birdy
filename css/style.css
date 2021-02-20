@@ -833,14 +833,10 @@ main {
   width: 100%;
 }
 
-.dictionary-text-content {
-}
-
 .dictionary-first-word {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background: cornsilk;
   padding: 0.8rem;
   margin: 0.5rem;
@@ -852,7 +848,6 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   background: rgb(225, 225, 225);
   padding: 0.8rem;
   margin: 0.5rem;
@@ -892,7 +887,6 @@ main {
 .dictionary-edit-content {
   border: none;
   width: 100%;
-  padding: 0.5rem;
 }
 
 .protected {

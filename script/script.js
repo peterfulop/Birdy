@@ -2,7 +2,18 @@ var state = {
     selectedDictionary: "",
     dictionaryID: "",
     dictionaryName: "",
-    dictionaries: dictionaries
+    dictionaries: dictionaries,
+    editDictionaryMode: false,
+    editDictionaryContent: false
+}
+
+function resetState() {
+    state.selectedDictionary = "";
+    state.dictionaryID = "";
+    state.dictionaryName = "";
+    state.dictionaries = dictionaries;
+    state.editDictionaryMode = false;
+    state.editDictionaryContent = false;
 }
 
 
@@ -253,13 +264,13 @@ var createNewTextInput;
 
 
 function menu_load_home() {
-
+    resetState();
     Menu_Clear_MainContent();
 
 }
 
 function menu_load_profile() {
-
+    resetState();
     Menu_Clear_MainContent();
 
     mainContent.innerHTML = `
@@ -294,6 +305,7 @@ function menu_load_profile() {
 
 function menu_load_dictionaries() {
 
+    resetState();
     Menu_Clear_MainContent();
 
 
@@ -388,10 +400,12 @@ function menu_load_dictionaries() {
     createNewDictionary();
     backToNewDictionary();
     selectDictionaryMethod();
+
 }
 
 function menu_load_addwords() {
 
+    resetState();
     Menu_Clear_MainContent();
 
     createDictionaryDDList(mainContent);
@@ -438,30 +452,31 @@ function menu_load_addwords() {
 
 function menu_load_brainteaser() {
 
+    resetState();
     Menu_Clear_MainContent();
-
     excerciseLoadSettings();
 }
 
 function menu_load_listening() {
-
+    resetState();
     Menu_Clear_MainContent();
 
 }
 
 function menu_load_records() {
+    resetState();
     Menu_Clear_MainContent();
 
 }
 
 function menu_load_settings() {
-
+    resetState();
     Menu_Clear_MainContent();
 
 }
 
 function menu_load_signout() {
-
+    resetState();
     Menu_Clear_MainContent();
 
 }
@@ -479,7 +494,7 @@ function createNewDictionary() {
 function backToNewDictionary() {
     if (createNewClearBtn) {
         createNewClearBtn.addEventListener('click', () => {
-            console.log("Vissza ")
+            console.log("Vissza")
             createNewTextInput.value = '';
             createNewBlock.classList.add('disabled');
             addNewBlock.classList.remove('disabled');
@@ -621,34 +636,35 @@ function renderDinctionaryContent() {
 
     var dictionaryItemList = document.querySelector('.dictionary-item-list');
 
-    var counter = 1;
+    var counter = 0;
     Object.values(state.dictionaries[state.dictionaryID].lexicon).map(item => {
         dictionaryItemList.innerHTML += `
         <div class="dictionary-item mb-1">
 
             <div class="dictionary-item-count">
-                <span>${counter}.</span>
+                <span>${counter + 1}.</span>
             </div>
 
             <div class="dictionary-item-words">
+            
                 <div class="dictionary-first-word mr-1">
-                    <span class="dictionary-text-content enabled" data-inputid="0_${counter}">${item.array[0]}</span>
-                    <input type="text" class="dictionary-edit-content disabled" data-inputid="0_${counter}" data-wordid="0" value="${item.array[0]}">
+                    <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.array[0]}</span>
+                    <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_0" data-wordid="0" value="${item.array[0]}">
                     <div class="dictionary-item-buttons">
-                    <i class="fas fa-edit edit-actual-word disabled" data-inputid="0_${counter}" data-wordid="0"></i>
-                    <i class="fas fa-check save-edit disabled" data-inputid="0_${counter}" data-wordid="0"></i>
-                    <i class="fas fa-volume-up listening-mode disabled" data-inputid="0_${counter}" data-wordid="0"></i>
+                    <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_0" data-wordid="0"></i>
+                    <i class="fas fa-check save-edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
+                    <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_0" data-wordid="0"></i>
                 </div>
-                </div>
-                
-                    <div class="dictionary-second-word mr-1">
-                    <span class="dictionary-text-content enabled" data-inputid="1_${counter}">${item.array[1]}</span>
-                    <input type="text" class="dictionary-edit-content disabled" data-inputid="1_${counter}" data-wordid="1" value="${item.array[1]}">
-                    <div class="dictionary-item-buttons listen">
-                    <i class="fas fa-edit edit-actual-word disabled" data-inputid="1_${counter}" data-wordid="1"></i>
-                    <i class="fas fa-check save-edit disabled" data-inputid="1_${counter}" data-wordid="1"></i>
-                    <i class="fas fa-volume-up listening-mode disabled" data-inputid="1_${counter}" data-wordid="1"></i>
-                </div>
+
+                    </div>
+                        <div class="dictionary-second-word mr-1">
+                        <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.array[1]}</span>
+                        <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_1" data-wordid="1" value="${item.array[1]}">
+                        <div class="dictionary-item-buttons listen">
+                        <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+                        <i class="fas fa-check save-edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+                        <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+                    </div>
                 </div>
                 
             </div>
@@ -684,21 +700,20 @@ function enabledEditorMode() {
     var editBtn = document.querySelectorAll('.edit-actual-word');
 
     editorModeButton.addEventListener("change", () => {
-        if (editorModeButton.checked) {
+
+        state.editDictionaryMode = !state.editDictionaryMode;
+
+        if (state.editDictionaryMode && !state.editDictionaryContent) {
             for (const button of editBtn) {
                 button.classList.remove("disabled");
             }
         }
-
         else {
             for (const button of editBtn) {
                 button.classList.add("disabled");
-
             }
         }
     })
-
-
 }
 
 
@@ -706,6 +721,8 @@ function enabledListeningMode() {
 
     var listeningModeButton = document.getElementById('listen-content-checker');
     var listenBtn = document.querySelectorAll('.listening-mode');
+
+
 
     listeningModeButton.addEventListener("change", () => {
         if (listeningModeButton.checked) {
@@ -723,55 +740,52 @@ function enabledListeningMode() {
 
 }
 
-
 function editSelectedWord() {
 
     var editBtn = document.querySelectorAll('.edit-actual-word');
-    var inputs = document.querySelectorAll('.dictionary-edit-content');
-    var labels = document.querySelectorAll('.dictionary-text-content');
-    var saveButtons = document.querySelectorAll('.save-edit');
-
-
 
     for (const button of editBtn) {
 
         button.onclick = function () {
 
-            var editorModeButton = document.getElementById('edit-content-checker');
-            editorModeButton.disabled = true;
+            if (!state.editDictionaryContent) {
 
-            inputID = button.dataset.inputid;
-            button.classList.add("disabled");
+                var editorModeButton = document.getElementById('edit-content-checker');
+                editorModeButton.disabled = true;
+                state.editDictionaryContent = true;
 
-            for (const saveBtn of saveButtons) {
-                if (saveBtn.dataset.inputid === inputID) {
-                    saveBtn.classList.remove("disabled");
+                inputID = button.dataset.inputid;
+
+                console.log(inputID);
+                button.classList.add("disabled");
+
+
+                var saveButtons = document.querySelectorAll('.save-edit');
+
+                for (const saveBtn of saveButtons) {
+                    if (saveBtn.dataset.inputid === inputID) {
+                        saveBtn.classList.remove("disabled");
+                    }
+                }
+
+                var inputs = document.querySelectorAll('.dictionary-edit-content');
+
+                for (const input of inputs) {
+                    if (input.dataset.inputid === inputID) {
+                        input.classList.remove("disabled");
+                    }
+                }
+
+                var labels = document.querySelectorAll('.dictionary-text-content');
+
+                for (const label of labels) {
+                    if (label.dataset.inputid === inputID) {
+                        label.classList.add("disabled");
+                    }
                 }
             }
-
-            for (const input of inputs) {
-
-                if (input.dataset.inputid === inputID) {
-
-                    input.classList.remove("disabled");
-                }
-
-            }
-
-            for (const label of labels) {
-
-                if (label.dataset.inputid === inputID) {
-
-                    label.classList.add("disabled");
-                }
-            }
-
         }
-
     }
-
-
-
 }
 
 function saveEditedWord() {
@@ -785,6 +799,11 @@ function saveEditedWord() {
     for (const button of saveButtons) {
 
         button.onclick = function () {
+
+            var editorModeButton = document.getElementById('edit-content-checker');
+            editorModeButton.disabled = false;
+
+            state.editDictionaryContent = false;
 
             var editorModeButton = document.getElementById('edit-content-checker');
             editorModeButton.disabled = false;
@@ -823,7 +842,12 @@ function saveEditedWord() {
 
 }
 
+function resetDictionariesPage() {
 
+
+    state.editDictionaryContent
+
+}
 
 
 var excerciseStartButton;
