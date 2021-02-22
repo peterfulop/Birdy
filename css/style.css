@@ -154,7 +154,7 @@ main {
 }
 
 .dashboard.wide {
-  flex: 1;
+  flex: 1.2;
   display: flex;
   flex-direction: column;
   background: linear-gradient(
@@ -233,7 +233,7 @@ main {
 }
 
 .link i {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #48b8c7;
 }
 
@@ -246,12 +246,12 @@ main {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin: 0rem 1rem 0rem 0rem;
   padding: 0.25rem 2rem 0.25rem 2rem;
   transition: 0.25s;
   border-bottom-right-radius: 4rem;
   border-top-right-radius: 4rem;
   transition: opacity 0.8s ease-in-out;
+  width: 95%;
 }
 
 .link:hover i {
@@ -491,15 +491,6 @@ main {
   color: var(--active-icon-color);
 }
 
-.dictionary-list-block {
-  display: block;
-  /*overflow: auto;*/
-}
-
-.dictionary-list-items {
-  /*overflow: auto;*/
-  max-height: 60vh;
-}
 .dictionary-list-item {
   display: flex;
   align-items: center;
@@ -1010,6 +1001,9 @@ main {
     flex-wrap: wrap;
     justify-content: space-between;
     font-size: 0.8rem;
+  }
+  .dictionary-list-item-1 {
+    margin-bottom: 1rem;
   }
   .dictionary-list-item-count {
     justify-content: flex-start;

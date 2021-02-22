@@ -689,6 +689,7 @@ function renderDinctionaryContent() {
     enabledEditorMode();
 
     enabledListeningMode();
+    readSelectedWord();
 
 
 }
@@ -788,8 +789,38 @@ function editSelectedWord() {
     }
 }
 
-function saveEditedWord() {
+function readSelectedWord() {
 
+    var readButtons = document.querySelectorAll('.listening-mode');
+
+
+    for (const button of readButtons) {
+
+
+        button.onclick = function () {
+
+            var inputID = button.dataset.inputid;
+
+            var labels = document.querySelectorAll('.dictionary-text-content');
+
+            for (const label of labels) {
+                if (label.dataset.inputid === inputID) {
+
+                    console.log(label.textContent);
+                    startSpeech(label.textContent);
+                }
+            }
+        }
+
+
+
+
+    }
+
+
+}
+
+function saveEditedWord() {
 
     var editBtn = document.querySelectorAll('.edit-actual-word');
     var inputs = document.querySelectorAll('.dictionary-edit-content');
@@ -839,13 +870,13 @@ function saveEditedWord() {
         }
     }
 
-
 }
 
+
+
+
+
 function resetDictionariesPage() {
-
-
-    state.editDictionaryContent
 
 }
 
@@ -1314,7 +1345,18 @@ function showQuestionBox() {
 
 
 
+function startSpeech(text) {
 
+    let speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+    speech.text = text;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+
+}
 
 
 ///** RANDOM ID GENERATOR */ //
