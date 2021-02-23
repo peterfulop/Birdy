@@ -318,12 +318,8 @@ function menu_load_dictionaries() {
 
     mainContent.innerHTML = `
         <h5 class="text-center mb-4">Szótárak listája</h5>
-        <div class="mb-2 dictionaries-search-bar">
-            <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
-            <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
-        </div>
 
-        <div class="view-menu-bar-create mt-3 mb-2">
+        <div class="view-menu-bar-create my-3">
 
             <div class="add-new-block">
                 <p class="m-2">Új szótár!</p>
@@ -376,7 +372,21 @@ function menu_load_dictionaries() {
         </div>
 
         <div class="dictionary-list-block">
-            <div class="dictionary-list-items">
+            <div class="mb-2 dictionaries-search-bar">
+                <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
+                <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="dictionary-list-header d-flex py-2 pl-2 border-bottom border-white">
+                <div class="col-8 d-flex justify-content-start">
+                    <div class="d-flex justify-content-between text-muted cursor-pointer">
+                        <i class="fas fa-sort-alpha-up pr-2"></i>
+                        <p class="mb-0 px-2 text-muted">Név</p></div>
+                    </div>
+                <div class="col-4 d-flex justify-content-end"><p class="mb-0 text-muted">Művelet</p></div>
+            </div>
+
+            <div class="dictionary-list-items overflow-scroll p-2" style="max-height: 300px">
+
             </div>
         </div>
         <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
@@ -423,14 +433,14 @@ function menu_load_dictionaries() {
     Object.values(dictionaries).map(dictionary => {
         content.innerHTML +=
             `
-            <div class="dictionary-list-item">
+            <div class="dictionary-list-item border-bottom">
                 <div class="dictionary-list-item-1">
                     <div class="dictionary-list-item-details">
                         <i class="fas fa-bookmark"></i>
                         <h6>${dictionary.name} <small>[${dictionary.lexicon.length}]</small></h6>
                     </div>
                 </div>    
-                <div class="btn-group btn-sm dictionary-list-item-button" role="group" aria-label="Basic example">
+                <div class="btn-group dictionary-list-item-button" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
                     <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
@@ -660,7 +670,7 @@ function renderDinctionaryContent() {
             </div>
         </div>
 
-        <div class="dictionary-item-list">
+        <div class="dictionary-item-list overflow-scroll p-2" style="max-height: 350px">
         </div>
 
         <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
@@ -698,19 +708,24 @@ function renderDinctionaryContent() {
                     <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.array[0]}</span>
                     <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_0" data-wordid="0" value="${item.array[0]}">
                     <div class="dictionary-item-buttons">
-                    <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_0" data-wordid="0"></i>
-                    <i class="fas fa-check save-edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
-                    <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_0" data-wordid="0"></i>
-                </div>
+
+                        <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_0" data-wordid="0"></i>
+                        <i class="fas fa-check save-edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
+                        <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_0" data-wordid="0"></i>
+
                     </div>
-                        <div class="dictionary-second-word mr-1">
+                </div>
+                <div class="dictionary-second-word mr-1">
                         <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.array[1]}</span>
                         <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_1" data-wordid="1" value="${item.array[1]}">
+
                         <div class="dictionary-item-buttons listen">
-                        <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_1" data-wordid="1"></i>
-                        <i class="fas fa-check save-edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
-                        <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_1" data-wordid="1"></i>
-                    </div>
+
+                            <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+                            <i class="fas fa-check save-edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+                            <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+
+                        </div>
                 </div>
             </div>
         </div>
@@ -934,6 +949,7 @@ function excerciseLoadSettings() {
     runtimeNameSelectmethod();
     validateCountInput();
     excerciseStartSelectmethod();
+    defineExcercise();
 
 }
 
@@ -943,9 +959,9 @@ function excerciseLoadSettings() {
 function createDictionaryDDList(contener) {
 
     contener.innerHTML += `
-        <div class= "select-dictionary">
+        <div class= "select-dictionary mb-3">
             <label for="dictionary-name-select" class="form-label">Válassz egy szótárt:</label>
-            <select class="form-select mb-3" id="dictionary-name-select">
+            <select class="form-select" id="dictionary-name-select">
             </select>
         </div>
         `
@@ -957,7 +973,7 @@ function loadDictionarySelector() {
     var content = document.querySelector("#dictionary-name-select");
     content.innerHTML = '';
     Object.values(dictionaries).map(item => {
-        content.innerHTML += `<option value = "${item.value}" data-dictid="${item.id}"> ${item.name}</option> `;
+        content.innerHTML += `<option value = "${item.value}" data-dictid="${item.id}">${item.name}</option>`;
     });
 
     dictionaryNameSelect = document.querySelector("#dictionary-name-select");
@@ -978,7 +994,7 @@ function dictionaryNameSelectmethod() {
 function createExcerciseTypeDDList(contener) {
 
     contener.innerHTML += `
-    <div class= "select-dictionary">
+    <div class= "select-dictionary mb-3">
             <label for="" class="form-label">Gyakorlási forma:</label>
             <select class="form-select" id="excercise-name-select">
             </select>
@@ -992,7 +1008,7 @@ function loadExcerciseSelector() {
     var content = document.querySelector("#excercise-name-select");
     content.innerHTML = '';
     Object.values(excerciseTypes).map(item => {
-        content.innerHTML += `<option value = "${item.value}" > ${item.name}</option>`;
+        content.innerHTML += `<option value = "${item.value}">${item.name}</option>`;
     });
 }
 function excerciseNameSelectmethod() {
@@ -1011,15 +1027,14 @@ function createExcerciseRunTimeDDList(contener) {
     var wordCount = setEnabledWordsCount();
 
     contener.innerHTML += `
-    <div class= "select-dictionary">
+    <div class= "select-dictionary mb-3">
             <label for="" class="form-label">Gyakorlás hossza:</label>
             <select class="form-select" id="runtime-name-select">
             </select>
         </div>
         <div class="mb-3 disabled" id="set-word-count-section">
             <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
-            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value="${wordCount}">
-                <div class="form-text"></div>
+            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1">
         </div>
     `
     loadRunTimeSelector();
@@ -1028,14 +1043,19 @@ function createExcerciseRunTimeDDList(contener) {
 
 function updateRunTimeCount() {
 
-    console.log("frissítem! ");
     var wordCount = setEnabledWordsCount();
+    console.log("frissítem! Max: " + wordCount);
+
     setCountManual.max = wordCount;
     setCountManual.value = wordCount;
+
+    // frissítés
+    defineExcercise();
 
 }
 
 function loadRunTimeSelector() {
+
     var content = document.querySelector("#runtime-name-select");
     content.innerHTML = '';
     Object.values(excerciseRunTime).map(item => {
@@ -1046,25 +1066,27 @@ function loadRunTimeSelector() {
 function runtimeNameSelectmethod() {
 
     var countManualBox = document.querySelector("#set-word-count-section");
+    var wordCount = setEnabledWordsCount();
 
     runtimeNameSelect.addEventListener("change", () => {
-        console.log(runtimeNameSelect.value);
 
         if (runtimeNameSelect.value == 1) {
             countManualBox.classList.remove("disabled");
+            // Érték adása az input boxhoz!
+            setCountManual.value = wordCount;
+            updateRunTimeCount();
         }
         else {
             countManualBox.classList.add("disabled");
-
         }
     })
 }
 
 function validateCountInput() {
 
-    var maxValue = setEnabledWordsCount();
-
     setCountManual.addEventListener("change", () => {
+
+        var maxValue = setEnabledWordsCount();
 
         if (setCountManual.value > maxValue) {
             setCountManual.value = maxValue;
@@ -1073,6 +1095,10 @@ function validateCountInput() {
             setCountManual.value = 1;
         }
     })
+
+    // frissítés
+    defineExcercise();
+
 }
 /* ******************************************************************************************* */
 
@@ -1101,16 +1127,16 @@ function excerciseStartSelectmethod() {
 
 var defineExcercise = () => {
 
+    state.dictionaryID = dictionaryNameSelect.value;
+    state.selectedDictionary = dictionaryNameSelect[dictionaryNameSelect.value].dataset.dictid;
+    state.dictionaryName = dictionaryNameSelect[dictionaryNameSelect.value].textContent;
 
     return excInfo = {
-
         maxValue: dictionaries[dictionaryNameSelect.value].lexicon.length,
         dictionary: dictionaryNameSelect.value,
         excIndex: excerciseNameSelect.value,
         timeIndex: runtimeNameSelect.value,
         countIndex: setCountManual.value
-
-
     };
 }
 

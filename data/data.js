@@ -133,7 +133,7 @@ var dictionaries = [
             },
 
             {
-                array: ['vigneto', 'ószőlőra'],
+                array: ['vigneto', 'szőlő'],
                 id: 4
             }
 

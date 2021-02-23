@@ -81,6 +81,10 @@
   transform: scale(1.2);
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 h1 {
   color: #426696;
   font-weight: 600;
@@ -494,7 +498,6 @@ main {
   width: 100%;
   margin: 1rem 0;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #414141;
 }
 
 .dictionary-list-item-1 {
