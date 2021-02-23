@@ -3,55 +3,64 @@ var dashboardMenuItems = [
         icon: "fas fa-home",
         text: "Home",
         link: "0",
-        method: "menu_load_home"
+        method: "menu_load_home",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-user-circle",
         text: "Profile",
         link: "1",
-        method: "menu_load_profile"
+        method: "menu_load_profile",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-book",
         text: "Dictionaries",
         link: "2",
-        method: "menu_load_dictionaries"
+        method: "menu_load_dictionaries",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-plus-circle",
         text: "Add Words!",
         link: "3",
-        method: "menu_load_addwords"
+        method: "menu_load_addwords",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-brain",
         text: "Brain Teaser",
         link: "4",
-        method: "menu_load_brainteaser"
+        method: "menu_load_brainteaser",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-headphones",
         text: "Listening",
         link: "5",
-        method: "menu_load_listening"
+        method: "menu_load_listening",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-chart-line",
         text: "Records",
         link: "6",
-        method: "menu_load_records"
+        method: "menu_load_records",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-cog",
         text: "Settings",
         link: "7",
-        method: "menu_load_settings"
+        method: "menu_load_settings",
+        buttonID: generateID()
     },
     {
         icon: "fas fa-sign-out-alt",
         text: "Sign Out!",
         link: "8",
-        method: "menu_load_signout"
+        method: "menu_load_signout",
+        buttonID: generateID()
     },
 ];
 
@@ -62,6 +71,8 @@ var dictionaries = [
         name: "Angol-Magyar",
         table: "angol_magyar",
         relaseDate: "2021.02.04",
+        langugagePrimary: "en-GB",
+        languageSecondary: "hu-HU",
         value: 0,
         lexicon: [
             {
@@ -99,6 +110,8 @@ var dictionaries = [
         name: "Olasz-Magyar",
         table: "olasz_magyar",
         relaseDate: "2020.11.15",
+        langugagePrimary: "it-IT",
+        languageSecondary: "hu-HU",
         value: 1,
         lexicon: [
             {
@@ -131,6 +144,8 @@ var dictionaries = [
         name: "Francia-Magyar",
         table: "francia_magyar",
         relaseDate: "2020.09.24",
+        langugagePrimary: "fr-FR",
+        languageSecondary: "hu-HU",
         value: 2,
         lexicon: [
             {
@@ -152,10 +167,12 @@ var dictionaries = [
         name: "Spanyol-Magyar",
         table: "spanyol_magyar",
         relaseDate: "2021.01.11",
+        langugagePrimary: "es-ES",
+        languageSecondary: "hu-HU",
         value: 3,
         lexicon: [
             {
-                array: ['pistola', 'pistola'],
+                array: ['pistola', 'pisztoly'],
                 id: 0
             },
             {
@@ -163,7 +180,7 @@ var dictionaries = [
                 id: 1
             },
             {
-                array: ['juego de niños', 'juego de niños'],
+                array: ['juego de niños', 'gyerekjáték'],
                 id: 2
             },
             {
@@ -185,6 +202,8 @@ var dictionaries = [
         name: "Angol-Magyar Testrészek",
         table: "Angol-Magyar-Testreszek",
         relaseDate: "2021.02.17",
+        langugagePrimary: "en-GB",
+        languageSecondary: "hu-HU",
         value: 4,
         lexicon: [
             {
@@ -332,10 +351,102 @@ var dictionaries = [
                 id: 35
             }
         ]
+    },
+    {
+        id: generateID(),
+        name: "Német-Magyar",
+        table: "nemet_magyar",
+        relaseDate: "2021.02.22",
+        langugagePrimary: "de-DE",
+        languageSecondary: "hu-HU",
+        value: 5,
+        lexicon: [
+            {
+                array: ['Buch', 'könyv'],
+                id: 0
+            },
+            {
+                array: ['Autobahn', 'autópálya'],
+                id: 1
+            },
+            {
+                array: ['Guten Tag!', 'Jó napot kívánok!'],
+                id: 2
+            },
+            {
+                array: ['Freiheit', 'szabadság'],
+                id: 3
+            },
+            {
+                array: ['Birne', 'körte'],
+                id: 4
+            },
+            {
+                array: ['Wald', 'erdő'],
+                id: 5
+            },
+            {
+                array: ['Kirche', 'templom'],
+                id: 6
+            },
+            {
+                array: ['Hauptstadt', 'főváros'],
+                id: 7
+            },
+            {
+                array: ['Sprachwissenschaft', 'nyelvészet'],
+                id: 8
+            }
+        ]
+    },
+    {
+        id: generateID(),
+        name: "Angol-Német",
+        table: "nemet_magyar",
+        relaseDate: "2021.02.22",
+        langugagePrimary: "de-DE",
+        languageSecondary: "id-ID",
+        value: 6,
+        lexicon: [
+            {
+                array: ['Buch', 'book'],
+                id: 0
+            },
+            {
+                array: ['Autobahn', 'highway'],
+                id: 1
+            },
+            {
+                array: ['Guten Tag!', 'Good afternoon!'],
+                id: 2
+            },
+            {
+                array: ['Freiheit', 'liberty'],
+                id: 3
+            },
+            {
+                array: ['Birne', 'pear'],
+                id: 4
+            },
+            {
+                array: ['Wald', 'wood'],
+                id: 5
+            },
+            {
+                array: ['Kirche', 'Church'],
+                id: 6
+            },
+            {
+                array: ['Hauptstadt', 'capital'],
+                id: 7
+            },
+            {
+                array: ['Sprachwissenschaft', 'linguistics'],
+                id: 8
+            }
+        ]
     }
 ]
-
-
 
 var excerciseTypes = [
     {
@@ -369,8 +480,16 @@ var excerciseRunTime = [
 
 //'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
 function generateID() {
-    return 'D_xxxxxxxx'.replace(/[xy]/g, function (c) {
+    return 'xxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
 }
+
+
+
+
+/**
+ * https://csvjson.com/csv2json
+ * CSV file convertálása JSON objetummá
+ */

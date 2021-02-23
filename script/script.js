@@ -1,4 +1,5 @@
 var state = {
+    activeMenu: dashboardMenuItems[0].buttonID,
     selectedDictionary: "",
     dictionaryID: "",
     dictionaryName: "",
@@ -6,6 +7,7 @@ var state = {
     editDictionaryMode: false,
     editDictionaryContent: false
 }
+
 
 function resetState() {
     state.selectedDictionary = "";
@@ -23,13 +25,13 @@ var fullScreenButton = document.querySelector("#full-screen-button");
 var appWindow = document.querySelector(".glass");
 
 
-function createMainMenu() {
+function renderMainMenu() {
 
     dashboardLinkContainer.innerHTML = '';
 
     Object.values(dashboardMenuItems).map(item => {
         dashboardLinkContainer.innerHTML += `
-        <div class="link wide">
+        <div class="link wide" data-buttonId="${item.buttonID}">
             <div class="link-icon-box">
                 <i class="${item.icon}"></i>
             </div>
@@ -40,7 +42,7 @@ function createMainMenu() {
     setHomepage();
 }
 
-function createMobileMenu() {
+function renderMobileMenu() {
 
     var mobileMenuContainer = document.querySelector(".mobile-menu-container");
 
@@ -48,7 +50,7 @@ function createMobileMenu() {
 
     Object.values(dashboardMenuItems).map(item => {
         mobileMenuContainer.innerHTML += `
-        <div class="mobile-menu-items">
+        <div class="mobile-menu-items" data-buttonId="${item.buttonID}">
             <div class="link-icon-box">
                 <i class="${item.icon}"></i>
             </div>
@@ -68,7 +70,6 @@ function fullScreenMode() {
         if (appWindow.className == "glass full-screen") {
             appWindow.classList.remove("full-screen");
             fullScreenButton.className = "fas fa-expand-arrows-alt";
-
         }
         else {
             appWindow.classList.add("full-screen");
@@ -88,7 +89,7 @@ function setHomepage() {
     actualPageIcon.className = dashboardMenuItems[0].icon;
 }
 
-createMainMenu();
+renderMainMenu();
 
 var dashboardLinks = document.querySelectorAll(".link");
 
@@ -105,9 +106,10 @@ function selectPages() {
     for (let i = 0; i < dashboardLinks.length; i++) {
 
         dashboardLinks[i].addEventListener('click', () => {
-            var activeIcon = dashboardLinks[i].querySelector("div > i");
-            removeActivePageClass();
-            activeIcon.classList.add("active-page");
+            state.activeMenu = dashboardLinks[i].dataset.buttonid;
+
+            setActivePage(i);
+
             actualPageIcon.className = dashboardMenuItems[i].icon;
             actualPageContainer.innerHTML = dashboardMenuItems[i].text;
             loadMenuMethods(dashboardMenuItems[i].method);
@@ -115,10 +117,14 @@ function selectPages() {
     }
 }
 
+function setActivePage(index) {
+    var activeIcon = dashboardLinks[index].querySelector("div > i");
+    removeActivePageClass();
+    activeIcon.classList.add("active-page");
+}
+
 selectPages();
-
-createMobileMenu();
-
+renderMobileMenu();
 displayMobileMenu();
 
 
@@ -148,13 +154,14 @@ function selectMobilePages() {
     for (let i = 0; i < mobileMenuElements.length; i++) {
 
         mobileMenuElements[i].addEventListener('click', () => {
+            state.activeMenu = dashboardLinks[i].dataset.buttonid;
             actualPageIcon.className = dashboardMenuItems[i].icon;
             actualPageContainer.innerHTML = dashboardMenuItems[i].text;
             loadMenuMethods(dashboardMenuItems[i].method);
             mobileMenuShowHide();
+            setActivePage(i);
         })
     }
-
 }
 
 selectMobilePages();
@@ -309,13 +316,8 @@ function menu_load_dictionaries() {
     Menu_Clear_MainContent();
 
 
-    mainContent.innerHTML =
-        `
-        
-
+    mainContent.innerHTML = `
         <h5 class="text-center mb-4">Szótárak listája</h5>
-
-
         <div class="mb-2 dictionaries-search-bar">
             <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
             <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
@@ -324,23 +326,53 @@ function menu_load_dictionaries() {
         <div class="view-menu-bar-create mt-3 mb-2">
 
             <div class="add-new-block">
+                <p class="m-2">Új szótár!</p>
                 <i class="fas fa-plus-square" id="add-button"></i>
             </div>
             
-            <div class="create-new-block disabled">
-                <div class="create-new-block-form">
+            <div class="create-new-dictionary disabled mb-3">
+                <div class="create-new-block-form w-100">
+
                     <form>
-                        <div class="mb-1">
+                        <div class="dictionary-name mb-2">
+                            <label for="create-new-text-input" class="form-label">Add meg az új szótár nevét:</label>
+
                             <input type="text" class="form-control" id= "create-new-text-input" placeholder="Name of the new Dictionary">
                         </div>
+
+
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                            <label for="dictionary-name-select" class="form-label">Elsődleges nyelv:</label>
+                            <select class="dictionary-language-select form-select mb-3" id="dictionary-language-primary"></select>
+                            </div>
+
+                            <div class="col-sm-6">
+                            <label for="dictionary-name-select" class="form-label">Másodlagos nyelv:</label>
+                            <select class="dictionary-language-select form-select mb-3" id="dictionary-language-secondary"></select>
+                            </div>
+
+                        </div>
+                        <div class="row create-new-block-buttons">
+                                <div class="col-sm-10">
+                                    <button type="button" class="btn btn-success w-100 mb-2" id="create-new-accept"><i class="fas fa-check"></i></button>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="button" class="btn btn-danger w-100" id="create-new-close"><i class="fas fa-times"></i></button>
+                                </div>
+                            </div>
+                      
                     </form>
+
                 </div>
 
-                <div class="create-new-block-buttons">
-                    <button type="button" class="btn btn-success" id="create-new-accept"><i class="fas fa-check"></i></button>
-                    <button type="button" class="btn btn-danger" id="create-new-close"><i class="fas fa-times"></i></button>
-                </div>
+
+
+
+
             </div>
+
         </div>
 
         <div class="dictionary-list-block">
@@ -366,6 +398,25 @@ function menu_load_dictionaries() {
         </div>
     `
 
+
+    /** */
+    var langContent = document.querySelector("#dictionary-language-primary");
+    langContent.innerHTML = '';
+    var langCounter = 0;
+    Object.values(languagesJS).map(item => {
+        langContent.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
+        langCounter++;
+    });
+
+    var langContent = document.querySelector("#dictionary-language-secondary");
+    langContent.innerHTML = '';
+    var langCounter = 0;
+    Object.values(languagesJS).map(item => {
+        langContent.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
+        langCounter++;
+    });
+    /** */
+
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
 
@@ -390,7 +441,7 @@ function menu_load_dictionaries() {
 
     createNewDictionaryButton = document.querySelector(".add-new-block");
     addNewBlock = document.querySelector(".add-new-block");
-    createNewBlock = document.querySelector(".create-new-block");
+    createNewBlock = document.querySelector(".create-new-dictionary");
     createNewAcceptBtn = document.querySelector("#create-new-accept");
     createNewClearBtn = document.querySelector("#create-new-close");
     createNewTextInput = document.querySelector("#create-new-text-input");
@@ -587,15 +638,14 @@ function renderDinctionaryContent() {
     mainContent.innerHTML = '';
 
     mainContent.innerHTML = `
-        <div class="d-flex">
-            <button type="button" class="btn bg-info bt-sm text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
-        </div>
-            <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
-
+        <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
         <div class="mb-2 dictionaries-search-bar">
+            <button type="button" class="btn bg-info bt-sm text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
+            <div class="search-bar">
             <input type="text" class="form-control" id="dictionaries-search-input"
                 placeholder="Search...">
             <button type="button" class="btn btn-secondary" id="search-dictionary-button"><i class="fas fa-search"></i></button>
+            </div>
         </div>
 
         
@@ -640,13 +690,10 @@ function renderDinctionaryContent() {
     Object.values(state.dictionaries[state.dictionaryID].lexicon).map(item => {
         dictionaryItemList.innerHTML += `
         <div class="dictionary-item mb-1">
-
             <div class="dictionary-item-count">
                 <span>${counter + 1}.</span>
             </div>
-
             <div class="dictionary-item-words">
-            
                 <div class="dictionary-first-word mr-1">
                     <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.array[0]}</span>
                     <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_0" data-wordid="0" value="${item.array[0]}">
@@ -655,7 +702,6 @@ function renderDinctionaryContent() {
                     <i class="fas fa-check save-edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
                     <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_0" data-wordid="0"></i>
                 </div>
-
                     </div>
                         <div class="dictionary-second-word mr-1">
                         <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.array[1]}</span>
@@ -666,9 +712,7 @@ function renderDinctionaryContent() {
                         <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_1" data-wordid="1"></i>
                     </div>
                 </div>
-                
             </div>
-
         </div>
         `
         counter++;
@@ -690,7 +734,6 @@ function renderDinctionaryContent() {
 
     enabledListeningMode();
     readSelectedWord();
-
 
 }
 
@@ -723,8 +766,6 @@ function enabledListeningMode() {
     var listeningModeButton = document.getElementById('listen-content-checker');
     var listenBtn = document.querySelectorAll('.listening-mode');
 
-
-
     listeningModeButton.addEventListener("change", () => {
         if (listeningModeButton.checked) {
             for (const button of listenBtn) {
@@ -738,7 +779,6 @@ function enabledListeningMode() {
             }
         }
     })
-
 }
 
 function editSelectedWord() {
@@ -793,31 +833,25 @@ function readSelectedWord() {
 
     var readButtons = document.querySelectorAll('.listening-mode');
 
-
     for (const button of readButtons) {
-
 
         button.onclick = function () {
 
             var inputID = button.dataset.inputid;
-
             var labels = document.querySelectorAll('.dictionary-text-content');
 
             for (const label of labels) {
                 if (label.dataset.inputid === inputID) {
-
-                    console.log(label.textContent);
-                    startSpeech(label.textContent);
+                    if (button.dataset.wordid === '0') {
+                        startSpeech(dictionaries[state.dictionaryID].langugagePrimary, label.textContent);
+                    }
+                    else {
+                        startSpeech(dictionaries[state.dictionaryID].languageSecondary, label.textContent);
+                    }
                 }
             }
         }
-
-
-
-
     }
-
-
 }
 
 function saveEditedWord() {
@@ -869,10 +903,7 @@ function saveEditedWord() {
             }
         }
     }
-
 }
-
-
 
 
 
@@ -883,9 +914,7 @@ function resetDictionariesPage() {
 
 var excerciseStartButton;
 
-
 function excerciseLoadSettings() {
-
 
     Menu_Clear_MainContent();
 
@@ -915,8 +944,8 @@ function createDictionaryDDList(contener) {
 
     contener.innerHTML += `
         <div class= "select-dictionary">
-            <label for="" class="form-label">Válassz egy szótárt:</label>
-            <select class="form-select" id="dictionary-name-select">
+            <label for="dictionary-name-select" class="form-label">Válassz egy szótárt:</label>
+            <select class="form-select mb-3" id="dictionary-name-select">
             </select>
         </div>
         `
@@ -1300,7 +1329,6 @@ function answerEventEnter() {
 
 function skipAnswer() {
 
-
     var skipButton = document.querySelector('#answer-button-next');
 
     skipButton.addEventListener('click', () => {
@@ -1309,11 +1337,7 @@ function skipAnswer() {
         answerBoxInput.value = "";
         hideAnswerBox();
         askSomething();
-
     });
-
-
-
 }
 
 
@@ -1344,11 +1368,10 @@ function showQuestionBox() {
 }
 
 
-
-function startSpeech(text) {
+function startSpeech(language, text) {
 
     let speech = new SpeechSynthesisUtterance();
-    speech.lang = "en-US";
+    speech.lang = language;
     speech.text = text;
     speech.volume = 1;
     speech.rate = 1;
