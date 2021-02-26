@@ -386,10 +386,12 @@ function menu_load_dictionaries() {
         </div>
 
         <div class="dictionary-list-block">
+
             <div class="mb-2 dictionaries-search-bar">
                 <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
                 <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
             </div>
+
             <div class="dictionary-list-header d-flex py-2 pl-2 border-bottom border-white">
                 <div class="col-8 d-flex justify-content-start">
                     <div class="d-flex justify-content-between text-muted cursor-pointer">
@@ -399,7 +401,7 @@ function menu_load_dictionaries() {
                 <div class="col-4 d-flex justify-content-end"><p class="mb-0 text-muted">Művelet</p></div>
             </div>
 
-            <div class="dictionary-list-items overflow-scroll p-2" style="max-height: 300px">
+            <div class="dictionary-list-items  p-2">
 
             </div>
         </div>
@@ -447,18 +449,19 @@ function menu_load_dictionaries() {
     Object.values(dictionaries).map(dictionary => {
         content.innerHTML +=
             `
-            <div class="dictionary-list-item border-bottom">
-                <div class="dictionary-list-item-1">
-                    <div class="dictionary-list-item-details">
-                        <i class="fas fa-bookmark"></i>
-                        <h6>${dictionary.name} <small>[${dictionary.lexicon.length}]</small></h6>
-                    </div>
-                </div>    
-                <div class="btn-group dictionary-list-item-button" role="group" aria-label="Basic example">
+            <div class="row d-flex p-2 justify-content-around dictionary-list-item border-bottom">
+
+                <div class="col-12 col-sm-8 d-flex align-items-center dictionary-list-item-details">
+                    <i class="fas fa-bookmark d-none d-sm-flex"></i>
+                    <h6 class="mb-sm-none">${dictionary.name} <small>[${dictionary.lexicon.length}]</small></h6>
+                </div>
+
+                <div class="col-12 col-sm-4 btn-group dictionary-list-item-button justify-content-center justify-content-sm-end" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
                     <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
+
             </div>
         `
     });

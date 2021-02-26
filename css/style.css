@@ -491,6 +491,7 @@ main {
   color: var(--active-icon-color);
 }
 
+/*
 .dictionary-list-item {
   display: flex;
   align-items: center;
@@ -514,7 +515,7 @@ main {
   width: 100%;
   margin-right: 1rem;
 }
-
+*/
 .dictionary-list-item-date {
   display: flex;
   align-items: center;
@@ -545,6 +546,7 @@ main {
 .dictionary-list-item-button button {
   width: 3rem;
   color: white;
+  max-height: 2rem;
 }
 
 .open-content {
@@ -1017,12 +1019,12 @@ main {
   .dictionary-second-word {
     width: 100%;
   }
+  /*
   .dictionary-list-item-details i {
     display: none;
   }
 
-  .dictionary-list-item {
-    /*flex-wrap: wrap;*/
+   .dictionary-list-item {
     justify-content: space-between;
     font-size: 0.8rem;
   }
@@ -1035,5 +1037,5 @@ main {
 
   .dictionary-list-item-button {
     padding: 0;
-  }
+  } */
 }
