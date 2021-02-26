@@ -267,6 +267,14 @@ var createNewClearBtn;
 var createNewTextInput;
 //var openDictionaryButtons;
 
+
+/** LISTENING MODULE */
+var listeningSelectLanguage
+var listeningTextarea;
+var listeningStartBtn;
+var listeningClearBtn;
+
+
 /* -------------------------- */
 
 
@@ -340,25 +348,31 @@ function menu_load_dictionaries() {
                         <div class="row">
 
                             <div class="col-sm-6">
-                            <label for="dictionary-name-select" class="form-label">Elsődleges nyelv:</label>
-                            <select class="dictionary-language-select form-select mb-3" id="dictionary-language-primary"></select>
+                                <label for="dictionary-name-select" class="form-label">Elsődleges nyelv:</label>
+                                <select class="dictionary-language-select form-select mb-3" id="dictionary-language-primary"></select>
                             </div>
 
                             <div class="col-sm-6">
-                            <label for="dictionary-name-select" class="form-label">Másodlagos nyelv:</label>
-                            <select class="dictionary-language-select form-select mb-3" id="dictionary-language-secondary"></select>
+                                <label for="dictionary-name-select" class="form-label">Másodlagos nyelv:</label>
+                                <select class="dictionary-language-select form-select mb-3" id="dictionary-language-secondary"></select>
+                            </div>
+
+                        </div>  
+
+                        <div class="row create-new-block-buttons">
+
+                            <div class="col-sm-10">
+                                <button type="button" class="btn btn-success w-100 mb-2" id="create-new-accept"><i class="fas fa-check"></i></button>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <button type="button" class="btn btn-danger w-100" id="create-new-close"><i class="fas fa-times"></i></button>
                             </div>
 
                         </div>
-                        <div class="row create-new-block-buttons">
-                                <div class="col-sm-10">
-                                    <button type="button" class="btn btn-success w-100 mb-2" id="create-new-accept"><i class="fas fa-check"></i></button>
-                                </div>
-                                <div class="col-sm-2">
-                                    <button type="button" class="btn btn-danger w-100" id="create-new-close"><i class="fas fa-times"></i></button>
-                                </div>
-                            </div>
-                      
+
+                        
+
                     </form>
 
                 </div>
@@ -522,7 +536,86 @@ function menu_load_listening() {
     resetState();
     Menu_Clear_MainContent();
 
+    mainContent.innerHTML = `
+    <div class="row">
+        <div class="col-12">
+            <label for="dictionary-name-select" class="form-label">Kiejtés nyelve:</label>
+            <select class="dictionary-language-select form-select mb-3"
+                id="listening-select-language"></select>
+        </div>
+        <div class="col-12 form-group mb-3">
+            <label for="dictionary-name-select" class="form-label">Szöveg:</label>
+            <textarea class="form-control" id="listening-textarea" rows="3"></textarea>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10">
+            <button type="button" class="btn btn-secondary w-100 mb-2"
+                id="listening-start-button"><i class="fas fa-volume-up"></i></button>
+        </div>
+        <div class="col-sm-2">
+            <button type="button" class="btn btn-danger w-100" id="listening-clear-button"><i
+                    class="fas fa-trash-alt"></i></button>
+        </div>
+    </div>
+    `
+
+    listeningSelectLanguage = document.querySelector("#listening-select-language");
+    listeningTextarea = document.querySelector("#listening-textarea");
+    listeningStartBtn = document.querySelector("#listening-start-button");
+    listeningClearBtn = document.querySelector("#listening-clear-button");
+
+
+    listeningSelectLanguage.innerHTML = '';
+    var langCounter = 0;
+    Object.values(languagesJS).map(item => {
+        listeningSelectLanguage.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
+        langCounter++;
+    });
+
+
+    listeningStartSpeech();
+    listeningClearTextarea();
+
+
 }
+
+
+/** LISTENING MODUL FUNCTIONS */
+
+
+function listeningStartSpeech() {
+
+    listeningStartBtn.addEventListener("click", () => {
+
+        var textContent = listeningTextarea;
+
+        if (textContent.textLength != 0) {
+            var language = listeningSelectLanguage[listeningSelectLanguage.value].dataset.languageid;
+            console.log(language, textContent.value);
+            startSpeech(language, textContent.value);
+        }
+    })
+
+};
+
+
+function listeningClearTextarea() {
+
+    listeningClearBtn.addEventListener("click", () => {
+
+        listeningTextarea.value = '';
+
+
+    })
+
+};
+
+
+/** END OF REGIO */
+
+
 
 function menu_load_records() {
     resetState();
