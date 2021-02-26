@@ -401,11 +401,11 @@ var dictionaries = [
     },
     {
         id: generateID(),
-        name: "Angol-Német",
-        table: "nemet_magyar",
+        name: "Német-Angol",
+        table: "angol_nemet",
         relaseDate: "2021.02.22",
         langugagePrimary: "de-DE",
-        languageSecondary: "id-ID",
+        languageSecondary: "en-GB",
         value: 6,
         lexicon: [
             {

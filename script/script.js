@@ -392,13 +392,13 @@ function menu_load_dictionaries() {
                 <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
             </div>
 
-            <div class="dictionary-list-header d-flex py-2 pl-2 border-bottom border-white">
+            <div class="dictionary-list-header d-flex px-3 py-2 border-bottom border-white">
                 <div class="col-8 d-flex justify-content-start">
                     <div class="d-flex justify-content-between text-muted cursor-pointer">
                         <i class="fas fa-sort-alpha-up pr-2"></i>
                         <p class="mb-0 px-2 text-muted">Név</p></div>
                     </div>
-                <div class="col-4 d-flex justify-content-end"><p class="mb-0 text-muted">Művelet</p></div>
+                <div class="col-4 d-none d-sm-flex justify-content-end"><p class="mb-0 text-muted">Művelet</p></div>
             </div>
 
             <div class="dictionary-list-items  p-2">
@@ -451,12 +451,13 @@ function menu_load_dictionaries() {
             `
             <div class="row d-flex p-2 justify-content-around dictionary-list-item border-bottom">
 
-                <div class="col-12 col-sm-8 d-flex align-items-center dictionary-list-item-details">
+                <div class="col-12 col-sm-8 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
                     <i class="fas fa-bookmark d-none d-sm-flex"></i>
-                    <h6 class="mb-sm-none">${dictionary.name} <small>[${dictionary.lexicon.length}]</small></h6>
+                    <small class="mx-sm-1 mx-2 ml-0">[${dictionary.lexicon.length}]</small>
+                    <h6 class="m-0">${dictionary.name}</h6>
                 </div>
 
-                <div class="col-12 col-sm-4 btn-group dictionary-list-item-button justify-content-center justify-content-sm-end" role="group" aria-label="Basic example">
+                <div class="col-12 col-sm-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
                     <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
@@ -572,7 +573,7 @@ function menu_load_listening() {
 
     listeningSelectLanguage.innerHTML = '';
     var langCounter = 0;
-    Object.values(languagesJS).map(item => {
+    Object.values(languages).map(item => {
         listeningSelectLanguage.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
         langCounter++;
     });
