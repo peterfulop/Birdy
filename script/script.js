@@ -1,4 +1,5 @@
 var state = {
+    screenMode: 0,
     activeMenu: dashboardMenuItems[0].buttonID,
     selectedDictionary: "",
     dictionaryID: "",
@@ -19,10 +20,11 @@ function resetState() {
 }
 
 
+
 var dashboardLinkContainer = document.querySelector(".links");
 var mobileMenuButton = document.querySelector("#mobile-menu-button");
 var fullScreenButton = document.querySelector("#full-screen-button");
-var appWindow = document.querySelector(".glass");
+var appWindow = document.querySelector(".app");
 
 
 function renderMainMenu() {
@@ -67,16 +69,45 @@ function fullScreenMode() {
 
     fullScreenButton.addEventListener("click", () => {
 
-        if (appWindow.className == "glass full-screen") {
-            appWindow.classList.remove("full-screen");
-            fullScreenButton.className = "fas fa-expand-arrows-alt";
+        if (state.screenMode == 1) {
+            diasbleFullScreen();
         }
         else {
-            appWindow.classList.add("full-screen");
-            fullScreenButton.className = "fas fa-compress-arrows-alt";
+            enableFullScreen();
         }
     });
 }
+
+function enableFullScreen() {
+    appWindow.classList.remove("full-screen");
+    fullScreenButton.className = "fas fa-expand-arrows-alt";
+    state.screenMode = 1;
+}
+
+function diasbleFullScreen() {
+    appWindow.classList.add("full-screen");
+    fullScreenButton.className = "fas fa-compress-arrows-alt";
+    state.screenMode = 0;
+
+}
+
+const mediaQuery = window.matchMedia('(max-width: 960px)');
+
+
+
+autoFullScreen(mediaQuery);
+mediaQuery.addListener(autoFullScreen);
+
+function autoFullScreen(mediaQuery) {
+    if (mediaQuery.matches) {
+        diasbleFullScreen();
+
+    } else {
+        enableFullScreen();
+    }
+}
+
+
 
 var actualPageContainer = document.querySelector("#active-page-name");
 var actualPageIcon = document.querySelector("#active-page-icon");
@@ -128,6 +159,7 @@ renderMobileMenu();
 displayMobileMenu();
 
 
+const mediaQueryDashboard = window.matchMedia('(max-width: 810px)');
 var mobileMenuContainer = document.querySelector(".mobile-menu-container");
 
 function displayMobileMenu() {
@@ -145,6 +177,7 @@ function mobileMenuShowHide() {
         mobileMenuContainer.classList.add("disabled");
     }
 }
+
 
 
 var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
@@ -224,15 +257,15 @@ function showHideDashboard() {
 
         var showIconClass = "fas fa-angle-double-right";
         var hideIconClass = "fas fa-angle-double-left";
-        var dashboardPanel = document.querySelector(".dashboard");
+        //var dashboardPanel = document.querySelector(".dashboard");
         var dashboardHeader = document.querySelector("#show-hide-button");
 
         if (show) {
             show = false;
             dashboardHeader.innerHTML = '';
             dashboardHeader.innerHTML = `<i class="${showIconClass}" id="show-hide-button"></i>`;
-            dashboardPanel.classList.remove('wide');
-            dashboardPanel.classList.add('tight');
+            //  dashboardPanel.classList.remove('wide');
+            // dashboardPanel.classList.add('tight');
             hideMainMenuText();
         }
 
@@ -240,9 +273,10 @@ function showHideDashboard() {
             show = true;
             dashboardHeader.innerHTML = '';
             dashboardHeader.innerHTML = `<i class="${hideIconClass}" id="show-hide-button"></i>`;
-            dashboardPanel.classList.remove('tight');
-            dashboardPanel.classList.add('wide');
-            setTimeout(showMainMenuText, 500);
+            //dashboardPanel.classList.remove('tight');
+            //dashboardPanel.classList.add('wide');
+            //setTimeout(showMainMenuText, 500);
+            showMainMenuText();
         }
     })
 }
@@ -393,12 +427,12 @@ function menu_load_dictionaries() {
             </div>
 
             <div class="dictionary-list-header d-flex px-3 py-2 border-bottom border-white">
-                <div class="col-8 d-flex justify-content-start">
+                <div class="col-9 d-flex justify-content-start">
                     <div class="d-flex justify-content-between text-muted cursor-pointer">
                         <i class="fas fa-sort-alpha-up pr-2"></i>
                         <p class="mb-0 px-2 text-muted">Név</p></div>
                     </div>
-                <div class="col-4 d-none d-sm-flex justify-content-end"><p class="mb-0 text-muted">Művelet</p></div>
+                <div class="col-3 d-none d-sm-flex justify-content-end"><p class="mb-0 text-muted">Művelet</p></div>
             </div>
 
             <div class="dictionary-list-items  p-2">
@@ -451,13 +485,13 @@ function menu_load_dictionaries() {
             `
             <div class="row d-flex p-2 justify-content-around dictionary-list-item border-bottom">
 
-                <div class="col-12 col-sm-8 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
+                <div class="col-12 col-sm-9 col-lg-8 col-xl-10 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
                     <i class="fas fa-bookmark d-none d-sm-flex"></i>
                     <small class="mx-sm-1 mx-2 ml-0">[${dictionary.lexicon.length}]</small>
                     <h6 class="m-0">${dictionary.name}</h6>
                 </div>
 
-                <div class="col-12 col-sm-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" aria-label="Basic example">
+                <div class="col-12 col-sm-3 col-lg-4 col-xl-2 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" aria-label="Basic example">
                     <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
                     <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
@@ -661,7 +695,6 @@ function backToNewDictionary() {
 };
 
 
-
 function selectDictionaryMethod() {
 
     var dictionaryContentButtons = document.querySelectorAll('.content-action');
@@ -846,6 +879,8 @@ function renderDinctionaryContent() {
 
     enabledListeningMode();
     readSelectedWord();
+
+
 
 }
 
@@ -1369,7 +1404,7 @@ function clearExcercisePuffers() {
 function startExcerciseMethod() {
 
     clearExcercisePuffers();
-
+    updateRunTimeCount();
     askSomething();
     skipAnswer();
     answerEventClick();
