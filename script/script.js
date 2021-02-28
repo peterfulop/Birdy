@@ -483,15 +483,15 @@ function menu_load_dictionaries() {
     Object.values(dictionaries).map(dictionary => {
         content.innerHTML +=
             `
-            <div class="row d-flex p-2 justify-content-around dictionary-list-item border-bottom">
+            <div class="row d-flex p-2 justify-content-between dictionary-list-item border-bottom">
 
-                <div class="col-12 col-sm-9 col-lg-8 col-xl-10 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
+                <div class="col-12 col-sm-8 col-xl-8 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
                     <i class="fas fa-bookmark d-none d-sm-flex"></i>
                     <small class="mx-sm-1 mx-2 ml-0">[${dictionary.lexicon.length}]</small>
                     <h6 class="m-0">${dictionary.name}</h6>
                 </div>
 
-                <div class="col-12 col-sm-3 col-lg-4 col-xl-2 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" aria-label="Basic example">
+                <div class="col-12 col-sm-4 col-xl-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" style="max-width: 275px">
                     <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
                     <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
