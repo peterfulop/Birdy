@@ -37,7 +37,7 @@ function renderMainMenu() {
             <div class="link-icon-box">
                 <i class="${item.icon}"></i>
             </div>
-            <h3 id="hideable">${item.text}</h3>
+            <h3 class="hideable">${item.text}</h3>
         </div>`
     });
 
@@ -52,7 +52,7 @@ function renderMobileMenu() {
 
     Object.values(dashboardMenuItems).map(item => {
         mobileMenuContainer.innerHTML += `
-        <div class="mobile-menu-items" data-buttonId="${item.buttonID}">
+        <div class="mobile-menu-items py-2" data-buttonId="${item.buttonID}">
             <div class="link-icon-box">
                 <i class="${item.icon}"></i>
             </div>
@@ -210,7 +210,7 @@ function loadMenuMethods(methodName) {
 }
 
 
-var hideableText = document.querySelectorAll("#hideable");
+var hideableText = document.querySelectorAll(".hideable");
 
 function hideMainMenuText() {
     hideableText.forEach(element => {
