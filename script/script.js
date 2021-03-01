@@ -80,12 +80,14 @@ function fullScreenMode() {
 
 function enableFullScreen() {
     appWindow.classList.remove("full-screen");
+    document.getElementById('dashboard').classList.remove("full-screen");
     fullScreenButton.className = "fas fa-expand-arrows-alt";
     state.screenMode = 1;
 }
 
 function diasbleFullScreen() {
     appWindow.classList.add("full-screen");
+    document.getElementById('dashboard').classList.add("full-screen");
     fullScreenButton.className = "fas fa-compress-arrows-alt";
     state.screenMode = 0;
 
@@ -257,25 +259,17 @@ function showHideDashboard() {
 
         var showIconClass = "fas fa-angle-double-right";
         var hideIconClass = "fas fa-angle-double-left";
-        //var dashboardPanel = document.querySelector(".dashboard");
-        var dashboardHeader = document.querySelector("#show-hide-button");
+        var showHideBtn = document.querySelector("#show-hide-button");
 
         if (show) {
             show = false;
-            dashboardHeader.innerHTML = '';
-            dashboardHeader.innerHTML = `<i class="${showIconClass}" id="show-hide-button"></i>`;
-            //  dashboardPanel.classList.remove('wide');
-            // dashboardPanel.classList.add('tight');
+            showHideBtn.className = showIconClass;
             hideMainMenuText();
         }
 
         else {
             show = true;
-            dashboardHeader.innerHTML = '';
-            dashboardHeader.innerHTML = `<i class="${hideIconClass}" id="show-hide-button"></i>`;
-            //dashboardPanel.classList.remove('tight');
-            //dashboardPanel.classList.add('wide');
-            //setTimeout(showMainMenuText, 500);
+            showHideBtn.className = hideIconClass;
             showMainMenuText();
         }
     })
