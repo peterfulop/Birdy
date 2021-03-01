@@ -1166,7 +1166,7 @@ function createExcerciseRunTimeDDList(contener) {
         </div>
         <div class="mb-3 disabled" id="set-word-count-section">
             <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
-            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1">
+            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value = "${wordCount}">
         </div>
     `
     loadRunTimeSelector();
@@ -1226,12 +1226,16 @@ function validateCountInput() {
         if (setCountManual.value <= 0) {
             setCountManual.value = 1;
         }
+        defineExcercise();
+        console.log(excInfo.countIndex);
+
     })
 
     // frissítés
-    defineExcercise();
+
 
 }
+
 /* ******************************************************************************************* */
 
 
@@ -1252,6 +1256,7 @@ function excerciseStartSelectmethod() {
         defineExcercise();
         displayExcerciseContainer();
         startExcerciseMethod();
+        console.log(excInfo.countIndex);
 
     })
 
@@ -1371,6 +1376,7 @@ function displayExcerciseContainer() {
     numberOfExcercise = document.querySelector("#number-of-excercise");
     countOfNumbers = document.querySelector("#count-of-numbers");
 
+
 }
 
 
@@ -1404,7 +1410,6 @@ function clearExcercisePuffers() {
 function startExcerciseMethod() {
 
     clearExcercisePuffers();
-    updateRunTimeCount();
     askSomething();
     skipAnswer();
     answerEventClick();
