@@ -902,9 +902,24 @@ main {
   .app {
     min-height: 100vh;
   }
-  .pages {
-    margin: 1rem;
+
+  .main-content,
+  .status,
+  .mobile-menu-container,
+  .mobile-menu-items,
+  .mobile-menu-items:first-child:hover,
+  .mobile-menu-items:last-child:hover {
+    border-radius: 0;
   }
+
+  .mobile-menu-items:hover {
+    border-radius: 0;
+  }
+
+  .pages {
+    margin: 0;
+  }
+
   .dictionary-item-words {
     flex-wrap: wrap;
   }
