@@ -21,10 +21,247 @@ function resetState() {
 
 
 
+
 var dashboardLinkContainer = document.querySelector(".links");
-var mobileMenuButton = document.querySelector("#mobile-menu-button");
-var fullScreenButton = document.querySelector("#full-screen-button");
+var mobileMenuButton = document.getElementById("mobile-menu-button");
 var appWindow = document.querySelector(".app");
+
+
+var actualPageContainer = document.querySelector("#active-page-name");
+var actualPageIcon = document.querySelector("#active-page-icon");
+
+var mobileMenuContainer = document.querySelector(".mobile-menu-container");
+var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
+
+
+var hideableText = document.querySelectorAll(".hideable");
+
+var showHideBtn = document.querySelector("#show-hide-button");
+var mainContent = document.querySelector(".main-content");
+var dashboardLinks = document.querySelectorAll(".link");
+
+
+var fullScreenButton = document.getElementById("full-screen-button");
+
+
+renderLoginForm()
+
+
+function renderLoginForm() {
+
+    resetState();
+
+    document.getElementById('main-app').innerHTML = `
+
+        <section class="login-app d-flex justify-content-center" id="login-app-box">
+
+            <form class="col-10 justify-content-center mb-n2">
+
+                <div class="d-flex flex-column align-items-center login-logo-box justify-content-center mb-4"
+                    id="login-logo-box">
+                    <img src="./images/avatar.png" alt="logo" id="login-form-logo">
+                    <h3>LOGIN</h3>
+                </div>
+
+                <div class="my-3">
+                    <label for="login-username" class="form-label">Felhasználónév</label>
+                    <input type="text" class="form-control" id="login-username">
+                    <div class="form-text"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="login-password" class="form-label">Jelszó</label>
+                    <input type="password" class="form-control" id="login-password" autocomplete="on">
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="remember-me-checker">
+                    <label class="form-check-label" for="remember-me-checker">Emlékezz rám!</label>
+                </div>
+
+                <button type="button" class="btn btn-primary rounded-pill w-100 mb-3">Bejelentkezés</button>
+                <button type="button" class="btn btn-light rounded-pill mb-3 w-100" id="register-new-user-button">Regisztráció</button>
+                <button type="button" class="btn btn-link rounded-pill mb-3 w-100">Elfelejtett jelszó</button>
+
+                <div class="d-flex social-icon-bar align-items-center justify-content-center">
+                    <div class="social-icon-box"><i class="fab fa-google"></i></div>
+                    <div class="social-icon-box"><i class="fab fa-facebook-f"></i></div>
+                </div>
+            </form>
+        </section>
+    `
+
+    document.getElementById("register-new-user-button").onclick = function () {
+        console.log("render register....");
+        renderRegisterForm();
+    }
+
+    var LoginImage = document.getElementById('login-form-logo');
+
+    if (LoginImage) {
+        LoginImage.onclick = function () {
+            renderApp();
+        }
+    }
+
+}
+
+
+function renderRegisterForm() {
+
+    resetState();
+
+    document.getElementById('main-app').innerHTML = `
+         <section class="register-app d-flex justify-content-center" id="login-app-box">
+
+            <form class="col-10 justify-content-center mb-n2">
+
+                <div class="d-flex flex-column align-items-center login-logo-box justify-content-center mb-4"
+                    id="login-logo-box">
+                    <img src="./images/avatar.png" alt="" id="login-form-logo">
+                    <h3>REGISTER</h3>
+                </div>
+
+                <div class="my-3">
+                    <label for="register-username" class="form-label">Felhasználónév</label>
+                    <input type="text" class="form-control" id="register-username">
+                    <div class="form-text"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="register-email" class="form-label">Emailcím</label>
+                    <input type="email" class="form-control" id="register-email">
+                </div>
+                <div class="mb-3">
+                    <label for="register-password" class="form-label">Jelszó</label>
+                    <input type="password" name="password" class="form-control" id="register-password" autocomplete="on">
+                </div>
+                <div class="mb-3">
+                    <label for="register-password-again" class="form-label">Jelszó megerősítése</label>
+                    <input type="password" name="password" class="form-control" id="register-password-again" autocomplete="on">
+                </div>
+
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="remember-me-checker">
+                    <label class="form-check-label" for="remember-me-checker">Elfogadom a felhasználási
+                        feltételeket!</label>
+                </div>
+
+                <button type="button" class="btn btn-primary rounded-pill mb-3 w-100">Regisztráció</button>
+                <button type="button" class="btn btn-light rounded-pill mb-3 w-100" id="back-to-login-button">Vissza</button>
+            </form>
+
+        </section>
+    `
+
+    document.getElementById("back-to-login-button").onclick = function () {
+        console.log("render login....");
+        renderLoginForm();
+    }
+
+    var LoginImage = document.getElementById('login-form-logo');
+
+    if (LoginImage) {
+        LoginImage.onclick = function () {
+            renderApp();
+        }
+    }
+}
+
+
+
+function renderApp() {
+
+
+    resetState();
+
+    document.getElementById('main-app').innerHTML = `
+    
+        <section class="app" id="app-box">
+            <div class="dashboard wide" id="dashboard">
+
+                <div class="dashboard-header">
+                    <i id="full-screen-button" class="fas fa-expand-arrows-alt"></i>
+                    <i id="show-hide-button" class="fas fa-angle-double-left"></i>
+                </div>
+
+                <div class="user">
+                    <img src="./images/avatar.png" alt="" id="avatar">
+                    <h5 class="user-username hideable">Username</h5>
+                    <p class="user-extra-data hideable">Pro Member</p>
+                </div>
+
+                <div class="links">
+                </div>
+            </div>
+            <div class="pages" id="page-content-box">
+                <div class="status" id="status-bar">
+                    <div class="page-statusbar">
+                        <div class="spinner-border spinner-border-sm disabled" id="page-statusbar-spinner"
+                            role="status">
+                            <span class="sr-only"></span>
+                        </div>
+                    </div>
+                    <div class="page-name">
+                        <h3 id="active-page-name"></h3>
+                    </div>
+                    <div class="page-icon">
+                        <i id="active-page-icon"></i>
+                        <div class="mobile-menu-icon">
+                            <i class="fas fa-bars" id="mobile-menu-button"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mobile-menu-container disabled">
+                </div>
+
+                <div class="main">
+                    <div class="main-content" id="main-content-box">
+                    </div>
+                </div>
+            </div>
+        </section>     
+    `
+
+
+    dashboardLinkContainer = document.querySelector(".links");
+    mobileMenuButton = document.getElementById("mobile-menu-button");
+    appWindow = document.querySelector(".app");
+
+
+    actualPageContainer = document.querySelector("#active-page-name"); //
+    actualPageIcon = document.querySelector("#active-page-icon"); //
+    renderMainMenu(); //
+
+
+    dashboardLinks = document.querySelectorAll(".link"); //
+    selectPages();//
+    renderMobileMenu();//
+    displayMobileMenu();//
+
+
+    mobileMenuContainer = document.querySelector(".mobile-menu-container");//
+    mobileMenuElements = document.querySelectorAll(".mobile-menu-items");//
+    selectMobilePages();//
+
+    hideableText = document.querySelectorAll(".hideable"); //
+    showHideBtn = document.querySelector("#show-hide-button"); //
+    showHideDashboard();//
+
+    mainContent = document.querySelector(".main-content");//
+
+    fullScreenButton = document.getElementById("full-screen-button");
+
+    fullScreenMode();
+    const mediaQuery = window.matchMedia('(max-width: 960px)');
+    autoFullScreen(mediaQuery);
+    mediaQuery.addListener(autoFullScreen);
+
+
+
+
+
+}
 
 
 function renderMainMenu() {
@@ -63,19 +300,20 @@ function renderMobileMenu() {
 }
 
 
-fullScreenMode();
 
 function fullScreenMode() {
 
     fullScreenButton.addEventListener("click", () => {
 
         if (state.screenMode == 1) {
-            diasbleFullScreen();
+            disableFullScreen();
         }
         else {
             enableFullScreen();
         }
     });
+
+
 }
 
 function enableFullScreen() {
@@ -85,7 +323,7 @@ function enableFullScreen() {
     state.screenMode = 1;
 }
 
-function diasbleFullScreen() {
+function disableFullScreen() {
     appWindow.classList.add("full-screen");
     document.getElementById('dashboard').classList.add("full-screen");
     fullScreenButton.className = "fas fa-compress-arrows-alt";
@@ -93,26 +331,26 @@ function diasbleFullScreen() {
 
 }
 
-const mediaQuery = window.matchMedia('(max-width: 960px)');
-
-
-
-autoFullScreen(mediaQuery);
-mediaQuery.addListener(autoFullScreen);
+// const mediaQuery = window.matchMedia('(max-width: 960px)');
+// autoFullScreen(mediaQuery);
+// mediaQuery.addListener(autoFullScreen);
 
 function autoFullScreen(mediaQuery) {
-    if (mediaQuery.matches) {
-        diasbleFullScreen();
 
-    } else {
-        enableFullScreen();
+    if (document.getElementById('dashboard') != undefined) {
+        if (mediaQuery.matches) {
+            disableFullScreen();
+
+        } else {
+            enableFullScreen();
+        }
     }
 }
 
 
 
-var actualPageContainer = document.querySelector("#active-page-name");
-var actualPageIcon = document.querySelector("#active-page-icon");
+// var actualPageContainer = document.querySelector("#active-page-name");
+// var actualPageIcon = document.querySelector("#active-page-icon");
 
 
 function setHomepage() {
@@ -122,9 +360,9 @@ function setHomepage() {
     actualPageIcon.className = dashboardMenuItems[0].icon;
 }
 
-renderMainMenu();
+// renderMainMenu();
 
-var dashboardLinks = document.querySelectorAll(".link");
+//var dashboardLinks = document.querySelectorAll(".link");
 
 function removeActivePageClass() {
 
@@ -135,6 +373,8 @@ function removeActivePageClass() {
 }
 
 function selectPages() {
+
+    var dashboardLinks = document.querySelectorAll(".link");
 
     for (let i = 0; i < dashboardLinks.length; i++) {
 
@@ -156,13 +396,15 @@ function setActivePage(index) {
     activeIcon.classList.add("active-page");
 }
 
-selectPages();
-renderMobileMenu();
-displayMobileMenu();
+// selectPages();
+// renderMobileMenu();
+// displayMobileMenu();
 
 
 const mediaQueryDashboard = window.matchMedia('(max-width: 810px)');
-var mobileMenuContainer = document.querySelector(".mobile-menu-container");
+
+
+//var mobileMenuContainer = document.querySelector(".mobile-menu-container");
 
 function displayMobileMenu() {
 
@@ -182,7 +424,7 @@ function mobileMenuShowHide() {
 
 
 
-var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
+//var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
 
 function selectMobilePages() {
 
@@ -199,7 +441,7 @@ function selectMobilePages() {
     }
 }
 
-selectMobilePages();
+//selectMobilePages();
 
 
 function loadMenuMethods(methodName) {
@@ -210,7 +452,7 @@ function loadMenuMethods(methodName) {
 }
 
 
-var hideableText = document.querySelectorAll(".hideable");
+//var hideableText = document.querySelectorAll(".hideable");
 
 function hideMainMenuText() {
     hideableText.forEach(element => {
@@ -246,9 +488,9 @@ function addWideClass() {
 
 }
 
-var showHideBtn = document.querySelector("#show-hide-button");
+// var showHideBtn = document.querySelector("#show-hide-button");
 
-showHideDashboard();
+// showHideDashboard();
 
 
 function showHideDashboard() {
@@ -278,7 +520,7 @@ function showHideDashboard() {
 
 /*  MAIN CONTENT */
 
-var mainContent = document.querySelector(".main-content");
+//var mainContent = document.querySelector(".main-content");
 
 
 function Menu_Clear_MainContent() {
@@ -662,9 +904,10 @@ function menu_load_settings() {
 }
 
 function menu_load_signout() {
+
     resetState();
     Menu_Clear_MainContent();
-
+    renderLoginForm();
 }
 
 function createNewDictionary() {
@@ -1048,12 +1291,8 @@ function saveEditedWord() {
 
 
 
-function resetDictionariesPage() {
 
-}
-
-
-var excerciseStartButton;
+//var excerciseStartButton;
 
 function excerciseLoadSettings() {
 
