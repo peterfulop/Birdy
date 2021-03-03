@@ -1119,8 +1119,8 @@ function renderDinctionaryContent() {
                 </div>
             </div>
 
-            <div class="dictionary-item-remove cursor-pointer">
-                <i class="fas fa-trash edit-actual-word remove disabled" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" data-rowinfo="${randomIndex}"></i>
+            <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}">
+                <i class="fas fa-trash edit-actual-word remove disabled" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" ></i>
             </div>
         </div>
         `
@@ -1140,7 +1140,7 @@ function renderDinctionaryContent() {
     saveEditedWord();
 
     enabledEditorMode();
-
+    removeSelectedWord();
     enabledListeningMode();
     readSelectedWord();
 
@@ -1319,9 +1319,23 @@ function saveEditedWord() {
 }
 
 function removeSelectedWord() {
-    var removeBtn = document.querySelectorAll('.edit-actual-word.remove');
+    var removeBtn = document.querySelectorAll('.dictionary-item-remove');
+    var dictItem = document.querySelectorAll('.dictionary-item');
 
+    for (const button of removeBtn) {
+        button.onclick = function () {
+            console.log(button.dataset.rowinfo);
 
+            for (const line of dictItem) {
+                if (button.dataset.rowinfo === line.dataset.rowinfo) {
+                    console.log("törlés", line.dataset.rowinfo);
+                    line.remove();
+                }
+            }
+
+        }
+
+    }
 }
 
 
