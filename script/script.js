@@ -673,14 +673,9 @@ function menu_load_dictionaries() {
                     </form>
 
                 </div>
-
-
-
-
-
             </div>
-
         </div>
+
 
         <div class="dictionary-list-block">
 
@@ -1092,8 +1087,9 @@ function renderDinctionaryContent() {
 
     var counter = 0;
     Object.values(state.dictionaries[state.dictionaryID].lexicon).map(item => {
+        var randomIndex = generateID_short();
         dictionaryItemList.innerHTML += `
-        <div class="dictionary-item mb-1">
+        <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
             <div class="dictionary-item-count">
                 <span>${counter + 1}.</span>
             </div>
@@ -1103,7 +1099,7 @@ function renderDinctionaryContent() {
                     <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_0" data-wordid="0" value="${item.array[0]}">
                     <div class="dictionary-item-buttons">
 
-                        <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_0" data-wordid="0"></i>
+                        <i class="fas fa-edit edit-actual-word edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
                         <i class="fas fa-check save-edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
                         <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_0" data-wordid="0"></i>
 
@@ -1115,12 +1111,16 @@ function renderDinctionaryContent() {
 
                         <div class="dictionary-item-buttons listen">
 
-                            <i class="fas fa-edit edit-actual-word disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+                            <i class="fas fa-edit edit-actual-word edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
                             <i class="fas fa-check save-edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
                             <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_1" data-wordid="1"></i>
 
                         </div>
                 </div>
+            </div>
+
+            <div class="dictionary-item-remove cursor-pointer">
+                <i class="fas fa-trash edit-actual-word remove disabled" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" data-rowinfo="${randomIndex}"></i>
             </div>
         </div>
         `
@@ -1151,16 +1151,18 @@ function renderDinctionaryContent() {
 
 function enabledEditorMode() {
 
-    var editorModeButton = document.getElementById('edit-content-checker');
+    var editorModeBtn = document.getElementById('edit-content-checker');
     var editBtn = document.querySelectorAll('.edit-actual-word');
+    // var removeBtn = document.querySelectorAll('.remove-actual-word');
 
-    editorModeButton.addEventListener("change", () => {
+    editorModeBtn.addEventListener("change", () => {
 
         state.editDictionaryMode = !state.editDictionaryMode;
 
         if (state.editDictionaryMode && !state.editDictionaryContent) {
             for (const button of editBtn) {
                 button.classList.remove("disabled");
+
             }
         }
         else {
@@ -1194,7 +1196,7 @@ function enabledListeningMode() {
 
 function editSelectedWord() {
 
-    var editBtn = document.querySelectorAll('.edit-actual-word');
+    var editBtn = document.querySelectorAll('.edit-actual-word.edit');
 
     for (const button of editBtn) {
 
@@ -1267,7 +1269,7 @@ function readSelectedWord() {
 
 function saveEditedWord() {
 
-    var editBtn = document.querySelectorAll('.edit-actual-word');
+    var editBtn = document.querySelectorAll('.edit-actual-word.edit');
     var inputs = document.querySelectorAll('.dictionary-edit-content');
     var labels = document.querySelectorAll('.dictionary-text-content');
     var saveButtons = document.querySelectorAll('.save-edit');
@@ -1316,7 +1318,11 @@ function saveEditedWord() {
     }
 }
 
+function removeSelectedWord() {
+    var removeBtn = document.querySelectorAll('.edit-actual-word.remove');
 
+
+}
 
 
 //var excerciseStartButton;
@@ -1814,3 +1820,9 @@ function generateID() {
     });
 }
 
+function generateID_short() {
+    return 'xxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}

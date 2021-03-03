@@ -888,6 +888,16 @@ main {
   margin-left: 0.8rem;
 }
 
+.edit-actual-word.remove{
+color: #6c757d;
+font-size: 1rem;
+margin: 1rem;
+}
+
+.dictionary-item-remove:hover i{
+  color: #dc3545;
+ }
+
 .dictionary-item-buttons i:hover {
   cursor: pointer;
   color: var(--active-icon-color);
