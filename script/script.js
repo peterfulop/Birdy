@@ -20,6 +20,34 @@ function resetState() {
 }
 
 
+window.onload = function () {
+    renderFirst();
+
+};
+
+
+function renderFirst() {
+
+    var section = document.createElement("section");
+    section.setAttribute('id', 'circles');
+    document.body.appendChild(section);
+
+    document.getElementById('circles').innerHTML = `
+            <div class="circle1 circle"></div>
+            <div class="circle2 circle"></div>
+            <div class="circle3 circle"></div>
+            <div class="circle4 circle"></div>
+            <div class="circle5 circle"></div>
+            <div class="circle6 circle"></div>
+        `
+
+
+    renderLoginForm();
+
+}
+
+
+
 
 
 var dashboardLinkContainer = document.querySelector(".links");
@@ -44,7 +72,6 @@ var dashboardLinks = document.querySelectorAll(".link");
 var fullScreenButton = document.getElementById("full-screen-button");
 
 
-renderLoginForm()
 
 
 function renderLoginForm() {

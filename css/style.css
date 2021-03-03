@@ -149,7 +149,7 @@ main {
 
 #login-app-box {
   width: 400px;
-  padding: 2rem;
+  padding: 1rem;
   margin: 5rem 1rem 1rem 1rem;
   background: linear-gradient(
     to right bottom,
@@ -162,7 +162,7 @@ main {
 }
 
 #login-logo-box {
-  margin-top: -6rem;
+  margin-top: -5rem;
 }
 
 #login-form-logo {
