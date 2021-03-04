@@ -40,14 +40,63 @@ function renderFirst() {
             <div class="circle5 circle"></div>
             <div class="circle6 circle"></div>
         `
-
-
     renderLoginForm();
 
 }
 
 
+function showDialogPanel(dialogIndex) {
 
+    var dialogID = dialogObjects[dialogIndex].id;
+    var dialogTitle = dialogObjects[dialogIndex].title;
+    var dialogBody = dialogObjects[dialogIndex].body;
+    var acceptBtnColor = dialogObjects[dialogIndex].color;
+    var acceptBtnText = dialogObjects[dialogIndex].text;
+
+    renderDialogPanel(dialogID, dialogTitle, dialogBody, acceptBtnColor, acceptBtnText);
+}
+
+function renderDialogPanel(dialogID, dialogTitle, dialogBody, acceptBtnColor, acceptBtnText) {
+
+    const dialogArea = document.getElementById('dialog-area');
+    dialogArea.innerHTML = `
+        <div class="modal fade" id="${dialogID}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+            <div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">${dialogTitle}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-block" id="dialog-body-content">
+                    ${dialogBody}
+                    <p id="dialog-body-param"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+                        <button type="button" class="btn btn-${acceptBtnColor}" data-bs-dismiss="modal" id="dialogAcceptButton">${acceptBtnText}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+function fillDialogPanel(data) {
+
+    var parameter = document.getElementById('dialog-body-param');
+    parameter.innerHTML = data;
+
+}
+
+
+function defDialogPanel(dialogID) {
+    return new bootstrap.Modal(document.getElementById(`${dialogID}`), {
+        keyboard: false
+    });
+
+}
 
 
 var dashboardLinkContainer = document.querySelector(".links");
@@ -750,7 +799,7 @@ function menu_load_dictionaries() {
                 </div>
 
                 <div class="col-12 col-sm-4 col-xl-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" style="max-width: 275px">
-                    <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="fab fa-readme"></i></button>
+                    <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="far fa-folder-open"></i></button>
                     <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
@@ -1119,7 +1168,7 @@ function renderDinctionaryContent() {
                 </div>
             </div>
 
-            <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}">
+            <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
                 <i class="fas fa-trash edit-actual-word remove disabled" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" ></i>
             </div>
         </div>
@@ -1162,7 +1211,7 @@ function enabledEditorMode() {
         if (state.editDictionaryMode && !state.editDictionaryContent) {
             for (const button of editBtn) {
                 button.classList.remove("disabled");
-
+                showDialogPanel(0);
             }
         }
         else {
@@ -1319,8 +1368,11 @@ function saveEditedWord() {
 }
 
 function removeSelectedWord() {
+
     var removeBtn = document.querySelectorAll('.dictionary-item-remove');
     var dictItem = document.querySelectorAll('.dictionary-item');
+
+
 
     for (const button of removeBtn) {
         button.onclick = function () {
@@ -1328,15 +1380,28 @@ function removeSelectedWord() {
 
             for (const line of dictItem) {
                 if (button.dataset.rowinfo === line.dataset.rowinfo) {
-                    console.log("törlés", line.dataset.rowinfo);
-                    line.remove();
+
+                    var word_1 = line.querySelector(".dictionary-first-word > span").innerText;
+                    var word_2 = line.querySelector(".dictionary-second-word > span").innerText;
+
+                    console.log("törlés >> ", line.dataset.rowinfo, word_1, word_2);
+
+                    fillDialogPanel(`"${word_1} - ${word_2}"`);
+
+                    document.getElementById('dialogAcceptButton').addEventListener('click', () => {
+                        line.remove();
+                    })
+
                 }
             }
-
         }
 
     }
+
+
+
 }
+
 
 
 //var excerciseStartButton;

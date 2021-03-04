@@ -1,63 +1,63 @@
 var dashboardMenuItems = [
     {
         icon: "fas fa-home",
-        text: "Home",
+        text: "Kezdőoldal",
         link: "0",
         method: "menu_load_home",
         buttonID: generateID()
     },
     {
         icon: "fas fa-user-circle",
-        text: "Profile",
+        text: "Profil",
         link: "1",
         method: "menu_load_profile",
         buttonID: generateID()
     },
     {
         icon: "fas fa-book",
-        text: "Dictionaries",
+        text: "Szótáraim",
         link: "2",
         method: "menu_load_dictionaries",
         buttonID: generateID()
     },
     {
         icon: "fas fa-plus-circle",
-        text: "Add Words!",
+        text: "Új szavak",
         link: "3",
         method: "menu_load_addwords",
         buttonID: generateID()
     },
     {
         icon: "fas fa-brain",
-        text: "Brain Teaser",
+        text: "Agytorna",
         link: "4",
         method: "menu_load_brainteaser",
         buttonID: generateID()
     },
     {
         icon: "fas fa-headphones",
-        text: "Listening",
+        text: "Felolvasó",
         link: "5",
         method: "menu_load_listening",
         buttonID: generateID()
     },
     {
         icon: "fas fa-chart-line",
-        text: "Records",
+        text: "Eredmények",
         link: "6",
         method: "menu_load_records",
         buttonID: generateID()
     },
     {
         icon: "fas fa-cog",
-        text: "Settings",
+        text: "Beállítások",
         link: "7",
         method: "menu_load_settings",
         buttonID: generateID()
     },
     {
         icon: "fas fa-sign-out-alt",
-        text: "Sign Out!",
+        text: "Kijelentkezés",
         link: "8",
         method: "menu_load_signout",
         buttonID: generateID()
@@ -477,6 +477,21 @@ var excerciseRunTime = [
         value: 2
     }
 ];
+
+
+
+var dialogObjects = [
+    {
+        name: "deleteRowObject",
+        title: "Elem törlése",
+        body: "Biztosan törölni szeretnéd a következőt?",
+        id: "delete-row-dialog",
+        color: "danger",
+        text: "Törlés"
+    }
+];
+
+
 
 //'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
 function generateID() {
