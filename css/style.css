@@ -110,7 +110,8 @@ h3 {
 main {
   font-family: 'Poppins';
   min-height: 100vh;
-  background: linear-gradient(to right top, #65dfc9, #6cddeb);
+  /*background: linear-gradient(to right top, #65dfc9, #6cddeb);*/
+  background: linear-gradient(to right top, #ff70a1, #36daf4);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -888,15 +889,15 @@ main {
   margin-left: 0.8rem;
 }
 
-.edit-actual-word.remove{
-color: #6c757d;
-font-size: 1rem;
-margin: 1rem;
+.edit-actual-word.remove {
+  color: #6c757d;
+  font-size: 1rem;
+  margin: 1rem;
 }
 
-.dictionary-item-remove:hover i{
+.dictionary-item-remove:hover i {
   color: #dc3545;
- }
+}
 
 .dictionary-item-buttons i:hover {
   cursor: pointer;
