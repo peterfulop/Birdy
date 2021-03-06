@@ -1,0 +1,30 @@
+[
+    {
+        "ID": 1,
+        "Dictionary_Name": "Angol-Magyar",
+        "Lang_Prim": "en-GB",
+        "Lang_Sec": "hu-HU",
+        "RelaseDate": "2020.01.04 14:30"
+    },
+    {
+        "ID": 2,
+        "Dictionary_Name": "Német-Magyar",
+        "Lang_Prim": "de-DE",
+        "Lang_Sec": "hu-HU",
+        "RelaseDate": "2020.01.05 11:45"
+    },
+    {
+        "ID": 3,
+        "Dictionary_Name": "Olasz-Magyar",
+        "Lang_Prim": "it-IT",
+        "Lang_Sec": "hu-HU",
+        "RelaseDate": "2020.01.06 20:04"
+    },
+    {
+        "ID": 4,
+        "Dictionary_Name": "Francia-Magyar",
+        "Lang_Prim": "fr-FR",
+        "Lang_Sec": "hu-HU",
+        "RelaseDate": "2020.01.01 11:44"
+    }
+]
