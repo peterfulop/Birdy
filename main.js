@@ -31,16 +31,16 @@ class DictionaryElement {
 };
 
 
-// function readJson(source, myObject, myMethod) {
-//     var xmlhttp = new XMLHttpRequest();
-//     xmlhttp.onreadystatechange = function () {
-//         if (this.readyState == 4 && this.status == 200) {
-//             myMethod(JSON.parse(this.responseText), myObject);
-//         }
-//     };
-//     xmlhttp.open("GET", source, true);
-//     xmlhttp.send();
-// };
+function readJson(source, myObject, myMethod) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            myMethod(JSON.parse(this.responseText), myObject);
+        }
+    };
+    xmlhttp.open("GET", source, true);
+    xmlhttp.send();
+};
 
 
 // function readJson_V2(source, arr) {
@@ -65,27 +65,29 @@ class DictionaryElement {
 // };
 
 
+
+
 var oXHR = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+oXHR.onreadystatechange = reportStatus;
+oXHR.open("GET", "./data/db_words.json", true);
+oXHR.send();
+
 
 function reportStatus() {
 
     if (oXHR.readyState == 4 && this.status == 200) {
         showTheList(this.responseText);
     }
+
 }
 
-
-oXHR.onreadystatechange = reportStatus;
-oXHR.open("GET", "./data/db_words.json", true);
-oXHR.send();
-
-reportStatus();
 
 var data = [];
 
 function showTheList(json) {
 
     var puffer = JSON.parse(json);
+
 
     for (const item of puffer) {
 
@@ -94,40 +96,72 @@ function showTheList(json) {
         myDictionaryElements.push(component);
     }
 
-    myDictionaryElements = groupByKey(puffer, 'DictionaryID');
+    data = groupByKey(myDictionaryElements, 'dictionaryName');
+
 }
 
+
+function countOfDictionaries() {
+    var elements = [];
+    for (let i = 0; i < myDictionaryElements.length; i++) {
+        var e = myDictionaryElements[i].dictionaryName;
+        // if (!elements.includes(e)) {
+        //     elements.push(e);
+        // };
+        elements.push(e);
+
+    }
+
+    return elements;
+
+}
+
+function elementsOfDictionaries(array_1, array_2) {
+
+    // for (let i = 0; i < array_1.length; i++) {
+
+    //     for (let j = 0; j < array_2.length; j++) {
+
+    //         if(array_1[i] == array_2[i].dictionaryName){
+
+    //             counter
+    //         }
+    //     }
+    // }
+
+}
 
 
 function createDictionaryObject(sourceObj, targetObj) {
     for (const data of sourceObj) {
-        var element = {};
+        // var element = {};
         var component = new Dictionaries(data.ID, data.Dictionary_Name, data.Lang_Prim, data.Lang_Sec, data.RelaseDate);
-        element[data.DictionaryID] = component;
-        targetObj.push(element);
-    }
-};
-
-
-function createDictionaryElementObject(sourceObj, targetObj) {
-
-    for (const data of sourceObj) {
-
-        var component = new DictionaryElement(data.ID, data.DictionaryID, data.Article_1, data.Word_1, data.Plural_1, data.Article_2, data.Word_2, data.Plural_2, data.Lang_1, data.Lang_2, data.RelaseDate);
+        //element[data.DictionaryID] = component;
         targetObj.push(component);
-
     }
 };
 
+
+// function createDictionaryElementObject(sourceObj, targetObj) {
+
+//     for (const data of sourceObj) {
+
+//         var component = new DictionaryElement(data.ID, data.DictionaryID, data.Article_1, data.Word_1, data.Plural_1, data.Article_2, data.Word_2, data.Plural_2, data.Lang_1, data.Lang_2, data.RelaseDate);
+//         targetObj.push(component);
+
+//     }
+// };
+
+var groupName = [];
 
 function initalizeObjects() {
 
-    //readJson("./data/db_dictionaries.json", myDictionaries, createDictionaryObject);
 
-    //readJson_V2("./data/db_words.json", myDictionaryElements);
+    reportStatus();
 
-    //createDictionaryElementObject(puffer, myDictionaryElements);
-    //console.log(groupByKey(puffer, 'DictionaryID'));
+    readJson("./data/db_dictionaries.json", myDictionaries, createDictionaryObject);
+
+    //countOfDictionaries();
 
 }
 
