@@ -7,7 +7,8 @@ var state = {
     //dictionaries: dictionaries,
     dictionaries: array_dictionaries,
     editDictionaryMode: false,
-    editDictionaryContent: false
+    editDictionaryContent: false,
+    filterArray: []
 }
 
 
@@ -19,6 +20,7 @@ function resetState() {
     state.dictionaries = array_dictionaries;
     state.editDictionaryMode = false;
     state.editDictionaryContent = false;
+    state.filterArray = [];
 }
 
 
@@ -733,7 +735,10 @@ function menu_load_dictionaries() {
 
             <div class="mb-2 dictionaries-search-bar">
                 <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
-                <button type="button" class="btn btn-secondary " id="search-dictionary-button"><i class="fas fa-search"></i></button>
+                <button type="button" class="btn btn-secondary" id="search-dictionary-button"><i class="fas fa-search"></i></button>
+                <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter">
+                <i class="fas fa-filter"></i>
+                </button>
             </div>
 
             <div class="dictionary-list-header d-flex px-3 py-2 border-bottom border-white">
@@ -769,6 +774,10 @@ function menu_load_dictionaries() {
     `
 
 
+
+
+
+
     /** */
     var langContent = document.querySelector("#dictionary-language-primary");
     langContent.innerHTML = '';
@@ -787,10 +796,90 @@ function menu_load_dictionaries() {
     });
     /** */
 
+
+    renderDictionaryList(state.dictionaries);
+
+    // var content = document.querySelector(".dictionary-list-items");
+    // content.innerHTML = '';
+
+    // Object.values(state.dictionaries).map(dictionary => {
+    //     content.innerHTML +=
+    //         `
+    //         <div class="row d-flex p-2 justify-content-between dictionary-list-item border-bottom">
+
+    //             <div class="col-12 col-sm-8 col-xl-8 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
+    //                 <i class="fas fa-bookmark d-none d-sm-flex"></i>
+    //                 <small class="mx-sm-1 mx-2 ml-0">[${dictionary.lexicon.length}]</small>
+    //                 <h6 class="m-0">${dictionary.dictionaryName}</h6>
+    //             </div>
+
+    //             <div class="col-12 col-sm-4 col-xl-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" style="max-width: 275px">
+    //                 <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
+    //                 <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
+    //                 <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
+    //             </div>
+
+    //         </div>
+    //     `
+    // });
+
+    createNewDictionaryButton = document.querySelector(".add-new-block");
+    addNewBlock = document.querySelector(".add-new-block");
+    createNewBlock = document.querySelector(".create-new-dictionary");
+    createNewAcceptBtn = document.getElementById("create-new-accept");
+    createNewClearBtn = document.getElementById("create-new-close");
+    createNewTextInput = document.getElementById("create-new-text-input");
+
+
+    /* Load Enabled Methods */
+    createNewDictionary();
+    backToNewDictionary();
+    //selectDictionaryMethod();
+
+
+    var searchDictionaryInput = document.getElementById("dictionaries-search-input");
+    var searchDictionaryBtn = document.getElementById("search-dictionary-button");
+    var clearfilterBtn = document.getElementById("clear-dictionary-filter");
+
+    searchDictionaryBtn.onclick = function () {
+
+        if (searchDictionaryInput.value != "") {
+
+            filterBy(state.dictionaries, "dictionaryName", searchDictionaryInput.value);
+            if (state.filterArray.length > 0) {
+                renderDictionaryList(state.filterArray);
+                clearfilterBtn.classList.remove("d-none");
+                clearfilterBtn.classList.add("d-flex");
+
+            }
+            else {
+                console.log("nincs renderelés!");
+            }
+        }
+        else {
+            console.log("üres mező")
+            renderDictionaryList(state.dictionaries);
+            clearfilterBtn.classList.add("d-none");
+            state.filterArray = [];
+        }
+    }
+
+    clearfilterBtn.onclick = function () {
+        renderDictionaryList(state.dictionaries);
+        clearfilterBtn.classList.add("d-none");
+        searchDictionaryInput.value = "";
+        state.filterArray = [];
+    }
+
+}
+
+
+function renderDictionaryList(renderArray) {
+
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
 
-    Object.values(state.dictionaries).map(dictionary => {
+    Object.values(renderArray).map(dictionary => {
         content.innerHTML +=
             `
             <div class="row d-flex p-2 justify-content-between dictionary-list-item border-bottom">
@@ -806,25 +895,27 @@ function menu_load_dictionaries() {
                     <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
-
             </div>
         `
     });
 
-    createNewDictionaryButton = document.querySelector(".add-new-block");
-    addNewBlock = document.querySelector(".add-new-block");
-    createNewBlock = document.querySelector(".create-new-dictionary");
-    createNewAcceptBtn = document.querySelector("#create-new-accept");
-    createNewClearBtn = document.querySelector("#create-new-close");
-    createNewTextInput = document.querySelector("#create-new-text-input");
-
-
-    /* Load Enabled Methods */
-    createNewDictionary();
-    backToNewDictionary();
     selectDictionaryMethod();
 
 }
+
+
+function filterBy(arr, filterBy, input) {
+
+    state.filterArray = arr.filter(element => {
+        return state.filterArray = element[filterBy].toLowerCase().includes(input.toLowerCase());
+    });
+
+    if (state.filterArray.length == 0) {
+        console.log("Nincs találat")
+    }
+
+}
+
 
 function menu_load_addwords() {
 

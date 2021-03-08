@@ -96,7 +96,6 @@ var excerciseRunTime = [
 ];
 
 
-
 var dialogObjects = [
     {
         name: "deleteRowObject",

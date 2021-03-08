@@ -937,6 +937,23 @@ main {
   background: white;
 }
 
+#clear-dictionary-filter {
+  transition: all 0.5s;
+}
+#clear-dictionary-filter:hover i {
+  font-size: 1.45rem;
+  transform: rotate(180deg);
+  transition: transform 1s;
+}
+#clear-dictionary-filter:hover i:after {
+  content: '\f00d';
+  transition: transform 0.5s;
+}
+#clear-dictionary-filter:hover i:before {
+  content: '';
+  transition: 0.5s;
+}
+
 /* MEDIA QUERIES */
 
 @media (max-width: 780px) {
