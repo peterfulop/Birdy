@@ -105,6 +105,14 @@ var dialogObjects = [
         id: "delete-row-dialog",
         color: "danger",
         text: "Törlés"
+    },
+    {
+        name: "endOfExcercise",
+        title: "Gyakorlás vége",
+        body: "Biztosan ki szeretnél lépni a gyakorlásból?",
+        id: "stop-excercise-dialog",
+        color: "warning",
+        text: "Kilépés"
     }
 ];
 

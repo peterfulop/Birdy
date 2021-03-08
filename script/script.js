@@ -24,7 +24,6 @@ function resetState() {
 
 window.onload = function () {
     renderFirst();
-
 };
 
 
@@ -1103,14 +1102,14 @@ function renderDinctionaryContent() {
         </div>
 
         
-        <div class="dictionary-content-toolbar  mb-3 mt-3 d-flex justify-content-around">
-            <div class="form-check form-switch">
+        <div class="d-flex flex-wrap dictionary-content-toolbar  mb-2 mt-4 justify-content-start justify-content-sm-around">
+            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0">
             <input class="form-check-input" type="checkbox" id="edit-content-checker">
-            <label class="form-check-label" for="edit-content-checker">Editot mode</label>
+            <label class="form-check-label me-3" for="edit-content-checker">Szerkesztő mód</label>
             </div>
-            <div class="form-check form-switch">
+            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0">
             <input class="form-check-input" type="checkbox" id="listen-content-checker">
-            <label class="form-check-label" for="listen-content-checker">Listening mode</label>
+            <label class="form-check-label" for="listen-content-checker">Felolvasó mód</label>
             </div>
         </div>
 
@@ -1316,7 +1315,7 @@ function readSelectedWord() {
                         startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
                     }
                     else {
-                        startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
+                        startSpeech(state.dictionaries[state.dictionaryID].langSec, label.textContent);
                     }
                 }
             }
@@ -1384,9 +1383,11 @@ function removeSelectedWord() {
 
     for (const button of removeBtn) {
         button.onclick = function () {
+
             console.log(button.dataset.rowinfo);
 
             for (const line of dictItem) {
+
                 if (button.dataset.rowinfo === line.dataset.rowinfo) {
 
                     var word_1 = line.querySelector(".dictionary-first-word > span").innerText;
@@ -1684,8 +1685,9 @@ function displayExcerciseContainer() {
 
                 <div class="question-answer-boxes">
                     <div class="questions-section-box">
-                        <div class="question-box-value">
-                            <p></p>
+                        <div class="d-flex align-items-center question-box-value">
+                            <p data-lang=""></p>
+                            <i class="fas fa-volume-up listening-mode" id="listening-mode-brain"></i>
                         </div>
                     </div>
 
@@ -1703,10 +1705,10 @@ function displayExcerciseContainer() {
                         <div class="button-box">
                             <div class="answer-box-button-left">
                                 <button class="btn btn-success" id="answer-button-accept"
-                                    type="">Tovább!</button>
-                                <button class="btn btn-secondary" id="answer-button-next" type=""><i
+                                    type="button">Tovább!</button>
+                                <button class="btn btn-secondary" id="answer-button-next" type="button"><i
                                     class="fas fa-step-forward"></i></button>
-                                <button class="btn btn-danger" type=""><i class="fas fa-stop"></i></button>
+                                <button class="btn btn-danger" id="stop-excercise" data-bs-toggle="modal" data-bs-target="#${dialogObjects[1].id}" type="button"><i class="fas fa-stop"></i></button>
                             </div>
                         </div>
                     </div>
@@ -1720,14 +1722,32 @@ function displayExcerciseContainer() {
     answerBoxText = document.querySelector(".answer-box-value > p");
 
     excerciseInputSection = document.querySelector(".excercise-input-section");
-    answerBoxInput = document.querySelector("#answer-box-input");
-    answerBoxAcceptButton = document.querySelector("#answer-button-accept");
+    answerBoxInput = document.getElementById("answer-box-input");
+    answerBoxAcceptButton = document.getElementById("answer-button-accept");
 
-    minutesLabel = document.querySelector("#minutes");
-    secondsLabel = document.querySelector("#seconds");
+    minutesLabel = document.getElementById("minutes");
+    secondsLabel = document.getElementById("seconds");
 
-    numberOfExcercise = document.querySelector("#number-of-excercise");
-    countOfNumbers = document.querySelector("#count-of-numbers");
+    numberOfExcercise = document.getElementById("number-of-excercise");
+    countOfNumbers = document.getElementById("count-of-numbers");
+
+
+    var listeningModeBtn = document.getElementById("listening-mode-brain");
+    listeningModeBtn.onclick = function () {
+        startSpeech(questionBoxText.dataset.lang, questionBoxText.innerText);
+    }
+
+    var stopExcercise = document.getElementById("stop-excercise");
+
+    stopExcercise.onclick = function () {
+
+        //fillDialogPanel("Az eredmények nem kerülnek mentésre!");
+
+        document.getElementById('dialogAcceptButton').addEventListener('click', () => {
+            menu_load_brainteaser();
+        })
+
+    }
 
 
 }
@@ -1761,6 +1781,7 @@ function clearExcercisePuffers() {
 }
 
 function startExcerciseMethod() {
+    showDialogPanel(1);
 
     clearExcercisePuffers();
     askSomething();
@@ -1800,7 +1821,7 @@ function askSomething() {
 
         indexPuffer.push(randomIndex);
 
-        //var randomText = state.dictionaries[excInfo.dictionary].lexicon[randomIndex].array;
+
         var randomText = [];
         randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
         randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
@@ -1810,6 +1831,9 @@ function askSomething() {
         console.log("question: " + randomText[0] + ' - ' + randomText[1]);
 
         questionBoxText.innerHTML = randomText[questionIndex];
+
+        var speachLangIndex = state.dictionaries[excInfo.dictionary].lexicon[randomIndex];
+        questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2;
 
         numberOfExcercise.innerHTML = indexPuffer.length;
         countOfNumbers.innerHTML = maxNumber;
@@ -1822,10 +1846,14 @@ function askSomething() {
 }
 
 
-function sendAnswerToScreen() {
+// function listeningModeBrain(button, language, text) {
+
+//     button.addEventListener('click', () => {
+//         startSpeech(language, text);
+//     })
 
 
-}
+// }
 
 
 function answerEventClick() {
