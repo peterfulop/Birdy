@@ -7,6 +7,8 @@
 :root {
   --active-icon-color: #cf4988;
   --default-icon-color: #48b8c7;
+  --background-color: linear-gradient(to right top, #607d8b, #36daf4);
+  --background-color-mobile: linear-gradient(to right top, #83c7d4, #83c7d4);
 }
 
 .circle1,
@@ -110,8 +112,7 @@ h3 {
 main {
   font-family: 'Poppins';
   min-height: 100vh;
-  /*background: linear-gradient(to right top, #65dfc9, #6cddeb);*/
-  background: linear-gradient(to right top, #ff70a1, #36daf4);
+  background: var(--background-color);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -981,12 +982,12 @@ main {
     border-radius: 0;
   }
 
-  .mobile-menu-items:hover {
-    border-radius: 0;
-  }
-
   .pages {
     margin: 0;
+  }
+
+  .mobile-menu-items:hover {
+    border-radius: 0;
   }
 
   .dictionary-item-words {

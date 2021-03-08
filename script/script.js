@@ -4,7 +4,8 @@ var state = {
     selectedDictionary: "",
     dictionaryID: "",
     dictionaryName: "",
-    dictionaries: dictionaries,
+    //dictionaries: dictionaries,
+    dictionaries: array_dictionaries,
     editDictionaryMode: false,
     editDictionaryContent: false
 }
@@ -14,7 +15,8 @@ function resetState() {
     state.selectedDictionary = "";
     state.dictionaryID = "";
     state.dictionaryName = "";
-    state.dictionaries = dictionaries;
+    //state.dictionaries = dictionaries;
+    state.dictionaries = array_dictionaries;
     state.editDictionaryMode = false;
     state.editDictionaryContent = false;
 }
@@ -395,6 +397,7 @@ function fullScreenMode() {
 function enableFullScreen() {
     appWindow.classList.remove("full-screen");
     document.getElementById('dashboard').classList.remove("full-screen");
+    // if (document.querySelector('.dictionary-item-list')) document.querySelector('.dictionary-item-list').style.maxHeight = "350px";
     fullScreenButton.className = "fas fa-expand-arrows-alt";
     state.screenMode = 1;
 }
@@ -402,6 +405,7 @@ function enableFullScreen() {
 function disableFullScreen() {
     appWindow.classList.add("full-screen");
     document.getElementById('dashboard').classList.add("full-screen");
+    // if (document.querySelector('.dictionary-item-list')) document.querySelector('.dictionary-item-list').style.maxHeight = "70vh";
     fullScreenButton.className = "fas fa-compress-arrows-alt";
     state.screenMode = 0;
 
@@ -787,7 +791,7 @@ function menu_load_dictionaries() {
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
 
-    Object.values(dictionaries).map(dictionary => {
+    Object.values(state.dictionaries).map(dictionary => {
         content.innerHTML +=
             `
             <div class="row d-flex p-2 justify-content-between dictionary-list-item border-bottom">
@@ -795,13 +799,13 @@ function menu_load_dictionaries() {
                 <div class="col-12 col-sm-8 col-xl-8 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
                     <i class="fas fa-bookmark d-none d-sm-flex"></i>
                     <small class="mx-sm-1 mx-2 ml-0">[${dictionary.lexicon.length}]</small>
-                    <h6 class="m-0">${dictionary.name}</h6>
+                    <h6 class="m-0">${dictionary.dictionaryName}</h6>
                 </div>
 
                 <div class="col-12 col-sm-4 col-xl-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" style="max-width: 275px">
-                    <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.id}"><i class="far fa-folder-open"></i></button>
-                    <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.id}"><i class="fas fa-edit"></i></button>
-                    <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.id}"><i class="fas fa-trash-alt"></i></i></button>
+                    <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
+                    <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
+                    <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
                 </div>
 
             </div>
@@ -1036,15 +1040,17 @@ function openDictionary() {
 
     console.log("Open Dictionary");
 
-    for (let i = 0; i < dictionaries.length; i++) {
+    for (let i = 0; i < state.dictionaries.length; i++) {
 
-        if (dictionaries[i].id === state.selectedDictionary) {
+        if (state.dictionaries[i].autoID === state.selectedDictionary) {
+
             state.dictionaryID = i;
-            state.dictionaryName = dictionaries[i].name;
-            console.log(state.dictionaryID);
-            console.log(dictionaries[i].id);
-            console.log(dictionaries[i].name);
-            console.log(dictionaries[i].relaseDate);
+            state.dictionaryName = array_dictionaries[i].dictionaryName;
+
+            // console.log(state.dictionaryID);
+            // console.log(dictionaries[i].id);
+            // console.log(dictionaries[i].name);
+            // console.log(dictionaries[i].relaseDate);
 
             renderDinctionaryContent();
         }
@@ -1136,7 +1142,9 @@ function renderDinctionaryContent() {
 
     var counter = 0;
     Object.values(state.dictionaries[state.dictionaryID].lexicon).map(item => {
+
         var randomIndex = generateID_short();
+
         dictionaryItemList.innerHTML += `
         <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
             <div class="dictionary-item-count">
@@ -1144,8 +1152,8 @@ function renderDinctionaryContent() {
             </div>
             <div class="dictionary-item-words">
                 <div class="dictionary-first-word mr-1">
-                    <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.array[0]}</span>
-                    <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_0" data-wordid="0" value="${item.array[0]}">
+                    <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.word_1}</span>
+                    <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_0" data-wordid="0" value="${item.word_1}">
                     <div class="dictionary-item-buttons">
 
                         <i class="fas fa-edit edit-actual-word edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
@@ -1155,8 +1163,8 @@ function renderDinctionaryContent() {
                     </div>
                 </div>
                 <div class="dictionary-second-word mr-1">
-                        <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.array[1]}</span>
-                        <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_1" data-wordid="1" value="${item.array[1]}">
+                        <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.word_2}</span>
+                        <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_1" data-wordid="1" value="${item.word_2}">
 
                         <div class="dictionary-item-buttons listen">
 
@@ -1305,10 +1313,10 @@ function readSelectedWord() {
             for (const label of labels) {
                 if (label.dataset.inputid === inputID) {
                     if (button.dataset.wordid === '0') {
-                        startSpeech(dictionaries[state.dictionaryID].langugagePrimary, label.textContent);
+                        startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
                     }
                     else {
-                        startSpeech(dictionaries[state.dictionaryID].languageSecondary, label.textContent);
+                        startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
                     }
                 }
             }
@@ -1449,8 +1457,8 @@ function loadDictionarySelector() {
 
     var content = document.querySelector("#dictionary-name-select");
     content.innerHTML = '';
-    Object.values(dictionaries).map(item => {
-        content.innerHTML += `<option value = "${item.value}" data-dictid="${item.id}">${item.name}</option>`;
+    Object.values(state.dictionaries).map(item => {
+        content.innerHTML += `<option value = "${item.id - 1}" data-dictid="${item.autoID}">${item.dictionaryName}</option>`;
     });
 
     dictionaryNameSelect = document.querySelector("#dictionary-name-select");
@@ -1614,7 +1622,7 @@ var defineExcercise = () => {
     state.dictionaryName = dictionaryNameSelect[dictionaryNameSelect.value].textContent;
 
     return excInfo = {
-        maxValue: dictionaries[dictionaryNameSelect.value].lexicon.length,
+        maxValue: state.dictionaries[dictionaryNameSelect.value].lexicon.length,
         dictionary: dictionaryNameSelect.value,
         excIndex: excerciseNameSelect.value,
         timeIndex: runtimeNameSelect.value,
@@ -1626,7 +1634,7 @@ var defineExcercise = () => {
 
 
 function setEnabledWordsCount() {
-    return dictionaries[dictionaryNameSelect.value].lexicon.length;
+    return state.dictionaries[dictionaryNameSelect.value].lexicon.length;
 }
 
 function randomIntGenerator(min, max) {
@@ -1792,7 +1800,10 @@ function askSomething() {
 
         indexPuffer.push(randomIndex);
 
-        var randomText = dictionaries[excInfo.dictionary].lexicon[randomIndex].array;
+        //var randomText = state.dictionaries[excInfo.dictionary].lexicon[randomIndex].array;
+        var randomText = [];
+        randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
+        randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
 
         var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
 

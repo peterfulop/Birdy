@@ -176,3 +176,53 @@ function groupByKey(array, key) {
         }, {})
 };
 
+cars = [
+    {
+        "id": 1,
+        "make": "Ford",
+        "model": "Focus",
+        "engine_power": "55",
+        "cylinder_capacity": "1750",
+        "production_year": "2006",
+        "color": "gray",
+    },
+    {
+        "id": 2,
+        "make": "Ford",
+        "model": "Fiesta",
+        "engine_power": "80",
+        "cylinder_capacity": "1880",
+        "production_year": "2008",
+        "color": "jellow"
+    },
+    {
+        "id": 3,
+        "make": "Opel",
+        "model": "Astra",
+        "engine_power": "75",
+        "cylinder_capacity": "1550",
+        "production_year": "2001",
+        "color": "red"
+    }
+]
+
+class Car {
+    constructor(id, make, model, enginePower, cylinderCapacity, productionYear, color) {
+        this.id = id;
+        this.make = make;
+        this.model = model;
+        this.enginePower = enginePower;
+        this.cylinderCapacity = cylinderCapacity;
+        this.productionYear = productionYear;
+        this.color = color;
+    }
+}
+
+var myCars = [];
+
+for (const item of cars) {
+
+    var car = new Car(item.id, item.make, item.model, item.engine_power, item.cylinder_capacity, item.production_year, item.color);
+    myCars.push(car);
+
+}
