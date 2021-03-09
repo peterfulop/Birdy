@@ -524,11 +524,11 @@ main {
 }
 
 #search-dictionary-button {
-  margin-left: 0.25rem;
+  /*  margin-left: 0.25rem;*/
 }
 
 #back-dictionary-button {
-  margin-right: 0.5rem;
+  /* margin-right: 0.5rem;*/
 }
 
 .view-menu-bar-text p {

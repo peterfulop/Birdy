@@ -733,12 +733,25 @@ function menu_load_dictionaries() {
 
         <div class="dictionary-list-block">
 
-            <div class="mb-2 dictionaries-search-bar">
-                <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Search...">
-                <button type="button" class="btn btn-secondary" id="search-dictionary-button"><i class="fas fa-search"></i></button>
+            <!--<div class="mb-2 dictionaries-search-bar">
+                <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Keresés...">
+                <button type="button" class="btn btn-secondary ms-1" id="search-dictionary-button"><i class="fas fa-search"></i></button>
                 <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter">
                 <i class="fas fa-filter"></i>
                 </button>
+            </div>-->
+
+            <div class="search-bar d-block">
+                <div class="line-1 d-flex">
+                    <div class="search-input w-100">
+                        <input type="text" class="form-control" id="dictionaries-search-input" placeholder="Keresés...">
+                    </div>
+                    <div class="search-buttons d-flex">
+                        <button type="button" class="btn btn-secondary ms-1" id="search-dictionary-button"><i class="fas fa-search"></i></button>
+                        <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
+                    </div>
+                </div>
+                <div class="form-text mb-2 d-none" id="search-alert">Nincs találat!</div>
             </div>
 
             <div class="dictionary-list-header d-flex px-3 py-2 border-bottom border-white">
@@ -774,10 +787,6 @@ function menu_load_dictionaries() {
     `
 
 
-
-
-
-
     /** */
     var langContent = document.querySelector("#dictionary-language-primary");
     langContent.innerHTML = '';
@@ -799,29 +808,6 @@ function menu_load_dictionaries() {
 
     renderDictionaryList(state.dictionaries);
 
-    // var content = document.querySelector(".dictionary-list-items");
-    // content.innerHTML = '';
-
-    // Object.values(state.dictionaries).map(dictionary => {
-    //     content.innerHTML +=
-    //         `
-    //         <div class="row d-flex p-2 justify-content-between dictionary-list-item border-bottom">
-
-    //             <div class="col-12 col-sm-8 col-xl-8 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
-    //                 <i class="fas fa-bookmark d-none d-sm-flex"></i>
-    //                 <small class="mx-sm-1 mx-2 ml-0">[${dictionary.lexicon.length}]</small>
-    //                 <h6 class="m-0">${dictionary.dictionaryName}</h6>
-    //             </div>
-
-    //             <div class="col-12 col-sm-4 col-xl-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" style="max-width: 275px">
-    //                 <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
-    //                 <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
-    //                 <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
-    //             </div>
-
-    //         </div>
-    //     `
-    // });
 
     createNewDictionaryButton = document.querySelector(".add-new-block");
     addNewBlock = document.querySelector(".add-new-block");
@@ -834,12 +820,13 @@ function menu_load_dictionaries() {
     /* Load Enabled Methods */
     createNewDictionary();
     backToNewDictionary();
-    //selectDictionaryMethod();
 
 
     var searchDictionaryInput = document.getElementById("dictionaries-search-input");
     var searchDictionaryBtn = document.getElementById("search-dictionary-button");
     var clearfilterBtn = document.getElementById("clear-dictionary-filter");
+    var searchAlert = document.getElementById("search-alert");
+
 
     searchDictionaryBtn.onclick = function () {
 
@@ -854,12 +841,15 @@ function menu_load_dictionaries() {
             }
             else {
                 console.log("nincs renderelés!");
+                searchAlert.classList.remove("d-none");
+
             }
         }
         else {
             console.log("üres mező")
             renderDictionaryList(state.dictionaries);
             clearfilterBtn.classList.add("d-none");
+            searchAlert.classList.add("d-none");
             state.filterArray = [];
         }
     }
@@ -908,10 +898,12 @@ function filterBy(arr, filterBy, input) {
 
     state.filterArray = arr.filter(element => {
         return state.filterArray = element[filterBy].toLowerCase().includes(input.toLowerCase());
+
     });
 
     if (state.filterArray.length == 0) {
-        console.log("Nincs találat")
+        console.log("Nincs találat");
+
     }
 
 }
@@ -1183,28 +1175,40 @@ function renderDinctionaryContent() {
 
     mainContent.innerHTML = `
         <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
+
         <div class="mb-2 dictionaries-search-bar">
-            <button type="button" class="btn bg-info bt-sm text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
-            <div class="search-bar">
-            <input type="text" class="form-control" id="dictionaries-search-input"
-                placeholder="Search...">
-            <button type="button" class="btn btn-secondary" id="search-dictionary-button"><i class="fas fa-search"></i></button>
-            </div>
-        </div>
 
+            <div class="back-button-area">
+                <button type="button" class="btn bg-info me-1 text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
+            </div>
+
+            <div class="search-bar d-block">
+                <div class="line-1 d-flex">
+                    <div class="search-input w-100">
+                        <input type="text" class="form-control" id="search-element-input" placeholder="Keresés...">
+                    </div>
+                    <div class="search-buttons d-flex">
+                        <button type="button" class="btn btn-secondary ms-1" id="search-element-button"><i class="fas fa-search"></i></button>
+                        <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
+                    </div>
+                </div>
+                <div class="form-text disabled" id="search-alert">Nincs találat!</div>
+            </div>
+
+        </div>
         
-        <div class="d-flex flex-wrap dictionary-content-toolbar  mb-2 mt-4 justify-content-start justify-content-sm-around">
-            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0">
+        <div class="d-flex flex-wrap dictionary-content-toolbar mt-3 justify-content-start justify-content-sm-around">
+            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0 my-2">
             <input class="form-check-input" type="checkbox" id="edit-content-checker">
-            <label class="form-check-label me-3" for="edit-content-checker">Szerkesztő mód</label>
+            <label class="form-check-label me-3" for="edit-content-checker">Szerkesztés</label>
             </div>
-            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0">
+            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0 my-2">
             <input class="form-check-input" type="checkbox" id="listen-content-checker">
-            <label class="form-check-label" for="listen-content-checker">Felolvasó mód</label>
+            <label class="form-check-label" for="listen-content-checker">Kiejtés</label>
             </div>
         </div>
 
-        <div class="dictionary-item-list overflow-scroll p-2" style="max-height: 350px">
+        <div class="dictionary-item-list overflow-scroll p-2" id="dictionary-item-list" style="max-height: 350px">
         </div>
 
         <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
@@ -1226,15 +1230,90 @@ function renderDinctionaryContent() {
         </div>
 
     `
+    renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon);
 
 
-    var dictionaryItemList = document.querySelector('.dictionary-item-list');
+
+    var searchInput = document.getElementById("search-element-input");
+    var searchBtn = document.getElementById("search-element-button");
+    var clearfilterBtn = document.getElementById("clear-dictionary-filter");
+    var searchAlert = document.getElementById("search-alert");
+
+
+    searchBtn.onclick = function () {
+
+        if (searchInput.value != "") {
+
+            searchInLexicon(searchInput);
+
+            if (state.filterArray.length > 0) {
+                renderDinctionaryElements(state.filterArray);
+                clearfilterBtn.classList.remove("d-none");
+                clearfilterBtn.classList.add("d-flex");
+                searchAlert.classList.add("d-none");
+            }
+            else {
+                console.log("nincs renderelés!");
+                searchAlert.classList.remove("d-none");
+                searchAlert.classList.add("d-flex");
+            }
+        }
+        else {
+
+            console.log("üres mező")
+            renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon);
+            clearfilterBtn.classList.add("d-none");
+            searchAlert.classList.add("d-none");
+
+            state.filterArray = [];
+        }
+    }
+
+
+    clearfilterBtn.onclick = function () {
+        renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon)
+
+        clearfilterBtn.classList.add("d-none");
+        searchInput.value = "";
+        state.filterArray = [];
+    }
+
+
+    var backButton = document.getElementById('back-dictionary-button');
+
+    backButton.addEventListener('click', () => {
+        menu_load_dictionaries();
+    })
+
+}
+
+
+
+function searchInLexicon(input) {
+
+    state.filterArray = state.dictionaries.filter(elem => {
+        return elem.autoID == state.selectedDictionary
+    });
+
+    state.filterArray = state.filterArray[0].lexicon.filter(element => {
+        return (element['word_1'].toLowerCase().includes(input.value.toLowerCase()) || element['word_2'].toLowerCase().includes(input.value.toLowerCase()))
+    });
+
+
+
+}
+
+
+function renderDinctionaryElements(renderArray) {
+
+    var dictionaryItemList = document.getElementById('dictionary-item-list');
+
+    dictionaryItemList.innerHTML = '';
 
     var counter = 0;
-    Object.values(state.dictionaries[state.dictionaryID].lexicon).map(item => {
+    Object.values(renderArray).map(item => {
 
         var randomIndex = generateID_short();
-
         dictionaryItemList.innerHTML += `
         <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
             <div class="dictionary-item-count">
@@ -1257,11 +1336,9 @@ function renderDinctionaryContent() {
                         <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_1" data-wordid="1" value="${item.word_2}">
 
                         <div class="dictionary-item-buttons listen">
-
                             <i class="fas fa-edit edit-actual-word edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
                             <i class="fas fa-check save-edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
                             <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_1" data-wordid="1"></i>
-
                         </div>
                 </div>
             </div>
@@ -1275,23 +1352,13 @@ function renderDinctionaryContent() {
     });
 
 
-
-
-    var backButton = document.getElementById('back-dictionary-button');
-
-    backButton.addEventListener('click', () => {
-        menu_load_dictionaries();
-    })
+    enabledEditorMode();
+    enabledListeningMode();
 
     editSelectedWord();
     saveEditedWord();
-
-    enabledEditorMode();
     removeSelectedWord();
-    enabledListeningMode();
     readSelectedWord();
-
-
 
 }
 
@@ -1300,19 +1367,18 @@ function enabledEditorMode() {
 
     var editorModeBtn = document.getElementById('edit-content-checker');
     var editBtn = document.querySelectorAll('.edit-actual-word');
-    // var removeBtn = document.querySelectorAll('.remove-actual-word');
 
     editorModeBtn.addEventListener("change", () => {
 
-        state.editDictionaryMode = !state.editDictionaryMode;
-
-        if (state.editDictionaryMode && !state.editDictionaryContent) {
+        if (editorModeBtn.checked) {
+            state.editDictionaryMode = true;
             for (const button of editBtn) {
                 button.classList.remove("disabled");
                 showDialogPanel(0);
             }
         }
         else {
+            state.editDictionaryMode = false;
             for (const button of editBtn) {
                 button.classList.add("disabled");
             }
