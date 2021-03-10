@@ -4,11 +4,13 @@ var state = {
     selectedDictionary: "",
     dictionaryID: "",
     dictionaryName: "",
-    //dictionaries: dictionaries,
     dictionaries: array_dictionaries,
     editDictionaryMode: false,
     editDictionaryContent: false,
-    filterArray: []
+    filterArray: [],
+    filtered: false,
+    sortBy: 'asc',
+    columnID: 'word_1'
 }
 
 
@@ -16,18 +18,18 @@ function resetState() {
     state.selectedDictionary = "";
     state.dictionaryID = "";
     state.dictionaryName = "";
-    //state.dictionaries = dictionaries;
     state.dictionaries = array_dictionaries;
     state.editDictionaryMode = false;
     state.editDictionaryContent = false;
-    state.filterArray = [];
+    resetFilteredState();
+    state.sortBy = 'asc';
+    state.columnID = 'word_1';
 }
 
 
 window.onload = function () {
     renderFirst();
 };
-
 
 function renderFirst() {
 
@@ -46,7 +48,6 @@ function renderFirst() {
     renderLoginForm();
 
 }
-
 
 function showDialogPanel(dialogIndex) {
 
@@ -301,23 +302,18 @@ function renderApp() {
             </div>
         </section>     
     `
-
-
     dashboardLinkContainer = document.querySelector(".links");
     mobileMenuButton = document.getElementById("mobile-menu-button");
     appWindow = document.querySelector(".app");
-
 
     actualPageContainer = document.querySelector("#active-page-name"); //
     actualPageIcon = document.querySelector("#active-page-icon"); //
     renderMainMenu(); //
 
-
     dashboardLinks = document.querySelectorAll(".link"); //
     selectPages();//
     renderMobileMenu();//
     displayMobileMenu();//
-
 
     mobileMenuContainer = document.querySelector(".mobile-menu-container");//
     mobileMenuElements = document.querySelectorAll(".mobile-menu-items");//
@@ -335,10 +331,6 @@ function renderApp() {
     const mediaQuery = window.matchMedia('(max-width: 960px)');
     autoFullScreen(mediaQuery);
     mediaQuery.addListener(autoFullScreen);
-
-
-
-
 
 }
 
@@ -391,14 +383,11 @@ function fullScreenMode() {
             enableFullScreen();
         }
     });
-
-
 }
 
 function enableFullScreen() {
     appWindow.classList.remove("full-screen");
     document.getElementById('dashboard').classList.remove("full-screen");
-    // if (document.querySelector('.dictionary-item-list')) document.querySelector('.dictionary-item-list').style.maxHeight = "350px";
     fullScreenButton.className = "fas fa-expand-arrows-alt";
     state.screenMode = 1;
 }
@@ -406,15 +395,10 @@ function enableFullScreen() {
 function disableFullScreen() {
     appWindow.classList.add("full-screen");
     document.getElementById('dashboard').classList.add("full-screen");
-    // if (document.querySelector('.dictionary-item-list')) document.querySelector('.dictionary-item-list').style.maxHeight = "70vh";
     fullScreenButton.className = "fas fa-compress-arrows-alt";
     state.screenMode = 0;
 
 }
-
-// const mediaQuery = window.matchMedia('(max-width: 960px)');
-// autoFullScreen(mediaQuery);
-// mediaQuery.addListener(autoFullScreen);
 
 function autoFullScreen(mediaQuery) {
 
@@ -429,11 +413,6 @@ function autoFullScreen(mediaQuery) {
 }
 
 
-
-// var actualPageContainer = document.querySelector("#active-page-name");
-// var actualPageIcon = document.querySelector("#active-page-icon");
-
-
 function setHomepage() {
     var firstElement = document.querySelector(".links> div:nth-child(1) > div > i");
     firstElement.classList.add("active-page");
@@ -441,12 +420,8 @@ function setHomepage() {
     actualPageIcon.className = dashboardMenuItems[0].icon;
 }
 
-// renderMainMenu();
-
-//var dashboardLinks = document.querySelectorAll(".link");
 
 function removeActivePageClass() {
-
     dashboardLinks.forEach(item => {
         var activeIcon = item.querySelector("div > i");
         activeIcon.classList.remove("active-page");
@@ -477,15 +452,7 @@ function setActivePage(index) {
     activeIcon.classList.add("active-page");
 }
 
-// selectPages();
-// renderMobileMenu();
-// displayMobileMenu();
-
-
 const mediaQueryDashboard = window.matchMedia('(max-width: 810px)');
-
-
-//var mobileMenuContainer = document.querySelector(".mobile-menu-container");
 
 function displayMobileMenu() {
 
@@ -504,9 +471,6 @@ function mobileMenuShowHide() {
 }
 
 
-
-//var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
-
 function selectMobilePages() {
 
     for (let i = 0; i < mobileMenuElements.length; i++) {
@@ -522,18 +486,12 @@ function selectMobilePages() {
     }
 }
 
-//selectMobilePages();
-
 
 function loadMenuMethods(methodName) {
-
     var fn = window[methodName];
     if (typeof fn === "function") fn();
-
 }
 
-
-//var hideableText = document.querySelectorAll(".hideable");
 
 function hideMainMenuText() {
     hideableText.forEach(element => {
@@ -557,7 +515,6 @@ function addTightClass() {
         element.classList.remove("wide");
         element.classList.add("tight");
     })
-
 }
 
 function addWideClass() {
@@ -566,12 +523,7 @@ function addWideClass() {
         element.classList.remove("tight");
         element.classList.add("wide");
     })
-
 }
-
-// var showHideBtn = document.querySelector("#show-hide-button");
-
-// showHideDashboard();
 
 
 function showHideDashboard() {
@@ -616,7 +568,6 @@ var createNewBlock;
 var createNewAcceptBtn;
 var createNewClearBtn;
 var createNewTextInput;
-//var openDictionaryButtons;
 
 
 /** LISTENING MODULE */
@@ -733,15 +684,7 @@ function menu_load_dictionaries() {
 
         <div class="dictionary-list-block">
 
-            <!--<div class="mb-2 dictionaries-search-bar">
-                <input type="text" class="form-control" id= "dictionaries-search-input" placeholder="Keresés...">
-                <button type="button" class="btn btn-secondary ms-1" id="search-dictionary-button"><i class="fas fa-search"></i></button>
-                <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter">
-                <i class="fas fa-filter"></i>
-                </button>
-            </div>-->
-
-            <div class="search-bar d-block">
+            <div class="search-bar d-block mb-2">
                 <div class="line-1 d-flex">
                     <div class="search-input w-100">
                         <input type="text" class="form-control" id="dictionaries-search-input" placeholder="Keresés...">
@@ -754,7 +697,7 @@ function menu_load_dictionaries() {
                 <div class="form-text mb-2 d-none" id="search-alert">Nincs találat!</div>
             </div>
 
-            <div class="dictionary-list-header d-flex px-3 py-2 border-bottom border-white">
+            <div class="dictionary-list-header d-flex p-3 border-bottom border-white">
                 <div class="col-9 d-flex justify-content-start">
                     <div class="d-flex justify-content-between text-muted cursor-pointer">
                         <i class="fas fa-sort-alpha-up pr-2"></i>
@@ -833,16 +776,16 @@ function menu_load_dictionaries() {
         if (searchDictionaryInput.value != "") {
 
             filterBy(state.dictionaries, "dictionaryName", searchDictionaryInput.value);
-            if (state.filterArray.length > 0) {
+
+            if (state.filtered) {
+
                 renderDictionaryList(state.filterArray);
                 clearfilterBtn.classList.remove("d-none");
                 clearfilterBtn.classList.add("d-flex");
-
             }
             else {
                 console.log("nincs renderelés!");
                 searchAlert.classList.remove("d-none");
-
             }
         }
         else {
@@ -850,7 +793,7 @@ function menu_load_dictionaries() {
             renderDictionaryList(state.dictionaries);
             clearfilterBtn.classList.add("d-none");
             searchAlert.classList.add("d-none");
-            state.filterArray = [];
+            resetFilteredState();
         }
     }
 
@@ -858,11 +801,18 @@ function menu_load_dictionaries() {
         renderDictionaryList(state.dictionaries);
         clearfilterBtn.classList.add("d-none");
         searchDictionaryInput.value = "";
-        state.filterArray = [];
+        resetFilteredState();
     }
 
 }
 
+
+
+function resetFilteredState() {
+    state.filterArray = [];
+    state.filtered = false;
+
+}
 
 function renderDictionaryList(renderArray) {
 
@@ -898,16 +848,10 @@ function filterBy(arr, filterBy, input) {
 
     state.filterArray = arr.filter(element => {
         return state.filterArray = element[filterBy].toLowerCase().includes(input.toLowerCase());
-
     });
 
-    if (state.filterArray.length == 0) {
-        console.log("Nincs találat");
-
-    }
-
+    if (state.filterArray.length > 0) state.filtered = true;
 }
-
 
 function menu_load_addwords() {
 
@@ -1035,17 +979,13 @@ function listeningStartSpeech() {
 function listeningClearTextarea() {
 
     listeningClearBtn.addEventListener("click", () => {
-
         listeningTextarea.value = '';
-
-
     })
 
 };
 
 
 /** END OF REGIO */
-
 
 
 function menu_load_records() {
@@ -1128,12 +1068,6 @@ function openDictionary() {
 
             state.dictionaryID = i;
             state.dictionaryName = array_dictionaries[i].dictionaryName;
-
-            // console.log(state.dictionaryID);
-            // console.log(dictionaries[i].id);
-            // console.log(dictionaries[i].name);
-            // console.log(dictionaries[i].relaseDate);
-
             renderDinctionaryContent();
         }
     }
@@ -1167,7 +1101,6 @@ function deleteDictionary() {
 }
 
 
-
 function renderDinctionaryContent() {
 
 
@@ -1197,15 +1130,69 @@ function renderDinctionaryContent() {
 
         </div>
         
-        <div class="d-flex flex-wrap dictionary-content-toolbar mt-3 justify-content-start justify-content-sm-around">
-            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0 my-2">
-            <input class="form-check-input" type="checkbox" id="edit-content-checker">
-            <label class="form-check-label me-3" for="edit-content-checker">Szerkesztés</label>
+        <div class="d-flex dictionary-content-toolbar my-3 py-3 justify-content-between align-items-center border-bottom border-white">
+
+            <div class="d-flex dictionary-list-header">
+
+                <div class="d-flex justify-content-start align-items-center">
+
+                     <div class="edit-btn-container me-1">
+                        <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked>
+                        <label class="btn btn-outline-listen" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
+                    </div>
+
+                    <div class="edit-btn-container btn btn-group p-0">
+
+                        <input type="radio" class="btn-check" name="select_column" id="select_column_1" autocomplete="off" checked>
+                        <label class="btn btn-outline-corn" for="select_column_1" id="select_column_button_1" data-columnid ="word_1" ><i class="fas fa-align-left"></i></label>
+
+                        <input type="radio" class="btn-check" name="select_column" id="select_column_2" autocomplete="off">
+                        <label class="btn btn-outline-lgray" for="select_column_2"  id="select_column_button_2" data-columnid ="word_2"><i class="fas fa-align-right"></i></label>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+            
+            <div class="d-flex">
+                <div class="edit-btn-container me-1">
+                    <input type="checkbox" class="btn-check" id="edit-content-checker" autocomplete="off">
+                    <label class="btn btn-outline-listen" for="edit-content-checker"><i class="fas fa-edit"></i></label>
+                </div>
+
+                <div class="listen-btn-container">
+                    <input type="checkbox" class="btn-check" id="listen-content-checker" autocomplete="off">
+                    <label class="btn btn-outline-listen" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
+                </div>
+            </div>
+
+
+             <!--<div class="form-check form-switch mx-sm-4 mx-md-2 mx-0 my-2">
+                <input class="form-check-input" type="checkbox" id="edit-content-checker">
+                <label class="form-check-label me-3" for="edit-content-checker">Szerkesztés</label>
             </div>
             <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0 my-2">
-            <input class="form-check-input" type="checkbox" id="listen-content-checker">
-            <label class="form-check-label" for="listen-content-checker">Kiejtés</label>
-            </div>
+                <input class="form-check-input" type="checkbox" id="listen-content-checker">
+                <label class="form-check-label" for="listen-content-checker">Kiejtés</label>
+            </div>-->
+
+        </div>
+
+            <!--<div class="dictionary-list-header d-flex p-3 border-bottom border-white">
+                <div class="col-9 d-flex justify-content-start align-items-center">
+                    <div class="d-flex justify-content-between text-muted cursor-pointer">
+                        <i class="fas fa-sort-alpha-up pr-2"></i>
+                        <p class="mb-0 px-2 text-muted">Név</p>
+                    </div>
+                    <div class="">
+                    <select class="form-select" id="dictionary-name-select">
+                        <option value="0">1.oszlop</option>
+                        <option value="1">2.oszlop</option>
+                    </select>
+                    </div>
+                </div>-->
         </div>
 
         <div class="dictionary-item-list overflow-scroll p-2" id="dictionary-item-list" style="max-height: 350px">
@@ -1233,11 +1220,18 @@ function renderDinctionaryContent() {
     renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon);
 
 
-
     var searchInput = document.getElementById("search-element-input");
     var searchBtn = document.getElementById("search-element-button");
     var clearfilterBtn = document.getElementById("clear-dictionary-filter");
     var searchAlert = document.getElementById("search-alert");
+
+    var sortButton = document.getElementById("sort-alpha-btn");
+
+    var selectColumnBtn_1 = document.getElementById("select_column_button_1");
+    var selectColumnBtn_2 = document.getElementById("select_column_button_2");
+
+
+
 
 
     searchBtn.onclick = function () {
@@ -1269,23 +1263,93 @@ function renderDinctionaryContent() {
         }
     }
 
-
     clearfilterBtn.onclick = function () {
         renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon)
 
         clearfilterBtn.classList.add("d-none");
         searchInput.value = "";
-        state.filterArray = [];
+        resetFilteredState();
     }
 
-
     var backButton = document.getElementById('back-dictionary-button');
-
     backButton.addEventListener('click', () => {
         menu_load_dictionaries();
     })
 
+    sortButton.addEventListener('click', () => {
+
+        var sortIcon = document.getElementById('sort-alpha-icon');
+        var sortChecker = document.getElementById("sort-alpha-check");
+
+        sortChecker.checked != sortChecker.checked;
+
+        if (!sortChecker.checked) {
+            sortIcon.classList.remove('fa-sort-alpha-down');
+            sortIcon.classList.add('fa-sort-alpha-up');
+            state.sortBy = 'asc';
+            const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+            renderDinctionaryElements(renderRoot);
+        }
+        else {
+            sortIcon.classList.remove('fa-sort-alpha-up');
+            sortIcon.classList.add('fa-sort-alpha-down');
+            state.sortBy = 'desc';
+            const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+            renderDinctionaryElements(renderRoot);
+        }
+
+    })
+
+
+    selectColumnBtn_1.addEventListener('click', () => {
+        setColumnID(selectColumnBtn_1);
+
+        const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+        renderDinctionaryElements(renderRoot);
+
+    })
+
+    selectColumnBtn_2.addEventListener('click', () => {
+        setColumnID(selectColumnBtn_2);
+
+        const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+        renderDinctionaryElements(renderRoot);
+    })
+
 }
+
+
+function setColumnID(button) {
+    state.columnID = button.dataset.columnid;
+
+}
+
+function compareValues(key, order = 'asc') {
+
+    return function innerSort(a, b) {
+
+        if (!a.hasOwnProperty(key) || !b.hasOwnProperty(key)) {
+
+            return 0;
+        }
+
+        const varA = (typeof a[key] === 'string')
+            ? a[key].toUpperCase() : a[key];
+        const varB = (typeof b[key] === 'string')
+            ? b[key].toUpperCase() : b[key];
+
+        let comparison = 0;
+        if (varA > varB) {
+            comparison = 1;
+        } else if (varA < varB) {
+            comparison = -1;
+        }
+        return (
+            (order === 'desc') ? (comparison * -1) : comparison
+        );
+    };
+}
+
 
 
 
@@ -1299,12 +1363,15 @@ function searchInLexicon(input) {
         return (element['word_1'].toLowerCase().includes(input.value.toLowerCase()) || element['word_2'].toLowerCase().includes(input.value.toLowerCase()))
     });
 
+    if (state.filterArray.length > 0) state.filtered = true;
 
 
 }
 
 
 function renderDinctionaryElements(renderArray) {
+
+    renderArray.sort(compareValues(state.columnID, state.sortBy));
 
     var dictionaryItemList = document.getElementById('dictionary-item-list');
 
@@ -1350,6 +1417,8 @@ function renderDinctionaryElements(renderArray) {
         `
         counter++;
     });
+
+
 
 
     enabledEditorMode();
@@ -1561,11 +1630,7 @@ function removeSelectedWord() {
                 }
             }
         }
-
     }
-
-
-
 }
 
 
@@ -1898,8 +1963,6 @@ function displayExcerciseContainer() {
 
     stopExcercise.onclick = function () {
 
-        //fillDialogPanel("Az eredmények nem kerülnek mentésre!");
-
         document.getElementById('dialogAcceptButton').addEventListener('click', () => {
             menu_load_brainteaser();
         })
@@ -2001,16 +2064,6 @@ function askSomething() {
     }
 
 }
-
-
-// function listeningModeBrain(button, language, text) {
-
-//     button.addEventListener('click', () => {
-//         startSpeech(language, text);
-//     })
-
-
-// }
 
 
 function answerEventClick() {

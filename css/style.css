@@ -9,6 +9,10 @@
   --default-icon-color: #48b8c7;
   --background-color: linear-gradient(to right top, #607d8b, #36daf4);
   --background-color-mobile: linear-gradient(to right top, #83c7d4, #83c7d4);
+  --color-corn: cornsilk;
+  --color-lgray: lightgray;
+  --color-edit: #ffc107;
+  --color-prim: #46bfd8;
 }
 
 .circle1,
@@ -952,6 +956,62 @@ main {
 #clear-dictionary-filter:hover i:before {
   content: '';
   transition: 0.5s;
+}
+
+.btn-check:checked + .btn-outline-edit {
+  color: #fff;
+  background-color: var(--color-edit);
+  border-color: var(--color-edit);
+}
+.btn-outline-edit {
+  color: var(--color-edit);
+  border-color: var(--color-edit);
+}
+
+.btn-outline-edit:hover {
+  color: var(--color-edit);
+}
+
+.btn-check:checked + .btn-outline-listen {
+  color: #fff;
+  background-color: var(--color-prim);
+  border-color: var(--color-prim);
+}
+.btn-outline-listen {
+  color: var(--color-prim);
+  border-color: var(--color-prim);
+}
+
+.btn-outline-listen:hover {
+  color: var(--color-prim);
+}
+
+.btn-check:checked + .btn-outline-corn {
+  color: black;
+  background-color: var(--color-corn);
+  border-color: var(--color-lgray);
+}
+.btn-outline-corn {
+  color: black;
+  border-color: var(--color-lgray);
+}
+
+.btn-outline-corn:hover {
+  color: black;
+}
+
+.btn-check:checked + .btn-outline-lgray {
+  color: black;
+  background-color: var(--color-lgray);
+  border-color: var(--color-lgray);
+}
+.btn-outline-lgray {
+  color: black;
+  border-color: var(--color-lgray);
+}
+
+.btn-outline-lgray:hover {
+  color: black;
 }
 
 /* MEDIA QUERIES */
