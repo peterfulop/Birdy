@@ -76,7 +76,7 @@ function createDictionaryObject(array) {
 function fillLexiconArrays() {
     for (const dictionary of array_dictionaries) {
         for (let i = 0; i < array_words.length; i++) {
-            if (dictionary.dictionaryName === array_words[i].dictionaryName) {
+            if (dictionary.id === array_words[i].dictionaryName) {
                 dictionary.lexicon.push(array_words[i]);
             }
         }

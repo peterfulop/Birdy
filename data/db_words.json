@@ -1,7 +1,7 @@
 [
   {
     "ID": 1,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "apple",
     "Plural_1": "",
@@ -14,7 +14,7 @@
   },
   {
     "ID": 2,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "book",
     "Plural_1": "",
@@ -27,7 +27,7 @@
   },
   {
     "ID": 3,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "car",
     "Plural_1": "",
@@ -40,7 +40,7 @@
   },
   {
     "ID": 4,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "dictionary",
     "Plural_1": "",
@@ -53,7 +53,7 @@
   },
   {
     "ID": 5,
-    "DictionaryID": "Francia-Magyar",
+    "DictionaryID": 4,
     "Article_1": "",
     "Word_1": "pome",
     "Plural_1": "",
@@ -66,7 +66,7 @@
   },
   {
     "ID": 6,
-    "DictionaryID": "Francia-Magyar",
+    "DictionaryID": 4,
     "Article_1": "",
     "Word_1": "amour",
     "Plural_1": "",
@@ -79,7 +79,7 @@
   },
   {
     "ID": 7,
-    "DictionaryID": "Francia-Magyar",
+    "DictionaryID": 4,
     "Article_1": "",
     "Word_1": "livre",
     "Plural_1": "",
@@ -92,7 +92,7 @@
   },
   {
     "ID": 8,
-    "DictionaryID": "Francia-Magyar",
+    "DictionaryID": 4,
     "Article_1": "",
     "Word_1": "automobile",
     "Plural_1": "",
@@ -105,7 +105,7 @@
   },
   {
     "ID": 9,
-    "DictionaryID": "Francia-Magyar",
+    "DictionaryID": 4,
     "Article_1": "",
     "Word_1": "arbre",
     "Plural_1": "",
@@ -118,7 +118,7 @@
   },
   {
     "ID": 10,
-    "DictionaryID": "Francia-Magyar",
+    "DictionaryID": 4,
     "Article_1": "",
     "Word_1": "orange",
     "Plural_1": "",
@@ -131,7 +131,7 @@
   },
   {
     "ID": 11,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "das",
     "Word_1": "Auto",
     "Plural_1": "",
@@ -144,7 +144,7 @@
   },
   {
     "ID": 12,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "das",
     "Word_1": "Buch",
     "Plural_1": "",
@@ -157,7 +157,7 @@
   },
   {
     "ID": 13,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "die",
     "Word_1": "Autobahn",
     "Plural_1": "",
@@ -170,7 +170,7 @@
   },
   {
     "ID": 14,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "der",
     "Word_1": "Highway",
     "Plural_1": "",
@@ -183,7 +183,7 @@
   },
   {
     "ID": 15,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "die",
     "Word_1": "Schnellstraße",
     "Plural_1": "",
@@ -196,7 +196,7 @@
   },
   {
     "ID": 16,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "die",
     "Word_1": "Freiheit",
     "Plural_1": "",
@@ -209,7 +209,7 @@
   },
   {
     "ID": 17,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "die",
     "Word_1": "Birne",
     "Plural_1": "",
@@ -222,7 +222,7 @@
   },
   {
     "ID": 18,
-    "DictionaryID": "Német-Magyar",
+    "DictionaryID": 2,
     "Article_1": "der",
     "Word_1": "Wald",
     "Plural_1": "",
@@ -235,7 +235,7 @@
   },
   {
     "ID": 19,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "face",
     "Plural_1": "",
@@ -248,7 +248,7 @@
   },
   {
     "ID": 20,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "wrist",
     "Plural_1": "",
@@ -261,7 +261,7 @@
   },
   {
     "ID": 21,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "head",
     "Plural_1": "",
@@ -274,7 +274,7 @@
   },
   {
     "ID": 22,
-    "DictionaryID": "Angol-Magyar",
+    "DictionaryID": 1,
     "Article_1": "",
     "Word_1": "shoulder",
     "Plural_1": "",
@@ -287,7 +287,7 @@
   },
   {
     "ID": 23,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "pomo",
     "Plural_1": "",
@@ -300,7 +300,7 @@
   },
   {
     "ID": 24,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "auto",
     "Plural_1": "",
@@ -313,7 +313,7 @@
   },
   {
     "ID": 25,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "pane",
     "Plural_1": "",
@@ -326,7 +326,7 @@
   },
   {
     "ID": 26,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "vigneto",
     "Plural_1": "",
@@ -339,7 +339,7 @@
   },
   {
     "ID": 27,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "formaggio",
     "Plural_1": "",
@@ -352,7 +352,7 @@
   },
   {
     "ID": 28,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "cacio",
     "Plural_1": "",
@@ -365,7 +365,7 @@
   },
   {
     "ID": 29,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "mare",
     "Plural_1": "",
@@ -378,7 +378,7 @@
   },
   {
     "ID": 30,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "maggiore",
     "Plural_1": "",
@@ -391,7 +391,7 @@
   },
   {
     "ID": 31,
-    "DictionaryID": "Olasz-Magyar",
+    "DictionaryID": 3,
     "Article_1": "",
     "Word_1": "maggiore",
     "Plural_1": "",
@@ -404,7 +404,7 @@
   },
   {
     "ID": 32,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "head",
     "Plural_1": "",
@@ -417,7 +417,7 @@
   },
   {
     "ID": 33,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "tongue",
     "Plural_1": "",
@@ -430,7 +430,7 @@
   },
   {
     "ID": 34,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "ear",
     "Plural_1": "",
@@ -443,7 +443,7 @@
   },
   {
     "ID": 35,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "chest",
     "Plural_1": "",
@@ -456,7 +456,7 @@
   },
   {
     "ID": 36,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "fingers",
     "Plural_1": "",
@@ -469,7 +469,7 @@
   },
   {
     "ID": 37,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "wrist",
     "Plural_1": "",
@@ -482,7 +482,7 @@
   },
   {
     "ID": 38,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "chin",
     "Plural_1": "",
@@ -495,7 +495,7 @@
   },
   {
     "ID": 39,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "stomach",
     "Plural_1": "",
@@ -508,7 +508,7 @@
   },
   {
     "ID": 40,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "navel",
     "Plural_1": "",
@@ -521,7 +521,7 @@
   },
   {
     "ID": 41,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "waist",
     "Plural_1": "",
@@ -534,7 +534,7 @@
   },
   {
     "ID": 42,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "cheek",
     "Plural_1": "",
@@ -547,7 +547,7 @@
   },
   {
     "ID": 43,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "face",
     "Plural_1": "",
@@ -560,7 +560,7 @@
   },
   {
     "ID": 44,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "elbow",
     "Plural_1": "",
@@ -573,7 +573,7 @@
   },
   {
     "ID": 45,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "knee",
     "Plural_1": "",
@@ -586,7 +586,7 @@
   },
   {
     "ID": 46,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "heel",
     "Plural_1": "",
@@ -599,7 +599,7 @@
   },
   {
     "ID": 47,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "forearm",
     "Plural_1": "",
@@ -612,7 +612,7 @@
   },
   {
     "ID": 48,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "rim",
     "Plural_1": "",
@@ -625,7 +625,7 @@
   },
   {
     "ID": 49,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "hand",
     "Plural_1": "",
@@ -638,7 +638,7 @@
   },
   {
     "ID": 50,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "hair",
     "Plural_1": "",
@@ -651,7 +651,7 @@
   },
   {
     "ID": 51,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "eyelashes",
     "Plural_1": "",
@@ -664,7 +664,7 @@
   },
   {
     "ID": 52,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "pupil",
     "Plural_1": "",
@@ -677,7 +677,7 @@
   },
   {
     "ID": 53,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "neck",
     "Plural_1": "",
@@ -690,7 +690,7 @@
   },
   {
     "ID": 54,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "eyelid",
     "Plural_1": "",
@@ -703,7 +703,7 @@
   },
   {
     "ID": 55,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "lip",
     "Plural_1": "",
@@ -716,7 +716,7 @@
   },
   {
     "ID": 56,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "mouth",
     "Plural_1": "",
@@ -729,7 +729,7 @@
   },
   {
     "ID": 57,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "nose",
     "Plural_1": "",
@@ -742,7 +742,7 @@
   },
   {
     "ID": 58,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "iris",
     "Plural_1": "",
@@ -755,7 +755,7 @@
   },
   {
     "ID": 59,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "eyebrow",
     "Plural_1": "",
@@ -768,7 +768,7 @@
   },
   {
     "ID": 60,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "forehead",
     "Plural_1": "",
@@ -781,7 +781,7 @@
   },
   {
     "ID": 61,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "The wite of the eye",
     "Plural_1": "",
@@ -794,7 +794,7 @@
   },
   {
     "ID": 62,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "shoulder",
     "Plural_1": "",
@@ -807,7 +807,7 @@
   },
   {
     "ID": 63,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "armpit",
     "Plural_1": "",
@@ -820,7 +820,7 @@
   },
   {
     "ID": 64,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "back",
     "Plural_1": "",
@@ -833,7 +833,7 @@
   },
   {
     "ID": 65,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "buttocks",
     "Plural_1": "",
@@ -846,7 +846,7 @@
   },
   {
     "ID": 66,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "calf",
     "Plural_1": "",
@@ -859,7 +859,7 @@
   },
   {
     "ID": 67,
-    "DictionaryID": "Angol-Magyar - Body",
+    "DictionaryID": 5,
     "Article_1": "",
     "Word_1": "shin",
     "Plural_1": "",

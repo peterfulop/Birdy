@@ -7,6 +7,7 @@ var state = {
     dictionaries: array_dictionaries,
     editDictionaryMode: false,
     editDictionaryContent: false,
+    listeningMode: false,
     filterArray: [],
     filtered: false,
     sortBy: 'asc',
@@ -21,6 +22,7 @@ function resetState() {
     state.dictionaries = array_dictionaries;
     state.editDictionaryMode = false;
     state.editDictionaryContent = false;
+    state.listeningMode = false;
     resetFilteredState();
     state.sortBy = 'asc';
     state.columnID = 'word_1';
@@ -1130,7 +1132,7 @@ function renderDinctionaryContent() {
 
         </div>
         
-        <div class="d-flex dictionary-content-toolbar my-3 py-3 justify-content-between align-items-center border-bottom border-white">
+        <div class="d-flex dictionary-content-toolbar my-1 py-2 justify-content-between align-items-center border-bottom border-white">
 
             <div class="d-flex dictionary-list-header">
 
@@ -1138,7 +1140,7 @@ function renderDinctionaryContent() {
 
                      <div class="edit-btn-container me-1">
                         <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked>
-                        <label class="btn btn-outline-listen" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
+                        <label class="btn btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
                     </div>
 
                     <div class="edit-btn-container btn btn-group p-0">
@@ -1159,12 +1161,12 @@ function renderDinctionaryContent() {
             <div class="d-flex">
                 <div class="edit-btn-container me-1">
                     <input type="checkbox" class="btn-check" id="edit-content-checker" autocomplete="off">
-                    <label class="btn btn-outline-listen" for="edit-content-checker"><i class="fas fa-edit"></i></label>
+                    <label class="btn btn-outline-listen mw-50" for="edit-content-checker"><i class="fas fa-edit"></i></label>
                 </div>
 
                 <div class="listen-btn-container">
                     <input type="checkbox" class="btn-check" id="listen-content-checker" autocomplete="off">
-                    <label class="btn btn-outline-listen" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
+                    <label class="btn btn-outline-listen mw-50" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
                 </div>
             </div>
 
@@ -1371,6 +1373,8 @@ function searchInLexicon(input) {
 
 function renderDinctionaryElements(renderArray) {
 
+    resetListeningMode();
+    resetEditorMode();
     renderArray.sort(compareValues(state.columnID, state.sortBy));
 
     var dictionaryItemList = document.getElementById('dictionary-item-list');
@@ -1455,6 +1459,13 @@ function enabledEditorMode() {
     })
 }
 
+function resetEditorMode() {
+
+    var editorModeBtn = document.getElementById('edit-content-checker');
+    editorModeBtn.checked = false;
+    state.editDictionaryMode = false;
+}
+
 
 function enabledListeningMode() {
 
@@ -1463,18 +1474,28 @@ function enabledListeningMode() {
 
     listeningModeButton.addEventListener("change", () => {
         if (listeningModeButton.checked) {
+            state.listeningMode = true;
             for (const button of listenBtn) {
                 button.classList.remove("disabled");
                 enabledEditorMode();
             }
         }
         else {
+            state.listeningMode = false;
             for (const button of listenBtn) {
                 button.classList.add("disabled");
             }
         }
     })
 }
+
+function resetListeningMode() {
+
+    var listeningModeButton = document.getElementById('listen-content-checker');
+    listeningModeButton.checked = false;
+    state.listeningMode = false;
+}
+
 
 function editSelectedWord() {
 
