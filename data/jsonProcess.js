@@ -1,5 +1,5 @@
 
-var puffer = [];
+//var puffer = [];
 var array_words = [];
 var array_dictionaries = [];
 
@@ -40,37 +40,59 @@ class DictionaryElement {
     }
 };
 
-function jsonToArray(source, myMethod, array) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        stateChange(xhttp);
-        myMethod(array);
+
+function sendRequest(url, method, body, callback) {
+
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            callback(JSON.parse(xhr.responseText));
+        }
     }
-    xhttp.open("GET", source, true);
-    xhttp.send();
+    xhr.open(method, url);
+    xhr.send(body);
 }
 
-function stateChange(xhttp) {
-    if (xhttp.readyState == 4 && xhttp.status == 200) {
-        puffer = JSON.parse(xhttp.responseText);
-    }
+// function jsonToArray(source, myMethod, array) {
+//     var xhttp = new XMLHttpRequest();
+//     xhttp.onreadystatechange = function () {
+//         stateChange(xhttp);
+//         myMethod(array);
+//     }
+//     xhttp.open("GET", source, true);
+//     xhttp.send();
+// }
+
+function jsonToArray(url, myMethod, array) {
+
+    sendRequest(url, 'GET', null, function (responseText) {
+        myMethod(array, responseText);
+    })
+
 }
 
-function createDictionaryElementObject(array) {
 
-    for (const data of puffer) {
+// function stateChange(xhttp) {
+//     if (xhttp.readyState == 4 && xhttp.status == 200) {
+//         puffer = JSON.parse(xhttp.responseText);
+//     }
+// }
+
+function createDictionaryElementObject(array, sourcePuffer) {
+
+    for (const data of sourcePuffer) {
         var component = new DictionaryElement(data.ID, data.DictionaryID, data.Article_1, data.Word_1, data.Plural_1, data.Article_2, data.Word_2, data.Plural_2, data.Lang_1, data.Lang_2, data.RelaseDate);
         array.push(component);
     }
-    puffer = [];
+    //puffer = [];
 };
 
-function createDictionaryObject(array) {
-    for (const data of puffer) {
+function createDictionaryObject(array, sourcePuffer) {
+    for (const data of sourcePuffer) {
         var component = new Dictionaries(data.ID, data.Dictionary_Name, data.Lang_Prim, data.Lang_Sec, data.RelaseDate);
         array.push(component);
     }
-    puffer = [];
+    //puffer = [];
 };
 
 function fillLexiconArrays() {
@@ -95,6 +117,7 @@ function runProcess() {
 
     jsonToArray("./data/db_words.json", createDictionaryElementObject, array_words);
     jsonToArray("./data/db_dictionaries.json", createDictionaryObject, array_dictionaries);
+
     setTimeout(fillLexiconArrays, 100);
 
 }

@@ -627,6 +627,7 @@ function menu_load_dictionaries() {
     resetState();
     Menu_Clear_MainContent();
 
+    var searchBar = renderSearchBar();
 
     mainContent.innerHTML = `
         <h5 class="text-center mb-4">Szótárak listája</h5>
@@ -686,18 +687,25 @@ function menu_load_dictionaries() {
 
         <div class="dictionary-list-block">
 
-            <div class="search-bar d-block mb-2">
+            
+
+            <!--<div class="search-bar d-block mb-2">
                 <div class="line-1 d-flex">
                     <div class="search-input w-100">
-                        <input type="text" class="form-control" id="dictionaries-search-input" placeholder="Keresés...">
+                        <input type="search" class="form-control" id="dictionaries-search-input" placeholder="Keresés...">
                     </div>
                     <div class="search-buttons d-flex">
                         <button type="button" class="btn btn-secondary ms-1" id="search-dictionary-button"><i class="fas fa-search"></i></button>
                         <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
                     </div>
                 </div>
-                <div class="form-text mb-2 d-none" id="search-alert">Nincs találat!</div>
-            </div>
+                <div class="form-text mb-2 d-none justify-content-start cursor-pointer text-danger" id="search-alert">
+                    <div class="search-alert-close"><i class="far fa-window-close"></i></div>
+                    <div class="search-alert-text ms-1">vvNincs találat!</div>
+                </div>
+            </div>-->
+
+             ${searchBar}
 
             <div class="dictionary-list-header d-flex p-3 border-bottom border-white">
                 <div class="col-9 d-flex justify-content-start">
@@ -767,10 +775,12 @@ function menu_load_dictionaries() {
     backToNewDictionary();
 
 
-    var searchDictionaryInput = document.getElementById("dictionaries-search-input");
-    var searchDictionaryBtn = document.getElementById("search-dictionary-button");
+    var searchDictionaryInput = document.getElementById("search-element-input");
+    var searchDictionaryBtn = document.getElementById("search-element-button");
     var clearfilterBtn = document.getElementById("clear-dictionary-filter");
     var searchAlert = document.getElementById("search-alert");
+    closeSearchAlert();
+
 
 
     searchDictionaryBtn.onclick = function () {
@@ -788,6 +798,7 @@ function menu_load_dictionaries() {
             else {
                 console.log("nincs renderelés!");
                 searchAlert.classList.remove("d-none");
+                searchAlert.classList.add("d-flex");
             }
         }
         else {
@@ -805,9 +816,7 @@ function menu_load_dictionaries() {
         searchDictionaryInput.value = "";
         resetFilteredState();
     }
-
 }
-
 
 
 function resetFilteredState() {
@@ -1103,9 +1112,30 @@ function deleteDictionary() {
 }
 
 
+function renderSearchBar() {
+    return `
+            <div class="search-bar d-block mb-2">
+                        <div class="line-1 d-flex">
+                            <div class="search-input w-100">
+                                <input type="search" class="form-control" id="search-element-input" placeholder="Keresés...">
+                            </div>
+                            <div class="search-buttons d-flex">
+                                <button type="button" class="btn btn-secondary ms-1" id="search-element-button"><i class="fas fa-search"></i></button>
+                                <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-text mb-2 d-none justify-content-start cursor-pointer text-danger" id="search-alert">
+                            <div class="search-alert-close"><i class="far fa-window-close"></i></div>
+                            <div class="search-alert-text ms-1">Nincs találat!</div>
+                        </div>
+                    </div>
+    `
+}
+
+
 function renderDinctionaryContent() {
 
-
+    var searchBar = renderSearchBar();
     mainContent.innerHTML = '';
 
     mainContent.innerHTML = `
@@ -1117,18 +1147,7 @@ function renderDinctionaryContent() {
                 <button type="button" class="btn bg-info me-1 text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
             </div>
 
-            <div class="search-bar d-block">
-                <div class="line-1 d-flex">
-                    <div class="search-input w-100">
-                        <input type="text" class="form-control" id="search-element-input" placeholder="Keresés...">
-                    </div>
-                    <div class="search-buttons d-flex">
-                        <button type="button" class="btn btn-secondary ms-1" id="search-element-button"><i class="fas fa-search"></i></button>
-                        <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
-                    </div>
-                </div>
-                <div class="form-text disabled" id="search-alert">Nincs találat!</div>
-            </div>
+            ${searchBar}
 
         </div>
         
@@ -1226,14 +1245,10 @@ function renderDinctionaryContent() {
     var searchBtn = document.getElementById("search-element-button");
     var clearfilterBtn = document.getElementById("clear-dictionary-filter");
     var searchAlert = document.getElementById("search-alert");
-
     var sortButton = document.getElementById("sort-alpha-btn");
 
     var selectColumnBtn_1 = document.getElementById("select_column_button_1");
     var selectColumnBtn_2 = document.getElementById("select_column_button_2");
-
-
-
 
 
     searchBtn.onclick = function () {
@@ -1264,6 +1279,8 @@ function renderDinctionaryContent() {
             state.filterArray = [];
         }
     }
+
+    closeSearchAlert();
 
     clearfilterBtn.onclick = function () {
         renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon)
@@ -1320,6 +1337,19 @@ function renderDinctionaryContent() {
 
 }
 
+
+
+function closeSearchAlert() {
+
+    var alertMsg = document.getElementById('search-alert');
+    var searchInput = document.getElementById('search-element-input');
+
+    alertMsg.addEventListener('click', () => {
+        alertMsg.classList.add('d-none');
+        searchInput.value = "";
+    })
+
+}
 
 function setColumnID(button) {
     state.columnID = button.dataset.columnid;
