@@ -14,6 +14,13 @@ var dashboardMenuItems = [
         buttonID: generateID()
     },
     {
+        icon: "fas fa-search",
+        text: "Keresés",
+        link: "6",
+        method: "menu_load_records",
+        buttonID: generateID()
+    },
+    {
         icon: "fas fa-book",
         text: "Szótáraim",
         link: "2",
@@ -39,13 +46,6 @@ var dashboardMenuItems = [
         text: "Felolvasó",
         link: "5",
         method: "menu_load_listening",
-        buttonID: generateID()
-    },
-    {
-        icon: "fas fa-chart-line",
-        text: "Eredmények",
-        link: "6",
-        method: "menu_load_records",
         buttonID: generateID()
     },
     {

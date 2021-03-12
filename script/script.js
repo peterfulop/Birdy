@@ -708,7 +708,7 @@ function menu_load_dictionaries() {
 
              ${searchBar}
 
-            <div class="dictionary-list-header d-flex py-3 align-items-center border-bottom border-white">
+            <div class="dictionary-list-header d-flex py-2 align-items-center border-bottom border-white">
 
                 <div class="col-9 d-flex justify-content-start align-items-center">
 
@@ -1254,19 +1254,6 @@ function renderDinctionaryContent() {
 
         </div>
 
-            <!--<div class="dictionary-list-header d-flex p-3 border-bottom border-white">
-                <div class="col-9 d-flex justify-content-start align-items-center">
-                    <div class="d-flex justify-content-between text-muted cursor-pointer">
-                        <i class="fas fa-sort-alpha-up pr-2"></i>
-                        <p class="mb-0 px-2 text-muted">Név</p>
-                    </div>
-                    <div class="">
-                    <select class="form-select" id="dictionary-name-select">
-                        <option value="0">1.oszlop</option>
-                        <option value="1">2.oszlop</option>
-                    </select>
-                    </div>
-                </div>-->
         </div>
 
         <div class="dictionary-item-list overflow-scroll p-2" id="dictionary-item-list" style="max-height: 350px">
