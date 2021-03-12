@@ -708,18 +708,30 @@ function menu_load_dictionaries() {
 
              ${searchBar}
 
-            <div class="dictionary-list-header d-flex p-3 border-bottom border-white">
-                <div class="col-9 d-flex justify-content-start">
-                    <div class="d-flex justify-content-between text-muted cursor-pointer">
-                        <i class="fas fa-sort-alpha-up pr-2"></i>
-                        <p class="mb-0 px-2 text-muted">Név</p></div>
+            <div class="dictionary-list-header d-flex py-3 align-items-center border-bottom border-white">
+
+                <div class="col-9 d-flex justify-content-start align-items-center">
+
+                    <div class="edit-btn-container me-1">
+                        <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked="">
+                        <label class="btn btn-sm btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check"><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
                     </div>
-                <div class="col-3 d-none d-sm-flex justify-content-end"><p class="mb-0 text-muted">Művelet</p></div>
+
+                    <div class="d-flex justify-content-between text-muted cursor-pointer">
+                        <p class="mb-0 px-2 text-muted">Név</p>
+                    </div>
+                 </div>
+
+                <div class="col-3 d-none d-sm-flex justify-content-end">
+                    <p class="mb-0 text-muted">Művelet</p>
+                </div>
+                    
+                
             </div>
 
             <div class="dictionary-list-items  p-2">
-
             </div>
+
         </div>
         <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
              <nav aria-label="...">
@@ -817,6 +829,39 @@ function menu_load_dictionaries() {
         searchDictionaryInput.value = "";
         resetFilteredState();
     }
+
+
+    var sortButton = document.getElementById("sort-alpha-btn");
+
+
+    sortButton.onclick = function () {
+
+
+        var sortIcon = document.getElementById('sort-alpha-icon');
+        var sortChecker = document.getElementById("sort-alpha-check");
+
+        sortChecker.checked != sortChecker.checked;
+
+        if (!sortChecker.checked) {
+
+            sortIcon.classList.remove('fa-sort-alpha-down');
+            sortIcon.classList.add('fa-sort-alpha-up');
+            state.sortBy = 'asc';
+            const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
+            renderDictionaryList(renderRoot);
+        }
+        else {
+
+            sortIcon.classList.remove('fa-sort-alpha-up');
+            sortIcon.classList.add('fa-sort-alpha-down');
+            state.sortBy = 'desc';
+            const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
+            renderDictionaryList(renderRoot);
+        }
+
+    }
+
+
 }
 
 
@@ -828,25 +873,32 @@ function resetFilteredState() {
 
 function renderDictionaryList(renderArray) {
 
+
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
+
+    renderArray.sort(compareValues("dictionaryName", state.sortBy));
+
 
     Object.values(renderArray).map(dictionary => {
         content.innerHTML +=
             `
-            <div class="row d-flex p-2 justify-content-between dictionary-list-item border-bottom">
+            <div class="row d-flex py-2 justify-content-between dictionary-list-item border-bottom">
 
-                <div class="col-12 col-sm-8 col-xl-8 d-flex align-items-center my-sm-0 my-2 dictionary-list-item-details">
-                    <i class="fas fa-bookmark d-none d-sm-flex"></i>
-                    <small class="mx-sm-1 mx-2 ml-0">[${dictionary.lexicon.length}]</small>
-                    <h6 class="m-0">${dictionary.dictionaryName}</h6>
+                <div class="d-flex col-12 col-sm-8 col-xl-8 align-items-center justify-content-center justify-content-sm-start my-sm-0 my-2 px-0 dictionary-list-item-details" id="dictionary-list-item-details">
+                        <i class="fas fa-bookmark d-none d-sm-flex mx-2"></i>
+                        <small class="col-auto col-sm-1 me-2 col-lg-1 col-xl-auto">[${dictionary.lexicon.length}]</small>
+                        <h6 class="m-0">${dictionary.dictionaryName}</h6>
                 </div>
 
-                <div class="col-12 col-sm-4 col-xl-4 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end px-3 px-sm-0" role="group" style="max-width: 275px">
-                    <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
-                    <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
-                    <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
+                <div class="d-flex col-12 col-sm-4 col-xl-4 px-0 justify-content-center justify-content-sm-end">
+                    <div class="d-flex w-100 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end" role="group" style="max-width: 275px">
+                        <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
+                        <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
+                        <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
+                    </div>
                 </div>
+                
             </div>
         `
     });
@@ -1160,16 +1212,16 @@ function renderDinctionaryContent() {
 
                      <div class="edit-btn-container me-1">
                         <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked>
-                        <label class="btn btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
+                        <label class="btn btn-sm  btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
                     </div>
 
                     <div class="edit-btn-container btn btn-group p-0">
 
                         <input type="radio" class="btn-check" name="select_column" id="select_column_1" autocomplete="off" checked>
-                        <label class="btn btn-outline-corn" for="select_column_1" id="select_column_button_1" data-columnid ="word_1" ><i class="fas fa-align-left"></i></label>
+                        <label class="btn btn-sm btn-outline-corn" for="select_column_1" id="select_column_button_1" data-columnid ="word_1" ><i class="fas fa-align-left"></i></label>
 
                         <input type="radio" class="btn-check" name="select_column" id="select_column_2" autocomplete="off">
-                        <label class="btn btn-outline-lgray" for="select_column_2"  id="select_column_button_2" data-columnid ="word_2"><i class="fas fa-align-right"></i></label>
+                        <label class="btn btn-sm btn-outline-lgray" for="select_column_2"  id="select_column_button_2" data-columnid ="word_2"><i class="fas fa-align-right"></i></label>
 
                     </div>
 
@@ -1181,12 +1233,12 @@ function renderDinctionaryContent() {
             <div class="d-flex">
                 <div class="edit-btn-container me-1">
                     <input type="checkbox" class="btn-check" id="edit-content-checker" autocomplete="off">
-                    <label class="btn btn-outline-listen mw-50" for="edit-content-checker"><i class="fas fa-edit"></i></label>
+                    <label class="btn btn-sm btn-outline-listen mw-50" for="edit-content-checker"><i class="fas fa-edit"></i></label>
                 </div>
 
                 <div class="listen-btn-container">
                     <input type="checkbox" class="btn-check" id="listen-content-checker" autocomplete="off">
-                    <label class="btn btn-outline-listen mw-50" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
+                    <label class="btn btn-sm btn-outline-listen mw-50" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
                 </div>
             </div>
 
@@ -1309,6 +1361,7 @@ function renderDinctionaryContent() {
             state.sortBy = 'asc';
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
             renderDinctionaryElements(renderRoot);
+
         }
         else {
             sortIcon.classList.remove('fa-sort-alpha-up');
@@ -1406,6 +1459,7 @@ function renderDinctionaryElements(renderArray) {
 
     resetListeningMode();
     resetEditorMode();
+
     renderArray.sort(compareValues(state.columnID, state.sortBy));
 
     var dictionaryItemList = document.getElementById('dictionary-item-list');
