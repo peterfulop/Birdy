@@ -31,6 +31,7 @@ function resetState() {
 
 window.onload = function () {
     renderFirst();
+    runHttpRequest();
 };
 
 function renderFirst() {

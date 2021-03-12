@@ -113,7 +113,7 @@ function groupByKey(array, key) {
         }, {})
 };
 
-function runProcess() {
+function runHttpRequest() {
 
     jsonToArray("./data/db_words.json", createDictionaryElementObject, array_words);
     jsonToArray("./data/db_dictionaries.json", createDictionaryObject, array_dictionaries);
@@ -122,4 +122,4 @@ function runProcess() {
 
 }
 
-runProcess();
+//runHttpRequest();
