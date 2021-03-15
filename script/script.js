@@ -273,7 +273,7 @@ function renderApp() {
                     <p class="user-extra-data hideable">Pro Member</p>
                 </div>
 
-                <div class="links">
+                <div class="links" style="max-height: 50vh; overflow:auto">
                 </div>
             </div>
             <div class="pages" id="page-content-box">
@@ -340,13 +340,14 @@ function renderApp() {
 }
 
 
+
 function renderMainMenu() {
 
     dashboardLinkContainer.innerHTML = '';
 
     Object.values(dashboardMenuItems).map(item => {
         dashboardLinkContainer.innerHTML += `
-        <div class="link wide" data-buttonId="${item.buttonID}">
+        <div class="link wide" data-buttonId="${item.buttonID}" title=${item.text}>
             <div class="link-icon-box">
                 <i class="${item.icon}"></i>
             </div>
@@ -631,6 +632,7 @@ function menu_load_dictionaries() {
     Menu_Clear_MainContent();
 
     var searchBar = renderSearchBar();
+    //var paginationBlock = pagination();
 
     mainContent.innerHTML = `
         <h5 class="text-center mb-4">Szótárak listája</h5>
@@ -735,24 +737,12 @@ function menu_load_dictionaries() {
             </div>
 
         </div>
-        <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
-             <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2 <span class="sr-only"></span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+
+        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-block">
         </div>
+
     `
+
 
 
     /** */
@@ -830,6 +820,7 @@ function menu_load_dictionaries() {
         clearfilterBtn.classList.add("d-none");
         searchDictionaryInput.value = "";
         resetFilteredState();
+        renderPagination(state.dictionaries);
     }
 
 
@@ -905,6 +896,7 @@ function renderDictionaryList(renderArray) {
     });
 
     selectDictionaryMethod();
+    renderPagination(state.dictionaries); // ok
 
 }
 
@@ -1225,10 +1217,7 @@ function renderDinctionaryContent() {
                         <label class="btn btn-sm btn-outline-lgray" for="select_column_2"  id="select_column_button_2" data-columnid ="word_2"><i class="fas fa-align-right"></i></label>
 
                     </div>
-
-
                 </div>
-
             </div>
             
             <div class="d-flex">
@@ -1242,43 +1231,19 @@ function renderDinctionaryContent() {
                     <label class="btn btn-sm btn-outline-listen mw-50" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
                 </div>
             </div>
-
-
-             <!--<div class="form-check form-switch mx-sm-4 mx-md-2 mx-0 my-2">
-                <input class="form-check-input" type="checkbox" id="edit-content-checker">
-                <label class="form-check-label me-3" for="edit-content-checker">Szerkesztés</label>
-            </div>
-            <div class="form-check form-switch mx-sm-4 mx-md-2 mx-0 my-2">
-                <input class="form-check-input" type="checkbox" id="listen-content-checker">
-                <label class="form-check-label" for="listen-content-checker">Kiejtés</label>
-            </div>-->
-
         </div>
 
         </div>
 
-        <div class="dictionary-item-list overflow-scroll p-2" id="dictionary-item-list" style="max-height: 350px">
+        <div class="dictionary-item-list overflow-scroll p-2" id="dictionary-item-list" style="max-height: 40vh">
         </div>
 
-        <div class="dictionary-item-list-pagination mt-2 d-flex justify-content-end">
-            <nav aria-label="...">
-                <ul class="pagination">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">2 <span class="sr-only"></span></a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">Next</a>
-                    </li>
-                </ul>
-            </nav>
+
+        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-block">
         </div>
 
     `
+
     renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon);
 
 
@@ -1329,6 +1294,7 @@ function renderDinctionaryContent() {
         clearfilterBtn.classList.add("d-none");
         searchInput.value = "";
         resetFilteredState();
+        renderPagination(state.dictionaries[state.dictionaryID].lexicon);
     }
 
     var backButton = document.getElementById('back-dictionary-button');
@@ -1505,6 +1471,9 @@ function renderDinctionaryElements(renderArray) {
     saveEditedWord();
     removeSelectedWord();
     readSelectedWord();
+
+    renderPagination(state.dictionaries[state.dictionaryID].lexicon); //ok
+
 
 }
 
@@ -2233,11 +2202,38 @@ function startSpeech(language, text) {
 }
 
 
-function pagening() {
+function renderPagination(array) {
 
 
-    var itemCount = 0;
-    var numberOfPages
+    var countOf = state.filterArray.length > 0 ? state.filterArray.length : array.length;
+
+    console.log('array.length', array.length);
+    console.log('countOf', countOf);
+
+    var paginationBlock = document.getElementById('pagination-block');
+
+    paginationBlock.innerHTML = `        
+        <div class="element-counts align-items-center">
+            <small>${countOf}/${array.length}</small>
+        </div>
+    
+        <nav aria-label="...">
+            <ul class="pagination p-0 m-0 btn-sm">
+                <li class="page-item">
+                    <span class="page-link">&laquo;</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link">2</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">&raquo;</a>
+                </li>
+            </ul>
+        </nav>
+`
+    resetFilteredState();
 
 }
 
