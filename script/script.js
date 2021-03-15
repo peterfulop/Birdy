@@ -738,7 +738,11 @@ function menu_load_dictionaries() {
 
         </div>
 
-        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-block">
+        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-footer">
+            <div id="counter-block">
+            </div>
+            <div id="pagination-block">
+            </div>
         </div>
 
     `
@@ -1239,7 +1243,11 @@ function renderDinctionaryContent() {
         </div>
 
 
-        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-block">
+        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-footer">
+            <div id="counter-block">
+            </div>
+            <div id="pagination-block">
+            </div>
         </div>
 
     `
@@ -2205,35 +2213,54 @@ function startSpeech(language, text) {
 function renderPagination(array) {
 
 
-    var countOf = state.filterArray.length > 0 ? state.filterArray.length : array.length;
-
-    console.log('array.length', array.length);
-    console.log('countOf', countOf);
-
+    var counterBlock = document.getElementById('counter-block');
     var paginationBlock = document.getElementById('pagination-block');
 
-    paginationBlock.innerHTML = `        
+
+    var countOf = state.filterArray.length > 0 ? state.filterArray.length : array.length;
+
+
+    counterBlock.innerHTML = `        
         <div class="element-counts align-items-center">
             <small>${countOf}/${array.length}</small>
         </div>
-    
-        <nav aria-label="...">
-            <ul class="pagination p-0 m-0 btn-sm">
-                <li class="page-item">
-                    <span class="page-link">&laquo;</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active" aria-current="page">
-                    <span class="page-link">2</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">&raquo;</a>
-                </li>
+    `
+
+
+
+    var contentCount = 6;
+    var arrLength = array.length; // 36
+    var pages = Math.ceil(arrLength / contentCount); // 8
+
+
+
+    console.log('arrLength', arrLength);
+    console.log('pages', pages);
+
+    paginationBlock.innerHTML = `
+        <nav aria-label="Page navigation example">
+            <ul class="pagination" id="page-items">
+                <li class="page-item"><span class="page-link">&laquo;</span></li>
             </ul>
         </nav>
-`
-    resetFilteredState();
+    `
+
+    fillPages(pages);
+
+}
+
+function fillPages(pages) {
+
+    var paginationPages = document.getElementById('page-items');
+
+    for (let i = 1; i <= pages; i++) {
+        paginationPages.innerHTML += `<li class="page-item"><span class="page-link" data-btnID="${generateID_short()}">${i}</span></li>
+        `
+    }
+
+    paginationPages.innerHTML += `
+    <li class="page-item"><span class="page-link">&raquo;</span></li>
+    `
 
 }
 
