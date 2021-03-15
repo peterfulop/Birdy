@@ -106,6 +106,7 @@ function defDialogPanel(dialogID) {
 }
 
 
+
 var dashboardLinkContainer = document.querySelector(".links");
 var mobileMenuButton = document.getElementById("mobile-menu-button");
 var appWindow = document.querySelector(".app");
@@ -276,30 +277,31 @@ function renderApp() {
                 </div>
             </div>
             <div class="pages" id="page-content-box">
-                <div class="status" id="status-bar">
-                    <div class="page-statusbar">
-                        <div class="spinner-border spinner-border-sm disabled" id="page-statusbar-spinner"
-                            role="status">
-                            <span class="sr-only"></span>
+                <div class="status d-block p-0" id="status-bar">
+
+                    <div class="status d-flex w-100 px-3 py-2 align-items-center justify-content-between">
+                        <div class="page-name">
+                            <h3 id="active-page-name"></h3>
                         </div>
-                    </div>
-                    <div class="page-name">
-                        <h3 id="active-page-name"></h3>
-                    </div>
-                    <div class="page-icon">
-                        <i id="active-page-icon"></i>
-                        <div class="mobile-menu-icon">
-                            <i class="fas fa-bars" id="mobile-menu-button"></i>
+                        <div class="page-icon">
+                            <i id="active-page-icon"></i>
+                            <div class="mobile-menu-icon">
+                                <i class="fas fa-bars" id="mobile-menu-button"></i>
+                            </div>
                         </div>
                     </div>
 
+                    <div class="mobile-menu-container disabled">
+                    </div>
+
+
                 </div>
 
-                <div class="mobile-menu-container disabled">
-                </div>
+                <!--<div class="mobile-menu-container disabled">
+                </div>-->
 
                 <div class="main">
-                    <div class="main-content" id="main-content-box">
+                    <div class="main-content p-3 p-sm-4" id="main-content-box">
                     </div>
                 </div>
             </div>
