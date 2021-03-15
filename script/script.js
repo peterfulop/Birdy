@@ -881,7 +881,6 @@ function renderDictionaryList(renderArray) {
 
     renderArray.sort(compareValues("dictionaryName", state.sortBy));
 
-
     Object.values(renderArray).map(dictionary => {
         content.innerHTML +=
             `
@@ -2233,6 +2232,14 @@ function startSpeech(language, text) {
 
 }
 
+
+function pagening() {
+
+
+    var itemCount = 0;
+    var numberOfPages
+
+}
 
 ///** RANDOM ID GENERATOR */ //
 
