@@ -307,14 +307,10 @@ function renderApp() {
                         </div>
                     </div>
 
-                    <div class="mobile-menu-container dislay-none">
+                    <div class="mobile-menu-container d-none">
                     </div>
 
-
                 </div>
-
-                <!--<div class="mobile-menu-container dislay-none">
-                </div>-->
 
                 <div class="main">
                     <div class="main-content p-3 p-sm-4" id="main-content-box">
@@ -484,11 +480,14 @@ function displayMobileMenu() {
 }
 
 function mobileMenuShowHide() {
-    if (mobileMenuContainer.className == "mobile-menu-container dislay-none") {
-        mobileMenuContainer.classList.remove("dislay-none");
+
+    if (mobileMenuContainer.classList.contains("d-none")) {
+        console.log('tartalmaz');
+        mobileMenuContainer.classList.remove("d-none");
     }
     else {
-        mobileMenuContainer.classList.add("dislay-none");
+        console.log('nem tartalmaz');
+        mobileMenuContainer.classList.add("d-none");
     }
 }
 
