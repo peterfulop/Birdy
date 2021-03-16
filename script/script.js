@@ -1,4 +1,4 @@
-var state = {
+const state = {
     screenMode: 0,
     activeMenu: dashboardMenuItems[0].buttonID,
     selectedDictionary: "",
@@ -11,8 +11,19 @@ var state = {
     filterArray: [],
     filtered: false,
     sortBy: 'asc',
-    columnID: 'word_1'
+    columnID: 'word_1',
+    pagination: {
+        selectedPageIndex: 0,
+        slicedArray: [],
+        itemsPerPage: 6,
+        location: 0,
+    },
+    paginationLocation: {
+        0: 'renderDictionaryList(state.pagination.slicedArray)',
+        1: 'renderDictionaryElements(state.pagination.slicedArray)'
+    }
 }
+
 
 
 function resetState() {
@@ -26,6 +37,11 @@ function resetState() {
     resetFilteredState();
     state.sortBy = 'asc';
     state.columnID = 'word_1';
+    state.pagination = {
+        selectedPageIndex: 0,
+        slicedArray: [],
+        itemsPerPage: 6
+    };
 }
 
 
@@ -291,13 +307,13 @@ function renderApp() {
                         </div>
                     </div>
 
-                    <div class="mobile-menu-container disabled">
+                    <div class="mobile-menu-container dislay-none">
                     </div>
 
 
                 </div>
 
-                <!--<div class="mobile-menu-container disabled">
+                <!--<div class="mobile-menu-container dislay-none">
                 </div>-->
 
                 <div class="main">
@@ -447,7 +463,7 @@ function selectPages() {
 
             actualPageIcon.className = dashboardMenuItems[i].icon;
             actualPageContainer.innerHTML = dashboardMenuItems[i].text;
-            loadMenuMethods(dashboardMenuItems[i].method);
+            loadMethods(dashboardMenuItems[i].method);
         })
     }
 }
@@ -468,11 +484,11 @@ function displayMobileMenu() {
 }
 
 function mobileMenuShowHide() {
-    if (mobileMenuContainer.className == "mobile-menu-container disabled") {
-        mobileMenuContainer.classList.remove("disabled");
+    if (mobileMenuContainer.className == "mobile-menu-container dislay-none") {
+        mobileMenuContainer.classList.remove("dislay-none");
     }
     else {
-        mobileMenuContainer.classList.add("disabled");
+        mobileMenuContainer.classList.add("dislay-none");
     }
 }
 
@@ -485,7 +501,7 @@ function selectMobilePages() {
             state.activeMenu = dashboardLinks[i].dataset.buttonid;
             actualPageIcon.className = dashboardMenuItems[i].icon;
             actualPageContainer.innerHTML = dashboardMenuItems[i].text;
-            loadMenuMethods(dashboardMenuItems[i].method);
+            loadMethods(dashboardMenuItems[i].method);
             mobileMenuShowHide();
             setActivePage(i);
         })
@@ -493,7 +509,7 @@ function selectMobilePages() {
 }
 
 
-function loadMenuMethods(methodName) {
+function loadMethods(methodName) {
     var fn = window[methodName];
     if (typeof fn === "function") fn();
 }
@@ -644,7 +660,7 @@ function menu_load_dictionaries() {
                 <i class="fas fa-plus-square" id="add-button"></i>
             </div>
             
-            <div class="create-new-dictionary disabled mb-3">
+            <div class="create-new-dictionary dislay-none mb-3">
                 <div class="create-new-block-form w-100">
 
                     <form>
@@ -824,7 +840,8 @@ function menu_load_dictionaries() {
         clearfilterBtn.classList.add("d-none");
         searchDictionaryInput.value = "";
         resetFilteredState();
-        renderPagination(state.dictionaries);
+        sliceArray(state.dictionaries);
+        renderPaginationFooter(state.dictionaries);
     }
 
 
@@ -870,6 +887,10 @@ function resetFilteredState() {
 
 function renderDictionaryList(renderArray) {
 
+    sliceArray(renderArray);
+    renderArray = state.pagination.slicedArray;
+
+    state.pagination.location = 0;
 
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
@@ -900,8 +921,15 @@ function renderDictionaryList(renderArray) {
     });
 
     selectDictionaryMethod();
-    renderPagination(state.dictionaries); // ok
+    // sliceArray(renderArray);
 
+    if (state.filterArray.length > 0) {
+        renderPaginationFooter(state.filterArray)
+    }
+    else {
+        renderPaginationFooter(state.dictionaries)
+
+    };
 }
 
 
@@ -1072,8 +1100,8 @@ function createNewDictionary() {
     if (createNewDictionaryButton) {
         createNewDictionaryButton.addEventListener('click', () => {
             console.log("Új szótár létrehozása")
-            addNewBlock.classList.add('disabled');
-            createNewBlock.classList.remove('disabled');
+            addNewBlock.classList.add('dislay-none');
+            createNewBlock.classList.remove('dislay-none');
         })
     }
 };
@@ -1083,8 +1111,8 @@ function backToNewDictionary() {
         createNewClearBtn.addEventListener('click', () => {
             console.log("Vissza")
             createNewTextInput.value = '';
-            createNewBlock.classList.add('disabled');
-            addNewBlock.classList.remove('disabled');
+            createNewBlock.classList.add('dislay-none');
+            addNewBlock.classList.remove('dislay-none');
         })
     }
 };
@@ -1252,7 +1280,7 @@ function renderDinctionaryContent() {
 
     `
 
-    renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon);
+    renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
 
 
     var searchInput = document.getElementById("search-element-input");
@@ -1272,7 +1300,7 @@ function renderDinctionaryContent() {
             searchInLexicon(searchInput);
 
             if (state.filterArray.length > 0) {
-                renderDinctionaryElements(state.filterArray);
+                renderDictionaryElements(state.filterArray);
                 clearfilterBtn.classList.remove("d-none");
                 clearfilterBtn.classList.add("d-flex");
                 searchAlert.classList.add("d-none");
@@ -1286,7 +1314,7 @@ function renderDinctionaryContent() {
         else {
 
             console.log("üres mező")
-            renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon);
+            renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
             clearfilterBtn.classList.add("d-none");
             searchAlert.classList.add("d-none");
 
@@ -1297,12 +1325,13 @@ function renderDinctionaryContent() {
     closeSearchAlert();
 
     clearfilterBtn.onclick = function () {
-        renderDinctionaryElements(state.dictionaries[state.dictionaryID].lexicon)
+        renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon)
 
         clearfilterBtn.classList.add("d-none");
         searchInput.value = "";
         resetFilteredState();
-        renderPagination(state.dictionaries[state.dictionaryID].lexicon);
+        sliceArray(state.dictionaries[state.dictionaryID].lexicon);
+        renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
     }
 
     var backButton = document.getElementById('back-dictionary-button');
@@ -1322,7 +1351,7 @@ function renderDinctionaryContent() {
             sortIcon.classList.add('fa-sort-alpha-up');
             state.sortBy = 'asc';
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-            renderDinctionaryElements(renderRoot);
+            renderDictionaryElements(renderRoot);
 
         }
         else {
@@ -1330,7 +1359,7 @@ function renderDinctionaryContent() {
             sortIcon.classList.add('fa-sort-alpha-down');
             state.sortBy = 'desc';
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-            renderDinctionaryElements(renderRoot);
+            renderDictionaryElements(renderRoot);
         }
 
     })
@@ -1340,7 +1369,7 @@ function renderDinctionaryContent() {
         setColumnID(selectColumnBtn_1);
 
         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-        renderDinctionaryElements(renderRoot);
+        renderDictionaryElements(renderRoot);
 
     })
 
@@ -1348,7 +1377,7 @@ function renderDinctionaryContent() {
         setColumnID(selectColumnBtn_2);
 
         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-        renderDinctionaryElements(renderRoot);
+        renderDictionaryElements(renderRoot);
     })
 
 }
@@ -1369,7 +1398,6 @@ function closeSearchAlert() {
 
 function setColumnID(button) {
     state.columnID = button.dataset.columnid;
-
 }
 
 function compareValues(key, order = 'asc') {
@@ -1417,10 +1445,15 @@ function searchInLexicon(input) {
 }
 
 
-function renderDinctionaryElements(renderArray) {
+function renderDictionaryElements(renderArray) {
+
+    state.pagination.location = 1;
+    sliceArray(renderArray);
+    renderArray = state.pagination.slicedArray;
 
     resetListeningMode();
     resetEditorMode();
+
 
     renderArray.sort(compareValues(state.columnID, state.sortBy));
 
@@ -1439,30 +1472,30 @@ function renderDinctionaryElements(renderArray) {
             </div>
             <div class="dictionary-item-words">
                 <div class="dictionary-first-word mr-1">
-                    <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.word_1}</span>
-                    <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_0" data-wordid="0" value="${item.word_1}">
+                    <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.article_1} ${item.word_1}</span>
+                    <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_0" data-wordid="0" value="${item.word_1}">
                     <div class="dictionary-item-buttons">
 
-                        <i class="fas fa-edit edit-actual-word edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
-                        <i class="fas fa-check save-edit disabled" data-inputid="${counter}_0" data-wordid="0"></i>
-                        <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_0" data-wordid="0"></i>
+                        <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
+                        <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
+                        <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
 
                     </div>
                 </div>
                 <div class="dictionary-second-word mr-1">
                         <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.word_2}</span>
-                        <input type="text" class="dictionary-edit-content p-1 disabled" data-inputid="${counter}_1" data-wordid="1" value="${item.word_2}">
+                        <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_1" data-wordid="1" value="${item.word_2}">
 
                         <div class="dictionary-item-buttons listen">
-                            <i class="fas fa-edit edit-actual-word edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
-                            <i class="fas fa-check save-edit disabled" data-inputid="${counter}_1" data-wordid="1"></i>
-                            <i class="fas fa-volume-up listening-mode disabled" data-inputid="${counter}_1" data-wordid="1"></i>
+                            <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
+                            <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
+                            <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
                         </div>
                 </div>
             </div>
 
             <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
-                <i class="fas fa-trash edit-actual-word remove disabled" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" ></i>
+                <i class="fas fa-trash edit-actual-word remove dislay-none" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" ></i>
             </div>
         </div>
         `
@@ -1480,7 +1513,17 @@ function renderDinctionaryElements(renderArray) {
     removeSelectedWord();
     readSelectedWord();
 
-    renderPagination(state.dictionaries[state.dictionaryID].lexicon); //ok
+    //sliceArray(renderArray);
+    //renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
+
+
+    if (state.filterArray.length > 0) {
+        renderPaginationFooter(state.filterArray); //ok
+    }
+    else {
+        renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
+
+    };
 
 
 }
@@ -1496,14 +1539,14 @@ function enabledEditorMode() {
         if (editorModeBtn.checked) {
             state.editDictionaryMode = true;
             for (const button of editBtn) {
-                button.classList.remove("disabled");
+                button.classList.remove("dislay-none");
                 showDialogPanel(0);
             }
         }
         else {
             state.editDictionaryMode = false;
             for (const button of editBtn) {
-                button.classList.add("disabled");
+                button.classList.add("dislay-none");
             }
         }
     })
@@ -1526,14 +1569,14 @@ function enabledListeningMode() {
         if (listeningModeButton.checked) {
             state.listeningMode = true;
             for (const button of listenBtn) {
-                button.classList.remove("disabled");
+                button.classList.remove("dislay-none");
                 enabledEditorMode();
             }
         }
         else {
             state.listeningMode = false;
             for (const button of listenBtn) {
-                button.classList.add("disabled");
+                button.classList.add("dislay-none");
             }
         }
     })
@@ -1564,14 +1607,14 @@ function editSelectedWord() {
                 inputID = button.dataset.inputid;
 
                 console.log(inputID);
-                button.classList.add("disabled");
+                button.classList.add("dislay-none");
 
 
                 var saveButtons = document.querySelectorAll('.save-edit');
 
                 for (const saveBtn of saveButtons) {
                     if (saveBtn.dataset.inputid === inputID) {
-                        saveBtn.classList.remove("disabled");
+                        saveBtn.classList.remove("dislay-none");
                     }
                 }
 
@@ -1579,7 +1622,7 @@ function editSelectedWord() {
 
                 for (const input of inputs) {
                     if (input.dataset.inputid === inputID) {
-                        input.classList.remove("disabled");
+                        input.classList.remove("dislay-none");
                     }
                 }
 
@@ -1587,7 +1630,7 @@ function editSelectedWord() {
 
                 for (const label of labels) {
                     if (label.dataset.inputid === inputID) {
-                        label.classList.add("disabled");
+                        label.classList.add("dislay-none");
                     }
                 }
             }
@@ -1640,13 +1683,13 @@ function saveEditedWord() {
             editorModeButton.disabled = false;
 
             inputID = button.dataset.inputid;
-            button.classList.add("disabled");
+            button.classList.add("dislay-none");
 
             var newInput;
 
             for (const input of inputs) {
                 if (input.dataset.inputid === inputID) {
-                    input.classList.add("disabled");
+                    input.classList.add("dislay-none");
                     newInput = input.value;
                 }
             }
@@ -1654,7 +1697,7 @@ function saveEditedWord() {
             for (const label of labels) {
 
                 if (label.dataset.inputid === inputID) {
-                    label.classList.remove("disabled");
+                    label.classList.remove("dislay-none");
                     label.innerHTML = newInput;
 
                 }
@@ -1663,7 +1706,7 @@ function saveEditedWord() {
             for (const buton of editBtn) {
 
                 if (buton.dataset.inputid === inputID) {
-                    buton.classList.remove("disabled");
+                    buton.classList.remove("dislay-none");
 
                 }
             }
@@ -1754,6 +1797,7 @@ function loadDictionarySelector() {
     var content = document.querySelector("#dictionary-name-select");
     content.innerHTML = '';
     counter = 0;
+
     Object.values(state.dictionaries).map(item => {
         content.innerHTML += `<option value = "${counter}" data-dictid="${item.autoID}">${item.dictionaryName}</option>`;
         counter++;
@@ -1815,7 +1859,7 @@ function createExcerciseRunTimeDDList(contener) {
             <select class="form-select" id="runtime-name-select">
             </select>
         </div>
-        <div class="mb-3 disabled" id="set-word-count-section">
+        <div class="mb-3 dislay-none" id="set-word-count-section">
             <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
             <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value = "${wordCount}">
         </div>
@@ -1854,13 +1898,13 @@ function runtimeNameSelectmethod() {
     runtimeNameSelect.addEventListener("change", () => {
 
         if (runtimeNameSelect.value == 1) {
-            countManualBox.classList.remove("disabled");
+            countManualBox.classList.remove("dislay-none");
             // Érték adása az input boxhoz!
             setCountManual.value = wordCount;
             updateRunTimeCount();
         }
         else {
-            countManualBox.classList.add("disabled");
+            countManualBox.classList.add("dislay-none");
         }
     })
 }
@@ -2192,11 +2236,11 @@ function hideAnswerBox() {
 }
 
 function hideQuestionBox() {
-    questionBox.classList.add("disabled");
+    questionBox.classList.add("dislay-none");
 }
 
 function showQuestionBox() {
-    questionBox.classList.remove("disabled");
+    questionBox.classList.remove("dislay-none");
 }
 
 
@@ -2214,15 +2258,13 @@ function startSpeech(language, text) {
 }
 
 
-function renderPagination(array) {
-
+function renderPaginationFooter(array) {
 
     var counterBlock = document.getElementById('counter-block');
     var paginationBlock = document.getElementById('pagination-block');
 
-
-    var countOf = state.filterArray.length > 0 ? state.filterArray.length : array.length;
-
+    //var countOf = state.filterArray.length > 0 ? state.filterArray.length : array.length;
+    var countOf = state.filterArray.length > 0 ? state.filterArray.length : state.pagination.slicedArray.length;
 
     counterBlock.innerHTML = `        
         <div class="element-counts align-items-center">
@@ -2230,42 +2272,80 @@ function renderPagination(array) {
         </div>
     `
 
-
-
-    var contentCount = 6;
-    var arrLength = array.length; // 36
-    var pages = Math.ceil(arrLength / contentCount); // 8
-
-
-
-    console.log('arrLength', arrLength);
-    console.log('pages', pages);
-
     paginationBlock.innerHTML = `
         <nav aria-label="Page navigation example">
             <ul class="pagination" id="page-items">
-                <li class="page-item"><span class="page-link">&laquo;</span></li>
+                <li class="page-item disabled"><span class="page-link nav">&laquo;</span></li>
             </ul>
         </nav>
     `
 
-    fillPages(pages);
+    renderPaginationButtons(array);
 
 }
 
-function fillPages(pages) {
+function renderPaginationButtons(array) {
+
+    var pages = Math.ceil(array.length / state.pagination.itemsPerPage);
 
     var paginationPages = document.getElementById('page-items');
 
-    for (let i = 1; i <= pages; i++) {
-        paginationPages.innerHTML += `<li class="page-item"><span class="page-link" data-btnID="${generateID_short()}">${i}</span></li>
+    for (let i = 0; i < pages; i++) {
+        paginationPages.innerHTML += `
+        <li class="page-item ${state.pagination.selectedPageIndex === i ? "active" : ""}">
+        <span class="page-link button" data-btnID="${generateID_short()}">${i + 1}</span></li>
         `
     }
 
-    paginationPages.innerHTML += `
-    <li class="page-item"><span class="page-link">&raquo;</span></li>
-    `
+    paginationPages.innerHTML += `<li class="page-item disabled"><span class="page-link nav">&raquo;</span></li>`
 
+    navButtonsEvent(array);
+}
+
+function navButtonsEvent(array) {
+    var navButtons = document.querySelectorAll('.page-link.button');
+
+    for (let j = 0; j < navButtons.length; j++) {
+        navButtons[j].addEventListener('click', () => {
+            navigatePagination(j, array);
+        })
+    }
+}
+
+function sliceArray(array) {
+
+    state.pagination.slicedArray = array.slice(0, state.pagination.itemsPerPage);
+
+}
+
+function navigatePagination(selectedPageIndex, actualArray) {
+
+    state.pagination.selectedPageIndex = selectedPageIndex;
+    const start = state.pagination.itemsPerPage * selectedPageIndex;
+    const end = start + state.pagination.itemsPerPage;
+    state.pagination.slicedArray = actualArray.slice(start, end);
+
+    state.pagination.slicedArray = state.filtered ? state.filterArray.slice(start, end) : actualArray.slice(start, end);
+
+    setPaginationMethod();
+
+}
+
+function setPaginationMethod() {
+
+    switch (state.pagination.location) {
+        case 0:
+            renderDictionaryList(state.pagination.slicedArray);
+
+            break;
+        case 1:
+            renderDictionaryElements(state.pagination.slicedArray);
+
+            break;
+
+        default:
+            break;
+    }
 }
 
 ///** RANDOM ID GENERATOR */ //
