@@ -780,7 +780,6 @@ function menu_load_dictionaries() {
         langContent.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
         langCounter++;
     });
-    /** */
 
 
     renderDictionaryList(state.dictionaries);
@@ -886,15 +885,15 @@ function resetFilteredState() {
 
 function renderDictionaryList(renderArray) {
 
+    state.pagination.location = 0;
+
+    renderArray.sort(compareValues("dictionaryName", state.sortBy));
+
     sliceArray(renderArray);
     renderArray = state.pagination.slicedArray;
 
-    state.pagination.location = 0;
-
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
-
-    renderArray.sort(compareValues("dictionaryName", state.sortBy));
 
     Object.values(renderArray).map(dictionary => {
         content.innerHTML +=
@@ -1350,6 +1349,7 @@ function renderDinctionaryContent() {
             sortIcon.classList.add('fa-sort-alpha-up');
             state.sortBy = 'asc';
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+            state.pagination.selectedPageIndex = 0;
             renderDictionaryElements(renderRoot);
 
         }
@@ -1358,6 +1358,7 @@ function renderDinctionaryContent() {
             sortIcon.classList.add('fa-sort-alpha-down');
             state.sortBy = 'desc';
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+            state.pagination.selectedPageIndex = 0;
             renderDictionaryElements(renderRoot);
         }
 
@@ -1368,6 +1369,7 @@ function renderDinctionaryContent() {
         setColumnID(selectColumnBtn_1);
 
         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+        state.pagination.selectedPageIndex = 0;
         renderDictionaryElements(renderRoot);
 
     })
@@ -1376,6 +1378,7 @@ function renderDinctionaryContent() {
         setColumnID(selectColumnBtn_2);
 
         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+        state.pagination.selectedPageIndex = 0;
         renderDictionaryElements(renderRoot);
     })
 
@@ -1447,6 +1450,8 @@ function searchInLexicon(input) {
 function renderDictionaryElements(renderArray) {
 
     state.pagination.location = 1;
+    renderArray.sort(compareValues(state.columnID, state.sortBy));
+
     sliceArray(renderArray);
     renderArray = state.pagination.slicedArray;
 
@@ -1454,7 +1459,6 @@ function renderDictionaryElements(renderArray) {
     resetEditorMode();
 
 
-    renderArray.sort(compareValues(state.columnID, state.sortBy));
 
     var dictionaryItemList = document.getElementById('dictionary-item-list');
 
