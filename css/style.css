@@ -1099,7 +1099,7 @@ main {
     flex-wrap: wrap;
   }
   #dictionary-item-list{
-    max-height: 80vh !important;
+    max-height: 70vh !important;
   }
 
   .dictionary-item-words {
