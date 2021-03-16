@@ -795,6 +795,7 @@ main {
 
 .answer-box-value.correct {
   background-color: rgb(35, 160, 56);
+  
 }
 
 .correct > p,
@@ -806,9 +807,11 @@ main {
   background-color: rgb(209, 49, 34);
 }
 
-.disabled {
+
+.dislay-none {
   display: none;
 }
+
 
 .button-box {
   display: flex;
