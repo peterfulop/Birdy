@@ -1771,10 +1771,14 @@ function createDictionaryDDList(contener) {
 
 function loadDictionarySelector() {
 
+    state.dictionaries.sort(compareValues("dictionaryName", "asc"));
+
     var content = document.querySelector("#dictionary-name-select");
     content.innerHTML = '';
+    counter = 0;
     Object.values(state.dictionaries).map(item => {
-        content.innerHTML += `<option value = "${item.id - 1}" data-dictid="${item.autoID}">${item.dictionaryName}</option>`;
+        content.innerHTML += `<option value = "${counter}" data-dictid="${item.autoID}">${item.dictionaryName}</option>`;
+        counter++;
     });
 
     dictionaryNameSelect = document.querySelector("#dictionary-name-select");
