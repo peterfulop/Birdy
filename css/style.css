@@ -795,7 +795,7 @@ main {
 
 .answer-box-value.correct {
   background-color: rgb(35, 160, 56);
-  
+
 }
 
 .correct > p,
@@ -1097,6 +1097,9 @@ main {
 
   .dictionary-item-words {
     flex-wrap: wrap;
+  }
+  #dictionary-item-list{
+    max-height: 80vh !important;
   }
 
   .dictionary-item-words {

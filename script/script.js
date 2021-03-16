@@ -813,7 +813,6 @@ function menu_load_dictionaries() {
             filterBy(state.dictionaries, "dictionaryName", searchDictionaryInput.value);
 
             if (state.filtered) {
-
                 renderDictionaryList(state.filterArray);
                 clearfilterBtn.classList.remove("d-none");
                 clearfilterBtn.classList.add("d-flex");
@@ -859,6 +858,7 @@ function menu_load_dictionaries() {
             sortIcon.classList.remove('fa-sort-alpha-down');
             sortIcon.classList.add('fa-sort-alpha-up');
             state.sortBy = 'asc';
+            state.pagination.selectedPageIndex = 0;
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
             renderDictionaryList(renderRoot);
         }
@@ -867,6 +867,7 @@ function menu_load_dictionaries() {
             sortIcon.classList.remove('fa-sort-alpha-up');
             sortIcon.classList.add('fa-sort-alpha-down');
             state.sortBy = 'desc';
+            state.pagination.selectedPageIndex = 0;
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
             renderDictionaryList(renderRoot);
         }
