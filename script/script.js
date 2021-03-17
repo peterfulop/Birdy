@@ -1484,7 +1484,7 @@ function renderDictionaryElements(renderArray) {
 
     var counter = 0;
 
-    var index = state.filtered ? 1 : (state.pagination.selectedPageIndex) * state.pagination.pages - state.pagination.selectedPageIndex + 1;
+    var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
 
     Object.values(renderArray).map(item => {
 
@@ -2310,7 +2310,11 @@ function renderPaginationFooter(array) {
 
     state.pagination.pages = Math.ceil(array.length / state.pagination.itemsPerPage);
 
-    var countOf = state.filted ? state.filterArray.length : state.pagination.slicedArray.length;
+    var linesFrom = state.pagination.slicedArray.length + state.pagination.slicedArray.length * state.pagination.selectedPageIndex;
+
+    var countOf = state.filtered ? state.filterArray.length : linesFrom;
+
+
 
     counterBlock.innerHTML = `        
         <div class="element-counts align-items-center">
