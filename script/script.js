@@ -13,14 +13,12 @@ const state = {
     sortBy: 'asc',
     columnID: 'word_1',
     pagination: {
+        pages: 0,
         selectedPageIndex: 0,
+        visisibledPages: [0, 1, 2],
         slicedArray: [],
         itemsPerPage: 6,
         location: 0,
-    },
-    paginationLocation: {
-        0: 'renderDictionaryList(state.pagination.slicedArray)',
-        1: 'renderDictionaryElements(state.pagination.slicedArray)'
     }
 }
 
@@ -38,9 +36,12 @@ function resetState() {
     state.sortBy = 'asc';
     state.columnID = 'word_1';
     state.pagination = {
+        pages: 0,
         selectedPageIndex: 0,
+        visisibledPages: [0, 1, 2],
         slicedArray: [],
-        itemsPerPage: 6
+        itemsPerPage: 6,
+        location: 0
     };
 }
 
@@ -1466,13 +1467,18 @@ function renderDictionaryElements(renderArray) {
     dictionaryItemList.innerHTML = '';
 
     var counter = 0;
+
     Object.values(renderArray).map(item => {
+
+
+        var index = (state.pagination.selectedPageIndex) * state.pagination.pages - state.pagination.selectedPageIndex + 1;
+
 
         var randomIndex = generateID_short();
         dictionaryItemList.innerHTML += `
         <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
             <div class="dictionary-item-count">
-                <span>${counter + 1}.</span>
+                <span>${index + counter}.</span>
             </div>
             <div class="dictionary-item-words">
                 <div class="dictionary-first-word mr-1">
@@ -2267,6 +2273,8 @@ function renderPaginationFooter(array) {
     var counterBlock = document.getElementById('counter-block');
     var paginationBlock = document.getElementById('pagination-block');
 
+    state.pagination.pages = Math.ceil(array.length / state.pagination.itemsPerPage);
+
     //var countOf = state.filterArray.length > 0 ? state.filterArray.length : array.length;
     var countOf = state.filterArray.length > 0 ? state.filterArray.length : state.pagination.slicedArray.length;
 
@@ -2279,7 +2287,7 @@ function renderPaginationFooter(array) {
     paginationBlock.innerHTML = `
         <nav aria-label="Page navigation example">
             <ul class="pagination" id="page-items">
-                <li class="page-item disabled"><span class="page-link nav">&laquo;</span></li>
+                <li id="page-item-prev-arrow" class="cursor-pointer page-item"><span class="page-link nav">&laquo;</span></li>
             </ul>
         </nav>
     `
@@ -2290,23 +2298,25 @@ function renderPaginationFooter(array) {
 
 function renderPaginationButtons(array) {
 
-    var pages = Math.ceil(array.length / state.pagination.itemsPerPage);
 
     var paginationPages = document.getElementById('page-items');
 
-    for (let i = 0; i < pages; i++) {
+    for (let i = 0; i < state.pagination.pages; i++) {
         paginationPages.innerHTML += `
-        <li class="page-item ${state.pagination.selectedPageIndex === i ? "active" : ""}">
-        <span class="page-link button" data-btnID="${generateID_short()}">${i + 1}</span></li>
+        <li class="cursor-pointer page-item ${state.pagination.selectedPageIndex === i ? "active" : ""}">
+        <span class="page-link button ${state.pagination.visisibledPages.includes(i) ? "" : "d-none"}" data-btnID="${i}">${i + 1}</span></li>
         `
     }
 
-    paginationPages.innerHTML += `<li class="page-item disabled"><span class="page-link nav">&raquo;</span></li>`
+    paginationPages.innerHTML += `<li id="page-item-next-arrow" class="cursor-pointer page-item ${state.pagination.pages <= 3 ? "disabled" : ""}"><span class="page-link nav">&raquo;</span></li>`
 
     navButtonsEvent(array);
+    navNextBtnEvent(array);
+    navPrevBtnEvent(array);
 }
 
 function navButtonsEvent(array) {
+
     var navButtons = document.querySelectorAll('.page-link.button');
 
     for (let j = 0; j < navButtons.length; j++) {
@@ -2314,7 +2324,74 @@ function navButtonsEvent(array) {
             navigatePagination(j, array);
         })
     }
+
+
+
 }
+
+function navNextBtnEvent(array) {
+
+    var pageItemNext = document.getElementById('page-item-next-arrow');
+
+    pageItemNext.addEventListener('click', () => {
+
+        if (state.pagination.visisibledPages[2] + 2 <= state.pagination.pages) {
+
+
+            for (let m = 0; m < state.pagination.visisibledPages.length; m++) {
+                state.pagination.visisibledPages[m] += 1;
+            }
+
+
+            showHideNavButtons();
+
+            navigatePagination(state.pagination.selectedPageIndex, array);
+        }
+
+    })
+}
+
+function navPrevBtnEvent(array) {
+
+    var pageItemPrev = document.getElementById('page-item-prev-arrow');
+
+    pageItemPrev.addEventListener('click', () => {
+
+        if (state.pagination.visisibledPages[0] > 0) {
+
+            for (let m = 0; m < state.pagination.visisibledPages.length; m++) {
+                state.pagination.visisibledPages[m] -= 1;
+            }
+
+            showHideNavButtons();
+
+            navigatePagination(state.pagination.selectedPageIndex, array);
+        }
+
+    })
+}
+
+
+function showHideNavButtons() {
+
+    var navButtons = document.querySelectorAll('.page-link.button');
+
+    state.pagination.selectedPageIndex = state.pagination.visisibledPages[2];
+
+    for (let i = 0; i < navButtons.length; i++) {
+
+        var id = parseInt(navButtons[i].dataset.btnid);
+
+        if (state.pagination.visisibledPages.includes(id)) {
+            navButtons[i].classList.remove('d-none');
+        }
+        else {
+            navButtons[i].classList.add('d-none');
+        }
+    }
+
+}
+
 
 function sliceArray(array) {
 
@@ -2344,7 +2421,6 @@ function setPaginationMethod() {
             break;
         case 1:
             renderDictionaryElements(state.pagination.slicedArray);
-
             break;
 
         default:
