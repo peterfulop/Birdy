@@ -868,6 +868,7 @@ function menu_load_dictionaries() {
             state.sortBy = 'asc';
             state.pagination.selectedPageIndex = 0;
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
+            resetPaginationState();
             renderDictionaryList(renderRoot);
         }
         else {
@@ -877,6 +878,7 @@ function menu_load_dictionaries() {
             state.sortBy = 'desc';
             state.pagination.selectedPageIndex = 0;
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
+            resetPaginationState();
             renderDictionaryList(renderRoot);
         }
 
@@ -1361,6 +1363,7 @@ function renderDinctionaryContent() {
             state.sortBy = 'asc';
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
             state.pagination.selectedPageIndex = 0;
+            resetPaginationState();
             renderDictionaryElements(renderRoot);
 
         }
@@ -1370,6 +1373,7 @@ function renderDinctionaryContent() {
             state.sortBy = 'desc';
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
             state.pagination.selectedPageIndex = 0;
+            resetPaginationState();
             renderDictionaryElements(renderRoot);
         }
 
@@ -1381,6 +1385,7 @@ function renderDinctionaryContent() {
 
         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
         state.pagination.selectedPageIndex = 0;
+        resetPaginationState();
         renderDictionaryElements(renderRoot);
 
     })
@@ -1390,6 +1395,7 @@ function renderDinctionaryContent() {
 
         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
         state.pagination.selectedPageIndex = 0;
+        resetPaginationState();
         renderDictionaryElements(renderRoot);
     })
 
