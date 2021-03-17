@@ -46,6 +46,11 @@ function resetState() {
 }
 
 
+function resetPaginationState() {
+    state.pagination.selectedPageIndex = 0;
+    state.pagination.visisibledPages = [0, 1, 2];
+}
+
 window.onload = function () {
     renderFirst();
     runHttpRequest();
@@ -814,6 +819,7 @@ function menu_load_dictionaries() {
             filterBy(state.dictionaries, "dictionaryName", searchDictionaryInput.value);
 
             if (state.filtered) {
+                resetPaginationState();
                 renderDictionaryList(state.filterArray);
                 clearfilterBtn.classList.remove("d-none");
                 clearfilterBtn.classList.add("d-flex");
@@ -837,6 +843,7 @@ function menu_load_dictionaries() {
         renderDictionaryList(state.dictionaries);
         clearfilterBtn.classList.add("d-none");
         searchDictionaryInput.value = "";
+        resetPaginationState();
         resetFilteredState();
         sliceArray(state.dictionaries);
         renderPaginationFooter(state.dictionaries);
@@ -882,6 +889,7 @@ function menu_load_dictionaries() {
 function resetFilteredState() {
     state.filterArray = [];
     state.filtered = false;
+    //state.pagination.visisibledPages = [0, 1, 2];
 
 }
 
@@ -923,7 +931,7 @@ function renderDictionaryList(renderArray) {
     selectDictionaryMethod();
     // sliceArray(renderArray);
 
-    if (state.filterArray.length > 0) {
+    if (state.filtered) {
         renderPaginationFooter(state.filterArray)
     }
     else {
@@ -1299,7 +1307,8 @@ function renderDinctionaryContent() {
 
             searchInLexicon(searchInput);
 
-            if (state.filterArray.length > 0) {
+            if (state.filtered) {
+                resetPaginationState();
                 renderDictionaryElements(state.filterArray);
                 clearfilterBtn.classList.remove("d-none");
                 clearfilterBtn.classList.add("d-flex");
@@ -1317,7 +1326,6 @@ function renderDinctionaryContent() {
             renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
             clearfilterBtn.classList.add("d-none");
             searchAlert.classList.add("d-none");
-
             state.filterArray = [];
         }
     }
@@ -1325,11 +1333,12 @@ function renderDinctionaryContent() {
     closeSearchAlert();
 
     clearfilterBtn.onclick = function () {
-        renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon)
 
+        renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon)
         clearfilterBtn.classList.add("d-none");
         searchInput.value = "";
         resetFilteredState();
+        resetPaginationState();
         sliceArray(state.dictionaries[state.dictionaryID].lexicon);
         renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
     }
@@ -1457,9 +1466,8 @@ function renderDictionaryElements(renderArray) {
     sliceArray(renderArray);
     renderArray = state.pagination.slicedArray;
 
-    resetListeningMode();
+    //resetListeningMode();
     resetEditorMode();
-
 
 
     var dictionaryItemList = document.getElementById('dictionary-item-list');
@@ -1468,11 +1476,9 @@ function renderDictionaryElements(renderArray) {
 
     var counter = 0;
 
+    var index = state.filtered ? 1 : (state.pagination.selectedPageIndex) * state.pagination.pages - state.pagination.selectedPageIndex + 1;
+
     Object.values(renderArray).map(item => {
-
-
-        var index = (state.pagination.selectedPageIndex) * state.pagination.pages - state.pagination.selectedPageIndex + 1;
-
 
         var randomIndex = generateID_short();
         dictionaryItemList.innerHTML += `
@@ -1516,7 +1522,7 @@ function renderDictionaryElements(renderArray) {
 
 
     enabledEditorMode();
-    enabledListeningMode();
+    isEnabledListeningMode();
 
     editSelectedWord();
     saveEditedWord();
@@ -1527,7 +1533,7 @@ function renderDictionaryElements(renderArray) {
     //renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
 
 
-    if (state.filterArray.length > 0) {
+    if (state.filtered) {
         renderPaginationFooter(state.filterArray); //ok
     }
     else {
@@ -1570,27 +1576,48 @@ function resetEditorMode() {
 }
 
 
-function enabledListeningMode() {
+function isEnabledListeningMode() {
 
     var listeningModeButton = document.getElementById('listen-content-checker');
     var listenBtn = document.querySelectorAll('.listening-mode');
 
+
+    if (state.listeningMode) {
+        enabledListeningMode(listenBtn);
+    }
+    else {
+        disabledListeningMode(listenBtn);
+    }
+
     listeningModeButton.addEventListener("change", () => {
+
         if (listeningModeButton.checked) {
             state.listeningMode = true;
-            for (const button of listenBtn) {
-                button.classList.remove("dislay-none");
-                enabledEditorMode();
-            }
+            enabledListeningMode(listenBtn)
         }
         else {
             state.listeningMode = false;
-            for (const button of listenBtn) {
-                button.classList.add("dislay-none");
-            }
+            disabledListeningMode(listenBtn);
         }
     })
 }
+
+function enabledListeningMode(listenBtn) {
+
+    for (const button of listenBtn) {
+        button.classList.remove("dislay-none");
+    }
+
+}
+
+function disabledListeningMode(listenBtn) {
+
+    for (const button of listenBtn) {
+        button.classList.add("dislay-none");
+    }
+
+}
+
 
 function resetListeningMode() {
 
@@ -2275,8 +2302,7 @@ function renderPaginationFooter(array) {
 
     state.pagination.pages = Math.ceil(array.length / state.pagination.itemsPerPage);
 
-    //var countOf = state.filterArray.length > 0 ? state.filterArray.length : array.length;
-    var countOf = state.filterArray.length > 0 ? state.filterArray.length : state.pagination.slicedArray.length;
+    var countOf = state.filted ? state.filterArray.length : state.pagination.slicedArray.length;
 
     counterBlock.innerHTML = `        
         <div class="element-counts align-items-center">
