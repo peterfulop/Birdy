@@ -1,3 +1,4 @@
+
 const state = {
     screenMode: 0,
     activeMenu: dashboardMenuItems[0].buttonID,
@@ -17,7 +18,7 @@ const state = {
         selectedPageIndex: 0,
         visisibledPages: [0, 1, 2],
         slicedArray: [],
-        itemsPerPage: 6,
+        itemsPerPage: 10,
         location: 0,
     }
 }
@@ -40,7 +41,7 @@ function resetState() {
         selectedPageIndex: 0,
         visisibledPages: [0, 1, 2],
         slicedArray: [],
-        itemsPerPage: 6,
+        itemsPerPage: 10,
         location: 0
     };
 }
@@ -55,6 +56,7 @@ window.onload = function () {
     renderFirst();
     runHttpRequest();
 };
+
 
 function renderFirst() {
 

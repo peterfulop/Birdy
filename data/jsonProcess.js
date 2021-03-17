@@ -63,12 +63,30 @@ function sendRequest(url, method, body, callback) {
 //     xhttp.send();
 // }
 
-function jsonToArray(url, myMethod, array) {
 
-    sendRequest(url, 'GET', null, function (responseText) {
-        myMethod(array, responseText);
-    })
+// Korábbi, működő verzió!
+// function jsonToArray(url, myMethod, array) {
 
+//     sendRequest(url, 'GET', null, function (responseText) {
+//         myMethod(array, responseText);
+//     })
+
+// }
+
+
+
+async function fetchProcess(url, createObjectsMethod, arrayTo, finishLexiconMethod) {
+
+    var response = await fetch(url);
+
+    if (!response.ok) {
+        alert('Keresés sikertelen!');
+        return;
+    }
+    var response = await response.json();
+
+    createObjectsMethod(arrayTo, response);
+    finishLexiconMethod();
 }
 
 
@@ -115,10 +133,12 @@ function groupByKey(array, key) {
 
 function runHttpRequest() {
 
-    jsonToArray("./data/db_words.json", createDictionaryElementObject, array_words);
-    jsonToArray("./data/db_dictionaries.json", createDictionaryObject, array_dictionaries);
+    // jsonToArray("./data/db_words.json", createDictionaryElementObject, array_words);
+    //jsonToArray("./data/db_dictionaries.json", createDictionaryObject, array_dictionaries);
+    //setTimeout(fillLexiconArrays, 100);
 
-    setTimeout(fillLexiconArrays, 100);
+    fetchProcess('./data/db_words.json', createDictionaryElementObject, array_words, fillLexiconArrays);
+    fetchProcess('./data/db_dictionaries.json', createDictionaryObject, array_dictionaries, fillLexiconArrays);
 
 }
 
