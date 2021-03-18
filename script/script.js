@@ -3,6 +3,7 @@ const state = {
     screenMode: 0,
     activeMenu: dashboardMenuItems[0].buttonID,
     selectedDictionary: "",
+    selectedDictionaryLength: 0,
     dictionaryID: "",
     dictionaryName: "",
     dictionaries: array_dictionaries,
@@ -18,7 +19,8 @@ const state = {
         selectedPageIndex: 0,
         visisibledPages: [0, 1, 2],
         slicedArray: [],
-        itemsPerPage: 10,
+        itemsPerPage: 6,
+        itemNumber: 0,
         location: 0,
     }
 }
@@ -41,7 +43,8 @@ function resetState() {
         selectedPageIndex: 0,
         visisibledPages: [0, 1, 2],
         slicedArray: [],
-        itemsPerPage: 10,
+        itemsPerPage: 6,
+        itemNumber: 0,
         location: 0
     };
 }
@@ -900,6 +903,7 @@ function resetFilteredState() {
 function renderDictionaryList(renderArray) {
 
     state.pagination.location = 0;
+    state.selectedDictionaryLength = state.dictionaries.length;
 
     renderArray.sort(compareValues("dictionaryName", state.sortBy));
 
@@ -908,6 +912,9 @@ function renderDictionaryList(renderArray) {
 
     var content = document.querySelector(".dictionary-list-items");
     content.innerHTML = '';
+
+    var counter = 0;
+    var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
 
     Object.values(renderArray).map(dictionary => {
         content.innerHTML +=
@@ -930,6 +937,9 @@ function renderDictionaryList(renderArray) {
                 
             </div>
         `
+
+        state.pagination.itemNumber = index + counter;
+        counter++;
     });
 
     selectDictionaryMethod();
@@ -1166,7 +1176,6 @@ function openDictionary() {
     for (let i = 0; i < state.dictionaries.length; i++) {
 
         if (state.dictionaries[i].autoID === state.selectedDictionary) {
-
             state.dictionaryID = i;
             state.dictionaryName = array_dictionaries[i].dictionaryName;
             renderDinctionaryContent();
@@ -1469,6 +1478,8 @@ function searchInLexicon(input) {
 function renderDictionaryElements(renderArray) {
 
     state.pagination.location = 1;
+    state.selectedDictionaryLength = getActualDictionaryLength();
+
     renderArray.sort(compareValues(state.columnID, state.sortBy));
 
     sliceArray(renderArray);
@@ -1483,7 +1494,6 @@ function renderDictionaryElements(renderArray) {
     dictionaryItemList.innerHTML = '';
 
     var counter = 0;
-
     var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
 
     Object.values(renderArray).map(item => {
@@ -1523,6 +1533,7 @@ function renderDictionaryElements(renderArray) {
             </div>
         </div>
         `
+        state.pagination.itemNumber = index + counter;
         counter++;
     });
 
@@ -2302,6 +2313,15 @@ function startSpeech(language, text) {
 
 }
 
+function getActualDictionaryLength() {
+    var actual = state.dictionaries.filter(elem => {
+        return elem.autoID == state.selectedDictionary
+    });
+
+    return actual[0].lexicon.length;
+}
+
+
 
 function renderPaginationFooter(array) {
 
@@ -2310,15 +2330,13 @@ function renderPaginationFooter(array) {
 
     state.pagination.pages = Math.ceil(array.length / state.pagination.itemsPerPage);
 
-    var linesFrom = state.pagination.slicedArray.length + state.pagination.slicedArray.length * state.pagination.selectedPageIndex;
 
-    var countOf = state.filtered ? state.filterArray.length : linesFrom;
-
-
+    var countOf = state.filtered ? state.filterArray.length : state.pagination.itemNumber;
+    var countAll = state.selectedDictionaryLength;
 
     counterBlock.innerHTML = `        
         <div class="element-counts align-items-center">
-            <small>${countOf}/${array.length}</small>
+            <small>${countOf}/${countAll}</small>
         </div>
     `
 
