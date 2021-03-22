@@ -128,15 +128,14 @@ main {
   justify-content: center;
 }
 
-.sticky{
+.sticky {
   position: sticky;
-    top: 0;
-    background: #d1e5e8;
+  top: 0;
+  background: #d1e5e8;
 }
 
 .app {
   background: white;
-  width: 60%;
   max-width: 1140px;
   width: 920px;
   margin: 2rem;
@@ -287,7 +286,7 @@ main {
 }
 
 .links {
-  margin-bottom: 2rem;
+  margin: 2rem 0;
   display: flex;
   flex-direction: column;
 }
@@ -363,7 +362,6 @@ main {
   ); */
   box-shadow: 3px 3px 20px rgba(122, 122, 122, 0.1);
   background: #e8f5f7;
-
   border-radius: 1rem;
 }
 
@@ -400,7 +398,6 @@ main {
   border-radius: 1rem;
   transition: 2s;
 }
-
 
 .mobile-menu-icon {
   display: none;
@@ -795,7 +792,6 @@ main {
 
 .answer-box-value.correct {
   background-color: rgb(35, 160, 56);
-
 }
 
 .correct > p,
@@ -807,11 +803,9 @@ main {
   background-color: rgb(209, 49, 34);
 }
 
-
 .dislay-none {
   display: none;
 }
-
 
 .button-box {
   display: flex;
@@ -1024,6 +1018,66 @@ main {
   color: black;
 }
 
+.bubble.default {
+  background: var(--default-icon-color);
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 5px 15px;
+  margin: 5px 3px;
+  align-items: center;
+  transition: background-color 0.5s;
+}
+.bubble.default:hover {
+  transition: background-color 0.5s;
+  background: #426696;
+}
+
+.bubble.chart {
+  background: #4879b1;
+  color: white;
+  cursor: pointer;
+  padding: 5px 15px;
+  margin: 10px 0;
+  align-items: center;
+  transition: background-color 0.5s;
+}
+
+.bubble.chart:hover {
+  background: #2a5383;
+  transition: background-color 0.5s;
+}
+
+.bubble.note {
+  background: rgba(150, 150, 150, 0.3);
+  color: rgb(255, 255, 255);
+  padding: 5px 15px;
+  margin: 5px 0;
+  border-radius: 20px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  align-items: center;
+  transition: background-color 0.5s;
+}
+
+.bubble.note:hover {
+  background: rgba(150, 150, 150, 0.5);
+  /*color: black;*/
+  transition: background-color 0.5s;
+}
+
+#note-list-block {
+  width: 100%;
+  max-height: 300px;
+  margin-top: 0.5rem;
+  overflow: auto;
+}
+
+.pinned {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
 /* MEDIA QUERIES */
 
 @media (max-width: 780px) {
@@ -1062,12 +1116,11 @@ main {
 }
 
 @media (max-width: 500px) {
-
-.status{
-  top:0;
-  position: sticky;
-  z-index: 10;
-  background: #e8f5f7;
+  .status {
+    top: 0;
+    position: sticky;
+    z-index: 10;
+    background: #e8f5f7;
   }
 
   .app {
@@ -1098,7 +1151,7 @@ main {
   .dictionary-item-words {
     flex-wrap: wrap;
   }
-  #dictionary-item-list{
+  #dictionary-item-list {
     max-height: 70vh !important;
   }
 

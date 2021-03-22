@@ -869,57 +869,5 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021.03.08 20:10"
-  },
-  {
-    "ID": 68,
-    "DictionaryID": 5,
-    "Article_1": "",
-    "Word_1": "body-1",
-    "Plural_1": "",
-    "Article_2": "",
-    "Word_2": "test-1",
-    "Plural_2": "",
-    "Lang_1": "en-GB",
-    "Lang_2": "hu-HU",
-    "RelaseDate": "2021.03.17 10:00"
-  },
-  {
-    "ID": 69,
-    "DictionaryID": 5,
-    "Article_1": "",
-    "Word_1": "body-2",
-    "Plural_1": "",
-    "Article_2": "",
-    "Word_2": "test-2",
-    "Plural_2": "",
-    "Lang_1": "en-GB",
-    "Lang_2": "hu-HU",
-    "RelaseDate": "2021.03.17 10:00"
-  },
-  {
-    "ID": 70,
-    "DictionaryID": 5,
-    "Article_1": "",
-    "Word_1": "body-3",
-    "Plural_1": "",
-    "Article_2": "",
-    "Word_2": "test-3",
-    "Plural_2": "",
-    "Lang_1": "en-GB",
-    "Lang_2": "hu-HU",
-    "RelaseDate": "2021.03.17 10:00"
-  },
-  {
-    "ID": 71,
-    "DictionaryID": 5,
-    "Article_1": "",
-    "Word_1": "body-4",
-    "Plural_1": "",
-    "Article_2": "",
-    "Word_2": "test-4",
-    "Plural_2": "",
-    "Lang_1": "en-GB",
-    "Lang_2": "hu-HU",
-    "RelaseDate": "2021.03.17 10:00"
   }
 ]
