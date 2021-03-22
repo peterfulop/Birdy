@@ -1,4 +1,3 @@
-
 const state = {
     screenMode: 0,
     activeMenu: dashboardMenuItems[0].buttonID,
@@ -24,6 +23,11 @@ const state = {
         location: 0,
     }
 }
+
+window.onload = function () {
+    renderFirst();
+    runHttpRequest();
+};
 
 
 
@@ -55,10 +59,6 @@ function resetPaginationState() {
     state.pagination.visisibledPages = [0, 1, 2];
 }
 
-window.onload = function () {
-    renderFirst();
-    runHttpRequest();
-};
 
 
 function renderFirst() {
@@ -2330,7 +2330,6 @@ function renderPaginationFooter(array) {
 
     state.pagination.pages = Math.ceil(array.length / state.pagination.itemsPerPage);
 
-
     var countOf = state.filtered ? state.filterArray.length : state.pagination.itemNumber;
     var countAll = state.selectedDictionaryLength;
 
@@ -2343,7 +2342,7 @@ function renderPaginationFooter(array) {
     paginationBlock.innerHTML = `
         <nav aria-label="Page navigation example">
             <ul class="pagination" id="page-items">
-                <li id="page-item-prev-arrow" class="cursor-pointer page-item"><span class="page-link nav">&laquo;</span></li>
+                <li id="page-item-prev-arrow" class="cursor-pointer page-item ${state.pagination.pages <= 3 ? "disabled" : ""}"><span class="page-link nav">&laquo;</span></li>
             </ul>
         </nav>
     `
@@ -2393,13 +2392,12 @@ function navNextBtnEvent(array) {
 
         if (state.pagination.visisibledPages[2] + 2 <= state.pagination.pages) {
 
-
             for (let m = 0; m < state.pagination.visisibledPages.length; m++) {
                 state.pagination.visisibledPages[m] += 1;
             }
 
 
-            showHideNavButtons();
+            showHideNavButtons(true);
 
             navigatePagination(state.pagination.selectedPageIndex, array);
         }
@@ -2419,7 +2417,7 @@ function navPrevBtnEvent(array) {
                 state.pagination.visisibledPages[m] -= 1;
             }
 
-            showHideNavButtons();
+            showHideNavButtons(false);
 
             navigatePagination(state.pagination.selectedPageIndex, array);
         }
@@ -2428,11 +2426,11 @@ function navPrevBtnEvent(array) {
 }
 
 
-function showHideNavButtons() {
+function showHideNavButtons(plus) {
 
     var navButtons = document.querySelectorAll('.page-link.button');
 
-    state.pagination.selectedPageIndex = state.pagination.visisibledPages[2];
+    state.pagination.selectedPageIndex = plus ? state.pagination.selectedPageIndex + 1 : state.pagination.selectedPageIndex - 1
 
     for (let i = 0; i < navButtons.length; i++) {
 

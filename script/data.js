@@ -115,8 +115,6 @@ var dialogObjects = [
     }
 ];
 
-
-
 //'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
 function generateID() {
     return 'xxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -126,9 +124,4 @@ function generateID() {
 }
 
 
-
-
-/**
- * https://csvjson.com/csv2json
- * CSV file convertálása JSON objetummá
- */
+// export { dashboardMenuItems, excerciseTypes, excerciseRunTime, dialogObjects };
