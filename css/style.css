@@ -1018,8 +1018,15 @@ main {
   color: black;
 }
 
-.bubble.default {
+.bubble.word-1-version {
   background: var(--default-icon-color);
+}
+
+.bubble.word-2-version {
+  background: #426696;
+}
+
+.bubble.default {
   color: white;
   border-radius: 20px;
   cursor: pointer;
@@ -1030,7 +1037,7 @@ main {
 }
 .bubble.default:hover {
   transition: background-color 0.5s;
-  background: #426696;
+  background: var(--active-icon-color);
 }
 
 .bubble.chart {

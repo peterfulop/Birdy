@@ -789,7 +789,7 @@ function renderLastAddedWords() {
 
     for (let i = 0; i < 30; i++) {
         contentHTML += `
-            <div class="bubble default history-word-element">
+            <div class="bubble default history-word-element word-1-version">
                 <span class="history-word-1 d-block">${puffer[i].word_1}</span>
                 <span class="history-word-2 d-none">${puffer[i].word_2}</span>
             </div>
@@ -809,12 +809,16 @@ function lastAddedWordHover() {
         word.addEventListener('click', () => {
             if (word.lastElementChild.classList.contains('d-none')) {
                 word.lastElementChild.classList.remove('d-none');
+                word.classList.remove('word-1-version');
                 word.lastElementChild.classList.add('d-flex');
+                word.classList.add('word-2-version');
                 word.firstElementChild.classList.add('d-none');
             }
             else {
                 word.firstElementChild.classList.remove('d-none');
+                word.classList.remove('word-2-version');
                 word.firstElementChild.classList.add('d-flex');
+                word.classList.add('word-1-version');
                 word.lastElementChild.classList.add('d-none');
             }
         })
