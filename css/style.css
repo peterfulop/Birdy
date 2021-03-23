@@ -1078,8 +1078,8 @@ main {
   height: 246px;
   margin-top: 0.5rem;
   overflow: auto;
-  background: rgba(200, 200, 200, 0.2);
-  padding: 1rem;
+  /*background: rgba(200, 200, 200, 0.2);*/
+  /*padding: 1rem;*/
   border-radius: 0.5rem;
 }
 
