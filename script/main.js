@@ -78,7 +78,7 @@ function renderFirst() {
             <div class="circle5 circle"></div>
             <div class="circle6 circle"></div>
         `
-    renderLoginForm();
+    renderLoginPage();
 
 
 }
@@ -160,132 +160,135 @@ var dashboardLinks = document.querySelectorAll(".link");
 var fullScreenButton = document.getElementById("full-screen-button");
 
 
+//#region LOGIN >> login.js
+
+// function renderLoginForm() {
+
+//     resetState();
+
+//     document.getElementById('main-app').innerHTML = `
+
+//         <section class="login-app d-flex justify-content-center" id="login-app-box">
+
+//             <form class="col-10 justify-content-center mb-n2">
+
+//                 <div class="d-flex flex-column align-items-center login-logo-box justify-content-center mb-4"
+//                     id="login-logo-box">
+//                     <img src="./images/avatar.png" alt="logo" id="login-form-logo">
+//                     <h3>LOGIN</h3>
+//                 </div>
+
+//                 <div class="my-3">
+//                     <label for="login-username" class="form-label">Felhasználónév</label>
+//                     <input type="text" class="form-control" id="login-username">
+//                     <div class="form-text"></div>
+//                 </div>
+//                 <div class="mb-3">
+//                     <label for="login-password" class="form-label">Jelszó</label>
+//                     <input type="password" class="form-control" id="login-password" autocomplete="on">
+//                 </div>
+
+//                 <div class="mb-3 form-check">
+//                     <input type="checkbox" class="form-check-input" id="remember-me-checker">
+//                     <label class="form-check-label" for="remember-me-checker">Emlékezz rám!</label>
+//                 </div>
+
+//                 <button type="button" class="btn btn-primary rounded-pill w-100 mb-3">Bejelentkezés</button>
+//                 <button type="button" class="btn btn-light rounded-pill mb-3 w-100" id="register-new-user-button">Regisztráció</button>
+//                 <button type="button" class="btn btn-link rounded-pill mb-3 w-100">Elfelejtett jelszó</button>
+
+//                 <div class="d-flex social-icon-bar align-items-center justify-content-center">
+//                     <div class="social-icon-box"><i class="fab fa-google"></i></div>
+//                     <div class="social-icon-box"><i class="fab fa-facebook-f"></i></div>
+//                 </div>
+//             </form>
+//         </section>
+//     `
+
+//     document.getElementById("register-new-user-button").onclick = function () {
+//         console.log("render register....");
+//         renderRegisterForm();
+//     }
+
+//     var LoginImage = document.getElementById('login-form-logo');
+
+//     if (LoginImage) {
+//         LoginImage.onclick = function () {
+//             renderApp();
+//         }
+//     }
+
+// }
+
+//#endregion
+
+//#region REGISTER >> register.js
+
+// function renderRegisterForm() {
+
+//     resetState();
+
+//     document.getElementById('main-app').innerHTML = `
+//          <section class="register-app d-flex justify-content-center" id="login-app-box">
+
+//             <form class="col-10 justify-content-center mb-n2">
+
+//                 <div class="d-flex flex-column align-items-center login-logo-box justify-content-center mb-4"
+//                     id="login-logo-box">
+//                     <img src="./images/avatar.png" alt="" id="login-form-logo">
+//                     <h3>REGISTER</h3>
+//                 </div>
+
+//                 <div class="my-3">
+//                     <label for="register-username" class="form-label">Felhasználónév</label>
+//                     <input type="text" class="form-control" id="register-username">
+//                     <div class="form-text"></div>
+//                 </div>
+//                 <div class="mb-3">
+//                     <label for="register-email" class="form-label">Emailcím</label>
+//                     <input type="email" class="form-control" id="register-email">
+//                 </div>
+//                 <div class="mb-3">
+//                     <label for="register-password" class="form-label">Jelszó</label>
+//                     <input type="password" name="password" class="form-control" id="register-password" autocomplete="on">
+//                 </div>
+//                 <div class="mb-3">
+//                     <label for="register-password-again" class="form-label">Jelszó megerősítése</label>
+//                     <input type="password" name="password" class="form-control" id="register-password-again" autocomplete="on">
+//                 </div>
+
+//                 <div class="mb-3 form-check">
+//                     <input type="checkbox" class="form-check-input" id="remember-me-checker">
+//                     <label class="form-check-label" for="remember-me-checker">Elfogadom a felhasználási
+//                         feltételeket!</label>
+//                 </div>
+
+//                 <button type="button" class="btn btn-primary rounded-pill mb-3 w-100">Regisztráció</button>
+//                 <button type="button" class="btn btn-light rounded-pill mb-3 w-100" id="back-to-login-button">Vissza</button>
+//             </form>
+
+//         </section>
+//     `
+
+//     document.getElementById("back-to-login-button").onclick = function () {
+//         console.log("render login....");
+//         renderLoginForm();
+//     }
+
+//     var LoginImage = document.getElementById('login-form-logo');
+
+//     if (LoginImage) {
+//         LoginImage.onclick = function () {
+//             renderApp();
+//         }
+//     }
+// }
+
+//#endregion
 
 
-function renderLoginForm() {
 
-    resetState();
-
-    document.getElementById('main-app').innerHTML = `
-
-        <section class="login-app d-flex justify-content-center" id="login-app-box">
-
-            <form class="col-10 justify-content-center mb-n2">
-
-                <div class="d-flex flex-column align-items-center login-logo-box justify-content-center mb-4"
-                    id="login-logo-box">
-                    <img src="./images/avatar.png" alt="logo" id="login-form-logo">
-                    <h3>LOGIN</h3>
-                </div>
-
-                <div class="my-3">
-                    <label for="login-username" class="form-label">Felhasználónév</label>
-                    <input type="text" class="form-control" id="login-username">
-                    <div class="form-text"></div>
-                </div>
-                <div class="mb-3">
-                    <label for="login-password" class="form-label">Jelszó</label>
-                    <input type="password" class="form-control" id="login-password" autocomplete="on">
-                </div>
-
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="remember-me-checker">
-                    <label class="form-check-label" for="remember-me-checker">Emlékezz rám!</label>
-                </div>
-
-                <button type="button" class="btn btn-primary rounded-pill w-100 mb-3">Bejelentkezés</button>
-                <button type="button" class="btn btn-light rounded-pill mb-3 w-100" id="register-new-user-button">Regisztráció</button>
-                <button type="button" class="btn btn-link rounded-pill mb-3 w-100">Elfelejtett jelszó</button>
-
-                <div class="d-flex social-icon-bar align-items-center justify-content-center">
-                    <div class="social-icon-box"><i class="fab fa-google"></i></div>
-                    <div class="social-icon-box"><i class="fab fa-facebook-f"></i></div>
-                </div>
-            </form>
-        </section>
-    `
-
-    document.getElementById("register-new-user-button").onclick = function () {
-        console.log("render register....");
-        renderRegisterForm();
-    }
-
-    var LoginImage = document.getElementById('login-form-logo');
-
-    if (LoginImage) {
-        LoginImage.onclick = function () {
-            renderApp();
-        }
-    }
-
-}
-
-
-function renderRegisterForm() {
-
-    resetState();
-
-    document.getElementById('main-app').innerHTML = `
-         <section class="register-app d-flex justify-content-center" id="login-app-box">
-
-            <form class="col-10 justify-content-center mb-n2">
-
-                <div class="d-flex flex-column align-items-center login-logo-box justify-content-center mb-4"
-                    id="login-logo-box">
-                    <img src="./images/avatar.png" alt="" id="login-form-logo">
-                    <h3>REGISTER</h3>
-                </div>
-
-                <div class="my-3">
-                    <label for="register-username" class="form-label">Felhasználónév</label>
-                    <input type="text" class="form-control" id="register-username">
-                    <div class="form-text"></div>
-                </div>
-                <div class="mb-3">
-                    <label for="register-email" class="form-label">Emailcím</label>
-                    <input type="email" class="form-control" id="register-email">
-                </div>
-                <div class="mb-3">
-                    <label for="register-password" class="form-label">Jelszó</label>
-                    <input type="password" name="password" class="form-control" id="register-password" autocomplete="on">
-                </div>
-                <div class="mb-3">
-                    <label for="register-password-again" class="form-label">Jelszó megerősítése</label>
-                    <input type="password" name="password" class="form-control" id="register-password-again" autocomplete="on">
-                </div>
-
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="remember-me-checker">
-                    <label class="form-check-label" for="remember-me-checker">Elfogadom a felhasználási
-                        feltételeket!</label>
-                </div>
-
-                <button type="button" class="btn btn-primary rounded-pill mb-3 w-100">Regisztráció</button>
-                <button type="button" class="btn btn-light rounded-pill mb-3 w-100" id="back-to-login-button">Vissza</button>
-            </form>
-
-        </section>
-    `
-
-    document.getElementById("back-to-login-button").onclick = function () {
-        console.log("render login....");
-        renderLoginForm();
-    }
-
-    var LoginImage = document.getElementById('login-form-logo');
-
-    if (LoginImage) {
-        LoginImage.onclick = function () {
-            renderApp();
-        }
-    }
-}
-
-
-function renderApp() {
-
-    resetState();
-
+function renderAppPanel() {
     document.getElementById('main-app').innerHTML = `
     
         <section class="app" id="app-box">
@@ -332,6 +335,14 @@ function renderApp() {
             </div>
         </section>     
     `
+}
+
+function renderApp() {
+
+    resetState();
+
+    renderAppPanel();
+
     dashboardLinkContainer = document.querySelector(".links");
     mobileMenuButton = document.getElementById("mobile-menu-button");
     appWindow = document.querySelector(".app");
@@ -451,7 +462,7 @@ function setHomepage() {
     actualPageContainer.innerHTML = dashboardMenuItems[0].text;
     actualPageIcon.className = dashboardMenuItems[0].icon;
 
-    renderHome();
+    renderHomePage();
 
 
 }
@@ -619,218 +630,210 @@ var listeningClearBtn;
 /* -------------------------- */
 
 
-function renderHome() {
+//#region HOME >> home.js
 
-    var mainContent = document.querySelector(".main-content");
+// function renderHome() {
 
+//     var mainContent = document.querySelector(".main-content");
 
-    mainContent.innerHTML = `
-    <div class="py-2" id="homepage-notice-block">
+//     mainContent.innerHTML = `
+//     <div class="py-2" id="homepage-notice-block">
 
-                            <div class="d-flex mb-2">Gyors feljegyzések</div>
-                            <div class="d-block w-100 flex-wrap" id="homepage-note-block">
+//                             <div class="d-flex mb-2">Gyors feljegyzések</div>
+//                             <div class="d-block w-100 flex-wrap" id="homepage-note-block">
 
-                                <div class="d-flex input w-100">
-                                    <div class="form-group w-100">
-                                        <input type="email" class="form-control" id="new-pin-input" placeholder="új jegyzet">
-                                    </div>
-                                    <button type="button" class="btn btn-secondary ms-2" id="fix-pin-button">
-                                        <i class="fas fa-thumbtack"></i>
-                                    </button>
-                                </div>
+//                                 <div class="d-flex input w-100">
+//                                     <div class="form-group w-100">
+//                                         <input type="email" class="form-control" id="new-pin-input" placeholder="új jegyzet">
+//                                     </div>
+//                                     <button type="button" class="btn btn-secondary ms-2" id="fix-pin-button">
+//                                         <i class="fas fa-thumbtack"></i>
+//                                     </button>
+//                                 </div>
 
-                                <div class="" id="note-list-block">
-                                </div>
+//                                 <div class="" id="note-list-block">
+//                                 </div>
 
-                            </div>
-                        </div>
+//                             </div>
+//                         </div>
 
-                        <div class="py-2" id="homepage-last-saved-block">
-                            <div class="d-flex mb-2">Legutóbb mentett kifejezések</div>
-                            <div class="d-flex flex-wrap justify-content-start" id="history-words">
+//                         <div class="py-2" id="homepage-last-saved-block">
+//                             <div class="d-flex mb-2">Legutóbb mentett kifejezések</div>
+//                             <div class="d-flex flex-wrap justify-content-start" id="history-words">
 
-                            </div>
-                            <!--<div class="d-flex justify-content-end mt-3 mb-2">
-                                <button type="button" class="btn btn-outline-secondary">
-                                    Új szavak
-                                </button>
-                            </div>-->
+//                             </div>
+//                             <!--<div class="d-flex justify-content-end mt-3 mb-2">
+//                                 <button type="button" class="btn btn-outline-secondary">
+//                                     Új szavak
+//                                 </button>
+//                             </div>-->
 
-                        </div>
-                        `
+//                         </div>
+//                         `
 
-    renderMyNotes();
-    renderLastAddedWords();
-    fixPin();
-}
+//     renderMyNotes();
+//     renderLastAddedWords();
+//     fixPin();
+// }
 
-function renderMyNotes() {
+// function renderMyNotes() {
 
-    let noteListContainer = document.getElementById('note-list-block');
-    noteListContainer.innerHTML = '';
+//     let noteListContainer = document.getElementById('note-list-block');
+//     noteListContainer.innerHTML = '';
 
-    let notelistHTML = '';
-    state.notes.sort().reverse().map(note => {
+//     let notelistHTML = '';
+//     state.notes.sort().reverse().map(note => {
 
-        notelistHTML += `
-                        <div class="pinned notelist bubble note" data-autoID="${note.autoID}" data-dbid="${note.id}">
-                            <div class="d-flex w-100 text-content align-items-center">
-                                    <i class="fas fa-thumbtack"></i>
-                                    <span class="ms-2 w-100" title="${note.dateTime.toLocaleString()}">${note.text}</span>
-                                </div>
-                                <div data-autoID="${note.autoID}" class="pin-remove-button d-none">
-                                    <i class="fas fa-times-circle"></i>
-                                </div>
-                        </div>
-        `
-        noteListContainer.innerHTML = notelistHTML;
+//         notelistHTML += `
+//                         <div class="pinned notelist bubble note" data-autoID="${note.autoID}" data-dbid="${note.id}">
+//                             <div class="d-flex w-100 text-content align-items-center">
+//                                     <i class="fas fa-thumbtack"></i>
+//                                     <span class="ms-2 w-100" title="${note.dateTime.toLocaleString()}">${note.text}</span>
+//                                 </div>
+//                                 <div data-autoID="${note.autoID}" class="pin-remove-button d-none">
+//                                     <i class="fas fa-times-circle"></i>
+//                                 </div>
+//                         </div>
+//         `
+//         noteListContainer.innerHTML = notelistHTML;
 
-    })
+//     })
 
-    pinnedNoteEffect();
-    removeNote();
-    state.notes.sort().reverse();
-}
+//     pinnedNoteEffect();
+//     removeNote();
+//     state.notes.sort().reverse();
+// }
 
 
-function addNewNote() {
+// function pinnedNoteEffect() {
 
+//     let pins = document.querySelectorAll('.pinned');
 
-}
+//     for (const pin of pins) {
 
+//         pin.addEventListener('mouseover', () => {
 
-function pinnedNoteEffect() {
+//             if (pin.dataset.autoID === pin.lastElementChild.dataset.autoID) {
+//                 pin.lastElementChild.classList.remove('d-none');
+//             }
+//         })
+//         pin.addEventListener('mouseleave', () => {
 
-    let pins = document.querySelectorAll('.pinned');
+//             if (pin.dataset.autoID === pin.lastElementChild.dataset.autoID) {
+//                 pin.lastElementChild.classList.add('d-none');
+//             }
+//         })
+//     }
 
-    for (const pin of pins) {
+// }
 
-        pin.addEventListener('mouseover', () => {
+// function fixPin() {
 
-            if (pin.dataset.autoID === pin.lastElementChild.dataset.autoID) {
-                pin.lastElementChild.classList.remove('d-none');
-            }
-        })
-        pin.addEventListener('mouseleave', () => {
+//     let fixPinButton = document.getElementById('fix-pin-button');
+//     let newPinInput = document.getElementById('new-pin-input');
 
-            if (pin.dataset.autoID === pin.lastElementChild.dataset.autoID) {
-                pin.lastElementChild.classList.add('d-none');
-            }
-        })
-    }
 
-}
 
-function fixPin() {
+//     fixPinButton.addEventListener('click', () => {
 
-    let fixPinButton = document.getElementById('fix-pin-button');
-    let newPinInput = document.getElementById('new-pin-input');
+//         if (newPinInput.value) {
 
+//             let newID = state.notes.length > 0 ?
+//                 state.notes.reduce(function (prev, current) {
+//                     return (prev.id > current.id) ? prev : current
+//                 }).id + 1 : 1;
 
+//             let now = new Date().toJSON();
+//             var component = new Notes(newID, newPinInput.value, now);
 
-    fixPinButton.addEventListener('click', () => {
+//             state.notes.push(component);
 
-        if (newPinInput.value) {
+//             renderMyNotes();
+//         }
 
-            let newID = state.notes.length > 0 ?
-                state.notes.reduce(function (prev, current) {
-                    return (prev.id > current.id) ? prev : current
-                }).id + 1 : 1;
+//     })
 
-            let now = new Date().toJSON();
-            var component = new Notes(newID, newPinInput.value, now);
+// }
 
-            state.notes.push(component);
 
-            renderMyNotes();
-        }
+// function removeNote() {
 
-    })
+//     let pins = document.querySelectorAll('.pinned');
 
-}
+//     for (const pin of pins) {
 
+//         pin.lastElementChild.addEventListener('click', () => {
 
-function removeNote() {
+//             console.log('törlés', pin.dataset.dbid, pin.dataset.autoid);
+//             pin.remove();
 
-    let pins = document.querySelectorAll('.pinned');
+//             // let noteObject = state.notes.filter(note => {
+//             //     return note.autoID === pin.dataset.autoid;
+//             // })[0];
 
-    for (const pin of pins) {
+//             let index = state.notes.findIndex(x => x.autoID === pin.dataset.autoid);
 
-        pin.lastElementChild.addEventListener('click', () => {
+//             state.notes.splice(index, 1);
 
-            console.log('törlés', pin.dataset.dbid, pin.dataset.autoid);
-            pin.remove();
+//         })
+//     }
 
-            // let noteObject = state.notes.filter(note => {
-            //     return note.autoID === pin.dataset.autoid;
-            // })[0];
+// }
 
-            let index = state.notes.findIndex(x => x.autoID === pin.dataset.autoid);
 
-            state.notes.splice(index, 1);
 
-        })
-    }
+// function renderLastAddedWords() {
 
-}
+//     let historyWordsContainer = document.getElementById('history-words');
+//     historyWordsContainer.innerHTML = '';
 
+//     let contentHTML = '';
 
+//     let puffer = array_words.map(element => {
+//         return element;
+//     }).sort().reverse();
 
-function renderLastAddedWords() {
 
-    let historyWordsContainer = document.getElementById('history-words');
-    historyWordsContainer.innerHTML = '';
+//     for (let i = 0; i < 20; i++) {
+//         contentHTML += `
+//             <div class="bubble default history-word-element word-1-version">
+//                 <span class="history-word-1 d-block">${puffer[i].word_1}</span>
+//                 <span class="history-word-2 d-none">${puffer[i].word_2}</span>
+//             </div>
+//         `
+//     }
 
-    let contentHTML = '';
+//     historyWordsContainer.innerHTML = contentHTML;
+//     lastAddedWordHover()
+// }
 
-    let puffer = array_words.map(element => {
-        return element;
-    }).sort().reverse();
+// function lastAddedWordHover() {
 
+//     let words = document.querySelectorAll('.history-word-element');
 
-    for (let i = 0; i < 20; i++) {
-        contentHTML += `
-            <div class="bubble default history-word-element word-1-version">
-                <span class="history-word-1 d-block">${puffer[i].word_1}</span>
-                <span class="history-word-2 d-none">${puffer[i].word_2}</span>
-            </div>
-        `
-    }
+//     for (const word of words) {
 
-    historyWordsContainer.innerHTML = contentHTML;
-    lastAddedWordHover()
-}
+//         word.addEventListener('click', () => {
+//             if (word.lastElementChild.classList.contains('d-none')) {
+//                 word.lastElementChild.classList.remove('d-none');
+//                 word.classList.remove('word-1-version');
+//                 word.lastElementChild.classList.add('d-flex');
+//                 word.classList.add('word-2-version');
+//                 word.firstElementChild.classList.add('d-none');
+//             }
+//             else {
+//                 word.firstElementChild.classList.remove('d-none');
+//                 word.classList.remove('word-2-version');
+//                 word.firstElementChild.classList.add('d-flex');
+//                 word.classList.add('word-1-version');
+//                 word.lastElementChild.classList.add('d-none');
+//             }
+//         })
+//     }
+// }
 
-function lastAddedWordHover() {
 
-    let words = document.querySelectorAll('.history-word-element');
-
-    for (const word of words) {
-
-        word.addEventListener('click', () => {
-            if (word.lastElementChild.classList.contains('d-none')) {
-                word.lastElementChild.classList.remove('d-none');
-                word.classList.remove('word-1-version');
-                word.lastElementChild.classList.add('d-flex');
-                word.classList.add('word-2-version');
-                word.firstElementChild.classList.add('d-none');
-            }
-            else {
-                word.firstElementChild.classList.remove('d-none');
-                word.classList.remove('word-2-version');
-                word.firstElementChild.classList.add('d-flex');
-                word.classList.add('word-1-version');
-                word.lastElementChild.classList.add('d-none');
-            }
-        })
-    }
-}
-
-
-
-
-
-
+//#endregion
 
 
 function menu_load_home() {
@@ -838,169 +841,111 @@ function menu_load_home() {
     resetState();
     Menu_Clear_MainContent();
 
-    renderHome();
+    renderHomePage();
 
 
 }
 
 function menu_load_profile() {
+
     resetState();
     Menu_Clear_MainContent();
-
-    mainContent.innerHTML = `
-        <form>
-        <div class="mb-3">
-            <label for="" class="form-label">Username</label>
-            <input type="text" class="form-control" aria-describedby="">
-            <div  class="form-text"></div>
-        </div>
-        <div class="mb-3">
-            <label for="" class="form-label">Email address</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp">
-            <div  class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="" class="form-label">Email address</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp">
-            <div class="form-text">We'll never share your email with anyone else.</div>
-        </div>
-        <div class="mb-3">
-            <label for="" class="form-label">Password</label>
-            <input type="password" class="form-control">
-        </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" >
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
-    `
+    renderProfilePage();
 }
+
+
+//#region dictionary >> dictionaries.js
+
+// function renderDictionariesPage() {
+
+//     document.querySelector(".main-content").innerHTML = `
+//         <h5 class="text-center mb-4">Szótárak listája</h5>
+
+//         <div class="view-menu-bar-create my-3">
+
+//             <div class="add-new-block">
+//                 <p class="m-2">Új szótár!</p>
+//                 <i class="fas fa-plus-square" id="add-button"></i>
+//             </div>
+//             <div class="create-new-dictionary dislay-none mb-3">
+//                 <div class="create-new-block-form w-100">
+
+//                     <form>
+//                         <div class="dictionary-name mb-2">
+//                             <label for="create-new-text-input" class="form-label">Add meg az új szótár nevét:</label>
+
+//                             <input type="text" class="form-control" id= "create-new-text-input" placeholder="Name of the new Dictionary">
+//                         </div>
+//                         <div class="row">
+//                             <div class="col-sm-6">
+//                                 <label for="dictionary-name-select" class="form-label">Elsődleges nyelv:</label>
+//                                 <select class="dictionary-language-select form-select mb-3" id="dictionary-language-primary"></select>
+//                             </div>
+//                             <div class="col-sm-6">
+//                                 <label for="dictionary-name-select" class="form-label">Másodlagos nyelv:</label>
+//                                 <select class="dictionary-language-select form-select mb-3" id="dictionary-language-secondary"></select>
+//                             </div>
+
+//                         </div>  
+//                         <div class="row create-new-block-buttons">
+//                             <div class="col-sm-10">
+//                                 <button type="button" class="btn btn-success w-100 mb-2" id="create-new-accept"><i class="fas fa-check"></i></button>
+//                             </div>
+
+//                             <div class="col-sm-2">
+//                                 <button type="button" class="btn btn-danger w-100" id="create-new-close"><i class="fas fa-times"></i></button>
+//                             </div>
+//                         </div>
+//                     </form>
+//                 </div>
+//             </div>
+//         </div>
+
+
+//         <div class="dictionary-list-block">
+
+//              ${renderSearchBar()}
+
+//             <div class="dictionary-list-header d-flex py-2 align-items-center border-bottom border-white">
+
+//                 <div class="col-9 d-flex justify-content-start align-items-center">
+
+//                     <div class="edit-btn-container me-1">
+//                         <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked="">
+//                         <label class="btn btn-sm btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check"><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
+//                     </div>
+
+//                     <div class="d-flex justify-content-between text-muted cursor-pointer">
+//                         <p class="mb-0 px-2 text-muted">Név</p>
+//                     </div>
+//                  </div>
+
+//                 <div class="col-3 d-none d-sm-flex justify-content-end">
+//                     <p class="mb-0 text-muted">Művelet</p>
+//                 </div>
+//             </div>
+//             <div class="dictionary-list-items  p-2">
+//             </div>
+//         </div>
+
+//         <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-footer">
+//             <div id="counter-block">
+//             </div>
+//             <div id="pagination-block">
+//             </div>
+//         </div>
+//     `
+
+// }
+
+//#endregion
 
 function menu_load_dictionaries() {
 
     resetState();
     Menu_Clear_MainContent();
+    renderDictionariesPage();
 
-    var searchBar = renderSearchBar();
-    //var paginationBlock = pagination();
-
-    mainContent.innerHTML = `
-        <h5 class="text-center mb-4">Szótárak listája</h5>
-
-        <div class="view-menu-bar-create my-3">
-
-            <div class="add-new-block">
-                <p class="m-2">Új szótár!</p>
-                <i class="fas fa-plus-square" id="add-button"></i>
-            </div>
-            
-            <div class="create-new-dictionary dislay-none mb-3">
-                <div class="create-new-block-form w-100">
-
-                    <form>
-                        <div class="dictionary-name mb-2">
-                            <label for="create-new-text-input" class="form-label">Add meg az új szótár nevét:</label>
-
-                            <input type="text" class="form-control" id= "create-new-text-input" placeholder="Name of the new Dictionary">
-                        </div>
-
-
-                        <div class="row">
-
-                            <div class="col-sm-6">
-                                <label for="dictionary-name-select" class="form-label">Elsődleges nyelv:</label>
-                                <select class="dictionary-language-select form-select mb-3" id="dictionary-language-primary"></select>
-                            </div>
-
-                            <div class="col-sm-6">
-                                <label for="dictionary-name-select" class="form-label">Másodlagos nyelv:</label>
-                                <select class="dictionary-language-select form-select mb-3" id="dictionary-language-secondary"></select>
-                            </div>
-
-                        </div>  
-
-                        <div class="row create-new-block-buttons">
-
-                            <div class="col-sm-10">
-                                <button type="button" class="btn btn-success w-100 mb-2" id="create-new-accept"><i class="fas fa-check"></i></button>
-                            </div>
-
-                            <div class="col-sm-2">
-                                <button type="button" class="btn btn-danger w-100" id="create-new-close"><i class="fas fa-times"></i></button>
-                            </div>
-
-                        </div>
-
-                        
-
-                    </form>
-
-                </div>
-            </div>
-        </div>
-
-
-        <div class="dictionary-list-block">
-
-            
-
-            <!--<div class="search-bar d-block mb-2">
-                <div class="line-1 d-flex">
-                    <div class="search-input w-100">
-                        <input type="search" class="form-control" id="dictionaries-search-input" placeholder="Keresés...">
-                    </div>
-                    <div class="search-buttons d-flex">
-                        <button type="button" class="btn btn-secondary ms-1" id="search-dictionary-button"><i class="fas fa-search"></i></button>
-                        <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
-                    </div>
-                </div>
-                <div class="form-text mb-2 d-none justify-content-start cursor-pointer text-danger" id="search-alert">
-                    <div class="search-alert-close"><i class="far fa-window-close"></i></div>
-                    <div class="search-alert-text ms-1">vvNincs találat!</div>
-                </div>
-            </div>-->
-
-             ${searchBar}
-
-            <div class="dictionary-list-header d-flex py-2 align-items-center border-bottom border-white">
-
-                <div class="col-9 d-flex justify-content-start align-items-center">
-
-                    <div class="edit-btn-container me-1">
-                        <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked="">
-                        <label class="btn btn-sm btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check"><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
-                    </div>
-
-                    <div class="d-flex justify-content-between text-muted cursor-pointer">
-                        <p class="mb-0 px-2 text-muted">Név</p>
-                    </div>
-                 </div>
-
-                <div class="col-3 d-none d-sm-flex justify-content-end">
-                    <p class="mb-0 text-muted">Művelet</p>
-                </div>
-                    
-                
-            </div>
-
-            <div class="dictionary-list-items  p-2">
-            </div>
-
-        </div>
-
-        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-footer">
-            <div id="counter-block">
-            </div>
-            <div id="pagination-block">
-            </div>
-        </div>
-
-    `
-
-
-
-    /** */
     var langContent = document.querySelector("#dictionary-language-primary");
     langContent.innerHTML = '';
     var langCounter = 0;
@@ -1020,7 +965,6 @@ function menu_load_dictionaries() {
 
     renderDictionaryList(state.dictionaries);
 
-
     createNewDictionaryButton = document.querySelector(".add-new-block");
     addNewBlock = document.querySelector(".add-new-block");
     createNewBlock = document.querySelector(".create-new-dictionary");
@@ -1029,17 +973,14 @@ function menu_load_dictionaries() {
     createNewTextInput = document.getElementById("create-new-text-input");
 
 
-    /* Load Enabled Methods */
     createNewDictionary();
     backToNewDictionary();
-
 
     var searchDictionaryInput = document.getElementById("search-element-input");
     var searchDictionaryBtn = document.getElementById("search-element-button");
     var clearfilterBtn = document.getElementById("clear-dictionary-filter");
     var searchAlert = document.getElementById("search-alert");
     closeSearchAlert();
-
 
 
     searchDictionaryBtn.onclick = function () {
@@ -1082,9 +1023,7 @@ function menu_load_dictionaries() {
 
     var sortButton = document.getElementById("sort-alpha-btn");
 
-
     sortButton.onclick = function () {
-
 
         var sortIcon = document.getElementById('sort-alpha-icon');
         var sortChecker = document.getElementById("sort-alpha-check");
@@ -1111,9 +1050,7 @@ function menu_load_dictionaries() {
             resetPaginationState();
             renderDictionaryList(renderRoot);
         }
-
     }
-
 
 }
 
@@ -1121,64 +1058,67 @@ function menu_load_dictionaries() {
 function resetFilteredState() {
     state.filterArray = [];
     state.filtered = false;
-    //state.pagination.visisibledPages = [0, 1, 2];
 
 }
 
-function renderDictionaryList(renderArray) {
 
-    state.pagination.location = 0;
-    state.selectedDictionaryLength = state.dictionaries.length;
+//#region dictionary >> dictionaries.js
 
-    renderArray.sort(compareValues("dictionaryName", state.sortBy));
+// function renderDictionaryList(renderArray) {
 
-    sliceArray(renderArray);
-    renderArray = state.pagination.slicedArray;
+//     state.pagination.location = 0;
+//     state.selectedDictionaryLength = state.dictionaries.length;
 
-    var content = document.querySelector(".dictionary-list-items");
-    content.innerHTML = '';
+//     renderArray.sort(compareValues("dictionaryName", state.sortBy));
 
-    var counter = 0;
-    var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
+//     sliceArray(renderArray);
+//     renderArray = state.pagination.slicedArray;
 
-    Object.values(renderArray).map(dictionary => {
-        content.innerHTML +=
-            `
-            <div class="row d-flex py-2 justify-content-between dictionary-list-item border-bottom">
+//     var content = document.querySelector(".dictionary-list-items");
+//     content.innerHTML = '';
 
-                <div class="d-flex col-12 col-sm-8 col-xl-8 align-items-center justify-content-center justify-content-sm-start my-sm-0 my-2 px-0 dictionary-list-item-details" id="dictionary-list-item-details">
-                        <i class="fas fa-bookmark d-none d-sm-flex mx-2"></i>
-                        <small class="col-auto col-sm-1 me-2 col-lg-1 col-xl-auto">[${dictionary.lexicon.length}]</small>
-                        <h6 class="m-0">${dictionary.dictionaryName}</h6>
-                </div>
+//     var counter = 0;
+//     var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
 
-                <div class="d-flex col-12 col-sm-4 col-xl-4 px-0 justify-content-center justify-content-sm-end">
-                    <div class="d-flex w-100 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end" role="group" style="max-width: 275px">
-                        <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
-                        <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
-                        <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
-                    </div>
-                </div>
-                
-            </div>
-        `
+//     Object.values(renderArray).map(dictionary => {
+//         content.innerHTML +=
+//             `
+//             <div class="row d-flex py-2 justify-content-between dictionary-list-item border-bottom">
 
-        state.pagination.itemNumber = index + counter;
-        counter++;
-    });
+//                 <div class="d-flex col-12 col-sm-8 col-xl-8 align-items-center justify-content-center justify-content-sm-start my-sm-0 my-2 px-0 dictionary-list-item-details" id="dictionary-list-item-details">
+//                         <i class="fas fa-bookmark d-none d-sm-flex mx-2"></i>
+//                         <small class="col-auto col-sm-1 me-2 col-lg-1 col-xl-auto">[${dictionary.lexicon.length}]</small>
+//                         <h6 class="m-0">${dictionary.dictionaryName}</h6>
+//                 </div>
 
-    selectDictionaryMethod();
-    // sliceArray(renderArray);
+//                 <div class="d-flex col-12 col-sm-4 col-xl-4 px-0 justify-content-center justify-content-sm-end">
+//                     <div class="d-flex w-100 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end" role="group" style="max-width: 275px">
+//                         <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
+//                         <button type="button" class="btn btn-sm edit-content content-action" id="edit-content"  data-dictid ="${dictionary.autoID}"><i class="fas fa-edit"></i></button>
+//                         <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
+//                     </div>
+//                 </div>
 
-    if (state.filtered) {
-        renderPaginationFooter(state.filterArray)
-    }
-    else {
-        renderPaginationFooter(state.dictionaries)
+//             </div>
+//         `
 
-    };
-}
+//         state.pagination.itemNumber = index + counter;
+//         counter++;
+//     });
 
+//     selectDictionaryMethod();
+//     // sliceArray(renderArray);
+
+//     if (state.filtered) {
+//         renderPaginationFooter(state.filterArray)
+//     }
+//     else {
+//         renderPaginationFooter(state.dictionaries)
+
+//     };
+// }
+
+//#endregion
 
 function filterBy(arr, filterBy, input) {
 
@@ -1340,100 +1280,106 @@ function menu_load_signout() {
 
     resetState();
     Menu_Clear_MainContent();
-    renderLoginForm();
+    renderLoginPage();
 }
 
-function createNewDictionary() {
-    if (createNewDictionaryButton) {
-        createNewDictionaryButton.addEventListener('click', () => {
-            console.log("Új szótár létrehozása")
-            addNewBlock.classList.add('dislay-none');
-            createNewBlock.classList.remove('dislay-none');
-        })
-    }
-};
 
-function backToNewDictionary() {
-    if (createNewClearBtn) {
-        createNewClearBtn.addEventListener('click', () => {
-            console.log("Vissza")
-            createNewTextInput.value = '';
-            createNewBlock.classList.add('dislay-none');
-            addNewBlock.classList.remove('dislay-none');
-        })
-    }
-};
+//#region Dictionary >> dictionaries.js
+
+// function createNewDictionary() {
+//     if (createNewDictionaryButton) {
+//         createNewDictionaryButton.addEventListener('click', () => {
+//             console.log("Új szótár létrehozása")
+//             addNewBlock.classList.add('dislay-none');
+//             createNewBlock.classList.remove('dislay-none');
+//         })
+//     }
+// };
+
+// function backToNewDictionary() {
+//     if (createNewClearBtn) {
+//         createNewClearBtn.addEventListener('click', () => {
+//             console.log("Vissza")
+//             createNewTextInput.value = '';
+//             createNewBlock.classList.add('dislay-none');
+//             addNewBlock.classList.remove('dislay-none');
+//         })
+//     }
+// };
 
 
-function selectDictionaryMethod() {
+// function selectDictionaryMethod() {
 
-    var dictionaryContentButtons = document.querySelectorAll('.content-action');
-    var ID;
+//     var dictionaryContentButtons = document.querySelectorAll('.content-action');
+//     var ID;
 
-    for (const element of dictionaryContentButtons) {
-        element.addEventListener('click', () => {
-            ID = element.dataset.dictid;
-            state.selectedDictionary = ID;
+//     for (const element of dictionaryContentButtons) {
+//         element.addEventListener('click', () => {
+//             ID = element.dataset.dictid;
+//             state.selectedDictionary = ID;
 
-            var buttonName = element.id;
+//             var buttonName = element.id;
 
-            switch (buttonName) {
-                case 'open-content':
-                    openDictionary();
-                    break;
-                case 'edit-content':
-                    editDictionary();
-                    break;
-                case 'delete-content':
-                    deleteDictionary();
-                    break;
-                default:
-                    break;
-            }
-        })
-    };
-}
+//             switch (buttonName) {
+//                 case 'open-content':
+//                     openDictionary();
+//                     break;
+//                 case 'edit-content':
+//                     editDictionary();
+//                     break;
+//                 case 'delete-content':
+//                     deleteDictionary();
+//                     break;
+//                 default:
+//                     break;
+//             }
+//         })
+//     };
+// }
 
-function openDictionary() {
+// function openDictionary() {
 
-    console.log("Open Dictionary");
+//     console.log("Open Dictionary");
 
-    for (let i = 0; i < state.dictionaries.length; i++) {
+//     for (let i = 0; i < state.dictionaries.length; i++) {
 
-        if (state.dictionaries[i].autoID === state.selectedDictionary) {
-            state.dictionaryID = i;
-            state.dictionaryName = array_dictionaries[i].dictionaryName;
-            renderDinctionaryContent();
-        }
-    }
-}
+//         if (state.dictionaries[i].autoID === state.selectedDictionary) {
+//             state.dictionaryID = i;
+//             state.dictionaryName = array_dictionaries[i].dictionaryName;
+//             renderDinctionaryContent();
+//         }
+//     }
+// }
 
-function editDictionary() {
+// function editDictionary() {
 
-    console.log("Edit Dictionary");
+//     console.log("Edit Dictionary");
 
-    for (let i = 0; i < dictionaries.length; i++) {
+//     for (let i = 0; i < dictionaries.length; i++) {
 
-        if (dictionaries[i].id === state.selectedDictionary) {
-            console.log(dictionaries[i].id);
-            console.log(dictionaries[i].name);
-            console.log(dictionaries[i].relaseDate);
-        }
-    }
-}
+//         if (dictionaries[i].id === state.selectedDictionary) {
+//             console.log(dictionaries[i].id);
+//             console.log(dictionaries[i].name);
+//             console.log(dictionaries[i].relaseDate);
+//         }
+//     }
+// }
 
-function deleteDictionary() {
+// function deleteDictionary() {
 
-    console.log("Delete Dictionary");
+//     console.log("Delete Dictionary");
 
-    for (let i = 0; i < dictionaries.length; i++) {
-        if (dictionaries[i].id === state.selectedDictionary) {
-            console.log(dictionaries[i].id);
-            console.log(dictionaries[i].name);
-            console.log(dictionaries[i].relaseDate);
-        }
-    }
-}
+//     for (let i = 0; i < dictionaries.length; i++) {
+//         if (dictionaries[i].id === state.selectedDictionary) {
+//             console.log(dictionaries[i].id);
+//             console.log(dictionaries[i].name);
+//             console.log(dictionaries[i].relaseDate);
+//         }
+//     }
+// }
+
+
+//#endregion
 
 
 function renderSearchBar() {
@@ -1457,187 +1403,190 @@ function renderSearchBar() {
 }
 
 
-function renderDinctionaryContent() {
+//#region dictionary >> dictionary.js
 
-    var searchBar = renderSearchBar();
-    mainContent.innerHTML = '';
+// function renderDinctionaryContent() {
 
-    mainContent.innerHTML = `
-        <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
+//     var searchBar = renderSearchBar();
+//     mainContent.innerHTML = '';
 
-        <div class="mb-2 dictionaries-search-bar">
+//     mainContent.innerHTML = `
+//         <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
 
-            <div class="back-button-area">
-                <button type="button" class="btn bg-info me-1 text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
-            </div>
+//         <div class="mb-2 dictionaries-search-bar">
 
-            ${searchBar}
+//             <div class="back-button-area">
+//                 <button type="button" class="btn bg-info me-1 text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
+//             </div>
 
-        </div>
-        
-        <div class="d-flex dictionary-content-toolbar my-1 py-2 justify-content-between align-items-center border-bottom border-white">
+//             ${searchBar}
 
-            <div class="d-flex dictionary-list-header">
+//         </div>
 
-                <div class="d-flex justify-content-start align-items-center">
+//         <div class="d-flex dictionary-content-toolbar my-1 py-2 justify-content-between align-items-center border-bottom border-white">
 
-                     <div class="edit-btn-container me-1">
-                        <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked>
-                        <label class="btn btn-sm  btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
-                    </div>
+//             <div class="d-flex dictionary-list-header">
 
-                    <div class="edit-btn-container btn btn-group p-0">
+//                 <div class="d-flex justify-content-start align-items-center">
 
-                        <input type="radio" class="btn-check" name="select_column" id="select_column_1" autocomplete="off" checked>
-                        <label class="btn btn-sm btn-outline-corn" for="select_column_1" id="select_column_button_1" data-columnid ="word_1" ><i class="fas fa-align-left"></i></label>
+//                      <div class="edit-btn-container me-1">
+//                         <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked>
+//                         <label class="btn btn-sm  btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
+//                     </div>
 
-                        <input type="radio" class="btn-check" name="select_column" id="select_column_2" autocomplete="off">
-                        <label class="btn btn-sm btn-outline-lgray" for="select_column_2"  id="select_column_button_2" data-columnid ="word_2"><i class="fas fa-align-right"></i></label>
+//                     <div class="edit-btn-container btn btn-group p-0">
 
-                    </div>
-                </div>
-            </div>
-            
-            <div class="d-flex">
-                <div class="edit-btn-container me-1">
-                    <input type="checkbox" class="btn-check" id="edit-content-checker" autocomplete="off">
-                    <label class="btn btn-sm btn-outline-listen mw-50" for="edit-content-checker"><i class="fas fa-edit"></i></label>
-                </div>
+//                         <input type="radio" class="btn-check" name="select_column" id="select_column_1" autocomplete="off" checked>
+//                         <label class="btn btn-sm btn-outline-corn" for="select_column_1" id="select_column_button_1" data-columnid ="word_1" ><i class="fas fa-align-left"></i></label>
 
-                <div class="listen-btn-container">
-                    <input type="checkbox" class="btn-check" id="listen-content-checker" autocomplete="off">
-                    <label class="btn btn-sm btn-outline-listen mw-50" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
-                </div>
-            </div>
-        </div>
+//                         <input type="radio" class="btn-check" name="select_column" id="select_column_2" autocomplete="off">
+//                         <label class="btn btn-sm btn-outline-lgray" for="select_column_2"  id="select_column_button_2" data-columnid ="word_2"><i class="fas fa-align-right"></i></label>
 
-        </div>
+//                     </div>
+//                 </div>
+//             </div>
 
-        <div class="dictionary-item-list overflow-scroll p-2" id="dictionary-item-list" style="max-height: 40vh">
-        </div>
+//             <div class="d-flex">
+//                 <div class="edit-btn-container me-1">
+//                     <input type="checkbox" class="btn-check" id="edit-content-checker" autocomplete="off">
+//                     <label class="btn btn-sm btn-outline-listen mw-50" for="edit-content-checker"><i class="fas fa-edit"></i></label>
+//                 </div>
 
+//                 <div class="listen-btn-container">
+//                     <input type="checkbox" class="btn-check" id="listen-content-checker" autocomplete="off">
+//                     <label class="btn btn-sm btn-outline-listen mw-50" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
+//                 </div>
+//             </div>
+//         </div>
 
-        <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-footer">
-            <div id="counter-block">
-            </div>
-            <div id="pagination-block">
-            </div>
-        </div>
+//         </div>
 
-    `
-
-    renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
+//         <div class="dictionary-item-list overflow-scroll p-2" id="dictionary-item-list" style="max-height: 40vh">
+//         </div>
 
 
-    var searchInput = document.getElementById("search-element-input");
-    var searchBtn = document.getElementById("search-element-button");
-    var clearfilterBtn = document.getElementById("clear-dictionary-filter");
-    var searchAlert = document.getElementById("search-alert");
-    var sortButton = document.getElementById("sort-alpha-btn");
+//         <div class="dictionary-item-list-pagination mt-2 d-flex align-items-center justify-content-between" id="pagination-footer">
+//             <div id="counter-block">
+//             </div>
+//             <div id="pagination-block">
+//             </div>
+//         </div>
 
-    var selectColumnBtn_1 = document.getElementById("select_column_button_1");
-    var selectColumnBtn_2 = document.getElementById("select_column_button_2");
+//     `
 
-
-    searchBtn.onclick = function () {
-
-        if (searchInput.value != "") {
-
-            searchInLexicon(searchInput);
-
-            if (state.filtered) {
-                resetPaginationState();
-                renderDictionaryElements(state.filterArray);
-                clearfilterBtn.classList.remove("d-none");
-                clearfilterBtn.classList.add("d-flex");
-                searchAlert.classList.add("d-none");
-            }
-            else {
-                console.log("nincs renderelés!");
-                searchAlert.classList.remove("d-none");
-                searchAlert.classList.add("d-flex");
-            }
-        }
-        else {
-
-            console.log("üres mező")
-            renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
-            clearfilterBtn.classList.add("d-none");
-            searchAlert.classList.add("d-none");
-            state.filterArray = [];
-        }
-    }
-
-    closeSearchAlert();
-
-    clearfilterBtn.onclick = function () {
-
-        renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon)
-        clearfilterBtn.classList.add("d-none");
-        searchInput.value = "";
-        resetFilteredState();
-        resetPaginationState();
-        sliceArray(state.dictionaries[state.dictionaryID].lexicon);
-        renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
-    }
-
-    var backButton = document.getElementById('back-dictionary-button');
-    backButton.addEventListener('click', () => {
-        menu_load_dictionaries();
-    })
-
-    sortButton.addEventListener('click', () => {
-
-        var sortIcon = document.getElementById('sort-alpha-icon');
-        var sortChecker = document.getElementById("sort-alpha-check");
-
-        sortChecker.checked != sortChecker.checked;
-
-        if (!sortChecker.checked) {
-            sortIcon.classList.remove('fa-sort-alpha-down');
-            sortIcon.classList.add('fa-sort-alpha-up');
-            state.sortBy = 'asc';
-            const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-            state.pagination.selectedPageIndex = 0;
-            resetPaginationState();
-            renderDictionaryElements(renderRoot);
-
-        }
-        else {
-            sortIcon.classList.remove('fa-sort-alpha-up');
-            sortIcon.classList.add('fa-sort-alpha-down');
-            state.sortBy = 'desc';
-            const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-            state.pagination.selectedPageIndex = 0;
-            resetPaginationState();
-            renderDictionaryElements(renderRoot);
-        }
-
-    })
+//     renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
 
 
-    selectColumnBtn_1.addEventListener('click', () => {
-        setColumnID(selectColumnBtn_1);
+//     var searchInput = document.getElementById("search-element-input");
+//     var searchBtn = document.getElementById("search-element-button");
+//     var clearfilterBtn = document.getElementById("clear-dictionary-filter");
+//     var searchAlert = document.getElementById("search-alert");
+//     var sortButton = document.getElementById("sort-alpha-btn");
 
-        const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-        state.pagination.selectedPageIndex = 0;
-        resetPaginationState();
-        renderDictionaryElements(renderRoot);
-
-    })
-
-    selectColumnBtn_2.addEventListener('click', () => {
-        setColumnID(selectColumnBtn_2);
-
-        const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
-        state.pagination.selectedPageIndex = 0;
-        resetPaginationState();
-        renderDictionaryElements(renderRoot);
-    })
-
-}
+//     var selectColumnBtn_1 = document.getElementById("select_column_button_1");
+//     var selectColumnBtn_2 = document.getElementById("select_column_button_2");
 
 
+//     searchBtn.onclick = function () {
+
+//         if (searchInput.value != "") {
+
+//             searchInLexicon(searchInput);
+
+//             if (state.filtered) {
+//                 resetPaginationState();
+//                 renderDictionaryElements(state.filterArray);
+//                 clearfilterBtn.classList.remove("d-none");
+//                 clearfilterBtn.classList.add("d-flex");
+//                 searchAlert.classList.add("d-none");
+//             }
+//             else {
+//                 console.log("nincs renderelés!");
+//                 searchAlert.classList.remove("d-none");
+//                 searchAlert.classList.add("d-flex");
+//             }
+//         }
+//         else {
+
+//             console.log("üres mező")
+//             renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
+//             clearfilterBtn.classList.add("d-none");
+//             searchAlert.classList.add("d-none");
+//             state.filterArray = [];
+//         }
+//     }
+
+//     closeSearchAlert();
+
+//     clearfilterBtn.onclick = function () {
+
+//         renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon)
+//         clearfilterBtn.classList.add("d-none");
+//         searchInput.value = "";
+//         resetFilteredState();
+//         resetPaginationState();
+//         sliceArray(state.dictionaries[state.dictionaryID].lexicon);
+//         renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
+//     }
+
+//     var backButton = document.getElementById('back-dictionary-button');
+//     backButton.addEventListener('click', () => {
+//         menu_load_dictionaries();
+//     })
+
+//     sortButton.addEventListener('click', () => {
+
+//         var sortIcon = document.getElementById('sort-alpha-icon');
+//         var sortChecker = document.getElementById("sort-alpha-check");
+
+//         sortChecker.checked != sortChecker.checked;
+
+//         if (!sortChecker.checked) {
+//             sortIcon.classList.remove('fa-sort-alpha-down');
+//             sortIcon.classList.add('fa-sort-alpha-up');
+//             state.sortBy = 'asc';
+//             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+//             state.pagination.selectedPageIndex = 0;
+//             resetPaginationState();
+//             renderDictionaryElements(renderRoot);
+
+//         }
+//         else {
+//             sortIcon.classList.remove('fa-sort-alpha-up');
+//             sortIcon.classList.add('fa-sort-alpha-down');
+//             state.sortBy = 'desc';
+//             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+//             state.pagination.selectedPageIndex = 0;
+//             resetPaginationState();
+//             renderDictionaryElements(renderRoot);
+//         }
+
+//     })
+
+
+//     selectColumnBtn_1.addEventListener('click', () => {
+//         setColumnID(selectColumnBtn_1);
+
+//         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+//         state.pagination.selectedPageIndex = 0;
+//         resetPaginationState();
+//         renderDictionaryElements(renderRoot);
+
+//     })
+
+//     selectColumnBtn_2.addEventListener('click', () => {
+//         setColumnID(selectColumnBtn_2);
+
+//         const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
+//         state.pagination.selectedPageIndex = 0;
+//         resetPaginationState();
+//         renderDictionaryElements(renderRoot);
+//     })
+
+// }
+
+
+//#endregion
 
 function closeSearchAlert() {
 
@@ -1682,8 +1631,6 @@ function compareValues(key, order = 'asc') {
 }
 
 
-
-
 function searchInLexicon(input) {
 
     state.filterArray = state.dictionaries.filter(elem => {
@@ -1696,833 +1643,836 @@ function searchInLexicon(input) {
 
     if (state.filterArray.length > 0) state.filtered = true;
 
-
 }
 
 
-function renderDictionaryElements(renderArray) {
+//#region Excercise >> excercise.js
 
-    state.pagination.location = 1;
-    state.selectedDictionaryLength = getActualDictionaryLength();
+// function renderDictionaryElements(renderArray) {
 
-    renderArray.sort(compareValues(state.columnID, state.sortBy));
+//     state.pagination.location = 1;
+//     state.selectedDictionaryLength = getActualDictionaryLength();
 
-    sliceArray(renderArray);
-    renderArray = state.pagination.slicedArray;
+//     renderArray.sort(compareValues(state.columnID, state.sortBy));
 
-    //resetListeningMode();
-    resetEditorMode();
+//     sliceArray(renderArray);
+//     renderArray = state.pagination.slicedArray;
 
+//     resetEditorMode();
 
-    var dictionaryItemList = document.getElementById('dictionary-item-list');
 
-    dictionaryItemList.innerHTML = '';
+//     var dictionaryItemList = document.getElementById('dictionary-item-list');
 
-    var counter = 0;
-    var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
+//     dictionaryItemList.innerHTML = '';
 
-    Object.values(renderArray).map(item => {
+//     var counter = 0;
+//     var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
 
-        var randomIndex = generateID_short();
-        dictionaryItemList.innerHTML += `
-        <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
-            <div class="dictionary-item-count">
-                <span>${index + counter}.</span>
-            </div>
-            <div class="dictionary-item-words">
-                <div class="dictionary-first-word mr-1">
-                    <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.article_1} ${item.word_1}</span>
-                    <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_0" data-wordid="0" value="${item.word_1}">
-                    <div class="dictionary-item-buttons">
+//     Object.values(renderArray).map(item => {
 
-                        <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
-                        <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
-                        <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
+//         var randomIndex = generateID_short();
+//         dictionaryItemList.innerHTML += `
+//         <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
+//             <div class="dictionary-item-count">
+//                 <span>${index + counter}.</span>
+//             </div>
+//             <div class="dictionary-item-words">
+//                 <div class="dictionary-first-word mr-1">
+//                     <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.article_1} ${item.word_1}</span>
+//                     <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_0" data-wordid="0" value="${item.word_1}">
+//                     <div class="dictionary-item-buttons">
 
-                    </div>
-                </div>
-                <div class="dictionary-second-word mr-1">
-                        <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.word_2}</span>
-                        <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_1" data-wordid="1" value="${item.word_2}">
+//                         <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
+//                         <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
+//                         <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
 
-                        <div class="dictionary-item-buttons listen">
-                            <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
-                            <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
-                            <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
-                        </div>
-                </div>
-            </div>
+//                     </div>
+//                 </div>
+//                 <div class="dictionary-second-word mr-1">
+//                         <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.word_2}</span>
+//                         <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_1" data-wordid="1" value="${item.word_2}">
 
-            <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
-                <i class="fas fa-trash edit-actual-word remove dislay-none" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" ></i>
-            </div>
-        </div>
-        `
-        state.pagination.itemNumber = index + counter;
-        counter++;
-    });
+//                         <div class="dictionary-item-buttons listen">
+//                             <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
+//                             <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
+//                             <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
+//                         </div>
+//                 </div>
+//             </div>
 
+//             <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
+//                 <i class="fas fa-trash edit-actual-word remove dislay-none" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" ></i>
+//             </div>
+//         </div>
+//         `
+//         state.pagination.itemNumber = index + counter;
+//         counter++;
+//     });
 
 
 
-    enabledEditorMode();
-    isEnabledListeningMode();
 
-    editSelectedWord();
-    saveEditedWord();
-    removeSelectedWord();
-    readSelectedWord();
+//     enabledEditorMode();
+//     isEnabledListeningMode();
 
-    //sliceArray(renderArray);
-    //renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
+//     editSelectedWord();
+//     saveEditedWord();
+//     removeSelectedWord();
+//     readSelectedWord();
 
+//     //sliceArray(renderArray);
+//     //renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
 
-    if (state.filtered) {
-        renderPaginationFooter(state.filterArray); //ok
-    }
-    else {
-        renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
 
-    };
+//     if (state.filtered) {
+//         renderPaginationFooter(state.filterArray); //ok
+//     }
+//     else {
+//         renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
 
+//     };
 
-}
 
+// }
 
-function enabledEditorMode() {
 
-    var editorModeBtn = document.getElementById('edit-content-checker');
-    var editBtn = document.querySelectorAll('.edit-actual-word');
+// function enabledEditorMode() {
 
-    editorModeBtn.addEventListener("change", () => {
+//     var editorModeBtn = document.getElementById('edit-content-checker');
+//     var editBtn = document.querySelectorAll('.edit-actual-word');
 
-        if (editorModeBtn.checked) {
-            state.editDictionaryMode = true;
-            for (const button of editBtn) {
-                button.classList.remove("dislay-none");
-                showDialogPanel(0);
-            }
-        }
-        else {
-            state.editDictionaryMode = false;
-            for (const button of editBtn) {
-                button.classList.add("dislay-none");
-            }
-        }
-    })
-}
+//     editorModeBtn.addEventListener("change", () => {
 
-function resetEditorMode() {
+//         if (editorModeBtn.checked) {
+//             state.editDictionaryMode = true;
+//             for (const button of editBtn) {
+//                 button.classList.remove("dislay-none");
+//                 showDialogPanel(0);
+//             }
+//         }
+//         else {
+//             state.editDictionaryMode = false;
+//             for (const button of editBtn) {
+//                 button.classList.add("dislay-none");
+//             }
+//         }
+//     })
+// }
 
-    var editorModeBtn = document.getElementById('edit-content-checker');
-    editorModeBtn.checked = false;
-    state.editDictionaryMode = false;
-}
+// function resetEditorMode() {
 
+//     var editorModeBtn = document.getElementById('edit-content-checker');
+//     editorModeBtn.checked = false;
+//     state.editDictionaryMode = false;
+// }
 
-function isEnabledListeningMode() {
 
-    var listeningModeButton = document.getElementById('listen-content-checker');
-    var listenBtn = document.querySelectorAll('.listening-mode');
+// function isEnabledListeningMode() {
 
+//     var listeningModeButton = document.getElementById('listen-content-checker');
+//     var listenBtn = document.querySelectorAll('.listening-mode');
 
-    if (state.listeningMode) {
-        enabledListeningMode(listenBtn);
-    }
-    else {
-        disabledListeningMode(listenBtn);
-    }
 
-    listeningModeButton.addEventListener("change", () => {
+//     if (state.listeningMode) {
+//         enabledListeningMode(listenBtn);
+//     }
+//     else {
+//         disabledListeningMode(listenBtn);
+//     }
 
-        if (listeningModeButton.checked) {
-            state.listeningMode = true;
-            enabledListeningMode(listenBtn)
-        }
-        else {
-            state.listeningMode = false;
-            disabledListeningMode(listenBtn);
-        }
-    })
-}
+//     listeningModeButton.addEventListener("change", () => {
 
-function enabledListeningMode(listenBtn) {
+//         if (listeningModeButton.checked) {
+//             state.listeningMode = true;
+//             enabledListeningMode(listenBtn)
+//         }
+//         else {
+//             state.listeningMode = false;
+//             disabledListeningMode(listenBtn);
+//         }
+//     })
+// }
 
-    for (const button of listenBtn) {
-        button.classList.remove("dislay-none");
-    }
+// function enabledListeningMode(listenBtn) {
 
-}
+//     for (const button of listenBtn) {
+//         button.classList.remove("dislay-none");
+//     }
 
-function disabledListeningMode(listenBtn) {
+// }
 
-    for (const button of listenBtn) {
-        button.classList.add("dislay-none");
-    }
+// function disabledListeningMode(listenBtn) {
 
-}
+//     for (const button of listenBtn) {
+//         button.classList.add("dislay-none");
+//     }
 
+// }
 
-function resetListeningMode() {
 
-    var listeningModeButton = document.getElementById('listen-content-checker');
-    listeningModeButton.checked = false;
-    state.listeningMode = false;
-}
+// function resetListeningMode() {
 
+//     var listeningModeButton = document.getElementById('listen-content-checker');
+//     listeningModeButton.checked = false;
+//     state.listeningMode = false;
+// }
 
-function editSelectedWord() {
 
-    var editBtn = document.querySelectorAll('.edit-actual-word.edit');
+// function editSelectedWord() {
 
-    for (const button of editBtn) {
+//     var editBtn = document.querySelectorAll('.edit-actual-word.edit');
 
-        button.onclick = function () {
+//     for (const button of editBtn) {
 
-            if (!state.editDictionaryContent) {
+//         button.onclick = function () {
 
-                var editorModeButton = document.getElementById('edit-content-checker');
-                editorModeButton.disabled = true;
-                state.editDictionaryContent = true;
+//             if (!state.editDictionaryContent) {
 
-                inputID = button.dataset.inputid;
+//                 var editorModeButton = document.getElementById('edit-content-checker');
+//                 editorModeButton.disabled = true;
+//                 state.editDictionaryContent = true;
 
-                console.log(inputID);
-                button.classList.add("dislay-none");
+//                 inputID = button.dataset.inputid;
 
+//                 console.log(inputID);
+//                 button.classList.add("dislay-none");
 
-                var saveButtons = document.querySelectorAll('.save-edit');
 
-                for (const saveBtn of saveButtons) {
-                    if (saveBtn.dataset.inputid === inputID) {
-                        saveBtn.classList.remove("dislay-none");
-                    }
-                }
+//                 var saveButtons = document.querySelectorAll('.save-edit');
 
-                var inputs = document.querySelectorAll('.dictionary-edit-content');
+//                 for (const saveBtn of saveButtons) {
+//                     if (saveBtn.dataset.inputid === inputID) {
+//                         saveBtn.classList.remove("dislay-none");
+//                     }
+//                 }
 
-                for (const input of inputs) {
-                    if (input.dataset.inputid === inputID) {
-                        input.classList.remove("dislay-none");
-                    }
-                }
+//                 var inputs = document.querySelectorAll('.dictionary-edit-content');
 
-                var labels = document.querySelectorAll('.dictionary-text-content');
+//                 for (const input of inputs) {
+//                     if (input.dataset.inputid === inputID) {
+//                         input.classList.remove("dislay-none");
+//                     }
+//                 }
 
-                for (const label of labels) {
-                    if (label.dataset.inputid === inputID) {
-                        label.classList.add("dislay-none");
-                    }
-                }
-            }
-        }
-    }
-}
+//                 var labels = document.querySelectorAll('.dictionary-text-content');
 
-function readSelectedWord() {
+//                 for (const label of labels) {
+//                     if (label.dataset.inputid === inputID) {
+//                         label.classList.add("dislay-none");
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-    var readButtons = document.querySelectorAll('.listening-mode');
+// function readSelectedWord() {
 
-    for (const button of readButtons) {
+//     var readButtons = document.querySelectorAll('.listening-mode');
 
-        button.onclick = function () {
+//     for (const button of readButtons) {
 
-            var inputID = button.dataset.inputid;
-            var labels = document.querySelectorAll('.dictionary-text-content');
+//         button.onclick = function () {
 
-            for (const label of labels) {
-                if (label.dataset.inputid === inputID) {
-                    if (button.dataset.wordid === '0') {
-                        startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
-                    }
-                    else {
-                        startSpeech(state.dictionaries[state.dictionaryID].langSec, label.textContent);
-                    }
-                }
-            }
-        }
-    }
-}
+//             var inputID = button.dataset.inputid;
+//             var labels = document.querySelectorAll('.dictionary-text-content');
 
-function saveEditedWord() {
+//             for (const label of labels) {
+//                 if (label.dataset.inputid === inputID) {
+//                     if (button.dataset.wordid === '0') {
+//                         startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
+//                     }
+//                     else {
+//                         startSpeech(state.dictionaries[state.dictionaryID].langSec, label.textContent);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-    var editBtn = document.querySelectorAll('.edit-actual-word.edit');
-    var inputs = document.querySelectorAll('.dictionary-edit-content');
-    var labels = document.querySelectorAll('.dictionary-text-content');
-    var saveButtons = document.querySelectorAll('.save-edit');
+// function saveEditedWord() {
 
-    for (const button of saveButtons) {
+//     var editBtn = document.querySelectorAll('.edit-actual-word.edit');
+//     var inputs = document.querySelectorAll('.dictionary-edit-content');
+//     var labels = document.querySelectorAll('.dictionary-text-content');
+//     var saveButtons = document.querySelectorAll('.save-edit');
 
-        button.onclick = function () {
+//     for (const button of saveButtons) {
 
-            var editorModeButton = document.getElementById('edit-content-checker');
-            editorModeButton.disabled = false;
+//         button.onclick = function () {
 
-            state.editDictionaryContent = false;
+//             var editorModeButton = document.getElementById('edit-content-checker');
+//             editorModeButton.disabled = false;
 
-            var editorModeButton = document.getElementById('edit-content-checker');
-            editorModeButton.disabled = false;
+//             state.editDictionaryContent = false;
 
-            inputID = button.dataset.inputid;
-            button.classList.add("dislay-none");
+//             var editorModeButton = document.getElementById('edit-content-checker');
+//             editorModeButton.disabled = false;
 
-            var newInput;
+//             inputID = button.dataset.inputid;
+//             button.classList.add("dislay-none");
 
-            for (const input of inputs) {
-                if (input.dataset.inputid === inputID) {
-                    input.classList.add("dislay-none");
-                    newInput = input.value;
-                }
-            }
+//             var newInput;
 
-            for (const label of labels) {
+//             for (const input of inputs) {
+//                 if (input.dataset.inputid === inputID) {
+//                     input.classList.add("dislay-none");
+//                     newInput = input.value;
+//                 }
+//             }
 
-                if (label.dataset.inputid === inputID) {
-                    label.classList.remove("dislay-none");
-                    label.innerHTML = newInput;
+//             for (const label of labels) {
 
-                }
-            }
+//                 if (label.dataset.inputid === inputID) {
+//                     label.classList.remove("dislay-none");
+//                     label.innerHTML = newInput;
 
-            for (const buton of editBtn) {
+//                 }
+//             }
 
-                if (buton.dataset.inputid === inputID) {
-                    buton.classList.remove("dislay-none");
+//             for (const buton of editBtn) {
 
-                }
-            }
-        }
-    }
-}
+//                 if (buton.dataset.inputid === inputID) {
+//                     buton.classList.remove("dislay-none");
 
-function removeSelectedWord() {
+//                 }
+//             }
+//         }
+//     }
+// }
 
-    var removeBtn = document.querySelectorAll('.dictionary-item-remove');
-    var dictItem = document.querySelectorAll('.dictionary-item');
+// function removeSelectedWord() {
 
+//     var removeBtn = document.querySelectorAll('.dictionary-item-remove');
+//     var dictItem = document.querySelectorAll('.dictionary-item');
 
 
-    for (const button of removeBtn) {
-        button.onclick = function () {
 
-            console.log(button.dataset.rowinfo);
+//     for (const button of removeBtn) {
+//         button.onclick = function () {
 
-            for (const line of dictItem) {
+//             console.log(button.dataset.rowinfo);
 
-                if (button.dataset.rowinfo === line.dataset.rowinfo) {
+//             for (const line of dictItem) {
 
-                    var word_1 = line.querySelector(".dictionary-first-word > span").innerText;
-                    var word_2 = line.querySelector(".dictionary-second-word > span").innerText;
+//                 if (button.dataset.rowinfo === line.dataset.rowinfo) {
 
-                    console.log("törlés >> ", line.dataset.rowinfo, word_1, word_2);
+//                     var word_1 = line.querySelector(".dictionary-first-word > span").innerText;
+//                     var word_2 = line.querySelector(".dictionary-second-word > span").innerText;
 
-                    fillDialogPanel(`"${word_1} - ${word_2}"`);
+//                     console.log("törlés >> ", line.dataset.rowinfo, word_1, word_2);
 
-                    document.getElementById('dialogAcceptButton').addEventListener('click', () => {
-                        line.remove();
-                    })
+//                     fillDialogPanel(`"${word_1} - ${word_2}"`);
 
-                }
-            }
-        }
-    }
-}
+//                     document.getElementById('dialogAcceptButton').addEventListener('click', () => {
+//                         line.remove();
+//                     })
+
+//                 }
+//             }
+//         }
+//     }
+// }
 
 
 
 //var excerciseStartButton;
 
-function excerciseLoadSettings() {
+// function excerciseLoadSettings() {
 
-    Menu_Clear_MainContent();
+//     Menu_Clear_MainContent();
 
-    createDictionaryDDList(mainContent);
-    createExcerciseTypeDDList(mainContent);
-    createExcerciseRunTimeDDList(mainContent);
-    createExcerciseStartButton(mainContent);
+//     createDictionaryDDList(mainContent);
+//     createExcerciseTypeDDList(mainContent);
+//     createExcerciseRunTimeDDList(mainContent);
+//     createExcerciseStartButton(mainContent);
 
-    dictionaryNameSelect = document.querySelector("#dictionary-name-select");
-    excerciseNameSelect = document.querySelector("#excercise-name-select");
-    runtimeNameSelect = document.querySelector("#runtime-name-select");
-    setCountManual = document.querySelector("#set-word-count-input");
-    excerciseStartButton = document.querySelector("#excercise-button-start");
+//     dictionaryNameSelect = document.querySelector("#dictionary-name-select");
+//     excerciseNameSelect = document.querySelector("#excercise-name-select");
+//     runtimeNameSelect = document.querySelector("#runtime-name-select");
+//     setCountManual = document.querySelector("#set-word-count-input");
+//     excerciseStartButton = document.querySelector("#excercise-button-start");
 
-    dictionaryNameSelectmethod();
-    excerciseNameSelectmethod();
-    runtimeNameSelectmethod();
-    validateCountInput();
-    excerciseStartSelectmethod();
-    defineExcercise();
+//     dictionaryNameSelectmethod();
+//     excerciseNameSelectmethod();
+//     runtimeNameSelectmethod();
+//     validateCountInput();
+//     excerciseStartSelectmethod();
+//     defineExcercise();
 
-}
+// }
 
 
 /* Szótárlista létrehozása, és feltöltése ****************************************************/
 
-function createDictionaryDDList(contener) {
+// function createDictionaryDDList(contener) {
 
-    contener.innerHTML += `
-        <div class= "select-dictionary mb-3">
-            <label for="dictionary-name-select" class="form-label">Válassz egy szótárt:</label>
-            <select class="form-select" id="dictionary-name-select">
-            </select>
-        </div>
-        `
-    loadDictionarySelector();
-}
+//     contener.innerHTML += `
+//         <div class= "select-dictionary mb-3">
+//             <label for="dictionary-name-select" class="form-label">Válassz egy szótárt:</label>
+//             <select class="form-select" id="dictionary-name-select">
+//             </select>
+//         </div>
+//         `
+//     loadDictionarySelector();
+// }
 
-function loadDictionarySelector() {
+// function loadDictionarySelector() {
 
-    state.dictionaries.sort(compareValues("dictionaryName", "asc"));
+//     state.dictionaries.sort(compareValues("dictionaryName", "asc"));
 
-    var content = document.querySelector("#dictionary-name-select");
-    content.innerHTML = '';
-    counter = 0;
+//     var content = document.querySelector("#dictionary-name-select");
+//     content.innerHTML = '';
+//     counter = 0;
 
-    Object.values(state.dictionaries).map(item => {
-        content.innerHTML += `<option value = "${counter}" data-dictid="${item.autoID}">${item.dictionaryName}</option>`;
-        counter++;
-    });
+//     Object.values(state.dictionaries).map(item => {
+//         content.innerHTML += `<option value = "${counter}" data-dictid="${item.autoID}">${item.dictionaryName}</option>`;
+//         counter++;
+//     });
 
-    dictionaryNameSelect = document.querySelector("#dictionary-name-select");
-}
+//     dictionaryNameSelect = document.querySelector("#dictionary-name-select");
+// }
 
-function dictionaryNameSelectmethod() {
-    dictionaryNameSelect.addEventListener("change", () => {
-        console.log(dictionaryNameSelect.value);
-        updateRunTimeCount();
-    })
-}
+// function dictionaryNameSelectmethod() {
+//     dictionaryNameSelect.addEventListener("change", () => {
+//         console.log(dictionaryNameSelect.value);
+//         updateRunTimeCount();
+//     })
+// }
 
-/* ******************************************************************************************* */
+// /* ******************************************************************************************* */
 
 
-/* Gyakorlás típuslista létrehozása, és feltöltése *********************************************/
+// /* Gyakorlás típuslista létrehozása, és feltöltése *********************************************/
 
-function createExcerciseTypeDDList(contener) {
+// function createExcerciseTypeDDList(contener) {
 
-    contener.innerHTML += `
-    <div class= "select-dictionary mb-3">
-            <label for="" class="form-label">Gyakorlási forma:</label>
-            <select class="form-select" id="excercise-name-select">
-            </select>
-        </div>
-        `
-    loadExcerciseSelector();
-}
+//     contener.innerHTML += `
+//     <div class= "select-dictionary mb-3">
+//             <label for="" class="form-label">Gyakorlási forma:</label>
+//             <select class="form-select" id="excercise-name-select">
+//             </select>
+//         </div>
+//         `
+//     loadExcerciseSelector();
+// }
 
-function loadExcerciseSelector() {
+// function loadExcerciseSelector() {
 
-    var content = document.querySelector("#excercise-name-select");
-    content.innerHTML = '';
-    Object.values(excerciseTypes).map(item => {
-        content.innerHTML += `<option value = "${item.value}">${item.name}</option>`;
-    });
-}
-function excerciseNameSelectmethod() {
-    excerciseNameSelect.addEventListener("change", () => {
+//     var content = document.querySelector("#excercise-name-select");
+//     content.innerHTML = '';
+//     Object.values(excerciseTypes).map(item => {
+//         content.innerHTML += `<option value = "${item.value}">${item.name}</option>`;
+//     });
+// }
+// function excerciseNameSelectmethod() {
+//     excerciseNameSelect.addEventListener("change", () => {
 
-        console.log(excerciseNameSelect.value);
-    })
-}
+//         console.log(excerciseNameSelect.value);
+//     })
+// }
 /* ******************************************************************************************* */
 
 
 /* Futási idő lista létrehozása, és feltöltése ************************************************/
 
-function createExcerciseRunTimeDDList(contener) {
+// function createExcerciseRunTimeDDList(contener) {
 
-    var wordCount = setEnabledWordsCount();
+//     var wordCount = setEnabledWordsCount();
 
-    contener.innerHTML += `
-    <div class= "select-dictionary mb-3">
-            <label for="" class="form-label">Gyakorlás hossza:</label>
-            <select class="form-select" id="runtime-name-select">
-            </select>
-        </div>
-        <div class="mb-3 dislay-none" id="set-word-count-section">
-            <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
-            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value = "${wordCount}">
-        </div>
-    `
-    loadRunTimeSelector();
+//     contener.innerHTML += `
+//     <div class= "select-dictionary mb-3">
+//             <label for="" class="form-label">Gyakorlás hossza:</label>
+//             <select class="form-select" id="runtime-name-select">
+//             </select>
+//         </div>
+//         <div class="mb-3 dislay-none" id="set-word-count-section">
+//             <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
+//             <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value = "${wordCount}">
+//         </div>
+//     `
+//     loadRunTimeSelector();
 
-}
+// }
 
-function updateRunTimeCount() {
+// function updateRunTimeCount() {
 
-    var wordCount = setEnabledWordsCount();
-    console.log("frissítem! Max: " + wordCount);
+//     var wordCount = setEnabledWordsCount();
+//     console.log("frissítem! Max: " + wordCount);
 
-    setCountManual.max = wordCount;
-    setCountManual.value = wordCount;
+//     setCountManual.max = wordCount;
+//     setCountManual.value = wordCount;
 
-    // frissítés
-    defineExcercise();
+//     // frissítés
+//     defineExcercise();
 
-}
+// }
 
-function loadRunTimeSelector() {
+// function loadRunTimeSelector() {
 
-    var content = document.querySelector("#runtime-name-select");
-    content.innerHTML = '';
-    Object.values(excerciseRunTime).map(item => {
-        content.innerHTML += `<option value="${item.value}">${item.name}</option>`;
-    });
-}
+//     var content = document.querySelector("#runtime-name-select");
+//     content.innerHTML = '';
+//     Object.values(excerciseRunTime).map(item => {
+//         content.innerHTML += `<option value="${item.value}">${item.name}</option>`;
+//     });
+// }
 
-function runtimeNameSelectmethod() {
+// function runtimeNameSelectmethod() {
 
-    var countManualBox = document.querySelector("#set-word-count-section");
-    var wordCount = setEnabledWordsCount();
+//     var countManualBox = document.querySelector("#set-word-count-section");
+//     var wordCount = setEnabledWordsCount();
 
-    runtimeNameSelect.addEventListener("change", () => {
+//     runtimeNameSelect.addEventListener("change", () => {
 
-        if (runtimeNameSelect.value == 1) {
-            countManualBox.classList.remove("dislay-none");
-            // Érték adása az input boxhoz!
-            setCountManual.value = wordCount;
-            updateRunTimeCount();
-        }
-        else {
-            countManualBox.classList.add("dislay-none");
-        }
-    })
-}
+//         if (runtimeNameSelect.value == 1) {
+//             countManualBox.classList.remove("dislay-none");
+//             // Érték adása az input boxhoz!
+//             setCountManual.value = wordCount;
+//             updateRunTimeCount();
+//         }
+//         else {
+//             countManualBox.classList.add("dislay-none");
+//         }
+//     })
+// }
 
-function validateCountInput() {
+// function validateCountInput() {
 
-    setCountManual.addEventListener("change", () => {
+//     setCountManual.addEventListener("change", () => {
 
-        var maxValue = setEnabledWordsCount();
+//         var maxValue = setEnabledWordsCount();
 
-        if (setCountManual.value > maxValue) {
-            setCountManual.value = maxValue;
-        }
-        if (setCountManual.value <= 0) {
-            setCountManual.value = 1;
-        }
-        defineExcercise();
-        console.log(excInfo.countIndex);
+//         if (setCountManual.value > maxValue) {
+//             setCountManual.value = maxValue;
+//         }
+//         if (setCountManual.value <= 0) {
+//             setCountManual.value = 1;
+//         }
+//         defineExcercise();
+//         console.log(excInfo.countIndex);
 
-    })
+//     })
 
-    // frissítés
+//     // frissítés
 
 
-}
+// }
 
 /* ******************************************************************************************* */
 
 
 /* Start gomb létrehozása, és paraméterezése ****************************************************/
 
-function createExcerciseStartButton(contener) {
+// function createExcerciseStartButton(contener) {
 
-    contener.innerHTML += `
-    <div class="excercise-header-start">
-        <button class="btn btn-success" id="excercise-button-start" type="">Start!</button>
-    </div>`
-}
+//     contener.innerHTML += `
+//     <div class="excercise-header-start">
+//         <button class="btn btn-success" id="excercise-button-start" type="">Start!</button>
+//     </div>`
+// }
 
-function excerciseStartSelectmethod() {
+// function excerciseStartSelectmethod() {
 
-    excerciseStartButton.addEventListener("click", () => {
+//     excerciseStartButton.addEventListener("click", () => {
 
-        defineExcercise();
-        displayExcerciseContainer();
-        startExcerciseMethod();
-        console.log(excInfo.countIndex);
+//         defineExcercise();
+//         displayExcerciseContainer();
+//         startExcerciseMethod();
+//         console.log(excInfo.countIndex);
 
-    })
-
-}
+//     })
+
+// }
 
-var defineExcercise = () => {
-
-    state.dictionaryID = dictionaryNameSelect.value;
-    state.selectedDictionary = dictionaryNameSelect[dictionaryNameSelect.value].dataset.dictid;
-    state.dictionaryName = dictionaryNameSelect[dictionaryNameSelect.value].textContent;
+// var defineExcercise = () => {
+
+//     state.dictionaryID = dictionaryNameSelect.value;
+//     state.selectedDictionary = dictionaryNameSelect[dictionaryNameSelect.value].dataset.dictid;
+//     state.dictionaryName = dictionaryNameSelect[dictionaryNameSelect.value].textContent;
 
-    return excInfo = {
-        maxValue: state.dictionaries[dictionaryNameSelect.value].lexicon.length,
-        dictionary: dictionaryNameSelect.value,
-        excIndex: excerciseNameSelect.value,
-        timeIndex: runtimeNameSelect.value,
-        countIndex: setCountManual.value
-    };
-}
+//     return excInfo = {
+//         maxValue: state.dictionaries[dictionaryNameSelect.value].lexicon.length,
+//         dictionary: dictionaryNameSelect.value,
+//         excIndex: excerciseNameSelect.value,
+//         timeIndex: runtimeNameSelect.value,
+//         countIndex: setCountManual.value
+//     };
+// }
 
-/* ******************************************************************************************* */
+// /* ******************************************************************************************* */
 
 
-function setEnabledWordsCount() {
-    return state.dictionaries[dictionaryNameSelect.value].lexicon.length;
-}
+// function setEnabledWordsCount() {
+//     return state.dictionaries[dictionaryNameSelect.value].lexicon.length;
+// }
 
-function randomIntGenerator(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+// function randomIntGenerator(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1) + min);
+// }
 
-/* EXCERCISE metódus felépítése ******************************************************************/
+// /* EXCERCISE metódus felépítése ******************************************************************/
 
-var indexPuffer = [];
+// var indexPuffer = [];
 
-var questionBox;
-var questionBoxText;
+// var questionBox;
+// var questionBoxText;
 
-var answerBox;
-var answerBoxText;
+// var answerBox;
+// var answerBoxText;
 
-var excerciseInputSection;
-var answerBoxInput;
-var answerBoxAcceptButton;
+// var excerciseInputSection;
+// var answerBoxInput;
+// var answerBoxAcceptButton;
 
-var minutesLabel;
-var secondsLabel;
+// var minutesLabel;
+// var secondsLabel;
 
-var numberOfExcercise;
-var countOfNumbers;
+// var numberOfExcercise;
+// var countOfNumbers;
 
-function displayExcerciseContainer() {
+// function displayExcerciseContainer() {
 
 
-    Menu_Clear_MainContent();
+//     Menu_Clear_MainContent();
 
-    mainContent.innerHTML = `
-        <div class="excercise-box">
-                <div class="excercise-header-info">
-                    <div class="header-section-text-1">
-                        <label id="minutes">00</label>:<label id="seconds">00</label>
-                    </div>
+//     mainContent.innerHTML = `
+//         <div class="excercise-box">
+//                 <div class="excercise-header-info">
+//                     <div class="header-section-text-1">
+//                         <label id="minutes">00</label>:<label id="seconds">00</label>
+//                     </div>
 
-                    <div class="header-section-text-2">
-                        <span id="number-of-excercise">1</span>/<span id="count-of-numbers">1</span>
-                    </div>
+//                     <div class="header-section-text-2">
+//                         <span id="number-of-excercise">1</span>/<span id="count-of-numbers">1</span>
+//                     </div>
 
-                    <div class="header-section-text-3">
-                        <span>0</span><i class="fas fa-star" id="point-star-icon"></i>
-                    </div>
-                </div>
+//                     <div class="header-section-text-3">
+//                         <span>0</span><i class="fas fa-star" id="point-star-icon"></i>
+//                     </div>
+//                 </div>
 
-                <div class="question-answer-boxes">
-                    <div class="questions-section-box">
-                        <div class="d-flex align-items-center question-box-value">
-                            <p data-lang=""></p>
-                            <i class="fas fa-volume-up listening-mode" id="listening-mode-brain"></i>
-                        </div>
-                    </div>
+//                 <div class="question-answer-boxes">
+//                     <div class="questions-section-box">
+//                         <div class="d-flex align-items-center question-box-value">
+//                             <p data-lang=""></p>
+//                             <i class="fas fa-volume-up listening-mode" id="listening-mode-brain"></i>
+//                         </div>
+//                     </div>
 
-                    <div class="answer-section-box">
-                        <div class="answer-box-value hidden">
-                            <p></p>
-                        </div>
-                    </div>
-                </div>
+//                     <div class="answer-section-box">
+//                         <div class="answer-box-value hidden">
+//                             <p></p>
+//                         </div>
+//                     </div>
+//                 </div>
 
-                <div class="excercise-input-section">
-                    <div class="answer-box-input">
-                        <input type="text" class="form-control" id="answer-box-input" value=""  tabindex="0" required>
-            </div>
-                        <div class="button-box">
-                            <div class="answer-box-button-left">
-                                <button class="btn btn-success" id="answer-button-accept"
-                                    type="button">Tovább!</button>
-                                <button class="btn btn-secondary" id="answer-button-next" type="button"><i
-                                    class="fas fa-step-forward"></i></button>
-                                <button class="btn btn-danger" id="stop-excercise" data-bs-toggle="modal" data-bs-target="#${dialogObjects[1].id}" type="button"><i class="fas fa-stop"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    `
+//                 <div class="excercise-input-section">
+//                     <div class="answer-box-input">
+//                         <input type="text" class="form-control" id="answer-box-input" value=""  tabindex="0" required>
+//             </div>
+//                         <div class="button-box">
+//                             <div class="answer-box-button-left">
+//                                 <button class="btn btn-success" id="answer-button-accept"
+//                                     type="button">Tovább!</button>
+//                                 <button class="btn btn-secondary" id="answer-button-next" type="button"><i
+//                                     class="fas fa-step-forward"></i></button>
+//                                 <button class="btn btn-danger" id="stop-excercise" data-bs-toggle="modal" data-bs-target="#${dialogObjects[1].id}" type="button"><i class="fas fa-stop"></i></button>
+//                             </div>
+//                         </div>
+//                     </div>
+//                 </div>
+//     `
 
-    questionBox = document.querySelector(".question-box-value");
-    questionBoxText = document.querySelector(".question-box-value > p");
+//     questionBox = document.querySelector(".question-box-value");
+//     questionBoxText = document.querySelector(".question-box-value > p");
 
-    answerBox = document.querySelector(".answer-box-value");
-    answerBoxText = document.querySelector(".answer-box-value > p");
+//     answerBox = document.querySelector(".answer-box-value");
+//     answerBoxText = document.querySelector(".answer-box-value > p");
 
-    excerciseInputSection = document.querySelector(".excercise-input-section");
-    answerBoxInput = document.getElementById("answer-box-input");
-    answerBoxAcceptButton = document.getElementById("answer-button-accept");
+//     excerciseInputSection = document.querySelector(".excercise-input-section");
+//     answerBoxInput = document.getElementById("answer-box-input");
+//     answerBoxAcceptButton = document.getElementById("answer-button-accept");
 
-    minutesLabel = document.getElementById("minutes");
-    secondsLabel = document.getElementById("seconds");
+//     minutesLabel = document.getElementById("minutes");
+//     secondsLabel = document.getElementById("seconds");
 
-    numberOfExcercise = document.getElementById("number-of-excercise");
-    countOfNumbers = document.getElementById("count-of-numbers");
+//     numberOfExcercise = document.getElementById("number-of-excercise");
+//     countOfNumbers = document.getElementById("count-of-numbers");
 
 
-    var listeningModeBtn = document.getElementById("listening-mode-brain");
-    listeningModeBtn.onclick = function () {
-        startSpeech(questionBoxText.dataset.lang, questionBoxText.innerText);
-    }
+//     var listeningModeBtn = document.getElementById("listening-mode-brain");
+//     listeningModeBtn.onclick = function () {
+//         startSpeech(questionBoxText.dataset.lang, questionBoxText.innerText);
+//     }
 
-    var stopExcercise = document.getElementById("stop-excercise");
+//     var stopExcercise = document.getElementById("stop-excercise");
 
-    stopExcercise.onclick = function () {
+//     stopExcercise.onclick = function () {
 
-        document.getElementById('dialogAcceptButton').addEventListener('click', () => {
-            menu_load_brainteaser();
-        })
+//         document.getElementById('dialogAcceptButton').addEventListener('click', () => {
+//             menu_load_brainteaser();
+//         })
 
-    }
+//     }
 
 
-}
+// }
 
 
-var totalSeconds = 0;
+// var totalSeconds = 0;
 
-function setTime() {
+// function setTime() {
 
-    ++totalSeconds;
+//     ++totalSeconds;
 
-    secondsLabel.innerHTML = pad(totalSeconds % 60);
-    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+//     secondsLabel.innerHTML = pad(totalSeconds % 60);
+//     minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
 
-}
+// }
 
-function pad(val) {
+// function pad(val) {
 
-    var valString = val + "";
-    if (valString.length < 2) {
-        return "0" + valString;
-    } else {
-        return valString;
-    }
+//     var valString = val + "";
+//     if (valString.length < 2) {
+//         return "0" + valString;
+//     } else {
+//         return valString;
+//     }
 
-}
+// }
 
-function clearExcercisePuffers() {
-    indexPuffer = [];
-    totalSeconds = 0;
-}
+// function clearExcercisePuffers() {
+//     indexPuffer = [];
+//     totalSeconds = 0;
+// }
 
-function startExcerciseMethod() {
-    showDialogPanel(1);
+// function startExcerciseMethod() {
+//     showDialogPanel(1);
 
-    clearExcercisePuffers();
-    askSomething();
-    skipAnswer();
-    answerEventClick();
-    answerEventEnter();
+//     clearExcercisePuffers();
+//     askSomething();
+//     skipAnswer();
+//     answerEventClick();
+//     answerEventEnter();
 
-    setInterval(setTime, 1000);
+//     setInterval(setTime, 1000);
 
-}
+// }
 
-function askSomething() {
+// function askSomething() {
 
-    var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
-    var randomIndex = randomIntGenerator(0, maxNumber - 1);
+//     var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
+//     var randomIndex = randomIntGenerator(0, maxNumber - 1);
 
-    if (excInfo.timeIndex == 2 && indexPuffer.length == maxNumber) {
+//     if (excInfo.timeIndex == 2 && indexPuffer.length == maxNumber) {
 
-        clearExcercisePuffers();
-        maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
-        randomIndex = randomIntGenerator(0, maxNumber - 1);
-    }
+//         clearExcercisePuffers();
+//         maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
+//         randomIndex = randomIntGenerator(0, maxNumber - 1);
+//     }
 
-    console.log("indexPuffer: " + indexPuffer.length);
+//     console.log("indexPuffer: " + indexPuffer.length);
 
 
-    if (indexPuffer.length == maxNumber) {
-        alert("Nincs több kérdés!");
-    }
-    else {
+//     if (indexPuffer.length == maxNumber) {
+//         alert("Nincs több kérdés!");
+//     }
+//     else {
 
-        hideQuestionBox();
+//         hideQuestionBox();
 
-        while (indexPuffer.includes(randomIndex)) {
-            randomIndex = randomIntGenerator(0, maxNumber - 1);
-        }
+//         while (indexPuffer.includes(randomIndex)) {
+//             randomIndex = randomIntGenerator(0, maxNumber - 1);
+//         }
 
-        indexPuffer.push(randomIndex);
+//         indexPuffer.push(randomIndex);
 
 
-        var randomText = [];
-        randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
-        randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
+//         var randomText = [];
+//         randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
+//         randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
 
-        var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
+//         var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
 
-        console.log("question: " + randomText[0] + ' - ' + randomText[1]);
+//         console.log("question: " + randomText[0] + ' - ' + randomText[1]);
 
-        questionBoxText.innerHTML = randomText[questionIndex];
+//         questionBoxText.innerHTML = randomText[questionIndex];
 
-        var speachLangIndex = state.dictionaries[excInfo.dictionary].lexicon[randomIndex];
-        questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2;
+//         var speachLangIndex = state.dictionaries[excInfo.dictionary].lexicon[randomIndex];
+//         questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2;
 
-        numberOfExcercise.innerHTML = indexPuffer.length;
-        countOfNumbers.innerHTML = maxNumber;
+//         numberOfExcercise.innerHTML = indexPuffer.length;
+//         countOfNumbers.innerHTML = maxNumber;
 
-        showQuestionBox();
-        answerBoxInput.focus();
+//         showQuestionBox();
+//         answerBoxInput.focus();
 
-    }
+//     }
 
-}
+// }
 
 
-function answerEventClick() {
-    answerBoxAcceptButton.addEventListener('click', () => {
-        if (answerBoxInput.value != "") {
-            sendAnswer();
-        }
-    })
-}
+// function answerEventClick() {
+//     answerBoxAcceptButton.addEventListener('click', () => {
+//         if (answerBoxInput.value != "") {
+//             sendAnswer();
+//         }
+//     })
+// }
 
-function answerEventEnter() {
-    answerBoxInput.addEventListener("keyup", (event) => {
-        if (answerBoxInput.value != "" && event.keyCode === 13) {
-            sendAnswer();
-            console.log("enter")
-        }
-    })
-}
+// function answerEventEnter() {
+//     answerBoxInput.addEventListener("keyup", (event) => {
+//         if (answerBoxInput.value != "" && event.keyCode === 13) {
+//             sendAnswer();
+//             console.log("enter")
+//         }
+//     })
+// }
 
 
-function skipAnswer() {
+// function skipAnswer() {
 
-    var skipButton = document.querySelector('#answer-button-next');
+//     var skipButton = document.querySelector('#answer-button-next');
 
-    skipButton.addEventListener('click', () => {
-        answerBox.classList.remove('hidden');
-        answerBoxText.innerHTML = answerBoxInput.value;
-        answerBoxInput.value = "";
-        hideAnswerBox();
-        askSomething();
-    });
-}
+//     skipButton.addEventListener('click', () => {
+//         answerBox.classList.remove('hidden');
+//         answerBoxText.innerHTML = answerBoxInput.value;
+//         answerBoxInput.value = "";
+//         hideAnswerBox();
+//         askSomething();
+//     });
+// }
 
 
-function sendAnswer() {
+// function sendAnswer() {
 
-    answerBox.classList.remove('hidden');
-    answerBoxText.innerHTML = answerBoxInput.value;
-    answerBoxInput.value = "";
-    setTimeout(hideAnswerBox, 1000);
-    setTimeout(askSomething, 1000);
-}
+//     answerBox.classList.remove('hidden');
+//     answerBoxText.innerHTML = answerBoxInput.value;
+//     answerBoxInput.value = "";
+//     setTimeout(hideAnswerBox, 1000);
+//     setTimeout(askSomething, 1000);
+// }
 
 
-function answerValidation(userinput) {
-    console.log(userinput);
-};
+// function answerValidation(userinput) {
+//     console.log(userinput);
+// };
 
-function hideAnswerBox() {
-    answerBox.classList.add('hidden');
-}
+// function hideAnswerBox() {
+//     answerBox.classList.add('hidden');
+// }
 
-function hideQuestionBox() {
-    questionBox.classList.add("dislay-none");
-}
+// function hideQuestionBox() {
+//     questionBox.classList.add("dislay-none");
+// }
 
-function showQuestionBox() {
-    questionBox.classList.remove("dislay-none");
-}
+// function showQuestionBox() {
+//     questionBox.classList.remove("dislay-none");
+// }
+
+
+//#endregion
 
 
 function startSpeech(language, text) {
@@ -2605,8 +2555,6 @@ function navButtonsEvent(array) {
         })
     }
 
-
-
 }
 
 function navNextBtnEvent(array) {
@@ -2621,9 +2569,7 @@ function navNextBtnEvent(array) {
                 state.pagination.visisibledPages[m] += 1;
             }
 
-
             showHideNavButtons(true);
-
             navigatePagination(state.pagination.selectedPageIndex, array);
         }
 
