@@ -673,9 +673,9 @@ function renderMyNotes() {
 
         notelistHTML += `
                         <div class="pinned notelist bubble note" data-autoID="${note.autoID}" data-dbid="${note.id}">
-                            <div class="d-flex text-content align-items-center">
+                            <div class="d-flex w-100 text-content align-items-center">
                                     <i class="fas fa-thumbtack"></i>
-                                    <span class="ms-2" title="${note.dateTime}">${note.text}</span>
+                                    <span class="ms-2 w-100" title="${note.dateTime.toLocaleString()}">${note.text}</span>
                                 </div>
                                 <div data-autoID="${note.autoID}" class="pin-remove-button d-none">
                                     <i class="fas fa-times-circle"></i>
@@ -787,7 +787,7 @@ function renderLastAddedWords() {
     }).sort().reverse();
 
 
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 20; i++) {
         contentHTML += `
             <div class="bubble default history-word-element word-1-version">
                 <span class="history-word-1 d-block">${puffer[i].word_1}</span>

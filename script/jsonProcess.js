@@ -44,7 +44,7 @@ class Notes {
         this.autoID = this.generateID();
         this.id = id;
         this.text = text;
-        this.dateTime = dateTime;
+        this.dateTime = new Date(dateTime);
     }
 
     generateID() {
