@@ -1,3 +1,4 @@
+
 const state = {
     screenMode: 0,
     activeMenu: dashboardMenuItems[0].buttonID,

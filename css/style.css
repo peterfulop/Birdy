@@ -1047,12 +1047,12 @@ main {
   padding: 5px 15px;
   margin: 10px 0;
   align-items: center;
-  transition: background-color 0.5s;
+  transition: background-color 0.25s;
 }
 
 .bubble.chart:hover {
   background: #2a5383;
-  transition: background-color 0.5s;
+  transition: background-color 0.25s;
 }
 
 .bubble.note {
@@ -1069,7 +1069,7 @@ main {
 
 .bubble.note:hover {
   background: rgba(131, 131, 131, 0.5);
-  /*color: black;*/
+  color: white;
   transition: background-color 0.5s;
 }
 
