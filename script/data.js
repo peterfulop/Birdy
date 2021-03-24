@@ -17,7 +17,7 @@ var dashboardMenuItems = [
         icon: "fas fa-search",
         text: "Keresés",
         link: "6",
-        method: "menu_load_records",
+        method: "menu_load_search",
         buttonID: generateID()
     },
     {

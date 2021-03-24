@@ -561,7 +561,7 @@ function menu_load_listening() {
 
 }
 
-function menu_load_records() {
+function menu_load_search() {
     resetState();
     Menu_Clear_MainContent();
 
@@ -821,7 +821,7 @@ function sliceArray(array) {
 
 function navigatePagination(selectedPageIndex, actualArray) {
 
-    const Dictionary = DictionaryScope();
+    const Dictionary = DictionaryPageScope();
 
     state.pagination.selectedPageIndex = selectedPageIndex;
     const start = state.pagination.itemsPerPage * selectedPageIndex;
