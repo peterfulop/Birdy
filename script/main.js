@@ -1,4 +1,10 @@
 
+window.onload = function () {
+    renderFirst();
+    runHttpRequest();
+};
+
+
 const state = {
     screenMode: 0,
     activeMenu: dashboardMenuItems[0].buttonID,
@@ -27,13 +33,6 @@ const state = {
     notes: array_notes
 }
 
-window.onload = function () {
-    renderFirst();
-    runHttpRequest();
-};
-
-
-
 function resetState() {
     state.selectedDictionary = "";
     state.dictionaryID = "";
@@ -58,14 +57,6 @@ function resetState() {
     state.notes = array_notes;
 }
 
-
-function resetPaginationState() {
-    state.pagination.selectedPageIndex = 0;
-    state.pagination.visisibledPages = [0, 1, 2];
-}
-
-
-
 function renderFirst() {
 
     var section = document.createElement("section");
@@ -81,7 +72,6 @@ function renderFirst() {
             <div class="circle6 circle"></div>
         `
     renderLoginPage();
-
 
 }
 
@@ -135,38 +125,13 @@ function defDialogPanel(dialogID) {
     return new bootstrap.Modal(document.getElementById(`${dialogID}`), {
         keyboard: false
     });
-
 }
 
 
 
-var dashboardLinkContainer = document.querySelector(".links");
-var mobileMenuButton = document.getElementById("mobile-menu-button");
-var appWindow = document.querySelector(".app");
+function renderAppHTML() {
 
-
-var actualPageContainer = document.querySelector("#active-page-name");
-var actualPageIcon = document.querySelector("#active-page-icon");
-
-var mobileMenuContainer = document.querySelector(".mobile-menu-container");
-var mobileMenuElements = document.querySelectorAll(".mobile-menu-items");
-
-
-var hideableText = document.querySelectorAll(".hideable");
-
-var showHideBtn = document.querySelector("#show-hide-button");
-var mainContent = document.querySelector(".main-content");
-var dashboardLinks = document.querySelectorAll(".link");
-
-
-var fullScreenButton = document.getElementById("full-screen-button");
-
-
-
-
-function renderAppPanel() {
-    document.getElementById('main-app').innerHTML = `
-    
+    document.getElementById('main-app').innerHTML = `   
         <section class="app" id="app-box">
             <div class="dashboard wide" id="dashboard">
 
@@ -213,48 +178,46 @@ function renderAppPanel() {
     `
 }
 
-function renderApp() {
-
-    resetState();
-
-    renderAppPanel();
-
-    dashboardLinkContainer = document.querySelector(".links");
-    mobileMenuButton = document.getElementById("mobile-menu-button");
-    appWindow = document.querySelector(".app");
-
-    actualPageContainer = document.querySelector("#active-page-name"); //
-    actualPageIcon = document.querySelector("#active-page-icon"); //
-    renderMainMenu(); //
-
-    dashboardLinks = document.querySelectorAll(".link"); //
-    selectPages();//
-    renderMobileMenu();//
-    displayMobileMenu();//
-
-    mobileMenuContainer = document.querySelector(".mobile-menu-container");//
-    mobileMenuElements = document.querySelectorAll(".mobile-menu-items");//
-    selectMobilePages();//
-
-    hideableText = document.querySelectorAll(".hideable"); //
-    showHideBtn = document.querySelector("#show-hide-button"); //
-    showHideDashboard();//
-
-    mainContent = document.querySelector(".main-content");//
-
-    fullScreenButton = document.getElementById("full-screen-button");
-
-    fullScreenMode();
-    const mediaQuery = window.matchMedia('(max-width: 960px)');
-    autoFullScreen(mediaQuery);
-    mediaQuery.addListener(autoFullScreen);
+function buildApp() {
 
 }
 
 
+function renderApp() {
+
+    resetState();
+
+    renderAppHTML();
+
+    renderMainMenu();
+
+    selectPages();
+
+    renderMobileMenu();
+
+    displayMobileMenu();
+
+    selectMobilePages();
+
+    showHideDashboard();
+
+    fullScreenMode();
+
+    mediaQuery();
+
+}
+
+function mediaQuery() {
+
+    //const mediaQueryDashboard = window.matchMedia('(max-width: 810px)');
+    const mediaQuery = window.matchMedia('(max-width: 960px)');
+    autoFullScreen(mediaQuery);
+    mediaQuery.addListener(autoFullScreen);
+}
 
 function renderMainMenu() {
 
+    const dashboardLinkContainer = document.querySelector(".links");
     dashboardLinkContainer.innerHTML = '';
 
     Object.values(dashboardMenuItems).map(item => {
@@ -272,7 +235,7 @@ function renderMainMenu() {
 
 function renderMobileMenu() {
 
-    var mobileMenuContainer = document.querySelector(".mobile-menu-container");
+    const mobileMenuContainer = document.querySelector(".mobile-menu-container");
 
     mobileMenuContainer.innerHTML = '';
 
@@ -288,9 +251,9 @@ function renderMobileMenu() {
 
 }
 
-
-
 function fullScreenMode() {
+
+    const fullScreenButton = document.getElementById("full-screen-button");
 
     fullScreenButton.addEventListener("click", () => {
 
@@ -304,6 +267,9 @@ function fullScreenMode() {
 }
 
 function enableFullScreen() {
+    const appWindow = document.querySelector(".app");
+    const fullScreenButton = document.getElementById("full-screen-button");
+
     appWindow.classList.remove("full-screen");
     document.getElementById('dashboard').classList.remove("full-screen");
     fullScreenButton.className = "fas fa-expand-arrows-alt";
@@ -311,6 +277,10 @@ function enableFullScreen() {
 }
 
 function disableFullScreen() {
+
+    const appWindow = document.querySelector(".app");
+    const fullScreenButton = document.getElementById("full-screen-button");
+
     appWindow.classList.add("full-screen");
     document.getElementById('dashboard').classList.add("full-screen");
     fullScreenButton.className = "fas fa-compress-arrows-alt";
@@ -330,10 +300,12 @@ function autoFullScreen(mediaQuery) {
     }
 }
 
-
 function setHomepage() {
 
-    var firstElement = document.querySelector(".links> div:nth-child(1) > div > i");
+    const actualPageContainer = document.querySelector("#active-page-name"); //
+    const actualPageIcon = document.querySelector("#active-page-icon"); //
+
+    const firstElement = document.querySelector(".links> div:nth-child(1) > div > i");
     firstElement.classList.add("active-page");
     actualPageContainer.innerHTML = dashboardMenuItems[0].text;
     actualPageIcon.className = dashboardMenuItems[0].icon;
@@ -342,11 +314,11 @@ function setHomepage() {
 
     Home.renderHomePage();
 
-
 }
 
-
 function removeActivePageClass() {
+    const dashboardLinks = document.querySelectorAll(".link");
+
     dashboardLinks.forEach(item => {
         var activeIcon = item.querySelector("div > i");
         activeIcon.classList.remove("active-page");
@@ -355,15 +327,16 @@ function removeActivePageClass() {
 
 function selectPages() {
 
-    var dashboardLinks = document.querySelectorAll(".link");
+    const dashboardLinks = document.querySelectorAll(".link");
+    const actualPageContainer = document.querySelector("#active-page-name"); //
+    const actualPageIcon = document.querySelector("#active-page-icon"); //
+
 
     for (let i = 0; i < dashboardLinks.length; i++) {
 
         dashboardLinks[i].addEventListener('click', () => {
             state.activeMenu = dashboardLinks[i].dataset.buttonid;
-
             setActivePage(i);
-
             actualPageIcon.className = dashboardMenuItems[i].icon;
             actualPageContainer.innerHTML = dashboardMenuItems[i].text;
             loadMethods(dashboardMenuItems[i].method);
@@ -372,14 +345,16 @@ function selectPages() {
 }
 
 function setActivePage(index) {
+    const dashboardLinks = document.querySelectorAll(".link");
+
     var activeIcon = dashboardLinks[index].querySelector("div > i");
     removeActivePageClass();
     activeIcon.classList.add("active-page");
 }
 
-const mediaQueryDashboard = window.matchMedia('(max-width: 810px)');
-
 function displayMobileMenu() {
+
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
 
     mobileMenuButton.addEventListener("click", () => {
         mobileMenuShowHide();
@@ -388,6 +363,7 @@ function displayMobileMenu() {
 
 function mobileMenuShowHide() {
 
+    const mobileMenuContainer = document.querySelector(".mobile-menu-container");
     if (mobileMenuContainer.classList.contains("d-none")) {
         console.log('tartalmaz');
         mobileMenuContainer.classList.remove("d-none");
@@ -400,6 +376,12 @@ function mobileMenuShowHide() {
 
 
 function selectMobilePages() {
+
+    const actualPageContainer = document.querySelector("#active-page-name"); //
+    const actualPageIcon = document.querySelector("#active-page-icon"); //
+    const dashboardLinks = document.querySelectorAll(".link");
+    const mobileMenuElements = document.querySelectorAll(".mobile-menu-items");//
+
 
     for (let i = 0; i < mobileMenuElements.length; i++) {
 
@@ -415,13 +397,13 @@ function selectMobilePages() {
 }
 
 
-function loadMethods(methodName) {
-    var fn = window[methodName];
-    if (typeof fn === "function") fn();
-}
+
 
 
 function hideMainMenuText() {
+
+    const hideableText = document.querySelectorAll(".hideable");
+
     hideableText.forEach(element => {
         element.style.display = "none";
     });
@@ -429,6 +411,9 @@ function hideMainMenuText() {
 }
 
 function showMainMenuText() {
+
+    const hideableText = document.querySelectorAll(".hideable");
+
 
     hideableText.forEach(element => {
         element.style.display = "block";
@@ -438,6 +423,8 @@ function showMainMenuText() {
 }
 
 function addTightClass() {
+    const dashboardLinks = document.querySelectorAll(".link");
+
 
     dashboardLinks.forEach(element => {
         element.classList.remove("wide");
@@ -446,6 +433,8 @@ function addTightClass() {
 }
 
 function addWideClass() {
+    const dashboardLinks = document.querySelectorAll(".link");
+
 
     dashboardLinks.forEach(element => {
         element.classList.remove("tight");
@@ -453,10 +442,11 @@ function addWideClass() {
     })
 }
 
-
 function showHideDashboard() {
 
-    var show = true;
+    const showHideBtn = document.querySelector("#show-hide-button");
+
+    let show = true;
 
     showHideBtn.addEventListener('click', () => {
 
@@ -478,19 +468,18 @@ function showHideDashboard() {
     })
 }
 
-
 function Menu_Clear_MainContent() {
+    const mainContent = document.querySelector(".main-content");
     mainContent.innerHTML = '';
 }
 
 
-/** LISTENING MODULE */
-var listeningSelectLanguage
-var listeningTextarea;
-var listeningStartBtn;
-var listeningClearBtn;
 
 
+function loadMethods(methodName) {
+    var fn = window[methodName];
+    if (typeof fn === "function") fn();
+}
 
 function menu_load_home() {
 
@@ -499,8 +488,6 @@ function menu_load_home() {
 
     const Home = HomePageScope();
     Home.renderHomePage();
-
-
 }
 
 function menu_load_profile() {
@@ -513,26 +500,15 @@ function menu_load_profile() {
 
 }
 
-
 function menu_load_dictionaries() {
 
     resetState();
     Menu_Clear_MainContent();
 
     const Dictionary = DictionaryPageScope();
-    Dictionary.renderDictionariesPage();
+    Dictionary.buildDictionariesPage();
 
 }
-
-
-function resetFilteredState() {
-    state.filterArray = [];
-    state.filtered = false;
-
-}
-
-
-
 
 function menu_load_addwords() {
 
@@ -558,7 +534,6 @@ function menu_load_listening() {
     const Reader = ReaderPageScope()
     Reader.renderReaderPageContent();
 
-
 }
 
 function menu_load_search() {
@@ -580,6 +555,14 @@ function menu_load_signout() {
     renderLoginPage();
 }
 
+
+
+
+function resetFilteredState() {
+    state.filterArray = [];
+    state.filtered = false;
+
+}
 
 
 function filterBy(arr, filterBy, input) {
@@ -610,7 +593,6 @@ function renderSearchBar() {
                     </div>
     `
 }
-
 
 function closeSearchAlert() {
 
@@ -655,22 +637,6 @@ function compareValues(key, order = 'asc') {
 }
 
 
-function searchInLexicon(input) {
-
-    state.filterArray = state.dictionaries.filter(elem => {
-        return elem.autoID == state.selectedDictionary
-    });
-
-    state.filterArray = state.filterArray[0].lexicon.filter(element => {
-        return (element['word_1'].toLowerCase().includes(input.value.toLowerCase()) || element['word_2'].toLowerCase().includes(input.value.toLowerCase()))
-    });
-
-    if (state.filterArray.length > 0) state.filtered = true;
-
-}
-
-
-
 function startSpeech(language, text) {
 
     let speech = new SpeechSynthesisUtterance();
@@ -692,146 +658,8 @@ function getActualDictionaryLength() {
     return actual[0].lexicon.length;
 }
 
-
-
-function renderPaginationFooter(array) {
-
-    var counterBlock = document.getElementById('counter-block');
-    var paginationBlock = document.getElementById('pagination-block');
-
-    state.pagination.pages = Math.ceil(array.length / state.pagination.itemsPerPage);
-
-    var countOf = state.filtered ? state.filterArray.length : state.pagination.itemNumber;
-    var countAll = state.selectedDictionaryLength;
-
-    counterBlock.innerHTML = `        
-        <div class="element-counts align-items-center">
-            <small>${countOf}/${countAll}</small>
-        </div>
-    `
-
-    paginationBlock.innerHTML = `
-        <nav aria-label="Page navigation example">
-            <ul class="pagination" id="page-items">
-                <li id="page-item-prev-arrow" class="cursor-pointer page-item ${state.pagination.pages <= 3 ? "disabled" : ""}"><span class="page-link nav">&laquo;</span></li>
-            </ul>
-        </nav>
-    `
-
-    renderPaginationButtons(array);
-
-}
-
-function renderPaginationButtons(array) {
-
-
-    var paginationPages = document.getElementById('page-items');
-
-    for (let i = 0; i < state.pagination.pages; i++) {
-        paginationPages.innerHTML += `
-        <li class="cursor-pointer page-item ${state.pagination.selectedPageIndex === i ? "active" : ""}">
-        <span class="page-link button ${state.pagination.visisibledPages.includes(i) ? "" : "d-none"}" data-btnID="${i}">${i + 1}</span></li>
-        `
-    }
-
-    paginationPages.innerHTML += `<li id="page-item-next-arrow" class="cursor-pointer page-item ${state.pagination.pages <= 3 ? "disabled" : ""}"><span class="page-link nav">&raquo;</span></li>`
-
-    navButtonsEvent(array);
-    navNextBtnEvent(array);
-    navPrevBtnEvent(array);
-}
-
-function navButtonsEvent(array) {
-
-    var navButtons = document.querySelectorAll('.page-link.button');
-
-    for (let j = 0; j < navButtons.length; j++) {
-        navButtons[j].addEventListener('click', () => {
-            navigatePagination(j, array);
-        })
-    }
-
-}
-
-function navNextBtnEvent(array) {
-
-    var pageItemNext = document.getElementById('page-item-next-arrow');
-
-    pageItemNext.addEventListener('click', () => {
-
-        if (state.pagination.visisibledPages[2] + 2 <= state.pagination.pages) {
-
-            for (let m = 0; m < state.pagination.visisibledPages.length; m++) {
-                state.pagination.visisibledPages[m] += 1;
-            }
-
-            showHideNavButtons(true);
-            navigatePagination(state.pagination.selectedPageIndex, array);
-        }
-
-    })
-}
-
-function navPrevBtnEvent(array) {
-
-    var pageItemPrev = document.getElementById('page-item-prev-arrow');
-
-    pageItemPrev.addEventListener('click', () => {
-
-        if (state.pagination.visisibledPages[0] > 0) {
-
-            for (let m = 0; m < state.pagination.visisibledPages.length; m++) {
-                state.pagination.visisibledPages[m] -= 1;
-            }
-
-            showHideNavButtons(false);
-
-            navigatePagination(state.pagination.selectedPageIndex, array);
-        }
-    })
-}
-
-
-function showHideNavButtons(plus) {
-
-    var navButtons = document.querySelectorAll('.page-link.button');
-
-    state.pagination.selectedPageIndex = plus ? state.pagination.selectedPageIndex + 1 : state.pagination.selectedPageIndex - 1
-
-    for (let i = 0; i < navButtons.length; i++) {
-
-        var id = parseInt(navButtons[i].dataset.btnid);
-
-        if (state.pagination.visisibledPages.includes(id)) {
-            navButtons[i].classList.remove('d-none');
-        }
-        else {
-            navButtons[i].classList.add('d-none');
-        }
-    }
-
-}
-
-
 function sliceArray(array) {
-
     state.pagination.slicedArray = array.slice(0, state.pagination.itemsPerPage);
-
-}
-
-function navigatePagination(selectedPageIndex, actualArray) {
-
-    const Dictionary = DictionaryPageScope();
-
-    state.pagination.selectedPageIndex = selectedPageIndex;
-    const start = state.pagination.itemsPerPage * selectedPageIndex;
-    const end = start + state.pagination.itemsPerPage;
-    state.pagination.slicedArray = actualArray.slice(start, end);
-
-    state.pagination.slicedArray = state.filtered ? state.filterArray.slice(start, end) : actualArray.slice(start, end);
-
-    Dictionary.setPaginationMethod();
-
 }
 
 
