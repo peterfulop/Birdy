@@ -1,7 +1,6 @@
 
 window.onload = function () {
     renderFirst();
-    runHttpRequest();
 };
 
 
@@ -42,7 +41,7 @@ function resetState() {
     state.editDictionaryMode = false;
     state.editDictionaryContent = false;
     state.listeningMode = false;
-    resetFilteredState();
+    //resetFilteredState();
     state.sortBy = 'asc';
     state.columnID = 'word_1';
     state.pagination = {
@@ -57,7 +56,14 @@ function resetState() {
     state.notes = array_notes;
 }
 
-function renderFirst() {
+
+
+async function renderFirst() {
+
+    await runHttpRequest();
+    const Login = LoginPageScope();
+
+    const Global = GlobalObjectScope();
 
     var section = document.createElement("section");
     section.setAttribute('id', 'circles');
@@ -71,62 +77,59 @@ function renderFirst() {
             <div class="circle5 circle"></div>
             <div class="circle6 circle"></div>
         `
-    renderLoginPage();
-
-}
-
-function showDialogPanel(dialogIndex) {
-
-    var dialogID = dialogObjects[dialogIndex].id;
-    var dialogTitle = dialogObjects[dialogIndex].title;
-    var dialogBody = dialogObjects[dialogIndex].body;
-    var acceptBtnColor = dialogObjects[dialogIndex].color;
-    var acceptBtnText = dialogObjects[dialogIndex].text;
-
-    renderDialogPanel(dialogID, dialogTitle, dialogBody, acceptBtnColor, acceptBtnText);
-}
-
-function renderDialogPanel(dialogID, dialogTitle, dialogBody, acceptBtnColor, acceptBtnText) {
-
-    const dialogArea = document.getElementById('dialog-area');
-    dialogArea.innerHTML = `
-        <div class="modal fade" id="${dialogID}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-
-            <div class="modal-dialog modal-dialog-centered" id="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">${dialogTitle}</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body d-block" id="dialog-body-content">
-                    ${dialogBody}
-                    <p id="dialog-body-param"></p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
-                        <button type="button" class="btn btn-${acceptBtnColor}" data-bs-dismiss="modal" id="dialogAcceptButton">${acceptBtnText}</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `
-}
-
-function fillDialogPanel(data) {
-
-    var parameter = document.getElementById('dialog-body-param');
-    parameter.innerHTML = data;
+    Login.renderLoginPage();
 
 }
 
 
-function defDialogPanel(dialogID) {
-    return new bootstrap.Modal(document.getElementById(`${dialogID}`), {
-        keyboard: false
-    });
-}
+// function showDialogPanel(dialogIndex) {
 
+//     var dialogID = dialogObjects[dialogIndex].id;
+//     var dialogTitle = dialogObjects[dialogIndex].title;
+//     var dialogBody = dialogObjects[dialogIndex].body;
+//     var acceptBtnColor = dialogObjects[dialogIndex].color;
+//     var acceptBtnText = dialogObjects[dialogIndex].text;
+
+//     renderDialogPanel(dialogID, dialogTitle, dialogBody, acceptBtnColor, acceptBtnText);
+// }
+
+// function renderDialogPanel(dialogID, dialogTitle, dialogBody, acceptBtnColor, acceptBtnText) {
+
+//     const dialogArea = document.getElementById('dialog-area');
+//     dialogArea.innerHTML = `
+//         <div class="modal fade" id="${dialogID}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+//             aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
+//             <div class="modal-dialog modal-dialog-centered" id="modal-dialog">
+//                 <div class="modal-content">
+//                     <div class="modal-header">
+//                         <h5 class="modal-title" id="staticBackdropLabel">${dialogTitle}</h5>
+//                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+//                     </div>
+//                     <div class="modal-body d-block" id="dialog-body-content">
+//                     ${dialogBody}
+//                     <p id="dialog-body-param"></p>
+//                     </div>
+//                     <div class="modal-footer">
+//                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+//                         <button type="button" class="btn btn-${acceptBtnColor}" data-bs-dismiss="modal" id="dialogAcceptButton">${acceptBtnText}</button>
+//                     </div>
+//                 </div>
+//             </div>
+//         </div>
+//     `
+// }
+
+// function fillDialogPanel(data) {
+//     var parameter = document.getElementById('dialog-body-param');
+//     parameter.innerHTML = data;
+// }
+
+// function defDialogPanel(dialogID) {
+//     return new bootstrap.Modal(document.getElementById(`${dialogID}`), {
+//         keyboard: false
+//     });
+// }
 
 
 function renderAppHTML() {
@@ -177,13 +180,6 @@ function renderAppHTML() {
         </section>     
     `
 }
-
-function buildApp() {
-
-
-
-}
-
 
 function renderApp() {
 
@@ -402,7 +398,6 @@ function selectMobilePages() {
 
 
 
-
 function hideMainMenuText() {
 
     const hideableText = document.querySelectorAll(".hideable");
@@ -483,7 +478,6 @@ function loadMethods(methodName) {
 }
 
 
-
 function menu_load_methods() {
 
     function Menu_Clear_MainContent() {
@@ -534,7 +528,10 @@ function menu_load_methods() {
 
         resetState();
         Menu_Clear_MainContent();
-        excerciseLoadSettings();
+
+        const Brain = brainTeaserScope();
+
+        Brain.buildBrainTeaserPage();
     }
 
     function menu_load_listening() {
@@ -560,11 +557,13 @@ function menu_load_methods() {
 
     function menu_load_signout() {
 
+        const Login = LoginPageScope();
+
         resetState();
         Menu_Clear_MainContent();
-        renderLoginPage();
-    }
+        Login.renderLoginPage();
 
+    }
 
     return {
         'Menu_Clear_MainContent': Menu_Clear_MainContent,
@@ -579,9 +578,7 @@ function menu_load_methods() {
         'menu_load_signout': menu_load_signout
     }
 
-
 }
-
 
 
 function resetFilteredState() {
@@ -589,7 +586,6 @@ function resetFilteredState() {
     state.filtered = false;
 
 }
-
 
 function filterBy(arr, filterBy, input) {
 
@@ -661,7 +657,6 @@ function compareValues(key, order = 'asc') {
         );
     };
 }
-
 
 function startSpeech(language, text) {
 

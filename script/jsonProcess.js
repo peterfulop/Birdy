@@ -70,34 +70,6 @@ async function singleFetchProcess(url, createObjectsMethod, arrayTo) {
 
 };
 
-
-// async function fetchProcess() {
-
-//     // First fetch
-//     var response = await fetch('./data/db_dictionaries.json');
-//     if (!response.ok) {
-//         alert('JSON fetch sikertelen!');
-//         return;
-//     }
-
-//     var response = await response.json();
-//     createDictionaryObject(response, array_dictionaries);
-
-//     // Second fetch
-//     var response = await fetch('./data/db_words.json');
-//     if (!response.ok) {
-//         alert('JSON fetch sikertelen!');
-//         return;
-//     }
-
-//     var response = await response.json();
-//     createDictionaryElementObject(response, array_words);
-
-//     // Third method
-//     fillLexiconArrays();
-
-// };
-
 function createDictionaryObject(sourcePuffer, array) {
     for (const data of sourcePuffer) {
         var component = new Dictionaries(data.ID, data.Dictionary_Name, data.Lang_Prim, data.Lang_Sec, data.RelaseDate);
@@ -135,7 +107,7 @@ function createNotelistObject(sourcePuffer, array) {
         var component = new Notes(data.id, data.text, data.dateTime);
         array.push(component);
     }
-    console.log('4. createNotelistObject is ready...');
+    console.log('0. createNotelistObject is ready...');
 
 };
 
@@ -149,8 +121,6 @@ async function runHttpRequest() {
 
     fillLexiconArrays();
 
-    // Fetch process with one function
-    //fetchProcess();
 
 };
 

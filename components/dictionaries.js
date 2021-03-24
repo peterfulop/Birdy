@@ -15,7 +15,7 @@ function DictionaryPageScope() {
                     <p class="m-2">Új szótár!</p>
                     <i class="fas fa-plus-square" id="add-button"></i>
                 </div>
-                <div class="create-new-dictionary dislay-none mb-3">
+                <div class="create-new-dictionary display-none mb-3">
                     <div class="create-new-block-form w-100">
     
                         <form>
@@ -165,8 +165,8 @@ function DictionaryPageScope() {
         if (createNewDictionaryButton) {
             createNewDictionaryButton.addEventListener('click', () => {
                 console.log("Új szótár létrehozása")
-                addNewBlock.classList.add('dislay-none');
-                createNewBlock.classList.remove('dislay-none');
+                addNewBlock.classList.add('display-none');
+                createNewBlock.classList.remove('display-none');
             })
         }
     };
@@ -182,8 +182,8 @@ function DictionaryPageScope() {
             createNewClearBtn.addEventListener('click', () => {
                 console.log("Vissza")
                 createNewTextInput.value = '';
-                createNewBlock.classList.add('dislay-none');
-                addNewBlock.classList.remove('dislay-none');
+                createNewBlock.classList.add('display-none');
+                addNewBlock.classList.remove('display-none');
             })
         }
     };
@@ -592,29 +592,29 @@ function DictionaryPageScope() {
                 <div class="dictionary-item-words">
                     <div class="dictionary-first-word mr-1">
                         <span class="dictionary-text-content p-1 enabled" data-inputid="${i}_0">${item.article_1} ${item.word_1}</span>
-                        <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${i}_0" data-wordid="0" value="${item.word_1}">
+                        <input type="text" class="dictionary-edit-content p-1 display-none" data-inputid="${i}_0" data-wordid="0" value="${item.word_1}">
                         <div class="dictionary-item-buttons">
     
-                            <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${i}_0" data-wordid="0"></i>
-                            <i class="fas fa-check save-edit dislay-none" data-inputid="${i}_0" data-wordid="0"></i>
-                            <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${i}_0" data-wordid="0"></i>
+                            <i class="fas fa-edit edit-actual-word edit display-none" data-inputid="${i}_0" data-wordid="0"></i>
+                            <i class="fas fa-check save-edit display-none" data-inputid="${i}_0" data-wordid="0"></i>
+                            <i class="fas fa-volume-up listening-mode display-none" data-inputid="${i}_0" data-wordid="0"></i>
     
                         </div>
                     </div>
                     <div class="dictionary-second-word mr-1">
                             <span class="dictionary-text-content p-1 enabled" data-inputid="${i}_1">${item.word_2}</span>
-                            <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${i}_1" data-wordid="1" value="${item.word_2}">
+                            <input type="text" class="dictionary-edit-content p-1 display-none" data-inputid="${i}_1" data-wordid="1" value="${item.word_2}">
     
                             <div class="dictionary-item-buttons listen">
-                                <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${i}_1" data-wordid="1"></i>
-                                <i class="fas fa-check save-edit dislay-none" data-inputid="${i}_1" data-wordid="1"></i>
-                                <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${i}_1" data-wordid="1"></i>
+                                <i class="fas fa-edit edit-actual-word edit display-none" data-inputid="${i}_1" data-wordid="1"></i>
+                                <i class="fas fa-check save-edit display-none" data-inputid="${i}_1" data-wordid="1"></i>
+                                <i class="fas fa-volume-up listening-mode display-none" data-inputid="${i}_1" data-wordid="1"></i>
                             </div>
                     </div>
                 </div>
     
                 <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
-                    <i class="fas fa-trash edit-actual-word remove dislay-none" data-inputid="${i}" data-dictionary="${state.dictionaryID}" ></i>
+                    <i class="fas fa-trash edit-actual-word remove display-none" data-inputid="${i}" data-dictionary="${state.dictionaryID}" ></i>
                 </div>
             </div>
             `
@@ -685,14 +685,15 @@ function DictionaryPageScope() {
             if (editorModeBtn.checked) {
                 state.editDictionaryMode = true;
                 for (const button of editBtn) {
-                    button.classList.remove("dislay-none");
-                    showDialogPanel(0);
+                    button.classList.remove("display-none");
+                    const Global = GlobalObjectScope();
+                    Global.showDialogPanel(0);
                 }
             }
             else {
                 state.editDictionaryMode = false;
                 for (const button of editBtn) {
-                    button.classList.add("dislay-none");
+                    button.classList.add("display-none");
                 }
             }
         })
@@ -734,7 +735,7 @@ function DictionaryPageScope() {
     function enabledListeningMode(listenBtn) {
 
         for (const button of listenBtn) {
-            button.classList.remove("dislay-none");
+            button.classList.remove("display-none");
         }
 
     }
@@ -742,7 +743,7 @@ function DictionaryPageScope() {
     function disabledListeningMode(listenBtn) {
 
         for (const button of listenBtn) {
-            button.classList.add("dislay-none");
+            button.classList.add("display-none");
         }
 
     }
@@ -771,14 +772,14 @@ function DictionaryPageScope() {
                     inputID = button.dataset.inputid;
 
                     console.log(inputID);
-                    button.classList.add("dislay-none");
+                    button.classList.add("display-none");
 
 
                     const saveButtons = document.querySelectorAll('.save-edit');
 
                     for (const saveBtn of saveButtons) {
                         if (saveBtn.dataset.inputid === inputID) {
-                            saveBtn.classList.remove("dislay-none");
+                            saveBtn.classList.remove("display-none");
                         }
                     }
 
@@ -786,7 +787,7 @@ function DictionaryPageScope() {
 
                     for (const input of inputs) {
                         if (input.dataset.inputid === inputID) {
-                            input.classList.remove("dislay-none");
+                            input.classList.remove("display-none");
                         }
                     }
 
@@ -794,7 +795,7 @@ function DictionaryPageScope() {
 
                     for (const label of labels) {
                         if (label.dataset.inputid === inputID) {
-                            label.classList.add("dislay-none");
+                            label.classList.add("display-none");
                         }
                     }
                 }
@@ -844,13 +845,13 @@ function DictionaryPageScope() {
                 state.editDictionaryContent = false;
 
                 inputID = button.dataset.inputid;
-                button.classList.add("dislay-none");
+                button.classList.add("display-none");
 
                 let newInput;
 
                 for (const input of inputs) {
                     if (input.dataset.inputid === inputID) {
-                        input.classList.add("dislay-none");
+                        input.classList.add("display-none");
                         newInput = input.value;
                     }
                 }
@@ -858,7 +859,7 @@ function DictionaryPageScope() {
                 for (const label of labels) {
 
                     if (label.dataset.inputid === inputID) {
-                        label.classList.remove("dislay-none");
+                        label.classList.remove("display-none");
                         label.innerHTML = newInput;
 
                     }
@@ -867,7 +868,7 @@ function DictionaryPageScope() {
                 for (const buton of editBtn) {
 
                     if (buton.dataset.inputid === inputID) {
-                        buton.classList.remove("dislay-none");
+                        buton.classList.remove("display-none");
 
                     }
                 }
@@ -893,10 +894,12 @@ function DictionaryPageScope() {
 
                         const word_1 = line.querySelector(".dictionary-first-word > span").innerText;
                         const word_2 = line.querySelector(".dictionary-second-word > span").innerText;
+                        const Global = GlobalObjectScope();
 
                         console.log("törlés >> ", line.dataset.rowinfo, word_1, word_2);
 
-                        fillDialogPanel(`"${word_1} - ${word_2}"`);
+
+                        Global.fillDialogPanel(`"${word_1} - ${word_2}"`);
 
                         document.getElementById('dialogAcceptButton').addEventListener('click', () => {
                             line.remove();

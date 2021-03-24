@@ -1,265 +1,191 @@
-
 function brainTeaserScope() {
 
+    let DOM = {};
+
+    let defDOMelementss = () => {
+        return {
+            mainContent: document.querySelector(".main-content"),
+            dictionaryNameSelect: document.getElementById("dictionary-name-select"),
+            excerciseNameSelect: document.getElementById("excercise-name-select"),
+            runtimeNameSelect: document.getElementById("runtime-name-select"),
+            countManualBox: document.getElementById("set-word-count-section"),
+            setCountManual: document.getElementById("set-word-count-input"),
+            excerciseStartButton: document.getElementById("excercise-button-start"),
+        }
+    }
+
+    function buildBrainTeaserPage() {
+
+        renderBrainTeaserHTML();
+        DOM = defDOMelementss();
+        dictionaryNameSelectmethod();
+        excerciseStartSelectmethod();
+        runtimeNameSelectmethod();
+        validateCountInput();
+
+    }
 
 
-}
+    function renderBrainTeaserHTML() {
 
+        const mainContent = document.querySelector(".main-content");
+        const Global = GlobalObjectScope();
 
+        Global.renderDictionaryListInput(mainContent);
+        renderExcerciseTypeInput(mainContent);
+        renderExcerciseRuntimeInput(mainContent);
+        renderBrainTeaserStartButton(mainContent);
 
-function excerciseLoadSettings() {
+        function renderExcerciseTypeInput(contener) {
 
-    const Menu = menu_load_methods();
-    Menu.Menu_Clear_MainContent();
-
-    const mainContent = document.querySelector(".main-content");
-
-
-    createDictionaryDDList(mainContent);
-    createExcerciseTypeDDList(mainContent);
-    createExcerciseRunTimeDDList(mainContent);
-    createExcerciseStartButton(mainContent);
-
-    dictionaryNameSelect = document.querySelector("#dictionary-name-select");
-    excerciseNameSelect = document.querySelector("#excercise-name-select");
-    runtimeNameSelect = document.querySelector("#runtime-name-select");
-    setCountManual = document.querySelector("#set-word-count-input");
-    excerciseStartButton = document.querySelector("#excercise-button-start");
-
-    dictionaryNameSelectmethod();
-    excerciseNameSelectmethod();
-    runtimeNameSelectmethod();
-    validateCountInput();
-    excerciseStartSelectmethod();
-    defineExcercise();
-
-}
-
-
-function createDictionaryDDList(contener) {
-
-    contener.innerHTML += `
+            contener.innerHTML += `
         <div class= "select-dictionary mb-3">
-            <label for="dictionary-name-select" class="form-label">Válassz egy szótárt:</label>
-            <select class="form-select" id="dictionary-name-select">
-            </select>
-        </div>
-        `
-    loadDictionarySelector();
-}
-
-function loadDictionarySelector() {
-
-    state.dictionaries.sort(compareValues("dictionaryName", "asc"));
-
-    var content = document.querySelector("#dictionary-name-select");
-    content.innerHTML = '';
-    counter = 0;
-
-    Object.values(state.dictionaries).map(item => {
-        content.innerHTML += `<option value = "${counter}" data-dictid="${item.autoID}">${item.dictionaryName}</option>`;
-        counter++;
-    });
-
-    dictionaryNameSelect = document.querySelector("#dictionary-name-select");
-}
-
-function dictionaryNameSelectmethod() {
-    dictionaryNameSelect.addEventListener("change", () => {
-        console.log(dictionaryNameSelect.value);
-        updateRunTimeCount();
-    })
-}
-
-/* ******************************************************************************************* */
-
-
-/* Gyakorlás típuslista létrehozása, és feltöltése *********************************************/
-
-function createExcerciseTypeDDList(contener) {
-
-    contener.innerHTML += `
-    <div class= "select-dictionary mb-3">
             <label for="" class="form-label">Gyakorlási forma:</label>
             <select class="form-select" id="excercise-name-select">
             </select>
         </div>
         `
-    loadExcerciseSelector();
-}
+            renderExcerciseTypeOptions();
+        }
+        function renderExcerciseTypeOptions() {
+            const content = document.getElementById("excercise-name-select");
+            content.innerHTML = '';
+            Object.values(excerciseTypes).map(item => {
+                content.innerHTML += `<option value = "${item.value}">${item.name}</option>`;
+            });
+        }
 
-function loadExcerciseSelector() {
+        function renderExcerciseRuntimeInput(contener) {
 
-    var content = document.querySelector("#excercise-name-select");
-    content.innerHTML = '';
-    Object.values(excerciseTypes).map(item => {
-        content.innerHTML += `<option value = "${item.value}">${item.name}</option>`;
-    });
-}
-function excerciseNameSelectmethod() {
-    excerciseNameSelect.addEventListener("change", () => {
+            var wordCount = setEnabledWordsCount();
 
-        console.log(excerciseNameSelect.value);
-    })
-}
+            contener.innerHTML += `
+            <div class= "select-dictionary mb-3">
+                <label for="" class="form-label">Gyakorlás hossza:</label>
+                <select class="form-select" id="runtime-name-select">
+                </select>
+            </div>
+            <div class="mb-3 display-none" id="set-word-count-section">
+                <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
+                <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value = "${wordCount}">
+            </div>
+            `
+            renderExcerciseRuntimeOptions();
+        }
+
+        function renderExcerciseRuntimeOptions() {
+
+            var content = document.getElementById("runtime-name-select");
+            content.innerHTML = '';
+            Object.values(excerciseRunTime).map(item => {
+                content.innerHTML += `<option value="${item.value}">${item.name}</option>`;
+            });
+        }
+
+        function renderBrainTeaserStartButton(contener) {
+
+            contener.innerHTML += `
+            <div class="excercise-header-start">
+                <button class="btn btn-success" id="excercise-button-start" type="">Start!</button>
+            </div>
+            `
+        }
+
+    }
 
 
-function createExcerciseRunTimeDDList(contener) {
+    function dictionaryNameSelectmethod() {
 
-    var wordCount = setEnabledWordsCount();
-
-    contener.innerHTML += `
-    <div class= "select-dictionary mb-3">
-            <label for="" class="form-label">Gyakorlás hossza:</label>
-            <select class="form-select" id="runtime-name-select">
-            </select>
-        </div>
-        <div class="mb-3 dislay-none" id="set-word-count-section">
-            <label for="" class="form-label">Kikérdezett szavak mennyisége:</label>
-            <input type="number" class="form-control " id="set-word-count-input" max="${wordCount}" min="1" value = "${wordCount}">
-        </div>
-    `
-    loadRunTimeSelector();
-
-}
-
-function updateRunTimeCount() {
-
-    var wordCount = setEnabledWordsCount();
-    console.log("frissítem! Max: " + wordCount);
-
-    setCountManual.max = wordCount;
-    setCountManual.value = wordCount;
-
-    // frissítés
-    defineExcercise();
-
-}
-
-function loadRunTimeSelector() {
-
-    var content = document.querySelector("#runtime-name-select");
-    content.innerHTML = '';
-    Object.values(excerciseRunTime).map(item => {
-        content.innerHTML += `<option value="${item.value}">${item.name}</option>`;
-    });
-}
-
-function runtimeNameSelectmethod() {
-
-    var countManualBox = document.querySelector("#set-word-count-section");
-    var wordCount = setEnabledWordsCount();
-
-    runtimeNameSelect.addEventListener("change", () => {
-
-        if (runtimeNameSelect.value == 1) {
-            countManualBox.classList.remove("dislay-none");
-            // Érték adása az input boxhoz!
-            setCountManual.value = wordCount;
+        DOM.dictionaryNameSelect.addEventListener("change", () => {
+            console.log(DOM.dictionaryNameSelect.value);
             updateRunTimeCount();
-        }
-        else {
-            countManualBox.classList.add("dislay-none");
-        }
-    })
-}
-
-function validateCountInput() {
-
-    setCountManual.addEventListener("change", () => {
-
-        var maxValue = setEnabledWordsCount();
-
-        if (setCountManual.value > maxValue) {
-            setCountManual.value = maxValue;
-        }
-        if (setCountManual.value <= 0) {
-            setCountManual.value = 1;
-        }
-        defineExcercise();
-        console.log(excInfo.countIndex);
-
-    })
-
-    // frissítés
+        })
+    }
 
 
-}
+    function excerciseStartSelectmethod() {
 
-function createExcerciseStartButton(contener) {
+        DOM.excerciseStartButton.addEventListener("click", () => {
+            defineExcercise();
+            const excercise = BrainTeaserExcerciseScope();
+            excercise.buildBrainTeaserExcercise();
 
-    contener.innerHTML += `
-    <div class="excercise-header-start">
-        <button class="btn btn-success" id="excercise-button-start" type="">Start!</button>
-    </div>`
-}
+        })
+    }
 
-function excerciseStartSelectmethod() {
+    function updateRunTimeCount() {
 
-    excerciseStartButton.addEventListener("click", () => {
+        const wordCount = setEnabledWordsCount();
+
+        console.log("frissítem! Max: " + wordCount);
+        DOM.setCountManual.max = wordCount;
+        DOM.setCountManual.value = wordCount;
 
         defineExcercise();
-        displayExcerciseContainer();
-        startExcerciseMethod();
-        console.log(excInfo.countIndex);
+    }
 
-    })
+    function setEnabledWordsCount() {
 
-}
+        let dictionaryNameSelect = document.getElementById("dictionary-name-select");
+        return state.dictionaries[dictionaryNameSelect.value].lexicon.length;
+    }
 
-var defineExcercise = () => {
+    var defineExcercise = () => {
 
-    state.dictionaryID = dictionaryNameSelect.value;
-    state.selectedDictionary = dictionaryNameSelect[dictionaryNameSelect.value].dataset.dictid;
-    state.dictionaryName = dictionaryNameSelect[dictionaryNameSelect.value].textContent;
+        state.dictionaryID = DOM.dictionaryNameSelect.value;
+        state.selectedDictionary = DOM.dictionaryNameSelect[DOM.dictionaryNameSelect.value].dataset.dictid;
+        state.dictionaryName = DOM.dictionaryNameSelect[DOM.dictionaryNameSelect.value].textContent;
 
-    return excInfo = {
-        maxValue: state.dictionaries[dictionaryNameSelect.value].lexicon.length,
-        dictionary: dictionaryNameSelect.value,
-        excIndex: excerciseNameSelect.value,
-        timeIndex: runtimeNameSelect.value,
-        countIndex: setCountManual.value
-    };
-}
-
-/* ******************************************************************************************* */
+        return excInfo = {
+            maxValue: state.dictionaries[DOM.dictionaryNameSelect.value].lexicon.length,
+            dictionary: DOM.dictionaryNameSelect.value,
+            excIndex: DOM.excerciseNameSelect.value,
+            timeIndex: DOM.runtimeNameSelect.value,
+            countIndex: DOM.setCountManual.value
+        };
+    }
 
 
-function setEnabledWordsCount() {
-    return state.dictionaries[dictionaryNameSelect.value].lexicon.length;
-}
+    function runtimeNameSelectmethod() {
 
-function randomIntGenerator(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
+        const wordCount = setEnabledWordsCount();
 
-/* EXCERCISE metódus felépítése ******************************************************************/
+        DOM.runtimeNameSelect.addEventListener("change", () => {
 
-var indexPuffer = [];
+            if (DOM.runtimeNameSelect.value == 1) {
+                DOM.countManualBox.classList.remove("display-none");
+                DOM.setCountManual.value = wordCount;
+                updateRunTimeCount();
+            }
+            else {
+                DOM.countManualBox.classList.add("display-none");
+                updateRunTimeCount();
+            }
+        })
+    }
 
-var questionBox;
-var questionBoxText;
+    function validateCountInput() {
 
-var answerBox;
-var answerBoxText;
+        DOM.setCountManual.addEventListener("change", () => {
 
-var excerciseInputSection;
-var answerBoxInput;
-var answerBoxAcceptButton;
+            var maxValue = setEnabledWordsCount();
 
-var minutesLabel;
-var secondsLabel;
+            if (DOM.setCountManual.value > maxValue) {
+                DOM.setCountManual.value = maxValue;
+            }
+            if (DOM.setCountManual.value <= 0) {
+                DOM.setCountManual.value = 1;
+            }
+            defineExcercise();
+            console.log(excInfo.countIndex);
 
-var numberOfExcercise;
-var countOfNumbers;
+        })
 
-function displayExcerciseContainer() {
+    }
 
-    const Menu = menu_load_methods();
+    function renderBrainTeaserExcerciseHTML() {
 
-    Menu.Menu_Clear_MainContent();
-
-    document.querySelector(".main-content").innerHTML = `
+        document.querySelector(".main-content").innerHTML = `
         <div class="excercise-box">
                 <div class="excercise-header-info">
                     <div class="header-section-text-1">
@@ -304,195 +230,210 @@ function displayExcerciseContainer() {
                             </div>
                         </div>
                     </div>
-                </div>
-    `
-
-    questionBox = document.querySelector(".question-box-value");
-    questionBoxText = document.querySelector(".question-box-value > p");
-
-    answerBox = document.querySelector(".answer-box-value");
-    answerBoxText = document.querySelector(".answer-box-value > p");
-
-    excerciseInputSection = document.querySelector(".excercise-input-section");
-    answerBoxInput = document.getElementById("answer-box-input");
-    answerBoxAcceptButton = document.getElementById("answer-button-accept");
-
-    minutesLabel = document.getElementById("minutes");
-    secondsLabel = document.getElementById("seconds");
-
-    numberOfExcercise = document.getElementById("number-of-excercise");
-    countOfNumbers = document.getElementById("count-of-numbers");
+            </div>
+                `
+    };
 
 
-    var listeningModeBtn = document.getElementById("listening-mode-brain");
-    listeningModeBtn.onclick = function () {
-        startSpeech(questionBoxText.dataset.lang, questionBoxText.innerText);
-    }
-
-    var stopExcercise = document.getElementById("stop-excercise");
-
-    stopExcercise.onclick = function () {
-
-        document.getElementById('dialogAcceptButton').addEventListener('click', () => {
-
-            const Menu = menu_load_methods();
-
-            Menu.menu_load_brainteaser();
-        })
-
-    }
 
 
-}
+    function BrainTeaserExcerciseScope() {
 
+        let DOM = {};
 
-var totalSeconds = 0;
-
-function setTime() {
-
-    ++totalSeconds;
-
-    secondsLabel.innerHTML = pad(totalSeconds % 60);
-    minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-
-}
-
-function pad(val) {
-
-    var valString = val + "";
-    if (valString.length < 2) {
-        return "0" + valString;
-    } else {
-        return valString;
-    }
-
-}
-
-function clearExcercisePuffers() {
-    indexPuffer = [];
-    totalSeconds = 0;
-}
-
-function startExcerciseMethod() {
-    showDialogPanel(1);
-
-    clearExcercisePuffers();
-    askSomething();
-    skipAnswer();
-    answerEventClick();
-    answerEventEnter();
-
-    setInterval(setTime, 1000);
-
-}
-
-function askSomething() {
-
-    var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
-    var randomIndex = randomIntGenerator(0, maxNumber - 1);
-
-    if (excInfo.timeIndex == 2 && indexPuffer.length == maxNumber) {
-
-        clearExcercisePuffers();
-        maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
-        randomIndex = randomIntGenerator(0, maxNumber - 1);
-    }
-
-    console.log("indexPuffer: " + indexPuffer.length);
-
-
-    if (indexPuffer.length == maxNumber) {
-        alert("Nincs több kérdés!");
-    }
-    else {
-
-        hideQuestionBox();
-
-        while (indexPuffer.includes(randomIndex)) {
-            randomIndex = randomIntGenerator(0, maxNumber - 1);
+        var defDOMelements = () => {
+            return {
+                questionBox: document.querySelector(".question-box-value"),
+                questionBoxText: document.querySelector(".question-box-value > p"),
+                answerBox: document.querySelector(".answer-box-value"),
+                answerBoxText: document.querySelector(".answer-box-value > p"),
+                excerciseInputSection: document.querySelector(".excercise-input-section"),
+                answerBoxInput: document.getElementById("answer-box-input"),
+                answerBoxAcceptButton: document.getElementById("answer-button-accept"),
+                minutesLabel: document.getElementById("minutes"),
+                secondsLabel: document.getElementById("seconds"),
+                numberOfExcercise: document.getElementById("number-of-excercise"),
+                countOfNumbers: document.getElementById("count-of-numbers"),
+                indexPuffer: [],
+                totalSeconds: 0
+            }
         }
 
-        indexPuffer.push(randomIndex);
+        function buildBrainTeaserExcercise() {
+
+            renderBrainTeaserExcerciseHTML();
+            DOM = defDOMelements();
+            readExcerciseWord();
+            startExcerciseMethod();
+            stopBrainTeaserExcercise();
+        };
 
 
-        var randomText = [];
-        randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
-        randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
+        function readExcerciseWord() {
+            const listeningModeBtn = document.getElementById("listening-mode-brain");
+            listeningModeBtn.onclick = function () {
+                startSpeech(DOM.questionBoxText.dataset.lang, DOM.questionBoxText.innerText);
+            }
+        }
 
-        var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
+        function clearExcercisePuffers() {
+            DOM.indexPuffer = [];
+            totalSeconds = 0;
+        }
 
-        console.log("question: " + randomText[0] + ' - ' + randomText[1]);
+        function startExcerciseMethod() {
 
-        questionBoxText.innerHTML = randomText[questionIndex];
+            const Global = GlobalObjectScope();
+            Global.showDialogPanel(1);
 
-        var speachLangIndex = state.dictionaries[excInfo.dictionary].lexicon[randomIndex];
-        questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2;
+            clearExcercisePuffers();
+            askSomething();
+            skipAnswer();
+            answerEventClick();
+            answerEventEnter();
+            setInterval(setTime, 1000);
+        }
 
-        numberOfExcercise.innerHTML = indexPuffer.length;
-        countOfNumbers.innerHTML = maxNumber;
 
-        showQuestionBox();
-        answerBoxInput.focus();
+        function askSomething() {
+
+            var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
+            var randomIndex = randomIntGenerator(0, maxNumber - 1);
+
+            if (excInfo.timeIndex == 2 && DOM.indexPuffer.length == maxNumber) {
+                console.log('restart progress!');
+                clearExcercisePuffers();
+                maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
+                randomIndex = randomIntGenerator(0, maxNumber - 1);
+            }
+
+            if (DOM.indexPuffer.length == maxNumber) {
+                alert("Nincs több kérdés!");
+            }
+            else {
+
+                hideQuestionBox();
+
+                while (DOM.indexPuffer.includes(randomIndex)) {
+                    randomIndex = randomIntGenerator(0, maxNumber - 1);
+                }
+
+                DOM.indexPuffer.push(randomIndex);
+
+                var randomText = [];
+                randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
+                randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
+
+                var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
+
+                DOM.questionBoxText.innerHTML = randomText[questionIndex];
+
+                var speachLangIndex = state.dictionaries[excInfo.dictionary].lexicon[randomIndex];
+                DOM.questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2;
+
+                DOM.numberOfExcercise.innerHTML = DOM.indexPuffer.length;
+                DOM.countOfNumbers.innerHTML = maxNumber;
+
+                showQuestionBox();
+                DOM.answerBoxInput.focus();
+
+            }
+        }
+
+        function answerEventClick() {
+            DOM.answerBoxAcceptButton.addEventListener('click', () => {
+                if (DOM.answerBoxInput.value != "") {
+                    sendAnswer();
+                }
+            })
+        }
+
+        function answerEventEnter() {
+            DOM.answerBoxInput.addEventListener("keyup", (event) => {
+                if (DOM.answerBoxInput.value != "" && event.keyCode === 13) {
+                    sendAnswer();
+                    console.log("enter")
+                }
+            })
+        }
+
+        function skipAnswer() {
+
+            var skipButton = document.getElementById('answer-button-next');
+
+            skipButton.addEventListener('click', () => {
+                DOM.answerBox.classList.remove('hidden');
+                DOM.answerBoxText.innerHTML = DOM.answerBoxInput.value;
+                DOM.answerBoxInput.value = "";
+                hideAnswerBox();
+                askSomething();
+            });
+        }
+
+        function sendAnswer() {
+            DOM.answerBox.classList.remove('hidden');
+            DOM.answerBoxText.innerHTML = DOM.answerBoxInput.value;
+            DOM.answerBoxInput.value = "";
+            setTimeout(hideAnswerBox, 1000);
+            setTimeout(askSomething, 1000);
+        }
+
+        function hideAnswerBox() {
+            DOM.answerBox.classList.add('hidden');
+        }
+
+        function hideQuestionBox() {
+            DOM.questionBox.classList.add("display-none");
+        }
+
+        function showQuestionBox() {
+            DOM.questionBox.classList.remove("display-none");
+        }
+
+        function randomIntGenerator(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min);
+        }
+
+        function stopBrainTeaserExcercise() {
+            var stopExcercise = document.getElementById("stop-excercise");
+            stopExcercise.onclick = function () {
+
+                document.getElementById('dialogAcceptButton').addEventListener('click', () => {
+                    const Menu = menu_load_methods();
+                    Menu.menu_load_brainteaser();
+                })
+            }
+        }
+
+        function setTime() {
+            ++DOM.totalSeconds;
+            DOM.secondsLabel.innerHTML = pad(DOM.totalSeconds % 60);
+            DOM.minutesLabel.innerHTML = pad(parseInt(DOM.totalSeconds / 60));
+        }
+
+        function pad(val) {
+            var valString = val + "";
+            if (valString.length < 2) {
+                return "0" + valString;
+            } else {
+                return valString;
+            }
+        }
+
+
+        return {
+
+            'buildBrainTeaserExcercise': buildBrainTeaserExcercise
+        }
+
 
     }
 
-}
 
 
-function answerEventClick() {
-    answerBoxAcceptButton.addEventListener('click', () => {
-        if (answerBoxInput.value != "") {
-            sendAnswer();
-        }
-    })
-}
 
-function answerEventEnter() {
-    answerBoxInput.addEventListener("keyup", (event) => {
-        if (answerBoxInput.value != "" && event.keyCode === 13) {
-            sendAnswer();
-            console.log("enter")
-        }
-    })
-}
+    return {
+        'buildBrainTeaserPage': buildBrainTeaserPage
+    }
 
-
-function skipAnswer() {
-
-    var skipButton = document.querySelector('#answer-button-next');
-
-    skipButton.addEventListener('click', () => {
-        answerBox.classList.remove('hidden');
-        answerBoxText.innerHTML = answerBoxInput.value;
-        answerBoxInput.value = "";
-        hideAnswerBox();
-        askSomething();
-    });
-}
-
-
-function sendAnswer() {
-
-    answerBox.classList.remove('hidden');
-    answerBoxText.innerHTML = answerBoxInput.value;
-    answerBoxInput.value = "";
-    setTimeout(hideAnswerBox, 1000);
-    setTimeout(askSomething, 1000);
-}
-
-
-function answerValidation(userinput) {
-    console.log(userinput);
-};
-
-function hideAnswerBox() {
-    answerBox.classList.add('hidden');
-}
-
-function hideQuestionBox() {
-    questionBox.classList.add("dislay-none");
-}
-
-function showQuestionBox() {
-    questionBox.classList.remove("dislay-none");
 }

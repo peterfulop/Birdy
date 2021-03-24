@@ -1,8 +1,12 @@
 function AddWordsScope() {
 
+    const Global = GlobalObjectScope();
+
     function renderAddWordsContent() {
 
-        createDictionaryDDList(mainContent);
+        const mainContent = document.querySelector(".main-content");
+
+        Global.renderDictionaryListInput(mainContent);
 
         mainContent.innerHTML += `
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
