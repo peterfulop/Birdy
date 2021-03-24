@@ -1,36 +1,10 @@
 function DictionaryPageScope() {
 
+    const Pagination = paginationFunctionScope();
+
     //#region methods for Dictionaries
 
-    function renderDictionariesPage() {
-
-        renderHTMLContent();
-
-        var langContent = document.querySelector("#dictionary-language-primary");
-        langContent.innerHTML = '';
-        var langCounter = 0;
-        Object.values(languagesJS).map(item => {
-            langContent.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
-            langCounter++;
-        });
-
-        var langContent = document.querySelector("#dictionary-language-secondary");
-        langContent.innerHTML = '';
-        var langCounter = 0;
-        Object.values(languagesJS).map(item => {
-            langContent.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
-            langCounter++;
-        });
-
-
-        renderDictionaryList(state.dictionaries);
-        createNewDictionary();
-        backToNewDictionary();
-        dictionarySearchMethods();
-        sortDictionaryList();
-    };
-
-    function renderHTMLContent() {
+    function renderDictionariesPageHTML() {
 
         document.querySelector(".main-content").innerHTML = `
             <h5 class="text-center mb-4">Szótárak listája</h5>
@@ -111,6 +85,31 @@ function DictionaryPageScope() {
         `
     }
 
+    function buildDictionariesPage() {
+
+        renderDictionariesPageHTML();
+        renderLanguageCombobox("dictionary-language-primary");
+        renderLanguageCombobox("dictionary-language-secondary");
+        renderDictionaryList(state.dictionaries);
+
+        createNewDictionary();
+        backToNewDictionary();
+        dictionarySearchMethods();
+        sortDictionaryList();
+    };
+
+
+    function renderLanguageCombobox(selectInputId) {
+
+        const langContent = document.getElementById(selectInputId);
+        langContent.innerHTML = '';
+
+        Object.values(languagesJS).map((item, i) => {
+            langContent.innerHTML += `<option value = "${i}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
+        });
+
+    }
+
     function renderDictionaryList(renderArray) {
 
         state.pagination.location = 0;
@@ -121,13 +120,12 @@ function DictionaryPageScope() {
         sliceArray(renderArray);
         renderArray = state.pagination.slicedArray;
 
-        var content = document.querySelector(".dictionary-list-items");
+        const content = document.querySelector(".dictionary-list-items");
         content.innerHTML = '';
 
-        var counter = 0;
-        var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
+        const index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
 
-        Object.values(renderArray).map(dictionary => {
+        Object.values(renderArray).map((dictionary, i) => {
             content.innerHTML +=
                 `
                 <div class="row d-flex py-2 justify-content-between dictionary-list-item border-bottom">
@@ -137,7 +135,6 @@ function DictionaryPageScope() {
                             <small class="col-auto col-sm-1 me-2 col-lg-1 col-xl-auto">[${dictionary.lexicon.length}]</small>
                             <h6 class="m-0">${dictionary.dictionaryName}</h6>
                     </div>
-    
                     <div class="d-flex col-12 col-sm-4 col-xl-4 px-0 justify-content-center justify-content-sm-end">
                         <div class="d-flex w-100 btn-group dictionary-list-item-button justify-content-start justify-content-sm-end" role="group" style="max-width: 275px">
                             <button type="button" class="btn btn-sm open-content content-action" id="open-content" data-dictid ="${dictionary.autoID}"><i class="far fa-folder-open"></i></button>
@@ -145,22 +142,18 @@ function DictionaryPageScope() {
                             <button type="button" class="btn btn-sm delete-content content-action" id="delete-content" data-dictid ="${dictionary.autoID}"><i class="fas fa-trash-alt"></i></i></button>
                         </div>
                     </div>
-                    
                 </div>
             `
-
-            state.pagination.itemNumber = index + counter;
-            counter++;
+            state.pagination.itemNumber = index + i;
         });
 
         selectDictionaryMethod();
 
         if (state.filtered) {
-            renderPaginationFooter(state.filterArray)
+            Pagination.renderPaginationFooter(state.filterArray)
         }
         else {
-            renderPaginationFooter(state.dictionaries)
-
+            Pagination.renderPaginationFooter(state.dictionaries)
         };
     };
 
@@ -197,10 +190,10 @@ function DictionaryPageScope() {
 
     function dictionarySearchMethods() {
 
-        var searchDictionaryInput = document.getElementById("search-element-input");
-        var searchDictionaryBtn = document.getElementById("search-element-button");
-        var clearfilterBtn = document.getElementById("clear-dictionary-filter");
-        var searchAlert = document.getElementById("search-alert");
+        const searchDictionaryInput = document.getElementById("search-element-input");
+        const searchDictionaryBtn = document.getElementById("search-element-button");
+        const clearfilterBtn = document.getElementById("clear-dictionary-filter");
+        const searchAlert = document.getElementById("search-alert");
         closeSearchAlert();
 
 
@@ -211,7 +204,7 @@ function DictionaryPageScope() {
                 filterBy(state.dictionaries, "dictionaryName", searchDictionaryInput.value);
 
                 if (state.filtered) {
-                    resetPaginationState();
+                    Pagination.resetPaginationState();
                     renderDictionaryList(state.filterArray);
                     clearfilterBtn.classList.remove("d-none");
                     clearfilterBtn.classList.add("d-flex");
@@ -236,10 +229,10 @@ function DictionaryPageScope() {
             renderDictionaryList(state.dictionaries);
             clearfilterBtn.classList.add("d-none");
             searchDictionaryInput.value = "";
-            resetPaginationState();
+            Pagination.resetPaginationState();
             resetFilteredState();
             sliceArray(state.dictionaries);
-            renderPaginationFooter(state.dictionaries);
+            Pagination.renderPaginationFooter(state.dictionaries);
         })
 
 
@@ -247,12 +240,12 @@ function DictionaryPageScope() {
 
     function sortDictionaryList() {
 
-        var sortButton = document.getElementById("sort-alpha-btn");
+        const sortButton = document.getElementById("sort-alpha-btn");
 
         sortButton.onclick = function () {
 
-            var sortIcon = document.getElementById('sort-alpha-icon');
-            var sortChecker = document.getElementById("sort-alpha-check");
+            const sortIcon = document.getElementById('sort-alpha-icon');
+            const sortChecker = document.getElementById("sort-alpha-check");
 
             sortChecker.checked != sortChecker.checked;
 
@@ -263,7 +256,7 @@ function DictionaryPageScope() {
                 state.sortBy = 'asc';
                 state.pagination.selectedPageIndex = 0;
                 const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
-                resetPaginationState();
+                Pagination.resetPaginationState();
                 renderDictionaryList(renderRoot);
             }
             else {
@@ -273,25 +266,24 @@ function DictionaryPageScope() {
                 state.sortBy = 'desc';
                 state.pagination.selectedPageIndex = 0;
                 const renderRoot = state.filtered ? state.filterArray : state.dictionaries;
-                resetPaginationState();
+                Pagination.resetPaginationState();
                 renderDictionaryList(renderRoot);
             }
         }
 
     };
 
-
     function selectDictionaryMethod() {
 
-        var dictionaryContentButtons = document.querySelectorAll('.content-action');
-        var ID;
+        const dictionaryContentButtons = document.querySelectorAll('.content-action');
+        let ID;
 
         for (const element of dictionaryContentButtons) {
             element.addEventListener('click', () => {
                 ID = element.dataset.dictid;
                 state.selectedDictionary = ID;
 
-                var buttonName = element.id;
+                const buttonName = element.id;
 
                 switch (buttonName) {
                     case 'open-content':
@@ -319,7 +311,7 @@ function DictionaryPageScope() {
             if (state.dictionaries[i].autoID === state.selectedDictionary) {
                 state.dictionaryID = i;
                 state.dictionaryName = array_dictionaries[i].dictionaryName;
-                renderDinctionaryContent();
+                buildDinctionaryContent();
             }
         }
     };
@@ -356,12 +348,9 @@ function DictionaryPageScope() {
 
 
 
-    function renderDinctionaryContent() {
+    function renderDinctionaryContentHTML() {
 
-        var searchBar = renderSearchBar();
-        mainContent.innerHTML = '';
-
-        mainContent.innerHTML = `
+        document.querySelector(".main-content").innerHTML = `
             <h5 class="text-center mb-4">${state.dictionaryName} szótár tartalma</h5>
     
             <div class="mb-2 dictionaries-search-bar">
@@ -370,7 +359,7 @@ function DictionaryPageScope() {
                     <button type="button" class="btn bg-info me-1 text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
                 </div>
     
-                ${searchBar}
+                ${renderSearchBar()}
     
             </div>
             
@@ -424,19 +413,39 @@ function DictionaryPageScope() {
             </div>
     
         `
+    }
 
-        renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
+    function buildDinctionaryContent() {
 
 
-        var searchInput = document.getElementById("search-element-input");
-        var searchBtn = document.getElementById("search-element-button");
-        var clearfilterBtn = document.getElementById("clear-dictionary-filter");
-        var searchAlert = document.getElementById("search-alert");
-        var sortButton = document.getElementById("sort-alpha-btn");
+        renderDinctionaryContentHTML();
 
-        var selectColumnBtn_1 = document.getElementById("select_column_button_1");
-        var selectColumnBtn_2 = document.getElementById("select_column_button_2");
+        buildDictionaryElementsPage(state.dictionaries[state.dictionaryID].lexicon);
 
+        backToDictionariesPage();
+
+        startSearchButtonMethod();
+
+        clearSearchButtonMethod();
+
+        closeSearchAlert();
+
+        sortByAscDescButton();
+
+        sortByColumn_1();
+
+        sortBytColumn_2();
+
+    }
+
+    //#region Event handler regio
+
+    function startSearchButtonMethod() {
+
+        const searchInput = document.getElementById("search-element-input");
+        const searchBtn = document.getElementById("search-element-button");
+        const clearfilterBtn = document.getElementById("clear-dictionary-filter");
+        const searchAlert = document.getElementById("search-alert");
 
         searchBtn.onclick = function () {
 
@@ -445,8 +454,8 @@ function DictionaryPageScope() {
                 searchInLexicon(searchInput);
 
                 if (state.filtered) {
-                    resetPaginationState();
-                    renderDictionaryElements(state.filterArray);
+                    Pagination.resetPaginationState();
+                    buildDictionaryElementsPage(state.filterArray);
                     clearfilterBtn.classList.remove("d-none");
                     clearfilterBtn.classList.add("d-flex");
                     searchAlert.classList.add("d-none");
@@ -460,35 +469,50 @@ function DictionaryPageScope() {
             else {
 
                 console.log("üres mező")
-                renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon);
+                buildDictionaryElementsPage(state.dictionaries[state.dictionaryID].lexicon);
                 clearfilterBtn.classList.add("d-none");
                 searchAlert.classList.add("d-none");
                 state.filterArray = [];
             }
         }
 
-        closeSearchAlert();
+    }
 
-        clearfilterBtn.onclick = function () {
+    function backToDictionariesPage() {
 
-            renderDictionaryElements(state.dictionaries[state.dictionaryID].lexicon)
+        const Menu = menu_load_methods();
+
+        const backButton = document.getElementById('back-dictionary-button');
+        backButton.addEventListener('click', () => {
+            Menu.menu_load_dictionaries();
+        })
+    }
+
+    function clearSearchButtonMethod() {
+
+        const searchInput = document.getElementById("search-element-input");
+        const clearfilterBtn = document.getElementById("clear-dictionary-filter");
+
+        clearfilterBtn.addEventListener('click', () => {
+            buildDictionaryElementsPage(state.dictionaries[state.dictionaryID].lexicon)
             clearfilterBtn.classList.add("d-none");
             searchInput.value = "";
             resetFilteredState();
-            resetPaginationState();
+            Pagination.resetPaginationState();
             sliceArray(state.dictionaries[state.dictionaryID].lexicon);
-            renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
-        }
-
-        var backButton = document.getElementById('back-dictionary-button');
-        backButton.addEventListener('click', () => {
-            menu_load_dictionaries();
+            Pagination.renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
         })
+
+    }
+
+    function sortByAscDescButton() {
+
+        const sortButton = document.getElementById("sort-alpha-btn");
 
         sortButton.addEventListener('click', () => {
 
-            var sortIcon = document.getElementById('sort-alpha-icon');
-            var sortChecker = document.getElementById("sort-alpha-check");
+            const sortIcon = document.getElementById('sort-alpha-icon');
+            const sortChecker = document.getElementById("sort-alpha-check");
 
             sortChecker.checked != sortChecker.checked;
 
@@ -498,8 +522,8 @@ function DictionaryPageScope() {
                 state.sortBy = 'asc';
                 const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
                 state.pagination.selectedPageIndex = 0;
-                resetPaginationState();
-                renderDictionaryElements(renderRoot);
+                Pagination.resetPaginationState();
+                buildDictionaryElementsPage(renderRoot);
 
             }
             else {
@@ -508,37 +532,99 @@ function DictionaryPageScope() {
                 state.sortBy = 'desc';
                 const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
                 state.pagination.selectedPageIndex = 0;
-                resetPaginationState();
-                renderDictionaryElements(renderRoot);
+                Pagination.resetPaginationState();
+                buildDictionaryElementsPage(renderRoot);
             }
 
         })
 
+
+    }
+
+    function sortByColumn_1() {
+        const selectColumnBtn_1 = document.getElementById("select_column_button_1");
 
         selectColumnBtn_1.addEventListener('click', () => {
             setColumnID(selectColumnBtn_1);
 
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
             state.pagination.selectedPageIndex = 0;
-            resetPaginationState();
-            renderDictionaryElements(renderRoot);
+            Pagination.resetPaginationState();
+            buildDictionaryElementsPage(renderRoot);
 
         })
+
+    }
+
+    function sortBytColumn_2() {
+
+        const selectColumnBtn_2 = document.getElementById("select_column_button_2");
 
         selectColumnBtn_2.addEventListener('click', () => {
             setColumnID(selectColumnBtn_2);
 
             const renderRoot = state.filtered ? state.filterArray : state.dictionaries[state.dictionaryID].lexicon;
             state.pagination.selectedPageIndex = 0;
-            resetPaginationState();
-            renderDictionaryElements(renderRoot);
+            Pagination.resetPaginationState();
+            buildDictionaryElementsPage(renderRoot);
         })
 
     }
 
+    //#endregion
+
+    function renderDictionaryElementsHTML(renderArray) {
+
+        const dictionaryItemList = document.getElementById('dictionary-item-list');
+
+        dictionaryItemList.innerHTML = '';
+
+        const index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
+
+        Object.values(renderArray).map((item, i) => {
+
+            const randomIndex = generateID_short();
+            dictionaryItemList.innerHTML += `
+            <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
+                <div class="dictionary-item-count">
+                    <span>${index + i}.</span>
+                </div>
+                <div class="dictionary-item-words">
+                    <div class="dictionary-first-word mr-1">
+                        <span class="dictionary-text-content p-1 enabled" data-inputid="${i}_0">${item.article_1} ${item.word_1}</span>
+                        <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${i}_0" data-wordid="0" value="${item.word_1}">
+                        <div class="dictionary-item-buttons">
+    
+                            <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${i}_0" data-wordid="0"></i>
+                            <i class="fas fa-check save-edit dislay-none" data-inputid="${i}_0" data-wordid="0"></i>
+                            <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${i}_0" data-wordid="0"></i>
+    
+                        </div>
+                    </div>
+                    <div class="dictionary-second-word mr-1">
+                            <span class="dictionary-text-content p-1 enabled" data-inputid="${i}_1">${item.word_2}</span>
+                            <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${i}_1" data-wordid="1" value="${item.word_2}">
+    
+                            <div class="dictionary-item-buttons listen">
+                                <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${i}_1" data-wordid="1"></i>
+                                <i class="fas fa-check save-edit dislay-none" data-inputid="${i}_1" data-wordid="1"></i>
+                                <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${i}_1" data-wordid="1"></i>
+                            </div>
+                    </div>
+                </div>
+    
+                <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
+                    <i class="fas fa-trash edit-actual-word remove dislay-none" data-inputid="${i}" data-dictionary="${state.dictionaryID}" ></i>
+                </div>
+            </div>
+            `
+            state.pagination.itemNumber = index + i;
+        });
+
+    }
 
 
-    function renderDictionaryElements(renderArray) {
+    function buildDictionaryElementsPage(renderArray) {
 
         state.pagination.location = 1;
         state.selectedDictionaryLength = getActualDictionaryLength();
@@ -551,55 +637,7 @@ function DictionaryPageScope() {
         resetEditorMode();
 
 
-        var dictionaryItemList = document.getElementById('dictionary-item-list');
-
-        dictionaryItemList.innerHTML = '';
-
-        var counter = 0;
-        var index = state.filtered ? 1 : (state.pagination.selectedPageIndex + 1) * state.pagination.itemsPerPage - (state.pagination.itemsPerPage - 1);
-
-        Object.values(renderArray).map(item => {
-
-            var randomIndex = generateID_short();
-            dictionaryItemList.innerHTML += `
-            <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
-                <div class="dictionary-item-count">
-                    <span>${index + counter}.</span>
-                </div>
-                <div class="dictionary-item-words">
-                    <div class="dictionary-first-word mr-1">
-                        <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_0">${item.article_1} ${item.word_1}</span>
-                        <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_0" data-wordid="0" value="${item.word_1}">
-                        <div class="dictionary-item-buttons">
-    
-                            <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
-                            <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
-                            <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_0" data-wordid="0"></i>
-    
-                        </div>
-                    </div>
-                    <div class="dictionary-second-word mr-1">
-                            <span class="dictionary-text-content p-1 enabled" data-inputid="${counter}_1">${item.word_2}</span>
-                            <input type="text" class="dictionary-edit-content p-1 dislay-none" data-inputid="${counter}_1" data-wordid="1" value="${item.word_2}">
-    
-                            <div class="dictionary-item-buttons listen">
-                                <i class="fas fa-edit edit-actual-word edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
-                                <i class="fas fa-check save-edit dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
-                                <i class="fas fa-volume-up listening-mode dislay-none" data-inputid="${counter}_1" data-wordid="1"></i>
-                            </div>
-                    </div>
-                </div>
-    
-                <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
-                    <i class="fas fa-trash edit-actual-word remove dislay-none" data-inputid="${counter}" data-dictionary="${state.dictionaryID}" ></i>
-                </div>
-            </div>
-            `
-            state.pagination.itemNumber = index + counter;
-            counter++;
-        });
-
-
+        renderDictionaryElementsHTML(renderArray);
 
 
         enabledEditorMode();
@@ -613,21 +651,34 @@ function DictionaryPageScope() {
 
 
         if (state.filtered) {
-            renderPaginationFooter(state.filterArray); //ok
+            Pagination.renderPaginationFooter(state.filterArray); //ok
         }
         else {
-            renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
+            Pagination.renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
 
         };
 
 
     }
 
+    function searchInLexicon(input) {
+
+        state.filterArray = state.dictionaries.filter(elem => {
+            return elem.autoID == state.selectedDictionary
+        });
+
+        state.filterArray = state.filterArray[0].lexicon.filter(element => {
+            return (element['word_1'].toLowerCase().includes(input.value.toLowerCase()) || element['word_2'].toLowerCase().includes(input.value.toLowerCase()))
+        });
+
+        if (state.filterArray.length > 0) state.filtered = true;
+
+    }
 
     function enabledEditorMode() {
 
-        var editorModeBtn = document.getElementById('edit-content-checker');
-        var editBtn = document.querySelectorAll('.edit-actual-word');
+        const editorModeBtn = document.getElementById('edit-content-checker');
+        const editBtn = document.querySelectorAll('.edit-actual-word');
 
         editorModeBtn.addEventListener("change", () => {
 
@@ -649,16 +700,15 @@ function DictionaryPageScope() {
 
     function resetEditorMode() {
 
-        var editorModeBtn = document.getElementById('edit-content-checker');
+        const editorModeBtn = document.getElementById('edit-content-checker');
         editorModeBtn.checked = false;
         state.editDictionaryMode = false;
     }
 
-
     function isEnabledListeningMode() {
 
-        var listeningModeButton = document.getElementById('listen-content-checker');
-        var listenBtn = document.querySelectorAll('.listening-mode');
+        const listeningModeButton = document.getElementById('listen-content-checker');
+        const listenBtn = document.querySelectorAll('.listening-mode');
 
 
         if (state.listeningMode) {
@@ -697,18 +747,16 @@ function DictionaryPageScope() {
 
     }
 
-
     function resetListeningMode() {
 
-        var listeningModeButton = document.getElementById('listen-content-checker');
+        const listeningModeButton = document.getElementById('listen-content-checker');
         listeningModeButton.checked = false;
         state.listeningMode = false;
     }
 
-
     function editSelectedWord() {
 
-        var editBtn = document.querySelectorAll('.edit-actual-word.edit');
+        const editBtn = document.querySelectorAll('.edit-actual-word.edit');
 
         for (const button of editBtn) {
 
@@ -716,7 +764,7 @@ function DictionaryPageScope() {
 
                 if (!state.editDictionaryContent) {
 
-                    var editorModeButton = document.getElementById('edit-content-checker');
+                    const editorModeButton = document.getElementById('edit-content-checker');
                     editorModeButton.disabled = true;
                     state.editDictionaryContent = true;
 
@@ -726,7 +774,7 @@ function DictionaryPageScope() {
                     button.classList.add("dislay-none");
 
 
-                    var saveButtons = document.querySelectorAll('.save-edit');
+                    const saveButtons = document.querySelectorAll('.save-edit');
 
                     for (const saveBtn of saveButtons) {
                         if (saveBtn.dataset.inputid === inputID) {
@@ -734,7 +782,7 @@ function DictionaryPageScope() {
                         }
                     }
 
-                    var inputs = document.querySelectorAll('.dictionary-edit-content');
+                    const inputs = document.querySelectorAll('.dictionary-edit-content');
 
                     for (const input of inputs) {
                         if (input.dataset.inputid === inputID) {
@@ -742,7 +790,7 @@ function DictionaryPageScope() {
                         }
                     }
 
-                    var labels = document.querySelectorAll('.dictionary-text-content');
+                    const labels = document.querySelectorAll('.dictionary-text-content');
 
                     for (const label of labels) {
                         if (label.dataset.inputid === inputID) {
@@ -756,14 +804,14 @@ function DictionaryPageScope() {
 
     function readSelectedWord() {
 
-        var readButtons = document.querySelectorAll('.listening-mode');
+        const readButtons = document.querySelectorAll('.listening-mode');
 
         for (const button of readButtons) {
 
             button.onclick = function () {
 
-                var inputID = button.dataset.inputid;
-                var labels = document.querySelectorAll('.dictionary-text-content');
+                const inputID = button.dataset.inputid;
+                const labels = document.querySelectorAll('.dictionary-text-content');
 
                 for (const label of labels) {
                     if (label.dataset.inputid === inputID) {
@@ -781,27 +829,24 @@ function DictionaryPageScope() {
 
     function saveEditedWord() {
 
-        var editBtn = document.querySelectorAll('.edit-actual-word.edit');
-        var inputs = document.querySelectorAll('.dictionary-edit-content');
-        var labels = document.querySelectorAll('.dictionary-text-content');
-        var saveButtons = document.querySelectorAll('.save-edit');
+        const editBtn = document.querySelectorAll('.edit-actual-word.edit');
+        const inputs = document.querySelectorAll('.dictionary-edit-content');
+        const labels = document.querySelectorAll('.dictionary-text-content');
+        const saveButtons = document.querySelectorAll('.save-edit');
 
         for (const button of saveButtons) {
 
             button.onclick = function () {
 
-                var editorModeButton = document.getElementById('edit-content-checker');
+                const editorModeButton = document.getElementById('edit-content-checker');
                 editorModeButton.disabled = false;
 
                 state.editDictionaryContent = false;
 
-                var editorModeButton = document.getElementById('edit-content-checker');
-                editorModeButton.disabled = false;
-
                 inputID = button.dataset.inputid;
                 button.classList.add("dislay-none");
 
-                var newInput;
+                let newInput;
 
                 for (const input of inputs) {
                     if (input.dataset.inputid === inputID) {
@@ -832,8 +877,8 @@ function DictionaryPageScope() {
 
     function removeSelectedWord() {
 
-        var removeBtn = document.querySelectorAll('.dictionary-item-remove');
-        var dictItem = document.querySelectorAll('.dictionary-item');
+        const removeBtn = document.querySelectorAll('.dictionary-item-remove');
+        const dictItem = document.querySelectorAll('.dictionary-item');
 
 
 
@@ -846,8 +891,8 @@ function DictionaryPageScope() {
 
                     if (button.dataset.rowinfo === line.dataset.rowinfo) {
 
-                        var word_1 = line.querySelector(".dictionary-first-word > span").innerText;
-                        var word_2 = line.querySelector(".dictionary-second-word > span").innerText;
+                        const word_1 = line.querySelector(".dictionary-first-word > span").innerText;
+                        const word_2 = line.querySelector(".dictionary-second-word > span").innerText;
 
                         console.log("törlés >> ", line.dataset.rowinfo, word_1, word_2);
 
@@ -863,33 +908,10 @@ function DictionaryPageScope() {
         }
     }
 
-    function setPaginationMethod() {
-
-
-        switch (state.pagination.location) {
-            case 0:
-                renderDictionaryList(state.pagination.slicedArray);
-
-                break;
-            case 1:
-                renderDictionaryElements(state.pagination.slicedArray);
-                break;
-
-            default:
-                break;
-        }
-    }
-
-
     return {
-        'renderDictionariesPage': renderDictionariesPage,
-        'renderDictionaryElements': renderDictionaryElements,
+        'buildDictionariesPage': buildDictionariesPage,
         'renderDictionaryList': renderDictionaryList,
-        'createNewDictionary': createNewDictionary,
-        'backToNewDictionary': backToNewDictionary,
-        'renderDinctionaryContent': renderDinctionaryContent,
-        'resetListeningMode': resetListeningMode,
-        'setPaginationMethod': setPaginationMethod
+        'buildDictionaryElementsPage': buildDictionaryElementsPage,
     }
 
 }

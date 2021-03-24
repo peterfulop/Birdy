@@ -33,5 +33,26 @@
     "Lang_Prim": "en-GB",
     "Lang_Sec": "hu-HU",
     "RelaseDate": "2021.03.08 20:10"
+  },
+  {
+    "ID": 6,
+    "Dictionary_Name": "Olasz-6",
+    "Lang_Prim": "it-IT",
+    "Lang_Sec": "hu-HU",
+    "RelaseDate": "2020.01.06 20:04"
+  },
+  {
+    "ID": 7,
+    "Dictionary_Name": "Francia-7",
+    "Lang_Prim": "fr-FR",
+    "Lang_Sec": "hu-HU",
+    "RelaseDate": "2020.01.01 11:44"
+  },
+  {
+    "ID": 8,
+    "Dictionary_Name": "Angol-Magyar - 8",
+    "Lang_Prim": "en-GB",
+    "Lang_Sec": "hu-HU",
+    "RelaseDate": "2021.03.08 20:10"
   }
 ]

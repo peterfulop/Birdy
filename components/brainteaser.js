@@ -1,6 +1,19 @@
+
+function brainTeaserScope() {
+
+
+
+}
+
+
+
 function excerciseLoadSettings() {
 
-    Menu_Clear_MainContent();
+    const Menu = menu_load_methods();
+    Menu.Menu_Clear_MainContent();
+
+    const mainContent = document.querySelector(".main-content");
+
 
     createDictionaryDDList(mainContent);
     createExcerciseTypeDDList(mainContent);
@@ -242,10 +255,11 @@ var countOfNumbers;
 
 function displayExcerciseContainer() {
 
+    const Menu = menu_load_methods();
 
-    Menu_Clear_MainContent();
+    Menu.Menu_Clear_MainContent();
 
-    mainContent.innerHTML = `
+    document.querySelector(".main-content").innerHTML = `
         <div class="excercise-box">
                 <div class="excercise-header-info">
                     <div class="header-section-text-1">
@@ -320,7 +334,10 @@ function displayExcerciseContainer() {
     stopExcercise.onclick = function () {
 
         document.getElementById('dialogAcceptButton').addEventListener('click', () => {
-            menu_load_brainteaser();
+
+            const Menu = menu_load_methods();
+
+            Menu.menu_load_brainteaser();
         })
 
     }

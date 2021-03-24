@@ -180,6 +180,8 @@ function renderAppHTML() {
 
 function buildApp() {
 
+
+
 }
 
 
@@ -364,6 +366,7 @@ function displayMobileMenu() {
 function mobileMenuShowHide() {
 
     const mobileMenuContainer = document.querySelector(".mobile-menu-container");
+
     if (mobileMenuContainer.classList.contains("d-none")) {
         console.log('tartalmaz');
         mobileMenuContainer.classList.remove("d-none");
@@ -468,93 +471,116 @@ function showHideDashboard() {
     })
 }
 
-function Menu_Clear_MainContent() {
-    const mainContent = document.querySelector(".main-content");
-    mainContent.innerHTML = '';
-}
-
-
 
 
 function loadMethods(methodName) {
-    var fn = window[methodName];
-    if (typeof fn === "function") fn();
+
+    const mainMethods = menu_load_methods();
+    var fn = mainMethods[methodName];
+    if (typeof fn === "function") {
+        fn();
+    }
 }
 
-function menu_load_home() {
 
-    resetState();
-    Menu_Clear_MainContent();
 
-    const Home = HomePageScope();
-    Home.renderHomePage();
+function menu_load_methods() {
+
+    function Menu_Clear_MainContent() {
+        const mainContent = document.querySelector(".main-content");
+        mainContent.innerHTML = '';
+    }
+
+    function menu_load_home() {
+
+        resetState();
+        Menu_Clear_MainContent();
+
+        const Home = HomePageScope();
+        Home.renderHomePage();
+    }
+
+    function menu_load_profile() {
+
+        resetState();
+        Menu_Clear_MainContent();
+
+        const Profile = ProfilePageScope();
+        Profile.renderProfilePage();
+
+    }
+
+    function menu_load_dictionaries() {
+
+        resetState();
+        Menu_Clear_MainContent();
+
+        const Dictionary = DictionaryPageScope();
+        Dictionary.buildDictionariesPage();
+
+    }
+
+    function menu_load_addwords() {
+
+        resetState();
+        Menu_Clear_MainContent();
+
+        const AddWords = AddWordsScope();
+        AddWords.renderAddWordsContent();
+
+    }
+
+    function menu_load_brainteaser() {
+
+        resetState();
+        Menu_Clear_MainContent();
+        excerciseLoadSettings();
+    }
+
+    function menu_load_listening() {
+        resetState();
+        Menu_Clear_MainContent();
+
+        const Reader = ReaderPageScope()
+        Reader.renderReaderPageContent();
+
+    }
+
+    function menu_load_search() {
+        resetState();
+        Menu_Clear_MainContent();
+
+    }
+
+    function menu_load_settings() {
+        resetState();
+        Menu_Clear_MainContent();
+
+    }
+
+    function menu_load_signout() {
+
+        resetState();
+        Menu_Clear_MainContent();
+        renderLoginPage();
+    }
+
+
+    return {
+        'Menu_Clear_MainContent': Menu_Clear_MainContent,
+        'menu_load_home': menu_load_home,
+        'menu_load_profile': menu_load_profile,
+        'menu_load_dictionaries': menu_load_dictionaries,
+        'menu_load_addwords': menu_load_addwords,
+        'menu_load_brainteaser': menu_load_brainteaser,
+        'menu_load_listening': menu_load_listening,
+        'menu_load_search': menu_load_search,
+        'menu_load_settings': menu_load_settings,
+        'menu_load_signout': menu_load_signout
+    }
+
+
 }
-
-function menu_load_profile() {
-
-    resetState();
-    Menu_Clear_MainContent();
-
-    const Profile = ProfilePageScope();
-    Profile.renderProfilePage();
-
-}
-
-function menu_load_dictionaries() {
-
-    resetState();
-    Menu_Clear_MainContent();
-
-    const Dictionary = DictionaryPageScope();
-    Dictionary.buildDictionariesPage();
-
-}
-
-function menu_load_addwords() {
-
-    resetState();
-    Menu_Clear_MainContent();
-
-    const AddWords = AddWordsScope();
-    AddWords.renderAddWordsContent();
-
-}
-
-function menu_load_brainteaser() {
-
-    resetState();
-    Menu_Clear_MainContent();
-    excerciseLoadSettings();
-}
-
-function menu_load_listening() {
-    resetState();
-    Menu_Clear_MainContent();
-
-    const Reader = ReaderPageScope()
-    Reader.renderReaderPageContent();
-
-}
-
-function menu_load_search() {
-    resetState();
-    Menu_Clear_MainContent();
-
-}
-
-function menu_load_settings() {
-    resetState();
-    Menu_Clear_MainContent();
-
-}
-
-function menu_load_signout() {
-
-    resetState();
-    Menu_Clear_MainContent();
-    renderLoginPage();
-}
-
 
 
 
