@@ -1,6 +1,8 @@
 function ReaderPageScope() {
 
 
+    const Global = GlobalObjectScope();
+
 
     function renderReaderPageContent() {
 
@@ -53,8 +55,7 @@ function ReaderPageScope() {
 
             if (textContent.textLength != 0) {
                 var language = listeningSelectLanguage[listeningSelectLanguage.value].dataset.languageid;
-                console.log(language, textContent.value);
-                startSpeech(language, textContent.value);
+                Global.startSpeech(language, textContent.value);
             }
         })
 

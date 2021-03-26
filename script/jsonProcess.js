@@ -1,24 +1,41 @@
 var array_words = [];
 var array_dictionaries = [];
 var array_notes = [];
+var languages = [];
+var state = {};
 
-class Dictionaries {
 
-    constructor(id, dictionaryName, langPrim, langSec, relaseDate) {
-        this.id = id;
-        this.autoID = this.generateID();
-        this.dictionaryName = dictionaryName;
-        this.langPrim = langPrim;
-        this.langSec = langSec;
-        this.relaseDate = relaseDate;
-        this.lexicon = [];
-    }
+var generalSettings = {
+
+    dashboardMenuItems: [],
+    excerciseTypes: [],
+    excerciseRunTime: [],
+    dialogObjects: []
+};
+
+
+class AutoID {
 
     generateID() {
         return 'xxxxxxxx'.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
+    }
+
+}
+
+class Dictionaries {
+
+    constructor(id, dictionaryName, langPrim, langSec, relaseDate) {
+
+        this.id = id;
+        this.autoID = new AutoID().generateID();
+        this.dictionaryName = dictionaryName;
+        this.langPrim = langPrim;
+        this.langSec = langSec;
+        this.relaseDate = relaseDate;
+        this.lexicon = [];
     }
 };
 
@@ -41,20 +58,33 @@ class DictionaryElement {
 
 class Notes {
     constructor(id, text, dateTime) {
-        this.autoID = this.generateID();
+        this.autoID = new AutoID().generateID();
         this.id = id;
         this.text = text;
         this.dateTime = new Date(dateTime);
     }
+}
 
-    generateID() {
-        return 'xxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
-            return v.toString(16);
-        });
+class Language {
+
+    constructor(countryCode, countryName) {
+        this.autoID = new AutoID().generateID();
+        this.countryCode = countryCode;
+        this.countryName = countryName;
     }
 }
 
+class MenuItems {
+
+    constructor(icon, text, link, method) {
+        this.buttonID = new AutoID().generateID();
+        this.icon = icon;
+        this.text = text;
+        this.link = link;
+        this.method = method;
+    }
+
+}
 
 async function singleFetchProcess(url, createObjectsMethod, arrayTo) {
 
@@ -111,16 +141,71 @@ function createNotelistObject(sourcePuffer, array) {
 
 };
 
+function createLanguageListObject(sourcePuffer, array) {
+    for (const data of sourcePuffer) {
+        var component = new Language(data.countryCode, data.countryName);
+        array.push(component);
+    }
+    console.log('4. createLanguageListObject is ready...');
+
+};
+
+function createDashboardMenuItemsObject(sourcePuffer, array) {
+    for (const data of sourcePuffer) {
+        var component = new MenuItems(data.icon, data.text, data.link, data.method);
+        array.push(component);
+    }
+    console.log('6. createDashboardMenuItemsObject is ready...');
+
+};
+
 async function runHttpRequest() {
+
+    await singleFetchProcess('./data/db_menu_HU.json', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems);
 
     await singleFetchProcess('./data/db_noteList.json', createNotelistObject, array_notes);
 
     await singleFetchProcess('./data/db_dictionaries.json', createDictionaryObject, array_dictionaries);
 
-    await singleFetchProcess('./data/db_words.json', createDictionaryElementObject, array_words)
+    await singleFetchProcess('./data/db_words.json', createDictionaryElementObject, array_words);
+
+    await singleFetchProcess('./data/db_languages.json', createLanguageListObject, languages);
+
+    await setState();
 
     fillLexiconArrays();
 
 
 };
+
+async function setState() {
+
+    state = {
+        screenMode: 0,
+        activeMenu: generalSettings.dashboardMenuItems[0].buttonID,
+        selectedDictionary: "",
+        selectedDictionaryLength: 0,
+        dictionaryID: "",
+        dictionaryName: "",
+        dictionaries: array_dictionaries,
+        words: array_words,
+        editDictionaryMode: false,
+        editDictionaryContent: false,
+        listeningMode: false,
+        filterArray: [],
+        filtered: false,
+        sortBy: 'asc',
+        columnID: 'word_1',
+        pagination: {
+            pages: 0,
+            selectedPageIndex: 0,
+            visisibledPages: [0, 1, 2],
+            slicedArray: [],
+            itemsPerPage: 6,
+            itemNumber: 0,
+            location: 0,
+        },
+        notes: array_notes
+    }
+}
 

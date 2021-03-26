@@ -227,7 +227,7 @@ function brainTeaserScope() {
                                     type="button">Tovább!</button>
                                 <button class="btn btn-secondary" id="answer-button-next" type="button"><i
                                     class="fas fa-step-forward"></i></button>
-                                <button class="btn btn-danger" id="stop-excercise" data-bs-toggle="modal" data-bs-target="#${dialogObjects[1].id}" type="button"><i class="fas fa-stop"></i></button>
+                                <button class="btn btn-danger" id="stop-excercise" data-bs-toggle="modal" data-bs-target="#${Global.dialogObjects[1].id}" type="button"><i class="fas fa-stop"></i></button>
                             </div>
                         </div>
                     </div>
@@ -236,6 +236,35 @@ function brainTeaserScope() {
     };
 
 
+    var excerciseTypes = [
+        {
+            name: "Idegenről magyar nyelvre",
+            value: 0
+        },
+        {
+            name: "Magyar nyelvről idegenre",
+            value: 1
+        },
+        {
+            name: "Véletlenszerű kikérdezés",
+            value: 2
+        }
+    ];
+
+    var excerciseRunTime = [
+        {
+            name: "Teljes szótár tartalma",
+            value: 0
+        },
+        {
+            name: "Manuális értékadás",
+            value: 1
+        },
+        {
+            name: "Futás megszakításig",
+            value: 2
+        }
+    ];
 
 
     function BrainTeaserExcerciseScope() {
@@ -259,6 +288,9 @@ function brainTeaserScope() {
                 totalSeconds: 0
             }
         }
+
+
+
 
         function buildBrainTeaserExcercise() {
 

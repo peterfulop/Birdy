@@ -108,7 +108,7 @@ function DictionaryPageScope() {
         const langContent = document.getElementById(selectInputId);
         langContent.innerHTML = '';
 
-        Object.values(languagesJS).map((item, i) => {
+        Object.values(languages).map((item, i) => {
             langContent.innerHTML += `<option value = "${i}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
         });
 
@@ -617,7 +617,7 @@ function DictionaryPageScope() {
                     </div>
                 </div>
     
-                <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${dialogObjects[0].id}">
+                <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${Global.dialogObjects[0].id}">
                     <i class="fas fa-trash edit-actual-word remove display-none" data-inputid="${i}" data-dictionary="${state.dictionaryID}" ></i>
                 </div>
             </div>

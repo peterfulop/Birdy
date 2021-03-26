@@ -1,167 +1,18 @@
 countryName;countryCode
-Afrikaans (South Africa);af-ZA
-Albanian (Albania);sq-AL
-Arabic (Algeria);ar-DZ
-Arabic (Bahrain);ar-BH
-Arabic (Egypt);ar-EG
-Arabic (Iraq);ar-IQ
-Arabic (Jordan);ar-JO
-Arabic (Kuwait);ar-KW
-Arabic (Lebanon);ar-LB
-Arabic (Libya);ar-LY
-Arabic (Morocco);ar-MA
-Arabic (Oman);ar-OM
-Arabic (Qatar);ar-QA
-Arabic (Saudi Arabia);ar-SA
-Arabic (Syria);ar-SY
-Arabic (Tunisia);ar-TN
-Arabic (U.A.E.);ar-AE
-Arabic (Yemen);ar-YE
-Armenian (Armenia);hy-AM
-Azeri (Cyrillic, Azerbaijan);az-Cyrl-AZ
-Azeri (Latin, Azerbaijan);az-Latn-AZ
-Basque (Basque);eu-ES
-Belarusian (Belarus);be-BY
-Bosnian (Cyrillic, Bosnia and Herzegovina);bs-Cyrl-BA
-Bosnian (Latin, Bosnia and Herzegovina);bs-Latn-BA
-Bulgarian (Bulgaria);bg-BG
-Catalan (Catalan);ca-ES
-Chinese (Hong Kong S.A.R.);zh-HK
-Chinese (Macao S.A.R.);zh-MO
-Chinese (People's Republic of China);zh-CN
-Chinese (Singapore);zh-SG
-Chinese (Taiwan);zh-TW
-Croatian (Bosnia and Herzegovina);hr-BA
-Croatian (Croatia);hr-HR
-Czech (Czech Republic);cs-CZ
-Danish (Denmark);da-DK
-Divehi (Maldives);dv-MV
-Dutch (Belgium);nl-BE
-Dutch (Netherlands);nl-NL
-English (Australia);en-AU
-English (Belize);en-BZ
-English (Canada);en-CA
-English (Caribbean);en-029
-English (Ireland);en-IE
-English (Jamaica);en-JM
-English (New Zealand);en-NZ
-English (Republic of the Philippines);en-PH
-English (South Africa);en-ZA
-English (Trinidad and Tobago);en-TT
-English (United Kingdom);en-GB
-English (United States);en-US
-English (Zimbabwe);en-ZW
-Estonian (Estonia);et-EE
-Faroese (Faroe Islands);fo-FO
-Filipino (Philippines);fil-PH
-Finnish (Finland);fi-FI
-French (Belgium);fr-BE
-French (Canada);fr-CA
-French (France);fr-FR
-French (Luxembourg);fr-LU
-French (Principality of Monaco);fr-MC
-French (Switzerland);fr-CH
-Frisian (Netherlands);fy-NL
-Galician (Galician);gl-ES
-Georgian (Georgia);ka-GE
-German (Austria);de-AT
-German (Germany);de-DE
-German (Liechtenstein);de-LI
-German (Luxembourg);de-LU
-German (Switzerland);de-CH
-Greek (Greece);el-GR
-Gujarati (India);gu-IN
-Hebrew (Israel);he-IL
-Hindi (India);hi-IN
-Hungarian (Hungary);hu-HU
-Icelandic (Iceland);is-IS
-Indonesian (Indonesia);id-ID
-Inuktitut (Latin, Canada);iu-Latn-CA
-Irish (Ireland);ga-IE
-Italian (Italy);it-IT
-Italian (Switzerland);it-CH
-Japanese (Japan);ja-JP
-Kannada (India);kn-IN
-Kazakh (Kazakhstan);kk-KZ
-Kiswahili (Kenya);sw-KE
-Konkani (India);kok-IN
-Korean (Korea);ko-KR
-Kyrgyz (Kyrgyzstan);ky-KG
-Latvian (Latvia);lv-LV
-Lithuanian (Lithuania);lt-LT
-Luxembourgish (Luxembourg);lb-LU
-Macedonian (Former Yugoslav Republic of Macedonia);mk-MK
-Malay (Brunei Darussalam);ms-BN
-Malay (Malaysia);ms-MY
-Maltese;mt-MT
-Maori;mi-NZ
-Mapudungun (Chile);arn-CL
-Marathi (India);mr-IN
-Mohawk (Mohawk);moh-CA
-Mongolian (Cyrillic, Mongolia);mn-MN
-Norwegian, Bokm??l (Norway);nb-NO
-Norwegian, Nynorsk (Norway);nn-NO
-Persian (Iran);fa-IR
-Polish (Poland);pl-PL
-Portuguese (Brazil);pt-BR
-Portuguese (Portugal);pt-PT
-Punjabi (India);pa-IN
-Quechua (Bolivia);quz-BO
-Quechua (Ecuador);quz-EC
-Quechua (Peru);quz-PE
-Romanian (Romania);ro-RO
-Romansh (Switzerland);rm-CH
-Russian (Russia);ru-RU
-Sami, Inari (Finland);smn-FI
-Sami, Lule (Norway);smj-NO
-Sami, Lule (Sweden);smj-SE
-Sami, Northern (Finland);se-FI
-Sami, Northern (Norway);se-NO
-Sami, Northern (Sweden);se-SE
-Sami, Skolt (Finland);sms-FI
-Sami, Southern (Norway);sma-NO
-Sami, Southern (Sweden);sma-SE
-Sanskrit (India);sa-IN
-Serbian (Cyrillic, Bosnia and Herzegovina);sr-Cyrl-BA
-Serbian (Cyrillic, Serbia);sr-Cyrl-CS
-Serbian (Latin, Bosnia and Herzegovina);sr-Latn-BA
-Serbian (Latin, Serbia);sr-Latn-CS
-Sesotho sa Leboa (South Africa);ns-ZA
-Setswana (South Africa);tn-ZA
-Slovak (Slovakia);sk-SK
-Slovenian (Slovenia);sl-SI
-Spanish (Argentina);es-AR
-Spanish (Bolivia);es-BO
-Spanish (Chile);es-CL
-Spanish (Colombia);es-CO
-Spanish (Costa Rica);es-CR
-Spanish (Dominican Republic);es-DO
-Spanish (Ecuador);es-EC
-Spanish (El Salvador);es-SV
-Spanish (Guatemala);es-GT
-Spanish (Honduras);es-HN
-Spanish (Mexico);es-MX
-Spanish (Nicaragua);es-NI
-Spanish (Panama);es-PA
-Spanish (Paraguay);es-PY
-Spanish (Peru);es-PE
-Spanish (Puerto Rico);es-PR
-Spanish (Spain);es-ES
-Spanish (Uruguay);es-UY
-Spanish (Venezuela);es-VE
-Swedish (Finland);sv-FI
-Swedish (Sweden);sv-SE
-Syriac (Syria);syr-SY
-Tamil (India);ta-IN
-Tatar (Russia);tt-RU
-Telugu (India);te-IN
-Thai (Thailand);th-TH
-Turkish (Turkey);tr-TR
-Ukrainian (Ukraine);uk-UA
-Urdu (Islamic Republic of Pakistan);ur-PK
-Uzbek (Cyrillic, Uzbekistan);uz-Cyrl-UZ
-Uzbek (Latin, Uzbekistan);uz-Latn-UZ
-Vietnamese (Vietnam);vi-VN
-Welsh;cy-GB
-Xhosa;xh-ZA
-Zulu;zu-ZA
+Bahasa Indonesia;id-ID
+Deutsch;de-DE
+Espa?ol;es-ES
+Espa?ol de Estados Unidos;es-US
+Français;fr-FR
+Italiano;it-IT
+Japan ???;ja-JP
+Korean ???;ko-KR
+Korean ???;ru-RU
+Magyar;hu-HU
+Nederlands;nl-NL
+Polski;pl-PL
+Portugu?s do Brasil;pt-BR
+Russian ???????;ko-KR
+UK English;en-GB
+US English;en-US
+?????? Hindi;hi-IN

@@ -161,6 +161,26 @@ function GlobalObjectScope() {
         });
     }
 
+    var dialogObjects = [
+        {
+            name: "deleteRowObject",
+            title: "Elem törlése",
+            body: "Biztosan törölni szeretnéd a következőt?",
+            id: "delete-row-dialog",
+            color: "danger",
+            text: "Törlés"
+        },
+        {
+            name: "endOfExcercise",
+            title: "Gyakorlás vége",
+            body: "Biztosan ki szeretnél lépni a gyakorlásból?",
+            id: "stop-excercise-dialog",
+            color: "warning",
+            text: "Kilépés"
+        }
+    ];
+
+
 
     return {
         'renderDictionaryListInput': renderDictionaryListInput,
@@ -172,8 +192,8 @@ function GlobalObjectScope() {
         'renderSearchBar': renderSearchBar,
         'closeSearchAlert': closeSearchAlert,
         'generateID': generateID,
-        'generateID_short': generateID_short
-
+        'generateID_short': generateID_short,
+        'dialogObjects': dialogObjects
 
     }
 
@@ -339,32 +359,4 @@ function paginationFunctionScope() {
         'renderPaginationFooter': renderPaginationFooter,
         'resetPaginationState': resetPaginationState,
     }
-}
-
-var state = {
-    screenMode: 0,
-    activeMenu: dashboardMenuItems[0].buttonID,
-    selectedDictionary: "",
-    selectedDictionaryLength: 0,
-    dictionaryID: "",
-    dictionaryName: "",
-    dictionaries: array_dictionaries,
-    words: array_words,
-    editDictionaryMode: false,
-    editDictionaryContent: false,
-    listeningMode: false,
-    filterArray: [],
-    filtered: false,
-    sortBy: 'asc',
-    columnID: 'word_1',
-    pagination: {
-        pages: 0,
-        selectedPageIndex: 0,
-        visisibledPages: [0, 1, 2],
-        slicedArray: [],
-        itemsPerPage: 6,
-        itemNumber: 0,
-        location: 0,
-    },
-    notes: array_notes
 }

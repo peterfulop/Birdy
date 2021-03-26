@@ -142,7 +142,7 @@ function AppVisualisationScope() {
         const dashboardLinkContainer = document.querySelector(".links");
         dashboardLinkContainer.innerHTML = '';
 
-        Object.values(dashboardMenuItems).map(item => {
+        Object.values(generalSettings.dashboardMenuItems).map(item => {
             dashboardLinkContainer.innerHTML += `
         <div class="link wide" data-buttonId="${item.buttonID}" title=${item.text}>
             <div class="link-icon-box">
@@ -162,7 +162,7 @@ function AppVisualisationScope() {
 
         mobileMenuContainer.innerHTML = '';
 
-        Object.values(dashboardMenuItems).map(item => {
+        Object.values(generalSettings.dashboardMenuItems).map(item => {
             mobileMenuContainer.innerHTML += `
         <div class="mobile-menu-items py-2" data-buttonId="${item.buttonID}">
             <div class="link-icon-box">
@@ -230,8 +230,8 @@ function AppVisualisationScope() {
         const firstElement = document.querySelector(".links> div:nth-child(1) > div > i");
 
         firstElement.classList.add("active-page");
-        actualPageContainer.innerHTML = dashboardMenuItems[0].text;
-        actualPageIcon.className = dashboardMenuItems[0].icon;
+        actualPageContainer.innerHTML = generalSettings.dashboardMenuItems[0].text;
+        actualPageIcon.className = generalSettings.dashboardMenuItems[0].icon;
 
         const Home = HomePageScope();
 
@@ -260,9 +260,9 @@ function AppVisualisationScope() {
             dashboardLinks[i].addEventListener('click', () => {
                 state.activeMenu = dashboardLinks[i].dataset.buttonid;
                 setActivePage(i);
-                actualPageIcon.className = dashboardMenuItems[i].icon;
-                actualPageContainer.innerHTML = dashboardMenuItems[i].text;
-                loadMethods(dashboardMenuItems[i].method);
+                actualPageIcon.className = generalSettings.dashboardMenuItems[i].icon;
+                actualPageContainer.innerHTML = generalSettings.dashboardMenuItems[i].text;
+                loadMethods(generalSettings.dashboardMenuItems[i].method);
             })
         }
     }
@@ -311,9 +311,9 @@ function AppVisualisationScope() {
 
             mobileMenuElements[i].addEventListener('click', () => {
                 state.activeMenu = dashboardLinks[i].dataset.buttonid;
-                actualPageIcon.className = dashboardMenuItems[i].icon;
-                actualPageContainer.innerHTML = dashboardMenuItems[i].text;
-                loadMethods(dashboardMenuItems[i].method);
+                actualPageIcon.className = generalSettings.dashboardMenuItems[i].icon;
+                actualPageContainer.innerHTML = generalSettings.dashboardMenuItems[i].text;
+                loadMethods(generalSettings.dashboardMenuItems[i].method);
                 mobileMenuShowHide();
                 setActivePage(i);
             })
@@ -492,30 +492,3 @@ function AppVisualisationScope() {
 
 }
 
-var state = {
-    screenMode: 0,
-    activeMenu: dashboardMenuItems[0].buttonID,
-    selectedDictionary: "",
-    selectedDictionaryLength: 0,
-    dictionaryID: "",
-    dictionaryName: "",
-    dictionaries: array_dictionaries,
-    words: array_words,
-    editDictionaryMode: false,
-    editDictionaryContent: false,
-    listeningMode: false,
-    filterArray: [],
-    filtered: false,
-    sortBy: 'asc',
-    columnID: 'word_1',
-    pagination: {
-        pages: 0,
-        selectedPageIndex: 0,
-        visisibledPages: [0, 1, 2],
-        slicedArray: [],
-        itemsPerPage: 6,
-        itemNumber: 0,
-        location: 0,
-    },
-    notes: array_notes
-}
