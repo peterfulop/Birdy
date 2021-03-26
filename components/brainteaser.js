@@ -400,8 +400,8 @@ function brainTeaserScope() {
             stopExcercise.onclick = function () {
 
                 document.getElementById('dialogAcceptButton').addEventListener('click', () => {
-                    const Menu = menu_load_methods();
-                    Menu.menu_load_brainteaser();
+                    const App = AppVisualisationScope().menu_load_methods();
+                    App.menu_load_brainteaser();
                 })
             }
         }
