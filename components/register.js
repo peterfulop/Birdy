@@ -1,6 +1,7 @@
 function renderRegisterPage() {
 
-    resetState();
+    const App = AppVisualisationScope();
+    App.resetState();
 
     document.getElementById('main-app').innerHTML = `
          <section class="register-app d-flex justify-content-center" id="login-app-box">
@@ -46,14 +47,17 @@ function renderRegisterPage() {
 
     document.getElementById("back-to-login-button").onclick = function () {
         console.log("render login....");
-        renderLoginPage();
+        const Login = LoginPageScope();
+        Login.renderLoginPage();
     }
 
     var LoginImage = document.getElementById('login-form-logo');
 
     if (LoginImage) {
         LoginImage.onclick = function () {
-            renderApp();
+
+            const App = AppVisualisationScope();
+            App.loadVisualisation();
         }
     }
 }

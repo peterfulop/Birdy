@@ -1,6 +1,7 @@
 function brainTeaserScope() {
 
     let DOM = {};
+    const Global = GlobalObjectScope();
 
     let defDOMelementss = () => {
         return {
@@ -272,7 +273,7 @@ function brainTeaserScope() {
         function readExcerciseWord() {
             const listeningModeBtn = document.getElementById("listening-mode-brain");
             listeningModeBtn.onclick = function () {
-                startSpeech(DOM.questionBoxText.dataset.lang, DOM.questionBoxText.innerText);
+                Global.startSpeech(DOM.questionBoxText.dataset.lang, DOM.questionBoxText.innerText);
             }
         }
 

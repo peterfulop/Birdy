@@ -2,7 +2,7 @@ function LoginPageScope() {
 
     function renderLoginPage() {
 
-        resetState();
+        //resetState();
 
         document.getElementById('main-app').innerHTML = `
     
@@ -52,7 +52,8 @@ function LoginPageScope() {
 
         if (LoginImage) {
             LoginImage.onclick = function () {
-                renderApp();
+                const App = AppVisualisationScope();
+                App.loadVisualisation();
             }
         }
 

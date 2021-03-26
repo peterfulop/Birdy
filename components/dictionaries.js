@@ -1,6 +1,7 @@
 function DictionaryPageScope() {
 
     const Pagination = paginationFunctionScope();
+    const Global = GlobalObjectScope();
 
     //#region methods for Dictionaries
 
@@ -52,7 +53,7 @@ function DictionaryPageScope() {
     
             <div class="dictionary-list-block">
     
-                 ${renderSearchBar()}
+                 ${Global.renderSearchBar()}
     
                 <div class="dictionary-list-header d-flex py-2 align-items-center border-bottom border-white">
     
@@ -87,6 +88,9 @@ function DictionaryPageScope() {
 
     function buildDictionariesPage() {
 
+        const Pagination = paginationFunctionScope();
+        Pagination.resetPaginationState();
+
         renderDictionariesPageHTML();
         renderLanguageCombobox("dictionary-language-primary");
         renderLanguageCombobox("dictionary-language-secondary");
@@ -115,7 +119,7 @@ function DictionaryPageScope() {
         state.pagination.location = 0;
         state.selectedDictionaryLength = state.dictionaries.length;
 
-        renderArray.sort(compareValues("dictionaryName", state.sortBy));
+        renderArray.sort(Global.compareValues("dictionaryName", state.sortBy));
 
         sliceArray(renderArray);
         renderArray = state.pagination.slicedArray;
@@ -194,7 +198,7 @@ function DictionaryPageScope() {
         const searchDictionaryBtn = document.getElementById("search-element-button");
         const clearfilterBtn = document.getElementById("clear-dictionary-filter");
         const searchAlert = document.getElementById("search-alert");
-        closeSearchAlert();
+        Global.closeSearchAlert();
 
 
         searchDictionaryBtn.addEventListener('click', function () {
@@ -359,7 +363,7 @@ function DictionaryPageScope() {
                     <button type="button" class="btn bg-info me-1 text-white" id="back-dictionary-button"><i class="fas fa-arrow-left"></i></button>
                 </div>
     
-                ${renderSearchBar()}
+                ${Global.renderSearchBar()}
     
             </div>
             
@@ -428,7 +432,7 @@ function DictionaryPageScope() {
 
         clearSearchButtonMethod();
 
-        closeSearchAlert();
+        Global.closeSearchAlert();
 
         sortByAscDescButton();
 
@@ -480,11 +484,11 @@ function DictionaryPageScope() {
 
     function backToDictionariesPage() {
 
-        const Menu = menu_load_methods();
+        const App = AppVisualisationScope().menu_load_methods();
 
         const backButton = document.getElementById('back-dictionary-button');
         backButton.addEventListener('click', () => {
-            Menu.menu_load_dictionaries();
+            App.menu_load_dictionaries();
         })
     }
 
@@ -583,7 +587,7 @@ function DictionaryPageScope() {
 
         Object.values(renderArray).map((item, i) => {
 
-            const randomIndex = generateID_short();
+            const randomIndex = Global.generateID_short();
             dictionaryItemList.innerHTML += `
             <div class="dictionary-item mb-1" data-rowinfo="${randomIndex}">
                 <div class="dictionary-item-count">
@@ -629,7 +633,7 @@ function DictionaryPageScope() {
         state.pagination.location = 1;
         state.selectedDictionaryLength = getActualDictionaryLength();
 
-        renderArray.sort(compareValues(state.columnID, state.sortBy));
+        renderArray.sort(Global.compareValues(state.columnID, state.sortBy));
 
         sliceArray(renderArray);
         renderArray = state.pagination.slicedArray;
@@ -817,10 +821,10 @@ function DictionaryPageScope() {
                 for (const label of labels) {
                     if (label.dataset.inputid === inputID) {
                         if (button.dataset.wordid === '0') {
-                            startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
+                            Global.startSpeech(state.dictionaries[state.dictionaryID].langPrim, label.textContent);
                         }
                         else {
-                            startSpeech(state.dictionaries[state.dictionaryID].langSec, label.textContent);
+                            Global.startSpeech(state.dictionaries[state.dictionaryID].langSec, label.textContent);
                         }
                     }
                 }
@@ -880,9 +884,6 @@ function DictionaryPageScope() {
 
         const removeBtn = document.querySelectorAll('.dictionary-item-remove');
         const dictItem = document.querySelectorAll('.dictionary-item');
-
-
-
         for (const button of removeBtn) {
             button.onclick = function () {
 
@@ -910,6 +911,32 @@ function DictionaryPageScope() {
             }
         }
     }
+
+    function setColumnID(button) {
+        state.columnID = button.dataset.columnid;
+    }
+
+    function getActualDictionaryLength() {
+        var actual = state.dictionaries.filter(elem => {
+            return elem.autoID == state.selectedDictionary
+        });
+
+        return actual[0].lexicon.length;
+    }
+
+    function sliceArray(array) {
+        state.pagination.slicedArray = array.slice(0, state.pagination.itemsPerPage);
+    }
+
+
+    function filterBy(arr, filterBy, input) {
+        state.filterArray = arr.filter(element => {
+            return state.filterArray = element[filterBy].toLowerCase().includes(input.toLowerCase());
+        });
+
+        if (state.filterArray.length > 0) state.filtered = true;
+    }
+
 
     return {
         'buildDictionariesPage': buildDictionariesPage,
