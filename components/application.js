@@ -5,7 +5,8 @@ function AppVisualisationScope() {
     async function buildApplication() {
 
         await runHttpRequest();
-        loadVisualisation();
+        setTimeout(loadVisualisation, 1000);
+
     }
 
 
