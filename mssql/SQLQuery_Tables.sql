@@ -51,21 +51,21 @@ create table languages (
 	lang_name varchar(30) not null
 );
 
+
 insert languages values
 ('hu-HU','Magyar'),
-(​'de-DE',​'Deutsch'),
-(​'en-US',​'US English'),
-(​'en-GB',​'UK English'​),
-(​'es-ES',​'Espanol'),
-(​'es-US',​'Espanol de Estados Unidos'),
-(​'fr-FR',​'Francais'​),
-(​'hi-IN',​'Hindi'),
-(​'id-ID',​'Bahasa Indonesia'),
-(​'it-IT',​'Italiano'),
+('de-DE','Deutsch'),
+('en-US','US English'),
+('en-GB','UK English'),
+('es-ES','Espanol'),
+('es-US','Espanol de Estados Unidos'),
+('fr-FR','Francais'),
+('hi-IN','Hindi'),
+('id-ID','Bahasa Indonesia'),
+('it-IT','Italiano'),
 ('nl-NT','Nederlands'),
 ('pl-PL','Polski'),
-(​'pt-BR',​'Portugues do Brasil');
-
+('pt-BR','Portugues do Brasil');
 
 create table excercise_type (
 	id int not null primary key identity,
