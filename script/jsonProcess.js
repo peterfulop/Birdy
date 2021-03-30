@@ -175,7 +175,6 @@ async function runHttpRequest() {
 
     fillLexiconArrays();
 
-
 };
 
 async function setState() {

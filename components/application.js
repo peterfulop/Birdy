@@ -35,8 +35,6 @@ function AppVisualisationScope() {
 
     }
 
-
-
     function resetState() {
 
         state.selectedDictionary = "";
