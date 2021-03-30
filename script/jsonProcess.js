@@ -141,7 +141,7 @@ function fillLexiconArrays() {
             }
         }
     }
-    console.log('3. fillLexiconArrays is ready...');
+    console.log('6. fillLexiconArrays is ready...');
 };
 
 
