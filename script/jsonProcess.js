@@ -118,7 +118,7 @@ function createDictionaryObject(sourcePuffer, array) {
         var component = new Dictionaries(data.ID, data.Dictionary_Name, data.Lang_Prim, data.Lang_Sec, data.RelaseDate);
         array.push(component);
     }
-    console.log('1. createDictionaryObject is ready...');
+    console.log('3. createDictionaryObject is ready...');
 
 };
 
@@ -128,7 +128,7 @@ function createDictionaryElementObject(sourcePuffer, array) {
         var component = new DictionaryElement(data.ID, data.DictionaryID, data.Article_1, data.Word_1, data.Plural_1, data.Article_2, data.Word_2, data.Plural_2, data.Lang_1, data.Lang_2, data.RelaseDate);
         array.push(component);
     }
-    console.log('2. createDictionaryElementObject is ready...');
+    console.log('4. createDictionaryElementObject is ready...');
 
 };
 
@@ -150,7 +150,7 @@ function createNotelistObject(sourcePuffer, array) {
         var component = new Notes(data.id, data.text, data.dateTime);
         array.push(component);
     }
-    console.log('0. createNotelistObject is ready...');
+    console.log('1. createNotelistObject is ready...');
 
 };
 
@@ -159,7 +159,7 @@ function createExcerciselistObject(sourcePuffer, array) {
         var component = new Excercise(data.id, data.dictionary_name, data.excercise_type, data.start_time, data.end_time, data.duration);
         array.push(component);
     }
-    console.log('7. createExcerciselistObject is ready...');
+    console.log('2. createExcerciselistObject is ready...');
 
 };
 
@@ -168,7 +168,7 @@ function createLanguageListObject(sourcePuffer, array) {
         var component = new Language(data.countryCode, data.countryName);
         array.push(component);
     }
-    console.log('4. createLanguageListObject is ready...');
+    console.log('5. createLanguageListObject is ready...');
 
 };
 
@@ -177,7 +177,7 @@ function createDashboardMenuItemsObject(sourcePuffer, array) {
         var component = new MenuItems(data.icon, data.text, data.link, data.method);
         array.push(component);
     }
-    console.log('6. createDashboardMenuItemsObject is ready...');
+    console.log('0. createDashboardMenuItemsObject is ready...');
 
 };
 

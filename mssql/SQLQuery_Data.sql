@@ -100,8 +100,9 @@ insert into mynotes (text,dateTime) values
 ;
 
 insert into excercise (FK_dictionary_id,excercise_type,start_time,end_time) values
-(1,'Magyarról, idegenre','2021-02-21 15:36:48.450','2021-02-21 15:38:24.810')
-;
+(1,'Magyarról, idegenre','2021-02-21 15:36:48.450','2021-02-21 15:38:24.810'),
+(5,'Véletlenszerű kikérdezés','2021-03-22 12:15:25.500','2021-03-22 12:20:55.570'),
+(2,'Idegenről, magyar nyelvre','2021-03-25 20:10:12.452','2021-03-25 20:12:23.125'),
+(1,'Idegenről, magyar nyelvre','2021-03-30 10:35:15.254','2021-03-30 10:41:15.170');
 
 
-select * from dictionaries;
