@@ -133,6 +133,7 @@ function GlobalObjectScope() {
         };
     }
 
+
     function startSpeech(language, text) {
 
         let speech = new SpeechSynthesisUtterance();
