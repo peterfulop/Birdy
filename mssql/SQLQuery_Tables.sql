@@ -130,6 +130,22 @@ create table words (
 );
 
 
+create table mynotes (
+	id int not null primary key identity,
+	text varchar(255) not null,
+	dateTime datetime not null,
+);
+
+create table excercise (
+	id int not null primary key identity,
+	FK_dictionary_id int not null,
+	excercise_type varchar(255) not null,
+	start_time datetime not null,
+	end_time datetime not null,
+	FOREIGN KEY (FK_dictionary_id) REFERENCES dictionaries(id),
+);
+
+drop table excercise;
 
 
 --////   QUERIES   ////////////////////////////////////////////////////////////////////
@@ -165,3 +181,8 @@ Select
 main_menu_EN
 FOR JSON AUTO;
 
+-- MyNotes query
+Select
+* from
+mynotes
+FOR JSON AUTO;

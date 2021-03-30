@@ -124,3 +124,15 @@ Select
 * from
 main_menu_EN
 FOR JSON AUTO;
+
+-- Excercise query
+select top 3
+id,
+(select dictionaries.dictionary_name from dictionaries where excercise.FK_dictionary_id = dictionaries.id) as 'dictionary_name',
+excercise_type,
+format(start_time,'yyyy-MM-dd hh:mm:ss') as 'start_time',
+format(end_time,'yyyy-MM-dd hh:mm:ss') as 'end_time',
+(DATEDIFF(SECOND,start_time,end_time)) as 'duration'
+from excercise
+order by excercise.id desc
+FOR JSON AUTO;

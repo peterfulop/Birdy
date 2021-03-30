@@ -1,6 +1,7 @@
 var array_words = [];
 var array_dictionaries = [];
 var array_notes = [];
+var array_excercise = [];
 var languages = [];
 var state = {};
 
@@ -62,6 +63,18 @@ class Notes {
         this.id = id;
         this.text = text;
         this.dateTime = new Date(dateTime);
+    }
+}
+
+class Excercise {
+    constructor(id, dictionaryName, excerciseType, startTime, endTime, duration) {
+        this.autoID = new AutoID().generateID();
+        this.id = id;
+        this.dictionaryName = dictionaryName;
+        this.excerciseType = excerciseType;
+        this.startTime = new Date(startTime);
+        this.endTime = new Date(endTime);
+        this.duration = duration;
     }
 }
 
@@ -141,6 +154,15 @@ function createNotelistObject(sourcePuffer, array) {
 
 };
 
+function createExcerciselistObject(sourcePuffer, array) {
+    for (const data of sourcePuffer) {
+        var component = new Excercise(data.id, data.dictionary_name, data.excercise_type, data.start_time, data.end_time, data.duration);
+        array.push(component);
+    }
+    console.log('7. createExcerciselistObject is ready...');
+
+};
+
 function createLanguageListObject(sourcePuffer, array) {
     for (const data of sourcePuffer) {
         var component = new Language(data.countryCode, data.countryName);
@@ -164,6 +186,8 @@ async function runHttpRequest() {
     await singleFetchProcess('./data/db_menu_HU.json', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems);
 
     await singleFetchProcess('./data/db_noteList.json', createNotelistObject, array_notes);
+
+    await singleFetchProcess('./data/db_excercise_history.json', createExcerciselistObject, array_excercise);
 
     await singleFetchProcess('./data/db_dictionaries.json', createDictionaryObject, array_dictionaries);
 

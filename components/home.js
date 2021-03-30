@@ -24,11 +24,17 @@ function HomePageScope() {
                 <div class="d-flex mb-2">Legutóbb mentett kifejezések</div>
                 <div class="d-flex flex-wrap justify-content-start" id="history-words">
             </div>
+
+            <div class="py-2" id="homepage-last-saved-block">
+                <div class="d-flex mb-2">Utolsó gyakorlások</div>
+                <div class="d-block" id="history-excercises">
+            </div>
         </div>
         `
 
         renderMyNotes();
         renderLastAddedWords();
+        renderLastExcerciseTimes();
         fixPin();
     }
 
@@ -104,7 +110,6 @@ function HomePageScope() {
 
                 renderMyNotes();
             }
-
         })
 
     }
@@ -140,7 +145,7 @@ function HomePageScope() {
         }).sort().reverse();
 
 
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 10; i++) {
             contentHTML += `
                 <div class="bubble default history-word-element word-1-version">
                     <span class="history-word-1 d-block">${puffer[i].word_1}</span>
@@ -151,6 +156,45 @@ function HomePageScope() {
 
         historyWordsContainer.innerHTML = contentHTML;
         lastAddedWordHover()
+    }
+
+    function renderLastExcerciseTimes() {
+
+        let historyWordsContainer = document.getElementById('history-excercises');
+        historyWordsContainer.innerHTML = '';
+
+        let contentHTML = '';
+
+        let puffer = array_excercise.map(element => {
+            return element;
+        });
+
+
+        for (let i = 0; i < puffer.length; i++) {
+
+            const insertDate = new Date(puffer[i].startTime).toLocaleDateString();
+            const duration = Math.round(puffer[i].duration / 60);
+
+            contentHTML += `
+                <div class="d-flex bubble chart history-excercise-element excercise-1-version">
+                    <div class="d-flex w-100 justify-content-between">
+                        <div class="d-flex flag">
+                            <i class="fab fa-font-awesome-flag"></i>
+                            <span class="history-excercise-1 d-block ms-2">${insertDate}</span>
+                        </div>
+                        <span class="history-excercise-1 ms-2">${duration} min</span>
+                    </div>
+                    <div class="d-flex w-100 justify-content-between d-none">
+                        <span class="history-excercise-1">${puffer[i].dictionaryName}</span>
+                        <span class="history-excercise-1 ms-2 text-end">${puffer[i].excerciseType}</span>
+                    </div>
+                </div>
+            `
+        }
+
+        historyWordsContainer.innerHTML = contentHTML;
+        LastExcerciseTimesHover();
+
     }
 
     function lastAddedWordHover() {
@@ -174,6 +218,29 @@ function HomePageScope() {
                     word.classList.add('word-1-version');
                     word.lastElementChild.classList.add('d-none');
                 }
+            })
+        }
+    }
+
+    function LastExcerciseTimesHover() {
+
+        let excerciseBlock = document.querySelectorAll('.history-excercise-element');
+
+        for (const excercise of excerciseBlock) {
+
+            excercise.addEventListener('mouseover', () => {
+                excercise.lastElementChild.classList.remove('d-none');
+                excercise.lastElementChild.classList.add('d-flex');
+                excercise.firstElementChild.classList.add('d-none');
+
+            })
+
+            excercise.addEventListener('mouseleave', () => {
+
+                excercise.firstElementChild.classList.remove('d-none');
+                excercise.firstElementChild.classList.add('d-flex');
+                excercise.lastElementChild.classList.add('d-none');
+
             })
         }
     }

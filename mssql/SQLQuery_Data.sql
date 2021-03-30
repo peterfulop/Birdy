@@ -88,3 +88,20 @@ insert words values
 ('5','buttocks','fenék',3,1,GETDATE()),
 ('5','calf','vádli',3,1,GETDATE()),
 ('5','shin','lábszár, sípcsont',3,1,GETDATE());
+
+
+insert into mynotes (text,dateTime) values
+('Jegyzetem, első',CURRENT_TIMESTAMP),
+('Jegyzetem, második',CURRENT_TIMESTAMP),
+('Jegyzetem, harmadik',CURRENT_TIMESTAMP),
+('Jegyzetem, negyedik',CURRENT_TIMESTAMP),
+('Jegyzetem, ötödik',CURRENT_TIMESTAMP),
+('Jegyzetem, hatodik',CURRENT_TIMESTAMP)
+;
+
+insert into excercise (FK_dictionary_id,excercise_type,start_time,end_time) values
+(1,'Magyarról, idegenre','2021-02-21 15:36:48.450','2021-02-21 15:38:24.810')
+;
+
+
+select * from dictionaries;
