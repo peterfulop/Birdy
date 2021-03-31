@@ -147,6 +147,14 @@ function GlobalObjectScope() {
 
     }
 
+    async function loadSpinner(locationID) {
+        document.getElementById(locationID).innerHTML = `
+            <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+                <div class="spinner-border" style="width: 3rem; height: 3rem; color:white;" role="status"></div>
+            </div>
+        `
+    }
+
 
     function generateID() {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -194,6 +202,7 @@ function GlobalObjectScope() {
         'closeSearchAlert': closeSearchAlert,
         'generateID': generateID,
         'generateID_short': generateID_short,
+        'loadSpinner': loadSpinner,
         'dialogObjects': dialogObjects
 
     }

@@ -4,9 +4,9 @@ function AppVisualisationScope() {
 
     async function buildApplication() {
 
+        await GlobalObjectScope().loadSpinner("main-app");
         await runHttpRequest();
-        setTimeout(loadVisualisation, 1000);
-
+        setTimeout(loadVisualisation, 500);
     }
 
 
