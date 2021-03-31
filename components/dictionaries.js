@@ -595,7 +595,7 @@ function DictionaryPageScope() {
                 </div>
                 <div class="dictionary-item-words">
                     <div class="dictionary-first-word mr-1">
-                        <span class="dictionary-text-content p-1 enabled" data-inputid="${i}_0">${item.article_1} ${item.word_1}</span>
+                        <span class="dictionary-text-content p-1 enabled" data-inputid="${i}_0">${item.word_1}</span>
                         <input type="text" class="dictionary-edit-content p-1 display-none" data-inputid="${i}_0" data-wordid="0" value="${item.word_1}">
                         <div class="dictionary-item-buttons">
     
