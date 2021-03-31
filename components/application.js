@@ -6,7 +6,8 @@ function AppVisualisationScope() {
 
         await GlobalObjectScope().loadSpinner("main-app");
         await runHttpRequest();
-        setTimeout(loadVisualisation, 500);
+        //setTimeout(loadVisualisation, 500);
+        loadVisualisation();
     }
 
 

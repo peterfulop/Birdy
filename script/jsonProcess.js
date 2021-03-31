@@ -101,15 +101,15 @@ class MenuItems {
 
 async function singleFetchProcess(url, createObjectsMethod, arrayTo) {
 
-    var response = await fetch(url);
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        createObjectsMethod(data, arrayTo);
 
-    if (!response.ok) {
-        alert('Kérés sikertelen!');
-        return;
+    } catch (err) {
+        console.error(err);
+        alert('singleFetchProcess sikertelen!');
     }
-
-    var response = await response.json();
-    createObjectsMethod(response, arrayTo);
 
 };
 
@@ -184,20 +184,15 @@ function createDashboardMenuItemsObject(sourcePuffer, array) {
 async function runHttpRequest() {
 
 
-    await singleFetchProcess('./data/db_menu_HU.json', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems);
-    //await singleFetchProcess('http://127.0.0.1:8080/main', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems);
-
-    await singleFetchProcess('./data/db_noteList.json', createNotelistObject, array_notes);
-
-    await singleFetchProcess('./data/db_excercise_history.json', createExcerciselistObject, array_excercise);
-
-    await singleFetchProcess('./data/db_dictionaries.json', createDictionaryObject, array_dictionaries);
-
-    await singleFetchProcess('./data/db_words.json', createDictionaryElementObject, array_words);
-
-    await singleFetchProcess('./data/db_languages.json', createLanguageListObject, languages);
-
-    await setState();
+    const multipleFetch = await Promise.all([
+        await singleFetchProcess('./data/db_menu_HU.json', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems),
+        await singleFetchProcess('./data/db_noteList.json', createNotelistObject, array_notes),
+        await singleFetchProcess('./data/db_excercise_history.json', createExcerciselistObject, array_excercise),
+        await singleFetchProcess('./data/db_dictionaries.json', createDictionaryObject, array_dictionaries),
+        await singleFetchProcess('./data/db_words.json', createDictionaryElementObject, array_words),
+        await singleFetchProcess('./data/db_languages.json', createLanguageListObject, languages),
+        await setState()
+    ])
 
     fillLexiconArrays();
 
