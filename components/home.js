@@ -148,7 +148,7 @@ function HomePageScope() {
         for (let i = 0; i < 10; i++) {
             contentHTML += `
                 <div class="bubble default history-word-element word-1-version">
-                    <span class="history-word-1 d-block">${puffer[i].word_1}</span>
+                    <span class="history-word-1 d-flex">${puffer[i].word_1}</span>
                     <span class="history-word-2 d-none">${puffer[i].word_2}</span>
                 </div>
             `

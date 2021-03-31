@@ -184,7 +184,7 @@ function createDashboardMenuItemsObject(sourcePuffer, array) {
 async function runHttpRequest() {
 
 
-    const multipleFetch = await Promise.all([
+    const multipleFetch = await Promise.allSettled([
         await singleFetchProcess('./data/db_menu_HU.json', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems),
         await singleFetchProcess('./data/db_noteList.json', createNotelistObject, array_notes),
         await singleFetchProcess('./data/db_excercise_history.json', createExcerciselistObject, array_excercise),

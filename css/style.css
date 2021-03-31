@@ -1028,7 +1028,7 @@ main {
 
 .bubble.default {
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   cursor: pointer;
   padding: 5px 15px;
   margin: 5px 3px;
@@ -1085,6 +1085,14 @@ main {
   /*padding: 1rem;*/
   border-radius: 0.5rem;
 }
+
+/*
+ span[class^='history-word'] {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+*/
 
 .pinned {
   display: flex;
