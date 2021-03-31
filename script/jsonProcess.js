@@ -184,7 +184,8 @@ function createDashboardMenuItemsObject(sourcePuffer, array) {
 async function runHttpRequest() {
 
 
-    await singleFetchProcess('./data/db_menu_HU.json', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems);
+    //await singleFetchProcess('./data/db_menu_HU.json', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems);
+    await singleFetchProcess('http://127.0.0.1:8080/main', createDashboardMenuItemsObject, generalSettings.dashboardMenuItems);
 
     await singleFetchProcess('./data/db_noteList.json', createNotelistObject, array_notes);
 
