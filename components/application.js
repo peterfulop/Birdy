@@ -3,13 +3,10 @@ function AppVisualisationScope() {
 
 
     async function buildApplication() {
-
         await GlobalObjectScope().loadSpinner("main-app");
         await runHttpRequest();
-        //setTimeout(loadVisualisation, 500);
         loadVisualisation();
     }
-
 
 
     function loadVisualisation() {
@@ -225,8 +222,8 @@ function AppVisualisationScope() {
 
     function setHomepage() {
 
-        const actualPageContainer = document.querySelector("#active-page-name");
-        const actualPageIcon = document.querySelector("#active-page-icon");
+        const actualPageContainer = document.getElementById("active-page-name");
+        const actualPageIcon = document.getElementById("active-page-icon");
         const firstElement = document.querySelector(".links> div:nth-child(1) > div > i");
 
         firstElement.classList.add("active-page");
@@ -251,8 +248,8 @@ function AppVisualisationScope() {
     function selectPages() {
 
         const dashboardLinks = document.querySelectorAll(".link");
-        const actualPageContainer = document.querySelector("#active-page-name"); //
-        const actualPageIcon = document.querySelector("#active-page-icon"); //
+        const actualPageContainer = document.getElementById("active-page-name"); //
+        const actualPageIcon = document.getElementById("active-page-icon"); //
 
 
         for (let i = 0; i < dashboardLinks.length; i++) {
@@ -301,8 +298,8 @@ function AppVisualisationScope() {
 
     function selectMobilePages() {
 
-        const actualPageContainer = document.querySelector("#active-page-name"); //
-        const actualPageIcon = document.querySelector("#active-page-icon"); //
+        const actualPageContainer = document.getElementById("active-page-name"); //
+        const actualPageIcon = document.getElementById("active-page-icon"); //
         const dashboardLinks = document.querySelectorAll(".link");
         const mobileMenuElements = document.querySelectorAll(".mobile-menu-items");//
 
@@ -355,7 +352,7 @@ function AppVisualisationScope() {
 
     function showHideDashboard() {
 
-        const showHideBtn = document.querySelector("#show-hide-button");
+        const showHideBtn = document.getElementById("show-hide-button");
 
         let show = true;
 
@@ -363,7 +360,7 @@ function AppVisualisationScope() {
 
             var showIconClass = "fas fa-angle-double-right";
             var hideIconClass = "fas fa-angle-double-left";
-            var showHideBtn = document.querySelector("#show-hide-button");
+            var showHideBtn = document.getElementById("show-hide-button");
 
             if (show) {
                 show = false;
