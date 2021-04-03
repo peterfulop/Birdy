@@ -1,3 +1,6 @@
+import * as st from './state.js';
+const state = st.state;
+
 export function HomePageScope() {
 
     function renderHomePage() {
@@ -140,7 +143,7 @@ export function HomePageScope() {
 
         let contentHTML = '';
 
-        let puffer = array_words.map(element => {
+        let puffer = state.words.map(element => {
             return element;
         }).sort().reverse();
 
@@ -165,7 +168,7 @@ export function HomePageScope() {
 
         let contentHTML = '';
 
-        let puffer = array_excercise.map(element => {
+        let puffer = state.excerciseHistory.map(element => {
             return element;
         });
 

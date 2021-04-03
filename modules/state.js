@@ -7,6 +7,7 @@ const state = {
     dictionaryName: "",
     dictionaries: [],
     words: [],
+    languages: [],
     editDictionaryMode: false,
     editDictionaryContent: false,
     listeningMode: false,
@@ -31,7 +32,7 @@ const state = {
         dialogObjects: []
     },
     excerciseHistory: []
-}
+};
 
 
 const resetState = function (state) {

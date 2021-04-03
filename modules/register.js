@@ -1,10 +1,13 @@
 import * as app from './application.js';
 import * as login from './login.js';
+import * as st from './state.js';
+const state = st.state;
 
 export function renderRegisterPage() {
 
     const App = app.AppVisualisationScope();
-    App.resetState();
+
+    // App.resetState();
 
     document.getElementById('main-app').innerHTML = `
          <section class="register-app d-flex justify-content-center" id="login-app-box">

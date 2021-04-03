@@ -1,6 +1,7 @@
 import * as global from './global.js';
 import * as app from './application.js';
-
+import * as st from './state.js';
+const state = st.state;
 
 export function brainTeaserScope() {
 

@@ -1,3 +1,6 @@
+import * as st from './state.js';
+const state = st.state;
+
 export function GlobalObjectScope() {
 
     function renderDictionaryListInput(contener) {

@@ -1,6 +1,8 @@
 import * as app from './application.js';
 import * as pagination from './pagination.js';
 import * as global from './global.js';
+import * as st from './state.js';
+const state = st.state;
 
 export function DictionaryPageScope() {
 
@@ -112,7 +114,7 @@ export function DictionaryPageScope() {
         const langContent = document.getElementById(selectInputId);
         langContent.innerHTML = '';
 
-        Object.values(languages).map((item, i) => {
+        Object.values(state.languages).map((item, i) => {
             langContent.innerHTML += `<option value = "${i}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
         });
 
@@ -318,7 +320,7 @@ export function DictionaryPageScope() {
 
             if (state.dictionaries[i].autoID === state.selectedDictionary) {
                 state.dictionaryID = i;
-                state.dictionaryName = array_dictionaries[i].dictionaryName;
+                state.dictionaryName = state.dictionaries[i].dictionaryName;
                 buildDinctionaryContent();
             }
         }

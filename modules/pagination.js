@@ -1,4 +1,6 @@
 import * as dictionary from './dictionaries.js';
+import * as st from './state.js';
+const state = st.state;
 
 export function paginationFunctionScope() {
 

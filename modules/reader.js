@@ -1,4 +1,6 @@
 import * as global from './global.js';
+import * as st from './state.js';
+const state = st.state;
 
 export function ReaderPageScope() {
 
@@ -36,7 +38,7 @@ export function ReaderPageScope() {
         listeningSelectLanguage.innerHTML = '';
 
         var langCounter = 0;
-        Object.values(languages).map(item => {
+        Object.values(state.languages).map(item => {
             listeningSelectLanguage.innerHTML += `<option value = "${langCounter}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
             langCounter++;
         });
