@@ -11,8 +11,6 @@ export function jsonProcessScope() {
     const dashboardMenuItems = [];
     const state = st.state;
 
-
-
     async function singleFetchProcess(url, createObjectsMethod, arrayTo) {
 
         try {
@@ -25,7 +23,6 @@ export function jsonProcessScope() {
             alert('singleFetchProcess sikertelen!');
             return;
         };
-
     };
 
     function createDictionaryObject(sourcePuffer, array) {
@@ -110,7 +107,6 @@ export function jsonProcessScope() {
 
         await setState();
         fillLexiconArrays();
-
     };
 
     return {

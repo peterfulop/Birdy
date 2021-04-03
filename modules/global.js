@@ -66,20 +66,20 @@ export function GlobalObjectScope() {
     function renderSearchBar() {
         return `
             <div class="search-bar d-block mb-2">
-                        <div class="line-1 d-flex">
-                            <div class="search-input w-100">
-                                <input type="search" class="form-control" id="search-element-input" placeholder="Keresés...">
-                            </div>
-                            <div class="search-buttons d-flex">
-                                <button type="button" class="btn btn-secondary ms-1" id="search-element-button"><i class="fas fa-search"></i></button>
-                                <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
-                            </div>
-                        </div>
-                        <div class="form-text mb-2 d-none justify-content-start cursor-pointer text-danger" id="search-alert">
-                            <div class="search-alert-close"><i class="far fa-window-close"></i></div>
-                            <div class="search-alert-text ms-1">Nincs találat!</div>
-                        </div>
+                <div class="line-1 d-flex">
+                    <div class="search-input w-100">
+                        <input type="search" class="form-control" id="search-element-input" placeholder="Keresés...">
                     </div>
+                    <div class="search-buttons d-flex">
+                        <button type="button" class="btn btn-secondary ms-1" id="search-element-button"><i class="fas fa-search"></i></button>
+                        <button type="button" class="btn btn-danger ms-1 d-none align-items-center mw-50" id="clear-dictionary-filter"><i class="fas fa-filter"></i></button>
+                    </div>
+                </div>
+                <div class="form-text mb-2 d-none justify-content-start cursor-pointer text-danger" id="search-alert">
+                    <div class="search-alert-close"><i class="far fa-window-close"></i></div>
+                    <div class="search-alert-text ms-1">Nincs találat!</div>
+                </div>
+            </div>
     `
     }
 
