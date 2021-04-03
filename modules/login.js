@@ -1,4 +1,7 @@
-function LoginPageScope() {
+import * as app from './application.js';
+import * as reg from './register.js';
+
+export function LoginPageScope() {
 
     function renderLoginPage() {
 
@@ -45,14 +48,14 @@ function LoginPageScope() {
 
         document.getElementById("register-new-user-button").onclick = function () {
             console.log("render register....");
-            renderRegisterPage();
+            reg.renderRegisterPage();
         }
 
         var LoginImage = document.getElementById('login-form-logo');
 
         if (LoginImage) {
             LoginImage.onclick = function () {
-                const App = AppVisualisationScope();
+                const App = app.AppVisualisationScope();
                 App.loadVisualisation();
             }
         }

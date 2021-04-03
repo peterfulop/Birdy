@@ -1,7 +1,11 @@
-function DictionaryPageScope() {
+import * as app from './application.js';
+import * as pagination from './pagination.js';
+import * as global from './global.js';
 
-    const Pagination = paginationFunctionScope();
-    const Global = GlobalObjectScope();
+export function DictionaryPageScope() {
+
+    const Pagination = pagination.paginationFunctionScope();
+    const Global = global.GlobalObjectScope();
 
     //#region methods for Dictionaries
 
@@ -88,7 +92,7 @@ function DictionaryPageScope() {
 
     function buildDictionariesPage() {
 
-        const Pagination = paginationFunctionScope();
+        const Pagination = pagination.paginationFunctionScope();
         Pagination.resetPaginationState();
 
         renderDictionariesPageHTML();
@@ -164,7 +168,7 @@ function DictionaryPageScope() {
     function createNewDictionary() {
         const createNewDictionaryButton = document.querySelector(".add-new-block");
         const addNewBlock = document.querySelector(".add-new-block");
-        createNewBlock = document.querySelector(".create-new-dictionary");
+        const createNewBlock = document.querySelector(".create-new-dictionary");
 
         if (createNewDictionaryButton) {
             createNewDictionaryButton.addEventListener('click', () => {
@@ -178,9 +182,9 @@ function DictionaryPageScope() {
     function backToNewDictionary() {
 
         const addNewBlock = document.querySelector(".add-new-block");
-        createNewBlock = document.querySelector(".create-new-dictionary");
-        createNewTextInput = document.getElementById("create-new-text-input");
-        createNewClearBtn = document.getElementById("create-new-close");
+        const createNewBlock = document.querySelector(".create-new-dictionary");
+        const createNewTextInput = document.getElementById("create-new-text-input");
+        const createNewClearBtn = document.getElementById("create-new-close");
 
         if (createNewClearBtn) {
             createNewClearBtn.addEventListener('click', () => {
@@ -484,7 +488,7 @@ function DictionaryPageScope() {
 
     function backToDictionariesPage() {
 
-        const App = AppVisualisationScope().menu_load_methods();
+        const App = app.AppVisualisationScope().menu_load_methods();
 
         const backButton = document.getElementById('back-dictionary-button');
         backButton.addEventListener('click', () => {
@@ -502,6 +506,7 @@ function DictionaryPageScope() {
             clearfilterBtn.classList.add("d-none");
             searchInput.value = "";
             resetFilteredState();
+            state
             Pagination.resetPaginationState();
             sliceArray(state.dictionaries[state.dictionaryID].lexicon);
             Pagination.renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
@@ -690,7 +695,7 @@ function DictionaryPageScope() {
                 state.editDictionaryMode = true;
                 for (const button of editBtn) {
                     button.classList.remove("display-none");
-                    const Global = GlobalObjectScope();
+                    const Global = global.GlobalObjectScope();
                     Global.showDialogPanel(0);
                 }
             }
@@ -773,7 +778,7 @@ function DictionaryPageScope() {
                     editorModeButton.disabled = true;
                     state.editDictionaryContent = true;
 
-                    inputID = button.dataset.inputid;
+                    const inputID = button.dataset.inputid;
 
                     console.log(inputID);
                     button.classList.add("display-none");
@@ -848,7 +853,7 @@ function DictionaryPageScope() {
 
                 state.editDictionaryContent = false;
 
-                inputID = button.dataset.inputid;
+                const inputID = button.dataset.inputid;
                 button.classList.add("display-none");
 
                 let newInput;
@@ -895,7 +900,7 @@ function DictionaryPageScope() {
 
                         const word_1 = line.querySelector(".dictionary-first-word > span").innerText;
                         const word_2 = line.querySelector(".dictionary-second-word > span").innerText;
-                        const Global = GlobalObjectScope();
+                        const Global = global.GlobalObjectScope();
 
                         console.log("törlés >> ", line.dataset.rowinfo, word_1, word_2);
 
@@ -935,6 +940,10 @@ function DictionaryPageScope() {
         });
 
         if (state.filterArray.length > 0) state.filtered = true;
+    }
+
+    function resetFilteredState() {
+        state.filtered = false;
     }
 
 

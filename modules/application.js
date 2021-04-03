@@ -1,9 +1,18 @@
+import * as global from './global.js';
+import * as home from './home.js';
+import * as profile from './profile.js';
+import * as brain from './brainteaser.js';
+import * as add from './addwords.js';
+import * as dictionary from './dictionaries.js';
+import * as reader from './reader.js';
+import * as login from './login.js';
 
-function AppVisualisationScope() {
+
+export function AppVisualisationScope() {
 
 
     async function buildApplication() {
-        await GlobalObjectScope().loadSpinner("main-app");
+        await global.GlobalObjectScope().loadSpinner("main-app");
         await runHttpRequest();
         loadVisualisation();
     }
@@ -230,8 +239,7 @@ function AppVisualisationScope() {
         actualPageContainer.innerHTML = generalSettings.dashboardMenuItems[0].text;
         actualPageIcon.className = generalSettings.dashboardMenuItems[0].icon;
 
-        const Home = HomePageScope();
-
+        const Home = home.HomePageScope();
         Home.renderHomePage();
 
     }
@@ -265,11 +273,14 @@ function AppVisualisationScope() {
     }
 
     function setActivePage(index) {
+
         const dashboardLinks = document.querySelectorAll(".link");
 
-        var activeIcon = dashboardLinks[index].querySelector("div > i");
-        removeActivePageClass();
-        activeIcon.classList.add("active-page");
+        if (dashboardLinks.length > 0) {
+            var activeIcon = dashboardLinks[index].querySelector("div > i");
+            removeActivePageClass();
+            activeIcon.classList.add("active-page");
+        }
     }
 
     function displayMobileMenu() {
@@ -285,13 +296,15 @@ function AppVisualisationScope() {
 
         const mobileMenuContainer = document.querySelector(".mobile-menu-container");
 
-        if (mobileMenuContainer.classList.contains("d-none")) {
-            console.log('tartalmaz');
-            mobileMenuContainer.classList.remove("d-none");
-        }
-        else {
-            console.log('nem tartalmaz');
-            mobileMenuContainer.classList.add("d-none");
+        if (mobileMenuContainer) {
+            if (mobileMenuContainer.classList.contains("d-none")) {
+                console.log('tartalmaz');
+                mobileMenuContainer.classList.remove("d-none");
+            }
+            else {
+                console.log('nem tartalmaz');
+                mobileMenuContainer.classList.add("d-none");
+            }
         }
     }
 
@@ -398,15 +411,19 @@ function AppVisualisationScope() {
 
             Menu_Clear_MainContent();
 
-            const Home = HomePageScope();
+            // const Home = HomePageScope();
+            // Home.renderHomePage();
+
+            const Home = home.HomePageScope();
             Home.renderHomePage();
+
         }
 
         function menu_load_profile() {
 
             Menu_Clear_MainContent();
 
-            const Profile = ProfilePageScope();
+            const Profile = profile.ProfilePageScope();
             Profile.renderProfilePage();
 
         }
@@ -415,7 +432,7 @@ function AppVisualisationScope() {
 
             Menu_Clear_MainContent();
 
-            const Dictionary = DictionaryPageScope();
+            const Dictionary = dictionary.DictionaryPageScope();
             Dictionary.buildDictionariesPage();
 
         }
@@ -423,9 +440,10 @@ function AppVisualisationScope() {
         function menu_load_addwords() {
 
             Menu_Clear_MainContent();
-
-            const AddWords = AddWordsScope();
+            const AddWords = add.AddWordsScope();
             AddWords.renderAddWordsContent();
+            // const AddWords = AddWordsScope();
+            // AddWords.renderAddWordsContent();
 
         }
 
@@ -433,14 +451,18 @@ function AppVisualisationScope() {
 
             Menu_Clear_MainContent();
 
-            const Brain = brainTeaserScope();
+            // const Brain = brainTeaserScope();
+            // Brain.buildBrainTeaserPage();
+            const Brain = brain.brainTeaserScope();
             Brain.buildBrainTeaserPage();
+
+
         }
 
         function menu_load_listening() {
             Menu_Clear_MainContent();
 
-            const Reader = ReaderPageScope()
+            const Reader = reader.ReaderPageScope()
             Reader.renderReaderPageContent();
 
         }
@@ -457,7 +479,7 @@ function AppVisualisationScope() {
 
         function menu_load_signout() {
 
-            const Login = LoginPageScope();
+            const Login = login.LoginPageScope();
 
             Menu_Clear_MainContent();
             Login.renderLoginPage();

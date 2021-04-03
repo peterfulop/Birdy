@@ -1,6 +1,9 @@
-function renderRegisterPage() {
+import * as app from './application.js';
+import * as login from './login.js';
 
-    const App = AppVisualisationScope();
+export function renderRegisterPage() {
+
+    const App = app.AppVisualisationScope();
     App.resetState();
 
     document.getElementById('main-app').innerHTML = `
@@ -47,7 +50,7 @@ function renderRegisterPage() {
 
     document.getElementById("back-to-login-button").onclick = function () {
         console.log("render login....");
-        const Login = LoginPageScope();
+        const Login = login.LoginPageScope();
         Login.renderLoginPage();
     }
 
@@ -55,8 +58,6 @@ function renderRegisterPage() {
 
     if (LoginImage) {
         LoginImage.onclick = function () {
-
-            const App = AppVisualisationScope();
             App.loadVisualisation();
         }
     }

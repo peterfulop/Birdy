@@ -1,4 +1,4 @@
-function HomePageScope() {
+export function HomePageScope() {
 
     function renderHomePage() {
 

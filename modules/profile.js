@@ -1,4 +1,4 @@
-function ProfilePageScope() {
+export function ProfilePageScope() {
 
     function renderProfilePage() {
 

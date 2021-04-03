@@ -1,7 +1,13 @@
-function brainTeaserScope() {
+import * as global from './global.js';
+import * as app from './application.js';
+
+
+export function brainTeaserScope() {
 
     let DOM = {};
-    const Global = GlobalObjectScope();
+    const Global = global.GlobalObjectScope();
+
+    let excInfo = {}; // ???
 
     let defDOMelementss = () => {
         return {
@@ -30,7 +36,7 @@ function brainTeaserScope() {
     function renderBrainTeaserHTML() {
 
         const mainContent = document.querySelector(".main-content");
-        const Global = GlobalObjectScope();
+        const Global = global.GlobalObjectScope();
 
         Global.renderDictionaryListInput(mainContent);
         renderExcerciseTypeInput(mainContent);
@@ -107,7 +113,7 @@ function brainTeaserScope() {
     function excerciseStartSelectmethod() {
 
         DOM.excerciseStartButton.addEventListener("click", () => {
-            defineExcercise();
+            excInfo = defineExcercise();
             const excercise = BrainTeaserExcerciseScope();
             excercise.buildBrainTeaserExcercise();
 
@@ -122,7 +128,7 @@ function brainTeaserScope() {
         DOM.setCountManual.max = wordCount;
         DOM.setCountManual.value = wordCount;
 
-        defineExcercise();
+        excInfo = defineExcercise();
     }
 
     function setEnabledWordsCount() {
@@ -177,7 +183,7 @@ function brainTeaserScope() {
             if (DOM.setCountManual.value <= 0) {
                 DOM.setCountManual.value = 1;
             }
-            defineExcercise();
+            excInfo = defineExcercise();
             console.log(excInfo.countIndex);
 
         })
@@ -289,9 +295,6 @@ function brainTeaserScope() {
             }
         }
 
-
-
-
         function buildBrainTeaserExcercise() {
 
             renderBrainTeaserExcerciseHTML();
@@ -311,12 +314,12 @@ function brainTeaserScope() {
 
         function clearExcercisePuffers() {
             DOM.indexPuffer = [];
-            totalSeconds = 0;
+            DOM.totalSeconds = 0;
         }
 
         function startExcerciseMethod() {
 
-            const Global = GlobalObjectScope();
+            const Global = global.GlobalObjectScope();
             Global.showDialogPanel(1);
 
             clearExcercisePuffers();
@@ -432,7 +435,7 @@ function brainTeaserScope() {
             stopExcercise.onclick = function () {
 
                 document.getElementById('dialogAcceptButton').addEventListener('click', () => {
-                    const App = AppVisualisationScope().menu_load_methods();
+                    const App = app.AppVisualisationScope().menu_load_methods();
                     App.menu_load_brainteaser();
                 })
             }
@@ -453,20 +456,13 @@ function brainTeaserScope() {
             }
         }
 
-
         return {
-
             'buildBrainTeaserExcercise': buildBrainTeaserExcercise
         }
-
-
     }
-
-
-
 
     return {
         'buildBrainTeaserPage': buildBrainTeaserPage
     }
+};
 
-}

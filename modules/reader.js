@@ -1,7 +1,9 @@
-function ReaderPageScope() {
+import * as global from './global.js';
+
+export function ReaderPageScope() {
 
 
-    const Global = GlobalObjectScope();
+    const Global = global.GlobalObjectScope();
 
 
     function renderReaderPageContent() {
@@ -30,7 +32,7 @@ function ReaderPageScope() {
             </div>
         </div>
         `
-        listeningSelectLanguage = document.querySelector("#listening-select-language");
+        const listeningSelectLanguage = document.querySelector("#listening-select-language");
         listeningSelectLanguage.innerHTML = '';
 
         var langCounter = 0;
@@ -47,7 +49,7 @@ function ReaderPageScope() {
 
     function listeningStartSpeech() {
 
-        listeningStartBtn = document.querySelector("#listening-start-button");
+        const listeningStartBtn = document.querySelector("#listening-start-button");
 
         listeningStartBtn.addEventListener("click", () => {
 
@@ -62,7 +64,7 @@ function ReaderPageScope() {
     };
 
     function listeningClearTextarea() {
-        listeningClearBtn = document.querySelector("#listening-clear-button");
+        const listeningClearBtn = document.querySelector("#listening-clear-button");
         const textContent = document.querySelector("#listening-textarea");
 
         listeningClearBtn.addEventListener("click", () => {

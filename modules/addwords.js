@@ -1,6 +1,8 @@
-function AddWordsScope() {
+import * as global from './global.js';
 
-    const Global = GlobalObjectScope();
+export function AddWordsScope() {
+
+    const Global = global.GlobalObjectScope();
 
     function renderAddWordsContent() {
 

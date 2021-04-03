@@ -1,7 +1,2 @@
-
-var loadApp = (function () {
-
-    const App = AppVisualisationScope();
-    App.buildApplication();
-
-})();
+import * as App from '../modules/application.js';
+App.AppVisualisationScope().buildApplication();
