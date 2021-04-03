@@ -24,7 +24,7 @@ export function jsonProcessScope() {
             console.error(err);
             alert('singleFetchProcess sikertelen!');
             return;
-        }
+        };
 
     };
 
@@ -32,7 +32,7 @@ export function jsonProcessScope() {
         for (const data of sourcePuffer) {
             let component = new Dictionaries(data.ID, data.Dictionary_Name, data.Lang_Prim, data.Lang_Sec, data.RelaseDate);
             array.push(component);
-        }
+        };
         console.log('3. createDictionaryObject is ready...');
     };
 
@@ -40,10 +40,9 @@ export function jsonProcessScope() {
         for (const data of sourcePuffer) {
             let component = new DictionaryElement(data.id, data.DictionaryID, data.Word_1, data.Word_2, data.Lang_1, data.Lang_2, data.RelaseDate);
             array.push(component);
-        }
+        };
         console.log('4. createDictionaryElementObject2 is ready...');
     };
-
 
     function fillLexiconArrays() {
         for (const dictionary of array_dictionaries) {
@@ -55,7 +54,6 @@ export function jsonProcessScope() {
         }
         console.log('6. fillLexiconArrays is ready...');
     };
-
 
     function createNotelistObject(sourcePuffer, array) {
         for (const data of sourcePuffer) {
@@ -89,9 +87,7 @@ export function jsonProcessScope() {
         console.log('0. createDashboardMenuItemsObject is ready...');
     };
 
-
     async function setState() {
-
         state.activeMenu = dashboardMenuItems[0].buttonID;
         state.generalSettings.dashboardMenuItems = dashboardMenuItems;
         state.dictionaries = array_dictionaries;
@@ -99,7 +95,7 @@ export function jsonProcessScope() {
         state.notes = array_notes;
         state.excerciseHistory = array_excercise;
         state.languages = array_languages;
-    }
+    };
 
     async function runHttpRequest() {
 
@@ -119,7 +115,7 @@ export function jsonProcessScope() {
 
     return {
         'runHttpRequest': runHttpRequest
-    }
+    };
 };
 
 
@@ -129,7 +125,7 @@ class AutoID {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
-    }
+    };
 };
 
 class Dictionaries {
@@ -141,7 +137,7 @@ class Dictionaries {
         this.langSec = langSec;
         this.relaseDate = relaseDate;
         this.lexicon = [];
-    }
+    };
 };
 
 class DictionaryElement {
@@ -153,7 +149,7 @@ class DictionaryElement {
         this.lang_1 = lang_1;
         this.lang_2 = lang_2;
         this.relaseDate = relaseDate;
-    }
+    };
 };
 
 class Notes {
@@ -162,7 +158,7 @@ class Notes {
         this.id = id;
         this.text = text;
         this.dateTime = new Date(dateTime);
-    }
+    };
 };
 
 class Excercise {
@@ -174,7 +170,7 @@ class Excercise {
         this.startTime = new Date(startTime);
         this.endTime = new Date(endTime);
         this.duration = duration;
-    }
+    };
 };
 
 class Language {
@@ -182,7 +178,7 @@ class Language {
         this.autoID = new AutoID().generateID();
         this.countryCode = countryCode;
         this.countryName = countryName;
-    }
+    };
 };
 
 class MenuItems {
@@ -192,6 +188,6 @@ class MenuItems {
         this.text = text;
         this.link = link;
         this.method = method;
-    }
+    };
 };
 

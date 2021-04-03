@@ -416,13 +416,13 @@ main {
   box-shadow: 1px 1px 5px rgba(122, 122, 122, 0.1);
 }
 
-.mobile-menu-items:first-child:hover {
+/* .mobile-menu-items:first-child:hover {
   cursor: pointer;
   background: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 1px 5px rgba(122, 122, 122, 0.1);
   border-top-left-radius: 1rem;
   border-top-right-radius: 1rem;
-}
+} */
 
 .mobile-menu-items:last-child:hover {
   cursor: pointer;

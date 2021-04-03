@@ -1,4 +1,4 @@
-const state = {
+export const state = {
     screenMode: 0,
     activeMenu: "",
     selectedDictionary: "",
@@ -33,39 +33,3 @@ const state = {
     },
     excerciseHistory: []
 };
-
-
-const resetState = function (state) {
-
-    state.selectedDictionary = "";
-    state.dictionaryID = "";
-    state.dictionaryName = "";
-    state.dictionaries = [];
-    state.words = [];
-    state.editDictionaryMode = false;
-    state.editDictionaryContent = false;
-    state.listeningMode = false;
-    state.filterArray = [];
-    state.filtered = false;
-    state.sortBy = 'asc';
-    state.columnID = 'word_1';
-    state.pagination = {
-        pages: 0,
-        selectedPageIndex: 0,
-        visisibledPages: [0, 1, 2],
-        slicedArray: [],
-        itemsPerPage: 6,
-        itemNumber: 0,
-        location: 0
-    };
-    state.notes = [];
-    state.generalSettings = {
-        dashboardMenuItems: [],
-        excerciseTypes: [],
-        excerciseRunTime: [],
-        dialogObjects: []
-    };
-    state.excerciseHistory = [];
-}
-
-export { state, resetState };

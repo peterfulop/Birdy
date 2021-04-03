@@ -14,9 +14,7 @@ const state = st.state;
 
 export function AppVisualisationScope() {
 
-
     const jsonProcess = jsp.jsonProcessScope();
-
     async function buildApplication() {
         await global.GlobalObjectScope().loadSpinner("main-app");
         await jsonProcess.runHttpRequest(state);
@@ -58,7 +56,7 @@ export function AppVisualisationScope() {
         state.dictionaryName = "";
         state.editDictionaryMode = false;
         state.editDictionaryContent = false;
-        state.listeningMode = false;
+        //state.listeningMode = false;
         state.filterArray = [];
         state.filtered = false;
         state.sortBy = 'asc';
@@ -134,15 +132,14 @@ export function AppVisualisationScope() {
             </div>
         </section>     
     `
-    }
+    };
 
     function mediaQuery() {
 
-        //const mediaQueryDashboard = window.matchMedia('(max-width: 810px)');
         const mediaQuery = window.matchMedia('(max-width: 960px)');
         autoFullScreen(mediaQuery);
         mediaQuery.addListener(autoFullScreen);
-    }
+    };
 
     function renderMainMenu() {
 
@@ -160,7 +157,7 @@ export function AppVisualisationScope() {
         });
 
         setHomepage();
-    }
+    };
 
 
     function renderMobileMenu() {
@@ -179,7 +176,7 @@ export function AppVisualisationScope() {
         </div>`
         });
 
-    }
+    };
 
     function fullScreenMode() {
 
@@ -194,7 +191,7 @@ export function AppVisualisationScope() {
                 enableFullScreen();
             }
         });
-    }
+    };
 
     function enableFullScreen() {
         const appWindow = document.querySelector(".app");
@@ -204,7 +201,7 @@ export function AppVisualisationScope() {
         document.getElementById('dashboard').classList.remove("full-screen");
         fullScreenButton.className = "fas fa-expand-arrows-alt";
         state.screenMode = 1;
-    }
+    };
 
     function disableFullScreen() {
 
@@ -216,7 +213,7 @@ export function AppVisualisationScope() {
         fullScreenButton.className = "fas fa-compress-arrows-alt";
         state.screenMode = 0;
 
-    }
+    };
 
     function autoFullScreen(mediaQuery) {
 
@@ -227,8 +224,8 @@ export function AppVisualisationScope() {
             } else {
                 enableFullScreen();
             }
-        }
-    }
+        };
+    };
 
     function setHomepage() {
 
@@ -243,7 +240,7 @@ export function AppVisualisationScope() {
         const Home = home.HomePageScope();
         Home.renderHomePage();
 
-    }
+    };
 
     function removeActivePageClass() {
         const dashboardLinks = document.querySelectorAll(".link");
@@ -251,8 +248,8 @@ export function AppVisualisationScope() {
         dashboardLinks.forEach(item => {
             var activeIcon = item.querySelector("div > i");
             activeIcon.classList.remove("active-page");
-        })
-    }
+        });
+    };
 
     function selectPages() {
 
@@ -270,8 +267,8 @@ export function AppVisualisationScope() {
                 actualPageContainer.innerHTML = state.generalSettings.dashboardMenuItems[i].text;
                 loadMethods(state.generalSettings.dashboardMenuItems[i].method);
             })
-        }
-    }
+        };
+    };
 
     function setActivePage(index) {
 
@@ -281,8 +278,8 @@ export function AppVisualisationScope() {
             var activeIcon = dashboardLinks[index].querySelector("div > i");
             removeActivePageClass();
             activeIcon.classList.add("active-page");
-        }
-    }
+        };
+    };
 
     function displayMobileMenu() {
 
@@ -290,8 +287,23 @@ export function AppVisualisationScope() {
 
         mobileMenuButton.addEventListener("click", () => {
             mobileMenuShowHide();
-        })
-    }
+        });
+
+        mobileMenuHoverEffect();
+
+    };
+
+    function mobileMenuHoverEffect() {
+        const mobileMenuContainer = document.querySelector(".mobile-menu-container");
+
+        if (mobileMenuContainer) {
+
+            mobileMenuContainer.addEventListener('mouseleave', () => {
+                mobileMenuContainer.classList.add('d-none');
+            });
+        };
+
+    };
 
     function mobileMenuShowHide() {
 
@@ -306,8 +318,8 @@ export function AppVisualisationScope() {
                 console.log('nem tartalmaz');
                 mobileMenuContainer.classList.add("d-none");
             }
-        }
-    }
+        };
+    };
 
 
     function selectMobilePages() {
@@ -328,8 +340,8 @@ export function AppVisualisationScope() {
                 mobileMenuShowHide();
                 setActivePage(i);
             })
-        }
-    }
+        };
+    };
 
     function hideMainMenuText() {
         const hideableText = document.querySelectorAll(".hideable");
@@ -337,7 +349,7 @@ export function AppVisualisationScope() {
             element.style.display = "none";
         });
         addTightClass();
-    }
+    };
 
     function showMainMenuText() {
         const hideableText = document.querySelectorAll(".hideable");
@@ -346,7 +358,7 @@ export function AppVisualisationScope() {
         });
 
         addWideClass();
-    }
+    };
 
     function addTightClass() {
         const dashboardLinks = document.querySelectorAll(".link");
@@ -354,7 +366,7 @@ export function AppVisualisationScope() {
             element.classList.remove("wide");
             element.classList.add("tight");
         })
-    }
+    };
 
     function addWideClass() {
         const dashboardLinks = document.querySelectorAll(".link");
@@ -362,7 +374,7 @@ export function AppVisualisationScope() {
             element.classList.remove("tight");
             element.classList.add("wide");
         })
-    }
+    };
 
     function showHideDashboard() {
 
@@ -387,8 +399,8 @@ export function AppVisualisationScope() {
                 showHideBtn.className = hideIconClass;
                 showMainMenuText();
             }
-        })
-    }
+        });
+    };
 
 
     function loadMethods(methodName) {
@@ -398,7 +410,7 @@ export function AppVisualisationScope() {
         if (typeof fn === "function") {
             fn();
         }
-    }
+    };
 
     function menu_load_methods() {
 
@@ -406,67 +418,56 @@ export function AppVisualisationScope() {
             resetState();
             const mainContent = document.querySelector(".main-content");
             mainContent.innerHTML = '';
-        }
+        };
 
         function menu_load_home() {
 
             Menu_Clear_MainContent();
             const Home = home.HomePageScope();
             Home.renderHomePage();
-
-        }
+        };
 
         function menu_load_profile() {
 
             Menu_Clear_MainContent();
             const Profile = profile.ProfilePageScope();
             Profile.renderProfilePage();
-
-        }
+        };
 
         function menu_load_dictionaries() {
 
             Menu_Clear_MainContent();
-
             const Dictionary = dictionary.DictionaryPageScope();
             Dictionary.buildDictionariesPage();
-
-        }
+        };
 
         function menu_load_addwords() {
 
             Menu_Clear_MainContent();
             const AddWords = add.AddWordsScope();
             AddWords.renderAddWordsContent();
-
-
-        }
+        };
 
         function menu_load_brainteaser() {
 
             Menu_Clear_MainContent();
             const Brain = brain.brainTeaserScope();
             Brain.buildBrainTeaserPage();
-
-
-        }
+        };
 
         function menu_load_listening() {
             Menu_Clear_MainContent();
             const Reader = reader.ReaderPageScope()
             Reader.renderReaderPageContent();
-
-        }
+        };
 
         function menu_load_search() {
             Menu_Clear_MainContent();
-
-        }
+        };
 
         function menu_load_settings() {
             Menu_Clear_MainContent();
-
-        }
+        };
 
         function menu_load_signout() {
 
@@ -474,7 +475,7 @@ export function AppVisualisationScope() {
             Menu_Clear_MainContent();
             Login.renderLoginPage();
 
-        }
+        };
 
         return {
             'Menu_Clear_MainContent': Menu_Clear_MainContent,
@@ -487,9 +488,9 @@ export function AppVisualisationScope() {
             'menu_load_search': menu_load_search,
             'menu_load_settings': menu_load_settings,
             'menu_load_signout': menu_load_signout
-        }
+        };
 
-    }
+    };
 
 
     return {
@@ -498,7 +499,7 @@ export function AppVisualisationScope() {
         'loadVisualisation': loadVisualisation,
         'resetState': resetState,
         'getState': getState
-    }
+    };
 
-}
+};
 

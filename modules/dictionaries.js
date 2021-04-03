@@ -9,8 +9,6 @@ export function DictionaryPageScope() {
     const Pagination = pagination.paginationFunctionScope();
     const Global = global.GlobalObjectScope();
 
-    //#region methods for Dictionaries
-
     function renderDictionariesPageHTML() {
 
         document.querySelector(".main-content").innerHTML = `
@@ -40,7 +38,6 @@ export function DictionaryPageScope() {
                                     <label for="dictionary-name-select" class="form-label">Másodlagos nyelv:</label>
                                     <select class="dictionary-language-select form-select mb-3" id="dictionary-language-secondary"></select>
                                 </div>
-    
                             </div>  
                             <div class="row create-new-block-buttons">
                                 <div class="col-sm-10">
@@ -55,7 +52,7 @@ export function DictionaryPageScope() {
                     </div>
                 </div>
             </div>
-    
+
     
             <div class="dictionary-list-block">
     
@@ -90,7 +87,7 @@ export function DictionaryPageScope() {
                 </div>
             </div>
         `
-    }
+    };
 
     function buildDictionariesPage() {
 
@@ -118,7 +115,7 @@ export function DictionaryPageScope() {
             langContent.innerHTML += `<option value = "${i}" data-languageid="${item.countryCode}"> ${item.countryName}</option>`;
         });
 
-    }
+    };
 
     function renderDictionaryList(renderArray) {
 
@@ -317,7 +314,6 @@ export function DictionaryPageScope() {
         console.log("Open Dictionary");
 
         for (let i = 0; i < state.dictionaries.length; i++) {
-
             if (state.dictionaries[i].autoID === state.selectedDictionary) {
                 state.dictionaryID = i;
                 state.dictionaryName = state.dictionaries[i].dictionaryName;
@@ -331,7 +327,6 @@ export function DictionaryPageScope() {
         console.log("Edit Dictionary");
 
         for (let i = 0; i < dictionaries.length; i++) {
-
             if (dictionaries[i].id === state.selectedDictionary) {
                 console.log(dictionaries[i].id);
                 console.log(dictionaries[i].name);
@@ -423,7 +418,8 @@ export function DictionaryPageScope() {
             </div>
     
         `
-    }
+        isEnabledListeningMode();
+    };
 
     function buildDinctionaryContent() {
 
@@ -446,7 +442,7 @@ export function DictionaryPageScope() {
 
         sortBytColumn_2();
 
-    }
+    };
 
     //#region Event handler regio
 
@@ -485,18 +481,16 @@ export function DictionaryPageScope() {
                 state.filterArray = [];
             }
         }
+    };
 
-    }
 
     function backToDictionariesPage() {
-
         const App = app.AppVisualisationScope().menu_load_methods();
-
         const backButton = document.getElementById('back-dictionary-button');
         backButton.addEventListener('click', () => {
             App.menu_load_dictionaries();
-        })
-    }
+        });
+    };
 
     function clearSearchButtonMethod() {
 
@@ -513,13 +507,11 @@ export function DictionaryPageScope() {
             sliceArray(state.dictionaries[state.dictionaryID].lexicon);
             Pagination.renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon);
         })
-
-    }
+    };
 
     function sortByAscDescButton() {
 
         const sortButton = document.getElementById("sort-alpha-btn");
-
         sortButton.addEventListener('click', () => {
 
             const sortIcon = document.getElementById('sort-alpha-icon');
@@ -547,10 +539,9 @@ export function DictionaryPageScope() {
                 buildDictionaryElementsPage(renderRoot);
             }
 
-        })
+        });
 
-
-    }
+    };
 
     function sortByColumn_1() {
         const selectColumnBtn_1 = document.getElementById("select_column_button_1");
@@ -563,9 +554,8 @@ export function DictionaryPageScope() {
             Pagination.resetPaginationState();
             buildDictionaryElementsPage(renderRoot);
 
-        })
-
-    }
+        });
+    };
 
     function sortBytColumn_2() {
 
@@ -579,8 +569,7 @@ export function DictionaryPageScope() {
             Pagination.resetPaginationState();
             buildDictionaryElementsPage(renderRoot);
         })
-
-    }
+    };
 
     //#endregion
 
@@ -632,10 +621,11 @@ export function DictionaryPageScope() {
             state.pagination.itemNumber = index + i;
         });
 
-    }
+    };
 
 
     function buildDictionaryElementsPage(renderArray) {
+
 
         state.pagination.location = 1;
         state.selectedDictionaryLength = getActualDictionaryLength();
@@ -646,7 +636,6 @@ export function DictionaryPageScope() {
         renderArray = state.pagination.slicedArray;
 
         resetEditorMode();
-
 
         renderDictionaryElementsHTML(renderArray);
 
@@ -668,9 +657,7 @@ export function DictionaryPageScope() {
             Pagination.renderPaginationFooter(state.dictionaries[state.dictionaryID].lexicon); //ok
 
         };
-
-
-    }
+    };
 
     function searchInLexicon(input) {
 
@@ -684,7 +671,7 @@ export function DictionaryPageScope() {
 
         if (state.filterArray.length > 0) state.filtered = true;
 
-    }
+    };
 
     function enabledEditorMode() {
 
@@ -708,20 +695,19 @@ export function DictionaryPageScope() {
                 }
             }
         })
-    }
+    };
 
     function resetEditorMode() {
 
         const editorModeBtn = document.getElementById('edit-content-checker');
         editorModeBtn.checked = false;
         state.editDictionaryMode = false;
-    }
+    };
 
     function isEnabledListeningMode() {
 
         const listeningModeButton = document.getElementById('listen-content-checker');
         const listenBtn = document.querySelectorAll('.listening-mode');
-
 
         if (state.listeningMode) {
             enabledListeningMode(listenBtn);
@@ -741,30 +727,32 @@ export function DictionaryPageScope() {
                 disabledListeningMode(listenBtn);
             }
         })
-    }
+    };
 
     function enabledListeningMode(listenBtn) {
 
+        const listeningModeButton = document.getElementById('listen-content-checker');
+        listeningModeButton.checked = true;
         for (const button of listenBtn) {
             button.classList.remove("display-none");
         }
-
-    }
+    };
 
     function disabledListeningMode(listenBtn) {
+        const listeningModeButton = document.getElementById('listen-content-checker');
+        listeningModeButton.checked = false;
 
         for (const button of listenBtn) {
             button.classList.add("display-none");
         }
-
-    }
+    };
 
     function resetListeningMode() {
 
         const listeningModeButton = document.getElementById('listen-content-checker');
         listeningModeButton.checked = false;
         state.listeningMode = false;
-    }
+    };
 
     function editSelectedWord() {
 
@@ -812,7 +800,7 @@ export function DictionaryPageScope() {
                 }
             }
         }
-    }
+    };
 
     function readSelectedWord() {
 
@@ -837,7 +825,7 @@ export function DictionaryPageScope() {
                 }
             }
         }
-    }
+    };
 
     function saveEditedWord() {
 
@@ -885,7 +873,7 @@ export function DictionaryPageScope() {
                 }
             }
         }
-    }
+    };
 
     function removeSelectedWord() {
 
@@ -917,11 +905,11 @@ export function DictionaryPageScope() {
                 }
             }
         }
-    }
+    };
 
     function setColumnID(button) {
         state.columnID = button.dataset.columnid;
-    }
+    };
 
     function getActualDictionaryLength() {
         var actual = state.dictionaries.filter(elem => {
@@ -929,11 +917,11 @@ export function DictionaryPageScope() {
         });
 
         return actual[0].lexicon.length;
-    }
+    };
 
     function sliceArray(array) {
         state.pagination.slicedArray = array.slice(0, state.pagination.itemsPerPage);
-    }
+    };
 
 
     function filterBy(arr, filterBy, input) {
@@ -942,17 +930,17 @@ export function DictionaryPageScope() {
         });
 
         if (state.filterArray.length > 0) state.filtered = true;
-    }
+    };
 
     function resetFilteredState() {
         state.filtered = false;
-    }
+    };
 
 
     return {
         'buildDictionariesPage': buildDictionariesPage,
         'renderDictionaryList': renderDictionaryList,
         'buildDictionaryElementsPage': buildDictionaryElementsPage,
-    }
+    };
 
-}
+};

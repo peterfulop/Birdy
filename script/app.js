@@ -7,3 +7,4 @@ const getState = function () {
     App.AppVisualisationScope().getState();
 
 }
+
