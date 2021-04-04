@@ -431,7 +431,7 @@ export function AppVisualisationScope() {
 
             Menu_Clear_MainContent();
             const Profile = profile.ProfilePageScope();
-            Profile.renderProfilePage();
+            Profile.buildProfilePage();
         };
 
         function menu_load_dictionaries() {
