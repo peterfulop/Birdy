@@ -25,52 +25,256 @@ export function ProfilePageScope() {
             value: profile.email,
             type: 'text'
         },
-        password: {
-            title: 'password',
-            value: profile.password,
+        actual_password: {
+            title: 'Aktuális jelszó',
+            value: '',
+            type: 'password'
+        },
+        new_password: {
+            title: 'Új jelszó',
+            value: '',
+            type: 'password'
+        },
+        confirm_password: {
+            title: 'Jelszó megerősítése',
+            value: '',
             type: 'password'
         }
     };
 
+    const randomID = global.GlobalObjectScope().generateID_short();
 
     function renderProfileHTML() {
 
+
         var innerHTML = '';
 
-        Object.values(profileObject).map(item => {
+        // Object.values(profileObject).map(item => {
 
-            const randomID = global.GlobalObjectScope().generateID_short();
+        //     const randomID = global.GlobalObjectScope().generateID_short();
 
-            innerHTML += `
-                <div class="d-block mb-2">
-                    <div class="mb-2 font-weight-bold"><p id="title">${item.title}</p></div>
-                    <div class="line-1 d-flex">
-                        <div class="edit-input w-100">
-                            <input type="${item.type}" readonly class="profile-input form-control-plaintext px-2" id="${randomID}" value="${item.value}">
-                        </div>
-                        <div class="edit-button-container d-flex" id="${randomID}">
-                            <button type="button" class="profile-edit-btn btn-small btn btn-secondary ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
-                        </div>
-                        <div class="update-button-container d-none" id="${randomID}">   
-                            <button type="button" class="profile-update-btn btn-small btn btn-success ms-1 align-items-center" id="save-edit-input-btn"><i class="fas fa-check"></i></button>
-                            <button type="button" class="profile-close-btn btn-small btn btn-danger ms-1 align-items-center" id="close-edit-input-btn"><i class="fas fa-times"></i></button>
+        //     innerHTML += `
+        //         <div class="d-block mb-2">
+        //             <div class="mb-2 font-weight-bold"><p id="title">${item.title}</p></div>
+        //             <div class="line-1 d-flex">
+        //                 <div class="edit-input w-100">
+        //                     <input type="${item.type}" readonly class="profile-input form-control-plaintext px-2" id="${randomID}" value="${item.value}">
+        //                 </div>
+        //                 <div class="edit-button-container d-flex" id="${randomID}">
+        //                     <button type="button" class="profile-edit-btn btn-small btn btn-secondary ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
+        //                 </div>
+        //                 <div class="update-button-container d-none" id="${randomID}">   
+        //                     <button type="button" class="profile-update-btn btn-small btn btn-success ms-1 align-items-center" id="save-edit-input-btn"><i class="fas fa-check"></i></button>
+        //                     <button type="button" class="profile-close-btn btn-small btn btn-danger ms-1 align-items-center" id="close-edit-input-btn"><i class="fas fa-times"></i></button>
+        //                 </div>
+        //             </div>
+        //             <div class="form-text mb-2 justify-content-start text-danger d-none" id="input-alert">
+        //                 <div class="input-alert-text ms-1">Hibás adatok!</div>
+        //             </div>
+        //         </div>    
+        //     `
+        // });
+
+
+        innerHTML += `
+
+        <div class="d-flex block-1">
+            <div class="d-flex">
+
+                <div class="d-flex flex-column col-8 me-5">
+
+                    <div>
+                        <div class="font-weight-bold"><p class="mb-1" id="">Username</p></div>
+                        <input type="text" readonly class="profile-input form-control px-2 mb-2" id="${global.GlobalObjectScope().generateID_short()}" value="username">
+                    </div>
+
+                    <div>
+                        <div class="font-weight-bold"><p class="mb-1" id="">Password</p></div>
+
+                        <div class="d-flex">
+
+                            ${showHidePassword()}
+
+                            <!--<div class="shod-hide-password-block ms-1">
+                                <input type="checkbox" class="btn-check" id="${global.GlobalObjectScope().generateID_short()}" autocomplete="off" checked="">
+                                <label class="btn btn-outline-listen btn-small" for="${global.GlobalObjectScope().generateID_short()}" id="show-hide-btn">
+                                    <i class="fas fa-eye" id="show-password-char"></i>
+                                    <i class="fas fa-eye-slash d-none" id="hide-password-char"></i>
+                                </label>
+                            </div>-->
+
+                            <div class="edit-button-container d-flex" id="${randomID}">
+                                <button type="button" class="profile-edit-btn btn-small btn btn-success ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
+                            </div>
+
                         </div>
                     </div>
-                    <div class="form-text mb-2 justify-content-start text-danger d-none" id="input-alert">
-                        <div class="input-alert-text ms-1">Hibás adatok!</div>
+
+                    <div class="form-text justify-content-start text-danger d-flex" id="input-alert">
+                        <div class="input-alert-text">Hibás adatok!</div>
                     </div>
-                </div>    
+
+                </div>
+
+                <div class="d-flex flex-column mt-3">
+                <img src="./images/avatar.png" alt="..." class="img-thumbnail p-2">
+                    <div class="btn btn-secondary my-2 p-0">
+                    <label for="file-upload" class="d-block w-100 cursor-pointer"><i class="fas fa-upload"></i></label>
+                    <input id="file-upload" type="file"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex block-2">
+                <div class="d-block mb-2 w-100">
+                <div class="mb-2 font-weight-bold"><p class="mb-1" id="title">Emailcím</p></div>
+                <div class="line-1 d-flex">
+                    <div class="edit-input w-100">
+                        <input type="email" readonly class="profile-input form-control px-2" id="${randomID}" value="user@email.com">
+                    </div>
+                    <div class="edit-button-container d-flex" id="${randomID}">
+                        <button type="button" class="profile-edit-btn btn-small btn btn-secondary ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="update-button-container d-none" id="${randomID}">
+                        <button type="button" class="profile-update-btn btn-small btn btn-success ms-1 align-items-center" id="save-edit-input-btn"><i class="fas fa-check"></i></button>
+                        <button type="button" class="profile-close-btn btn-small btn btn-danger ms-1 align-items-center" id="close-edit-input-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="form-text mb-2 justify-content-start text-danger d-none" id="input-alert">
+                    <div class="input-alert-text ms-1">Hibás adatok!</div>
+                </div>
+            </div>
+        </div>
+            <div class="d-flex block-3">
+                <div class="d-block mb-2 w-100">
+                <div class="mb-2 font-weight-bold"><p class="mb-1" id="title">Jelszó</p></div>
+                <div class="line-1 d-flex">
+                    <div class="edit-input w-100">
+                        <input type="password" readonly class="profile-input form-control px-2" id="${randomID}" value="">
+                    </div>
+                    <div class="edit-button-container d-flex" id="${randomID}">
+                        <button type="button" class="profile-edit-btn btn-small btn btn-secondary ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="update-button-container d-none" id="${randomID}">
+                        <button type="button" class="profile-update-btn btn-small btn btn-success ms-1 align-items-center" id="save-edit-input-btn"><i class="fas fa-check"></i></button>
+                        <button type="button" class="profile-close-btn btn-small btn btn-danger ms-1 align-items-center" id="close-edit-input-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="form-text mb-2 justify-content-start text-danger d-none" id="input-alert">
+                    <div class="input-alert-text ms-1">Hibás adatok!</div>
+                </div>
+            </div>
+        </div>
+            <div class="d-flex block-4">
+                <div class="d-block mb-2 w-100">
+                <div class="mb-2 font-weight-bold"><p class="mb-1" id="title">Jelszó megererősítése</p></div>
+                <div class="line-1 d-flex">
+                    <div class="edit-input w-100">
+                        <input type="password" readonly class="profile-input form-control px-2" id="${randomID}" value="">
+                    </div>
+                    <div class="edit-button-container d-flex" id="${randomID}">
+                        <button type="button" class="profile-edit-btn btn-small btn btn-secondary ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
+                    </div>
+                    <div class="update-button-container d-none" id="${randomID}">
+                        <button type="button" class="profile-update-btn btn-small btn btn-success ms-1 align-items-center" id="save-edit-input-btn"><i class="fas fa-check"></i></button>
+                        <button type="button" class="profile-close-btn btn-small btn btn-danger ms-1 align-items-center" id="close-edit-input-btn"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="form-text mb-2 justify-content-start text-danger d-none" id="input-alert">
+                    <div class="input-alert-text ms-1">Hibás adatok!</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex block-5">
+            <div class="d-flex my-2 w-100">
+                <button type="button" class="profile-close-btn btn btn-success w-100" id="close-edit-input-btn">Mentés!</button>
+            </div>
+            <div class="form-text mb-2 justify-content-start text-danger d-none" id="input-alert">
+                <div class="input-alert-text ms-1">Hibás adatok!</div>
+            </div>
+        </div>
+
+        </div>
+
+   
             `
-        });
-
         return innerHTML;
+
+    };
+
+
+
+    function showHidePassword() {
+
+        const autoID = global.GlobalObjectScope().generateID_short();
+        return `
+        <div class="d-flex profile-input-container">
+            <input type="password" readonly class="form-control px-2 mb-2 password-input" data-autoid="${autoID}" value="username">
+            <div class="show-hide-password-block ms-1">
+                <input type="checkbox" class="btn-check show-password-btn" id="${autoID}" data-autoid="${autoID}" autocomplete="off" checked="">
+                    <label class="btn btn-outline-listen btn-small password-icons" for="${autoID}" data-autoid="${autoID}" id="show-hide-btn">
+                        <i class="fas fa-eye" data-autoid="${autoID}"></i>
+                    </label>
+            </div>
+        </div>
+        `
+    };
+
+
+    function showHidePw(pwButtons, pwInputs, pwIcons) {
+
+        for (const button of pwButtons) {
+
+            button.addEventListener('click', () => {
+
+                for (const input of pwInputs) {
+
+                    if (input.dataset.autoid === button.dataset.autoid) {
+
+                        if (input.type === 'password') {
+                            input.type = 'text';
+
+                            for (const input of pwIcons) {
+
+                                if (input.dataset.autoid === button.dataset.autoid) {
+                                    input.classList.remove('fa-eye');
+                                    input.classList.add('fa-eye-slash');
+                                }
+                            }
+                        }
+                        else {
+                            input.type = 'password';
+                            for (const input of pwIcons) {
+                                if (input.dataset.autoid === button.dataset.autoid) {
+                                    input.classList.remove('fa-eye-slash');
+                                    input.classList.add('fa-eye');
+                                }
+                            }
+                        }
+                    }
+                }
+            })
+        }
+
     };
 
 
     function buildProfilePage() {
 
         document.querySelector(".main-content").innerHTML = renderProfileHTML();
-        editProfileInput();
+
+        const pwButtons = document.querySelectorAll('.show-password-btn');
+        const pwInputs = document.querySelectorAll('.password-input');
+        const pwIcons = document.querySelectorAll('.password-icons > i');
+
+        // const showPwInputs = document.querySelectorAll('.password-input');
+        // const passwordBlock = document.querySelectorAll('.password-icons');
+
+        //showHidePw(pwButtons, pwInputs, pwIcons);
+
+        showHidePw(pwButtons, pwInputs, pwIcons);
+
     };
 
     function editProfileInput() {
