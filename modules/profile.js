@@ -49,39 +49,10 @@ export function ProfilePageScope() {
 
         var innerHTML = '';
 
-        // Object.values(profileObject).map(item => {
-
-        //     const randomID = global.GlobalObjectScope().generateID_short();
-
-        //     innerHTML += `
-        //         <div class="d-block mb-2">
-        //             <div class="mb-2 font-weight-bold"><p id="title">${item.title}</p></div>
-        //             <div class="line-1 d-flex">
-        //                 <div class="edit-input w-100">
-        //                     <input type="${item.type}" readonly class="profile-input form-control-plaintext px-2" id="${randomID}" value="${item.value}">
-        //                 </div>
-        //                 <div class="edit-button-container d-flex" id="${randomID}">
-        //                     <button type="button" class="profile-edit-btn btn-small btn btn-secondary ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
-        //                 </div>
-        //                 <div class="update-button-container d-none" id="${randomID}">   
-        //                     <button type="button" class="profile-update-btn btn-small btn btn-success ms-1 align-items-center" id="save-edit-input-btn"><i class="fas fa-check"></i></button>
-        //                     <button type="button" class="profile-close-btn btn-small btn btn-danger ms-1 align-items-center" id="close-edit-input-btn"><i class="fas fa-times"></i></button>
-        //                 </div>
-        //             </div>
-        //             <div class="form-text mb-2 justify-content-start text-danger d-none" id="input-alert">
-        //                 <div class="input-alert-text ms-1">Hibás adatok!</div>
-        //             </div>
-        //         </div>    
-        //     `
-        // });
-
-
         innerHTML += `
-
         <div class="d-flex block-1">
-            <div class="d-flex">
-
-                <div class="d-flex flex-column col-8 me-5">
+            <div class="d-flex w-100">
+                <div class="d-flex flex-column col me-5">
 
                     <div>
                         <div class="font-weight-bold"><p class="mb-1" id="">Username</p></div>
@@ -89,11 +60,11 @@ export function ProfilePageScope() {
                     </div>
 
                     
-                    ${showHidePassword('Alapértelmezett jelszó', true)}
+                    ${showHidePassword('Alapértelmezett jelszó')}
 
                 </div>
 
-                <div class="d-flex flex-column mt-3">
+                <div class="d-flex flex-column mt-3 w-25" style="max-width:200px">
                 <img src="./images/avatar.png" alt="..." class="img-thumbnail p-2">
                     <div class="btn btn-secondary my-2 p-0">
                     <label for="file-upload" class="d-block w-100 cursor-pointer"><i class="fas fa-upload"></i></label>
@@ -124,12 +95,12 @@ export function ProfilePageScope() {
         </div>
         <div class="d-flex block-3">
             <div class="d-block mb-2 w-100">
-                ${showHidePassword('Új jelszó', false)}
+                ${showHidePassword('Új jelszó')}
             </div>
         </div>
         <div class="d-flex block-3">
             <div class="d-block mb-2 w-100">
-                ${showHidePassword('Új jelszó megerősítése', false)}
+                ${showHidePassword('Új jelszó megerősítése')}
             </div>
         </div>
 
@@ -152,14 +123,9 @@ export function ProfilePageScope() {
 
 
 
-    function showHidePassword(title, secondBtn) {
+    function showHidePassword(title) {
 
         const autoID = global.GlobalObjectScope().generateID_short();
-
-        const secondBtnGroup = `
-        <div class="d-flex edit-button-container" id="${randomID}">
-                <button type="button" class="profile-edit-btn btn-small btn btn-success ms-1" id="${randomID}"><i class="fas fa-edit"></i></button>
-        </div>`
 
         const alertMessage = `
         <div class="form-text justify-content-start text-danger d-flex" id="input-alert">
@@ -181,7 +147,6 @@ export function ProfilePageScope() {
                         </label>
                 </div>
             </div>
-            ${secondBtn ? secondBtnGroup : ""}
             </div>
             <div class="form-text justify-content-start text-danger d-flex" id="input-alert">
             <div class="input-alert-text">Hibás adatok!</div>
@@ -209,8 +174,8 @@ export function ProfilePageScope() {
                                 if (input.dataset.autoid === button.dataset.autoid) {
                                     input.classList.remove('fa-eye');
                                     input.classList.add('fa-eye-slash');
-                                }
-                            }
+                                };
+                            };
                         }
                         else {
                             input.type = 'password';
@@ -218,13 +183,13 @@ export function ProfilePageScope() {
                                 if (input.dataset.autoid === button.dataset.autoid) {
                                     input.classList.remove('fa-eye-slash');
                                     input.classList.add('fa-eye');
-                                }
-                            }
-                        }
-                    }
-                }
-            })
-        }
+                                };
+                            };
+                        };
+                    };
+                };
+            });
+        };
 
     };
 

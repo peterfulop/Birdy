@@ -1,4 +1,4 @@
-import * as app from './application.js';
+import * as app from '../script/app.js';
 import * as pagination from './pagination.js';
 import * as global from './global.js';
 import * as st from './state.js';

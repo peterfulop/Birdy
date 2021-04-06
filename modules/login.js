@@ -1,4 +1,4 @@
-import * as app from './application.js';
+import * as app from '../script/app.js';
 import * as reg from './register.js';
 import * as st from './state.js';
 const state = st.state;

@@ -1,5 +1,5 @@
 import * as global from './global.js';
-import * as app from './application.js';
+import * as app from '../script/app.js';
 import * as st from './state.js';
 const state = st.state;
 
