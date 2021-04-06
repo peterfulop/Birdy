@@ -22,8 +22,7 @@ export function DictionaryPageScope() {
                 </div>
                 <div class="create-new-dictionary display-none mb-3">
                     <div class="create-new-block-form w-100">
-    
-                        <form>
+                    <form>
                             <div class="dictionary-name mb-2">
                                 <label for="create-new-text-input" class="form-label">Add meg az új szótár nevét:</label>
     

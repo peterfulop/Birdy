@@ -148,7 +148,7 @@ export function HomePageScope() {
         }).sort().reverse();
 
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 16; i++) {
             contentHTML += `
                 <div class="bubble default history-word-element word-1-version">
                     <span class="history-word-1 d-flex">${puffer[i].word_1}</span>
