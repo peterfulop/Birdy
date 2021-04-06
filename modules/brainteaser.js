@@ -360,7 +360,6 @@ export function brainTeaserScope() {
                     randomIndex = randomIntGenerator(0, maxNumber - 1);
                 }
 
-                console.log('randomIndex', randomIndex);
 
                 DOM.indexPuffer.push(randomIndex);
 
