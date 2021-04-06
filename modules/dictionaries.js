@@ -937,9 +937,9 @@ export function DictionaryPageScope() {
 
 
     return {
-        'buildDictionariesPage': buildDictionariesPage,
-        'renderDictionaryList': renderDictionaryList,
-        'buildDictionaryElementsPage': buildDictionaryElementsPage,
+        buildDictionariesPage,
+        renderDictionaryList,
+        buildDictionaryElementsPage,
     };
 
 };

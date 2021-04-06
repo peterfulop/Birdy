@@ -110,7 +110,7 @@ export function jsonProcessScope() {
     };
 
     return {
-        'runHttpRequest': runHttpRequest
+        runHttpRequest
     };
 };
 

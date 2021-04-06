@@ -246,12 +246,10 @@ export function HomePageScope() {
 
             })
         }
-    }
-
-
+    };
 
     return {
-        'renderHomePage': renderHomePage
+        renderHomePage
     }
 
-}
+};

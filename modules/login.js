@@ -67,7 +67,7 @@ export function LoginPageScope() {
 
 
     return {
-        'renderLoginPage': renderLoginPage
+        renderLoginPage
     }
 
 

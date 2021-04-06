@@ -195,18 +195,18 @@ export function GlobalObjectScope() {
 
 
     return {
-        'renderDictionaryListInput': renderDictionaryListInput,
-        'showDialogPanel': showDialogPanel,
-        'fillDialogPanel': fillDialogPanel,
-        'defDialogPanel': defDialogPanel,
-        'compareValues': compareValues,
-        'startSpeech': startSpeech,
-        'renderSearchBar': renderSearchBar,
-        'closeSearchAlert': closeSearchAlert,
-        'generateID': generateID,
-        'generateID_short': generateID_short,
-        'loadSpinner': loadSpinner,
-        'dialogObjects': dialogObjects
+        renderDictionaryListInput,
+        showDialogPanel,
+        fillDialogPanel,
+        defDialogPanel,
+        compareValues,
+        startSpeech,
+        renderSearchBar,
+        closeSearchAlert,
+        generateID,
+        generateID_short,
+        loadSpinner,
+        dialogObjects
 
     }
 

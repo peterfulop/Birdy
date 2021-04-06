@@ -59,7 +59,6 @@ export function ProfilePageScope() {
                         <input type="text" readonly class="profile-input form-control px-2 mb-2" id="${global.GlobalObjectScope().generateID_short()}" value="username">
                     </div>
 
-                    
                     ${showHidePassword('Alapértelmezett jelszó')}
 
                 </div>
@@ -297,7 +296,7 @@ export function ProfilePageScope() {
 
 
     return {
-        'buildProfilePage': buildProfilePage
+        buildProfilePage
     };
 
 }

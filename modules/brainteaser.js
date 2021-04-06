@@ -243,7 +243,7 @@ export function brainTeaserScope() {
     };
 
 
-    var excerciseTypes = [
+    var excerciseTypes = Object.freeze([
         {
             name: "Idegenről magyar nyelvre",
             value: 0
@@ -256,9 +256,9 @@ export function brainTeaserScope() {
             name: "Véletlenszerű kikérdezés",
             value: 2
         }
-    ];
+    ]);
 
-    var excerciseRunTime = [
+    var excerciseRunTime = Object.freeze([
         {
             name: "Teljes szótár tartalma",
             value: 0
@@ -271,7 +271,7 @@ export function brainTeaserScope() {
             name: "Futás megszakításig",
             value: 2
         }
-    ];
+    ]);
 
 
     function BrainTeaserExcerciseScope() {
@@ -334,8 +334,11 @@ export function brainTeaserScope() {
 
         function askSomething() {
 
+
             var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
-            var randomIndex = randomIntGenerator(0, maxNumber - 1);
+
+            var randomIndex = randomIntGenerator(0, excInfo.maxValue - 1);
+
 
             if (excInfo.timeIndex == 2 && DOM.indexPuffer.length == maxNumber) {
                 console.log('restart progress!');
@@ -344,9 +347,11 @@ export function brainTeaserScope() {
                 randomIndex = randomIntGenerator(0, maxNumber - 1);
             }
 
+
             if (DOM.indexPuffer.length == maxNumber) {
                 alert("Nincs több kérdés!");
             }
+
             else {
 
                 hideQuestionBox();
@@ -355,9 +360,13 @@ export function brainTeaserScope() {
                     randomIndex = randomIntGenerator(0, maxNumber - 1);
                 }
 
+                console.log('randomIndex', randomIndex);
+
                 DOM.indexPuffer.push(randomIndex);
 
+                console.log(state.dictionaries[excInfo.dictionary].lexicon[randomIndex]);
                 var randomText = [];
+
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
 
@@ -382,7 +391,7 @@ export function brainTeaserScope() {
                 if (DOM.answerBoxInput.value != "") {
                     sendAnswer();
                 }
-            })
+            });
         }
 
         function answerEventEnter() {
@@ -391,7 +400,7 @@ export function brainTeaserScope() {
                     sendAnswer();
                     console.log("enter")
                 }
-            })
+            });
         }
 
         function skipAnswer() {
@@ -458,12 +467,12 @@ export function brainTeaserScope() {
         }
 
         return {
-            'buildBrainTeaserExcercise': buildBrainTeaserExcercise
+            buildBrainTeaserExcercise
         }
     }
 
     return {
-        'buildBrainTeaserPage': buildBrainTeaserPage
+        buildBrainTeaserPage
     }
 };
 

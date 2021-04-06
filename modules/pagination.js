@@ -158,7 +158,7 @@ export function paginationFunctionScope() {
 
 
     return {
-        'renderPaginationFooter': renderPaginationFooter,
-        'resetPaginationState': resetPaginationState,
+        renderPaginationFooter,
+        resetPaginationState,
     }
 }

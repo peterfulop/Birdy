@@ -75,6 +75,6 @@ export function ReaderPageScope() {
 
     };
     return {
-        'renderReaderPageContent': renderReaderPageContent
+        renderReaderPageContent
     }
 }

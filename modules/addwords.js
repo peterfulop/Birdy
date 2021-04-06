@@ -54,6 +54,6 @@ export function AddWordsScope() {
 
 
     return {
-        'renderAddWordsContent': renderAddWordsContent
+        renderAddWordsContent
     }
 }

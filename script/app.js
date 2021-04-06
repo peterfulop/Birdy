@@ -482,27 +482,26 @@ export function AppVisualisationScope() {
         };
 
         return {
-            'Menu_Clear_MainContent': Menu_Clear_MainContent,
-            'menu_load_home': menu_load_home,
-            'menu_load_profile': menu_load_profile,
-            'menu_load_dictionaries': menu_load_dictionaries,
-            'menu_load_addwords': menu_load_addwords,
-            'menu_load_brainteaser': menu_load_brainteaser,
-            'menu_load_listening': menu_load_listening,
-            'menu_load_search': menu_load_search,
-            'menu_load_settings': menu_load_settings,
-            'menu_load_signout': menu_load_signout
+            Menu_Clear_MainContent,
+            menu_load_home,
+            menu_load_profile,
+            menu_load_dictionaries,
+            menu_load_addwords,
+            menu_load_brainteaser,
+            menu_load_listening,
+            menu_load_search,
+            menu_load_settings,
+            menu_load_signout
         };
 
     };
 
-
     return {
-        'menu_load_methods': menu_load_methods,
-        'buildApplication': buildApplication,
-        'loadVisualisation': loadVisualisation,
-        'resetState': resetState,
-        'getState': getState
+        menu_load_methods,
+        buildApplication,
+        loadVisualisation,
+        resetState,
+        getState
     };
 
 };
