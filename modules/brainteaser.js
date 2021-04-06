@@ -360,12 +360,9 @@ export function brainTeaserScope() {
                     randomIndex = randomIntGenerator(0, maxNumber - 1);
                 }
 
-
                 DOM.indexPuffer.push(randomIndex);
 
-                console.log(state.dictionaries[excInfo.dictionary].lexicon[randomIndex]);
                 var randomText = [];
-
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
 
