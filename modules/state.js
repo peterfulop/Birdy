@@ -31,5 +31,6 @@ export const state = {
         excerciseRunTime: [],
         dialogObjects: []
     },
-    excerciseHistory: []
+    excerciseHistory: [],
+    selectedId: []
 };

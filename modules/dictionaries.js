@@ -372,8 +372,7 @@ export function DictionaryPageScope() {
                 <div class="d-flex dictionary-list-header">
     
                     <div class="d-flex justify-content-start align-items-center">
-    
-                         <div class="edit-btn-container me-1">
+                        <div class="edit-btn-container me-1">
                             <input type="checkbox" class="btn-check" id="sort-alpha-check" autocomplete="off" checked>
                             <label class="btn btn-sm  btn-outline-listen mw-50" id="sort-alpha-btn" for="sort-alpha-check" ><i class="fas fa-sort-alpha-up" id="sort-alpha-icon"></i></label>
                         </div>
@@ -391,15 +390,31 @@ export function DictionaryPageScope() {
                 </div>
                 
                 <div class="d-flex">
-                    <div class="edit-btn-container me-1">
-                        <input type="checkbox" class="btn-check" id="edit-content-checker" autocomplete="off">
-                        <label class="btn btn-sm btn-outline-listen mw-50" for="edit-content-checker"><i class="fas fa-edit"></i></label>
-                    </div>
-    
-                    <div class="listen-btn-container">
+                    <div class="listen-btn-container me-2">
                         <input type="checkbox" class="btn-check" id="listen-content-checker" autocomplete="off">
                         <label class="btn btn-sm btn-outline-listen mw-50" for="listen-content-checker"><i class="fas fa-volume-up"></i></label>
                     </div>
+
+                    <div class="d-none ms-2" id="editor-mode-block">
+                        <div class="edit-btn-container me-2" title="Másolat készítése">
+                        <button type="button" class="btn btn-sm btn-secondary m-0" id="clone-selected-items-btn"><i class="fas fa-clone"></i></button>
+                        </div>
+
+                        <div class="edit-btn-container me-2" title="Áthelyezés">
+                            <button type="button" class="btn btn-sm btn-secondary m-0" id="move-selected-items-btn"><i class="fas fa-share-square"></i></button>
+                        </div>
+
+                        <div class="edit-btn-container me-2" title="Törlés">
+                            <button type="button" class="btn btn-sm btn-secondary m-0" id="delete-selected-items-btn"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                    <div class="edit-btn-container">
+                        <input type="checkbox" class="btn-check" id="edit-content-checker" autocomplete="off">
+                        <label class="btn btn-sm btn-outline-listen mw-50" for="edit-content-checker"><i class="fas fa-edit"></i></label>
+                    </div>
+
+
+
                 </div>
             </div>
     
@@ -440,6 +455,8 @@ export function DictionaryPageScope() {
         sortByColumn_1();
 
         sortBytColumn_2();
+
+
 
     };
 
@@ -612,9 +629,10 @@ export function DictionaryPageScope() {
                     </div>
                 </div>
     
-                <div class="dictionary-item-remove cursor-pointer" data-rowinfo="${randomIndex}" data-bs-toggle="modal" data-bs-target="#${Global.dialogObjects[0].id}">
-                    <i class="fas fa-trash edit-actual-word remove display-none" data-inputid="${i}" data-dictionary="${state.dictionaryID}" ></i>
+                <div class="d-none cursor-pointer select-element-row">
+                    <input class="form-check-input select-row-id" type="checkbox" id="checkboxNoLabel" data-inputid="${i}" data-dbid="${item.id}" data-dictionary="${state.dictionaryID}">
                 </div>
+
             </div>
             `
             state.pagination.itemNumber = index + i;
@@ -625,6 +643,7 @@ export function DictionaryPageScope() {
 
     function buildDictionaryElementsPage(renderArray) {
 
+        resetSelection();
 
         state.pagination.location = 1;
         state.selectedDictionaryLength = getActualDictionaryLength();
@@ -638,7 +657,7 @@ export function DictionaryPageScope() {
 
         renderDictionaryElementsHTML(renderArray);
 
-
+        selectRowId();
         enabledEditorMode();
         isEnabledListeningMode();
 
@@ -646,7 +665,6 @@ export function DictionaryPageScope() {
         saveEditedWord();
         removeSelectedWord();
         readSelectedWord();
-
 
 
         if (state.filtered) {
@@ -657,6 +675,28 @@ export function DictionaryPageScope() {
 
         };
     };
+
+    function selectRowId() {
+
+        const checks = document.querySelectorAll('.select-row-id');
+
+        for (const btn of checks) {
+
+            btn.addEventListener('change', (e) => {
+
+                if (e.target.checked) {
+                    state.selectedId.push(btn.dataset.dbid);
+                    console.log(state.selectedId);
+                }
+
+                else {
+                    state.selectedId.splice(state.selectedId.indexOf(state.selectedId), 1);
+                    console.log(state.selectedId);
+                }
+            })
+        }
+    };
+
 
     function searchInLexicon(input) {
 
@@ -672,29 +712,58 @@ export function DictionaryPageScope() {
 
     };
 
+
     function enabledEditorMode() {
 
         const editorModeBtn = document.getElementById('edit-content-checker');
-        const editBtn = document.querySelectorAll('.edit-actual-word');
+        const selectRowBtn = document.querySelectorAll('.select-element-row');
+        const editorBlock = document.getElementById('editor-mode-block');
 
         editorModeBtn.addEventListener("change", () => {
 
             if (editorModeBtn.checked) {
+
                 state.editDictionaryMode = true;
-                for (const button of editBtn) {
-                    button.classList.remove("display-none");
+                for (const button of selectRowBtn) {
+
+                    button.classList.remove('d-none');
+                    button.classList.add('d-flex');
+
+                    editorBlock.classList.remove('d-none');
+                    editorBlock.classList.add('d-flex');
                     const Global = global.GlobalObjectScope();
-                    Global.showDialogPanel(0);
+                    Global.showDialogPanel('deleteRow');
                 }
             }
             else {
+
                 state.editDictionaryMode = false;
-                for (const button of editBtn) {
-                    button.classList.add("display-none");
+                for (const button of selectRowBtn) {
+                    button.classList.add('d-none');
+                    button.classList.remove('d-flex');
+                    editorBlock.classList.add('d-none');
                 }
+                resetSelection();
             }
+
+
         })
     };
+
+
+    function resetSelection() {
+
+        const selectRowBtn = document.querySelectorAll('.select-element-row');
+
+        for (const btn of selectRowBtn) {
+            if (btn.firstElementChild.checked) {
+                btn.firstElementChild.checked = false;
+            }
+        };
+
+        state.selectedId = [];
+    };
+
 
     function resetEditorMode() {
 

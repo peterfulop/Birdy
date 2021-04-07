@@ -105,7 +105,6 @@ export function brainTeaserScope() {
     function dictionaryNameSelectmethod() {
 
         DOM.dictionaryNameSelect.addEventListener("change", () => {
-            console.log(DOM.dictionaryNameSelect.value);
             updateRunTimeCount();
         })
     }
@@ -124,11 +123,8 @@ export function brainTeaserScope() {
     function updateRunTimeCount() {
 
         const wordCount = setEnabledWordsCount();
-
-        console.log("frissítem! Max: " + wordCount);
         DOM.setCountManual.max = wordCount;
         DOM.setCountManual.value = wordCount;
-
         excInfo = defineExcercise();
     }
 
@@ -185,8 +181,6 @@ export function brainTeaserScope() {
                 DOM.setCountManual.value = 1;
             }
             excInfo = defineExcercise();
-            console.log(excInfo.countIndex);
-
         })
 
     }
@@ -195,51 +189,68 @@ export function brainTeaserScope() {
 
         document.querySelector(".main-content").innerHTML = `
         <div class="excercise-box">
-                <div class="excercise-header-info">
-                    <div class="header-section-text-1">
-                        <label id="minutes">00</label>:<label id="seconds">00</label>
-                    </div>
 
-                    <div class="header-section-text-2">
-                        <span id="number-of-excercise">1</span>/<span id="count-of-numbers">1</span>
-                    </div>
+            <div class="excercise-header-info">
 
-                    <div class="header-section-text-3">
-                        <span>0</span><i class="fas fa-star" id="point-star-icon"></i>
+                <div class="header-section-text-1">
+                    <label id="minutes">00</label>:<label id="seconds">00</label>
+                </div>
+
+                <div class="header-section-text-2">
+                    <span id="number-of-excercise">1</span>/<span id="count-of-numbers">1</span>
+                </div>
+
+                <div class="header-section-text-3">
+                    <span id="help-counter">0</span><i class="fas fa-lightbulb" id="point-bulb-icon"></i>
+                </div>
+
+            </div>
+
+            <div class="question-answer-boxes">
+
+                <div class="questions-section-box">
+                    <div class="d-flex align-items-center question-box-value">
+                        <p data-lang=""></p>
+                        <i class="fas fa-volume-up listening-mode" id="listening-mode-brain"></i>
                     </div>
                 </div>
 
-                <div class="question-answer-boxes">
-                    <div class="questions-section-box">
-                        <div class="d-flex align-items-center question-box-value">
-                            <p data-lang=""></p>
-                            <i class="fas fa-volume-up listening-mode" id="listening-mode-brain"></i>
-                        </div>
+                <div class="answer-section-box d-flex justify-content-between">
+
+                    <div class="answer-box-value hidden">
+                        <p></p>
                     </div>
 
-                    <div class="answer-section-box">
-                        <div class="answer-box-value hidden">
-                            <p></p>
-                        </div>
+                    <div class="hidden">
+                         <p class="helper-box-value" id="help-text"></p>
                     </div>
+                   
+
                 </div>
 
-                <div class="excercise-input-section">
+            </div>
+
+            <div class="excercise-input-section">
+
                     <div class="answer-box-input">
                         <input type="text" class="form-control" id="answer-box-input" value=""  tabindex="0" required>
-            </div>
-                        <div class="button-box">
-                            <div class="answer-box-button-left">
-                                <button class="btn btn-success" id="answer-button-accept"
-                                    type="button">Tovább!</button>
-                                <button class="btn btn-secondary" id="answer-button-next" type="button"><i
-                                    class="fas fa-step-forward"></i></button>
-                                <button class="btn btn-danger" id="stop-excercise" data-bs-toggle="modal" data-bs-target="#${Global.dialogObjects[1].id}" type="button"><i class="fas fa-stop"></i></button>
-                            </div>
-                        </div>
                     </div>
+
+                    <div class="d-flex button-box w-100">
+
+                    <div class="w-100 me-2">
+                        <button class="btn btn-success w-100" id="answer-button-accept" title="Válasz beküldése" type="button">Tovább!</button>
+                    </div>
+
+                        <div class="d-flex justify-content-end">
+                        <button class="btn btn-warning btn-small mx-2" id="help-button" title="Segítség kérése" type="button"><i class="far fa-lightbulb text-light"></i></button>
+                        <button class="btn btn-secondary btn-small mx-2" id="answer-button-next" title="Következő kérdés" type="button"><i class="fas fa-step-forward"></i></button>
+                        <button class="btn btn-danger btn-small ms-2" id="stop-excercise" title="Befejezés" data-bs-toggle="modal" data-bs-target="#${Global.dialogObjects['exitExcercise'].id}" type="button"><i class="fas fa-stop"></i></button>
+                        </div>
+                </div>
             </div>
-                `
+        </div>
+            `
     };
 
 
@@ -291,8 +302,13 @@ export function brainTeaserScope() {
                 secondsLabel: document.getElementById("seconds"),
                 numberOfExcercise: document.getElementById("number-of-excercise"),
                 countOfNumbers: document.getElementById("count-of-numbers"),
+                helpButton: document.getElementById('help-button'),
+                helpCounterText: document.getElementById("help-counter"),
+                helpText: document.getElementById("help-text"),
+
                 indexPuffer: [],
-                totalSeconds: 0
+                totalSeconds: 0,
+                helpCounter: 0,
             }
         }
 
@@ -319,12 +335,10 @@ export function brainTeaserScope() {
         }
 
         function startExcerciseMethod() {
-
             const Global = global.GlobalObjectScope();
-            Global.showDialogPanel(1);
-
+            Global.showDialogPanel('exitExcercise');
             clearExcercisePuffers();
-            askSomething();
+            renderExcerciseHTML();
             skipAnswer();
             answerEventClick();
             answerEventEnter();
@@ -332,13 +346,46 @@ export function brainTeaserScope() {
         }
 
 
+        function giveHelp(data) {
+
+            DOM.helpButton.onclick = function () {
+                DOM.helpCounter++;
+                //DOM.helpText.classList.add("d-flex");
+                //DOM.helpText.classList.remove("d-none");
+
+                DOM.helpText.classList.add("fadeIn");
+                DOM.helpCounterText.innerText = DOM.helpCounter;
+                DOM.helpText.innerHTML = data;
+
+                setTimeout(() => {
+                    DOM.helpText.classList.remove("fadeIn");
+                    DOM.helpText.classList.add("fadeOut");
+                    //DOM.helpText.classList.remove("d-flex");
+                    //DOM.helpText.classList.add("d-none");
+                }, 500);
+
+
+            }
+        }
+
+
+        function renderExcerciseHTML() {
+
+            let content = askSomething();
+
+            DOM.questionBoxText.innerHTML = content.questionWord;
+            DOM.questionBoxText.dataset.lang = content.language;
+            content.randomText.splice(content.randomText.indexOf(content.questionWord), 1);
+            giveHelp(content.randomText[0]);
+
+
+        }
+
+
         function askSomething() {
 
-
             var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
-
             var randomIndex = randomIntGenerator(0, excInfo.maxValue - 1);
-
 
             if (excInfo.timeIndex == 2 && DOM.indexPuffer.length == maxNumber) {
                 console.log('restart progress!');
@@ -346,7 +393,6 @@ export function brainTeaserScope() {
                 maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
                 randomIndex = randomIntGenerator(0, maxNumber - 1);
             }
-
 
             if (DOM.indexPuffer.length == maxNumber) {
                 alert("Nincs több kérdés!");
@@ -365,21 +411,34 @@ export function brainTeaserScope() {
                 var randomText = [];
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
-
                 var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
 
-                DOM.questionBoxText.innerHTML = randomText[questionIndex];
+                // DOM.questionBoxText.innerHTML = randomText[questionIndex]; // return
+                const questionWord = randomText[questionIndex]; // return
+
+                const solution = randomText.indexOf(questionIndex);
+
 
                 var speachLangIndex = state.dictionaries[excInfo.dictionary].lexicon[randomIndex];
-                DOM.questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2;
+
+
+                // DOM.questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2; //return 
+                const language = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2; //return 
 
                 DOM.numberOfExcercise.innerHTML = DOM.indexPuffer.length;
                 DOM.countOfNumbers.innerHTML = maxNumber;
 
+
                 showQuestionBox();
                 DOM.answerBoxInput.focus();
 
+                return {
+                    questionWord,
+                    language,
+                    randomText
+                };
             }
+
         }
 
         function answerEventClick() {
@@ -394,7 +453,6 @@ export function brainTeaserScope() {
             DOM.answerBoxInput.addEventListener("keyup", (event) => {
                 if (DOM.answerBoxInput.value != "" && event.keyCode === 13) {
                     sendAnswer();
-                    console.log("enter")
                 }
             });
         }
@@ -408,16 +466,17 @@ export function brainTeaserScope() {
                 DOM.answerBoxText.innerHTML = DOM.answerBoxInput.value;
                 DOM.answerBoxInput.value = "";
                 hideAnswerBox();
-                askSomething();
+                //askSomething();
+                renderExcerciseHTML();
             });
         }
 
         function sendAnswer() {
             DOM.answerBox.classList.remove('hidden');
-            DOM.answerBoxText.innerHTML = DOM.answerBoxInput.value;
+            DOM.answerBoxText.innerHTML = DOM.answerBoxInput.value.toLowerCase();
             DOM.answerBoxInput.value = "";
             setTimeout(hideAnswerBox, 1000);
-            setTimeout(askSomething, 1000);
+            setTimeout(renderExcerciseHTML, 1000);
         }
 
         function hideAnswerBox() {

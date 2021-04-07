@@ -173,8 +173,8 @@ export function GlobalObjectScope() {
         });
     }
 
-    var dialogObjects = [
-        {
+    var dialogObjects = Object.freeze({
+        deleteRow: {
             name: "deleteRowObject",
             title: "Elem törlése",
             body: "Biztosan törölni szeretnéd a következőt?",
@@ -182,7 +182,7 @@ export function GlobalObjectScope() {
             color: "danger",
             text: "Törlés"
         },
-        {
+        exitExcercise: {
             name: "endOfExcercise",
             title: "Gyakorlás vége",
             body: "Biztosan ki szeretnél lépni a gyakorlásból?",
@@ -190,7 +190,7 @@ export function GlobalObjectScope() {
             color: "warning",
             text: "Kilépés"
         }
-    ];
+    });
 
 
 
