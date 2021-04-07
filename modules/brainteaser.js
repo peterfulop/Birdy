@@ -37,7 +37,6 @@ export function brainTeaserScope() {
     function renderBrainTeaserHTML() {
 
         const mainContent = document.querySelector(".main-content");
-        const Global = global.GlobalObjectScope();
 
         Global.renderDictionaryListInput(mainContent);
         renderExcerciseTypeInput(mainContent);
@@ -238,15 +237,15 @@ export function brainTeaserScope() {
 
                     <div class="d-flex button-box w-100">
 
-                    <div class="w-100 me-2">
-                        <button class="btn btn-success w-100" id="answer-button-accept" title="Válasz beküldése" type="button">Tovább!</button>
-                    </div>
+                        <div class="w-100 me-2">
+                            <button class="btn btn-success w-100" id="answer-button-accept" title="Válasz beküldése" type="button">Tovább!</button>
+                        </div>
 
                         <div class="d-flex justify-content-end">
                         <button class="btn btn-warning btn-small mx-2" id="help-button" title="Segítség kérése" type="button"><i class="far fa-lightbulb text-light"></i></button>
                         <button class="btn btn-secondary btn-small mx-2" id="answer-button-next" title="Következő kérdés" type="button"><i class="fas fa-step-forward"></i></button>
                         <button class="btn btn-danger btn-small ms-2" id="stop-excercise" title="Befejezés" data-bs-toggle="modal" data-bs-target="#${Global.dialogObjects['exitExcercise'].id}" type="button"><i class="fas fa-stop"></i></button>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -289,6 +288,19 @@ export function brainTeaserScope() {
 
         let DOM = {};
 
+        const excerciseData = {
+            indexPuffer: [],
+            totalSeconds: 0,
+            helpCounter: 0,
+            question: '',
+            answer: '',
+            yourAnswers: [],
+            startTermin: undefined,
+            endTermin: undefined,
+            dictionary: undefined,
+            maxNumber: undefined,
+        };
+
         var defDOMelements = () => {
             return {
                 questionBox: document.querySelector(".question-box-value"),
@@ -305,10 +317,6 @@ export function brainTeaserScope() {
                 helpButton: document.getElementById('help-button'),
                 helpCounterText: document.getElementById("help-counter"),
                 helpText: document.getElementById("help-text"),
-
-                indexPuffer: [],
-                totalSeconds: 0,
-                helpCounter: 0,
             }
         }
 
@@ -330,12 +338,11 @@ export function brainTeaserScope() {
         }
 
         function clearExcercisePuffers() {
-            DOM.indexPuffer = [];
-            DOM.totalSeconds = 0;
+            excerciseData.indexPuffer = [];
+            excerciseData.totalSeconds = 0;
         }
 
         function startExcerciseMethod() {
-            const Global = global.GlobalObjectScope();
             Global.showDialogPanel('exitExcercise');
             clearExcercisePuffers();
             renderExcerciseHTML();
@@ -346,25 +353,25 @@ export function brainTeaserScope() {
         }
 
 
-        function giveHelp(data) {
+        function showAnswer(count = true) {
 
+            count ? excerciseData.helpCounter++ : '';
+
+            DOM.helpText.classList.add("fadeIn");
+            DOM.helpCounterText.innerText = excerciseData.helpCounter;
+            DOM.helpText.innerHTML = excerciseData.answer;
+
+            setTimeout(() => {
+                DOM.helpText.classList.remove("fadeIn");
+                DOM.helpText.classList.add("fadeOut");
+            }, 1000);
+
+        }
+
+
+        function giveHelp() {
             DOM.helpButton.onclick = function () {
-                DOM.helpCounter++;
-                //DOM.helpText.classList.add("d-flex");
-                //DOM.helpText.classList.remove("d-none");
-
-                DOM.helpText.classList.add("fadeIn");
-                DOM.helpCounterText.innerText = DOM.helpCounter;
-                DOM.helpText.innerHTML = data;
-
-                setTimeout(() => {
-                    DOM.helpText.classList.remove("fadeIn");
-                    DOM.helpText.classList.add("fadeOut");
-                    //DOM.helpText.classList.remove("d-flex");
-                    //DOM.helpText.classList.add("d-none");
-                }, 500);
-
-
+                showAnswer();
             }
         }
 
@@ -373,59 +380,62 @@ export function brainTeaserScope() {
 
             let content = askSomething();
 
-            DOM.questionBoxText.innerHTML = content.questionWord;
-            DOM.questionBoxText.dataset.lang = content.language;
-            content.randomText.splice(content.randomText.indexOf(content.questionWord), 1);
-            giveHelp(content.randomText[0]);
-
-
+            if (content) {
+                DOM.questionBoxText.innerHTML = content.questionWord;
+                DOM.questionBoxText.dataset.lang = content.language;
+                content.randomText.splice(content.randomText.indexOf(content.questionWord), 1);
+                excerciseData.answer = content.randomText[0];
+                excerciseData.question = content.questionWord;
+                giveHelp();
+            }
         }
 
 
         function askSomething() {
 
+
+            if (excerciseData.startTermin === undefined) excerciseData.startTermin = new Date().toLocaleString();
+            if (excerciseData.dictionary === undefined) excerciseData.dictionary = state.dictionaryName;
+
             var maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
             var randomIndex = randomIntGenerator(0, excInfo.maxValue - 1);
 
-            if (excInfo.timeIndex == 2 && DOM.indexPuffer.length == maxNumber) {
+            if (excerciseData.maxNumber === undefined) excerciseData.maxNumber = maxNumber;
+
+            if (excInfo.timeIndex == 2 && excerciseData.indexPuffer.length == maxNumber) {
                 console.log('restart progress!');
                 clearExcercisePuffers();
                 maxNumber = excInfo.timeIndex === 0 ? excInfo.maxNumber : excInfo.countIndex;
                 randomIndex = randomIntGenerator(0, maxNumber - 1);
             }
 
-            if (DOM.indexPuffer.length == maxNumber) {
-                alert("Nincs több kérdés!");
+            if (excerciseData.indexPuffer.length == maxNumber) {
+                if (excerciseData.endTermin === undefined) excerciseData.endTermin = new Date().toLocaleString();
+                console.log(excerciseData);
+                buildExcerciseOutcome();
+                return false;
             }
-
             else {
-
                 hideQuestionBox();
 
-                while (DOM.indexPuffer.includes(randomIndex)) {
+                while (excerciseData.indexPuffer.includes(randomIndex)) {
                     randomIndex = randomIntGenerator(0, maxNumber - 1);
                 }
 
-                DOM.indexPuffer.push(randomIndex);
+                excerciseData.indexPuffer.push(randomIndex);
 
                 var randomText = [];
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_1);
                 randomText.push(state.dictionaries[excInfo.dictionary].lexicon[randomIndex].word_2);
                 var questionIndex = excInfo.excIndex == 2 ? randomIntGenerator(0, 1) : excInfo.excIndex;
 
-                // DOM.questionBoxText.innerHTML = randomText[questionIndex]; // return
                 const questionWord = randomText[questionIndex]; // return
-
-                const solution = randomText.indexOf(questionIndex);
-
 
                 var speachLangIndex = state.dictionaries[excInfo.dictionary].lexicon[randomIndex];
 
-
-                // DOM.questionBoxText.dataset.lang = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2; //return 
                 const language = questionIndex == 0 ? speachLangIndex.lang_1 : speachLangIndex.lang_2; //return 
 
-                DOM.numberOfExcercise.innerHTML = DOM.indexPuffer.length;
+                DOM.numberOfExcercise.innerHTML = excerciseData.indexPuffer.length;
                 DOM.countOfNumbers.innerHTML = maxNumber;
 
 
@@ -435,7 +445,7 @@ export function brainTeaserScope() {
                 return {
                     questionWord,
                     language,
-                    randomText
+                    randomText,
                 };
             }
 
@@ -462,55 +472,192 @@ export function brainTeaserScope() {
             var skipButton = document.getElementById('answer-button-next');
 
             skipButton.addEventListener('click', () => {
+                saveUserAnswers();
                 DOM.answerBox.classList.remove('hidden');
                 DOM.answerBoxText.innerHTML = DOM.answerBoxInput.value;
                 DOM.answerBoxInput.value = "";
                 hideAnswerBox();
-                //askSomething();
                 renderExcerciseHTML();
             });
         }
 
+        function saveUserAnswers() {
+            excerciseData.yourAnswers.push({ question: excerciseData.question, answer: DOM.answerBoxInput.value.toLowerCase(), solution: excerciseData.answer });
+        };
+
         function sendAnswer() {
+            showAnswer(false);
+            saveUserAnswers();
             DOM.answerBox.classList.remove('hidden');
             DOM.answerBoxText.innerHTML = DOM.answerBoxInput.value.toLowerCase();
             DOM.answerBoxInput.value = "";
             setTimeout(hideAnswerBox, 1000);
             setTimeout(renderExcerciseHTML, 1000);
-        }
+        };
 
         function hideAnswerBox() {
+            DOM.answerBoxText.innerHTML = '';
             DOM.answerBox.classList.add('hidden');
-        }
+        };
 
         function hideQuestionBox() {
             DOM.questionBox.classList.add("display-none");
-        }
+        };
 
         function showQuestionBox() {
             DOM.questionBox.classList.remove("display-none");
-        }
+        };
 
         function randomIntGenerator(min, max) {
             return Math.floor(Math.random() * (max - min + 1) + min);
-        }
+        };
 
         function stopBrainTeaserExcercise() {
-            var stopExcercise = document.getElementById("stop-excercise");
-            stopExcercise.onclick = function () {
 
-                document.getElementById('dialogAcceptButton').addEventListener('click', () => {
-                    const App = app.AppVisualisationScope().menu_load_methods();
-                    App.menu_load_brainteaser();
-                })
-            }
-        }
+            var stopExcercise = document.getElementById("stop-excercise");
+            stopExcercise.onclick = () => {
+                document.getElementById('dialogAcceptButton').onclick = () => {
+                    backToBrainTeaserPage();
+                }
+            };
+        };
+
+        function backToBrainTeaserPage() {
+            app.AppVisualisationScope().menu_load_methods().menu_load_brainteaser();
+        };
+
+
+        function buildExcerciseOutcome() {
+
+            Global.showDialogPanel('exportExcercise');
+            renderExcerciseOutcomeHTML();
+            exportBrainTeaserExcercise();
+        };
+
+
+        function renderExcerciseOutcomeHTML() {
+
+            document.querySelector(".main-content").innerHTML = `
+
+           <div class="d-flex justify-content-center mb-4" id="outcome-header">
+                <h3>Eredmény<h3>
+            </div>
+
+            <div class="d-block m-3" id="outcome-excercie-data">
+
+                <div class="d-flex justify-content-between" id="outcome-dictionary">
+                    <div class="">
+                        <span class="m-1 text-secondary">Szótár:</span>
+                    </div>
+                    <div class="" id="outcome-dictionary-name">
+                        <small class="m-1">${excerciseData.dictionary}</small>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between" id="outcome-start-date">
+                    <div class="">
+                        <span class="m-1 text-secondary">Start time:</span>
+                    </div>
+                    <div class="">
+                        <small class="m-1">${excerciseData.startTermin}</small>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between" id="outcome-end-date">
+                    <div class="">
+                        <span class="m-1 text-secondary">End time:</span>
+                    </div>
+                    <div class="">
+                        <small class="m-1">${excerciseData.endTermin}</small>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-around my-3" id="outcome-duration">
+                    <div class="d-flex col-3 flex-column align-items-center">
+                        <p class="m-1"><i class="h3 text-primary fas fa-stopwatch"></i></p>
+                        <span>${excerciseData.totalSeconds} sec</span>
+                    </div>
+                    <div class="d-flex col-3 flex-column align-items-center">
+                        <p class="m-1"><i class="h3 text-secondary fas fa-list-ol"></i></p>
+                        <span>${excerciseData.maxNumber}</span>
+                    </div>
+                    <div class="d-flex col-3 flex-column align-items-center">
+                        <p class="m-1"><i class="h3 text-danger fas fa-forward"></i></p>
+                        <span>${excerciseData.yourAnswers.filter(item => item.answer === "").length}</span>
+                    </div>
+                    <div class="d-flex col-3 flex-column align-items-center">
+                        <p class="m-1"><i class="h3 text-warning fas fa-lightbulb"></i></p>
+                        <span>${excerciseData.helpCounter}</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="d-block" id="outcome-issue-block">
+                ${renderIssueBlockHTML()}
+            </div>
+
+            <div class="d-flex button-box m-2 justify-content-between">
+
+                <div class="d-flex me-2 col-3">
+                    <button class="btn btn-secondary w-100" id="back-button" title="Vissza" type="button">Vissza</button>
+                </div>
+                <div class="d-flex ms-2 col-8">
+                    <button class="btn btn-primary w-100" id="export-excercise-btn" title="Exportálás" type="button" data-bs-toggle="modal" data-bs-target="#${Global.dialogObjects['exportExcercise'].id}">Export</button>
+                </div>
+            </div>
+
+            `
+            document.getElementById('back-button').addEventListener('click', () => backToBrainTeaserPage());
+        };
+
+        function renderIssueBlockHTML() {
+
+            let innerHTML = '';
+
+            excerciseData.yourAnswers.map(item => {
+                innerHTML += `
+                    <div class="d-flex flex-column issue-list-element">
+                        <div class="d-flex align-items-center issue-question-row border-bottom">
+                            <span class="m-1 text-secondary">Kérdés:</span>
+                            <small class="ms-2">${item.question}</small>
+                        </div>
+                        <div class="d-flex align-items-center issue-answer-row border-bottom">
+                            <span class="m-1 text-secondary">Válaszod:</span>
+                            <small class="ms-2">${item.answer}</small>
+                        </div>
+                        <div class="d-flex align-items-center issue-solution-row">
+                            <span class="m-1 text-secondary">Megoldás:</span>
+                            <small class="ms-2">${item.solution}</small>
+                        </div>
+                    </div>
+                `
+            })
+
+            return innerHTML;
+
+        };
+
+
+        function exportBrainTeaserExcercise() {
+
+            var exportExcercise = document.getElementById('export-excercise-btn');
+            exportExcercise.onclick = () => {
+                document.getElementById('dialogAcceptButton').onclick = () => {
+                    console.log('back to....')
+                    backToBrainTeaserPage();
+                }
+            };
+        };
+
+
+
 
         function setTime() {
-            ++DOM.totalSeconds;
-            DOM.secondsLabel.innerHTML = pad(DOM.totalSeconds % 60);
-            DOM.minutesLabel.innerHTML = pad(parseInt(DOM.totalSeconds / 60));
-        }
+            ++excerciseData.totalSeconds;
+            DOM.secondsLabel.innerHTML = pad(excerciseData.totalSeconds % 60);
+            DOM.minutesLabel.innerHTML = pad(parseInt(excerciseData.totalSeconds / 60));
+        };
 
         function pad(val) {
             var valString = val + "";
@@ -519,12 +666,13 @@ export function brainTeaserScope() {
             } else {
                 return valString;
             }
-        }
+        };
 
         return {
             buildBrainTeaserExcercise
         }
-    }
+
+    };
 
     return {
         buildBrainTeaserPage

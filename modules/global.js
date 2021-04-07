@@ -189,6 +189,14 @@ export function GlobalObjectScope() {
             id: "stop-excercise-dialog",
             color: "warning",
             text: "Kilépés"
+        },
+        exportExcercise: {
+            name: "exportExcercise",
+            title: "Gyakorlás vége",
+            body: "Szeretnéd menteni a gyakorlás eredményét?",
+            id: "export-excercise-dialog",
+            color: "warning",
+            text: "Export"
         }
     });
 
