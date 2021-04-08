@@ -16,7 +16,12 @@ export function jsonProcessScope() {
         try {
             const response = await fetch(url);
             const data = await response.json();
-            createObjectsMethod(data, arrayTo);
+            if (data.length > 0) {
+                createObjectsMethod(data, arrayTo);
+            }
+            else {
+                return;
+            }
 
         } catch (err) {
             console.error(err);
@@ -148,7 +153,7 @@ class DictionaryElement {
     };
 };
 
-class Notes {
+export class Notes {
     constructor(id, text, dateTime) {
         this.autoID = new AutoID().generateID();
         this.id = id;

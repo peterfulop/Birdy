@@ -8,7 +8,7 @@ export function brainTeaserScope() {
     let DOM = {};
     const Global = global.GlobalObjectScope();
 
-    let excInfo = {}; // ???
+    let excInfo = {};
 
     let defDOMelementss = () => {
         return {

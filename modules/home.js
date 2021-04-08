@@ -1,4 +1,5 @@
 import * as st from './state.js';
+import * as json from './jsonProcess.js';
 const state = st.state;
 
 export function HomePageScope() {
@@ -107,7 +108,7 @@ export function HomePageScope() {
                     }).id + 1 : 1;
 
                 let now = new Date().toJSON();
-                var component = new Notes(newID, newPinInput.value, now);
+                var component = new json.Notes(newID, newPinInput.value, now);
 
                 state.notes.push(component);
 
