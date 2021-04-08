@@ -582,7 +582,7 @@ export function brainTeaserScope() {
                         <span>${excerciseData.maxNumber}</span>
                     </div>
                     <div class="d-flex col-3 flex-column align-items-center">
-                        <p class="m-1"><i class="h3 text-danger fas fa-forward"></i></p>
+                        <p class="m-1"><i class="h3 text-danger fas fa-times"></i></p>
                         <span>${excerciseData.yourAnswers.filter(item => item.answer === "").length}</span>
                     </div>
                     <div class="d-flex col-3 flex-column align-items-center">
@@ -624,7 +624,7 @@ export function brainTeaserScope() {
                         </div>
                         <div class="d-flex align-items-center issue-answer-row border-bottom">
                             <span class="m-1 text-secondary">Válaszod:</span>
-                            <small class="ms-2">${item.answer}</small>
+                            <small class="ms-2">${item.answer === "" ? '<i class="fas fa-times"></i>' : item.answer}</small>
                         </div>
                         <div class="d-flex align-items-center issue-solution-row">
                             <span class="m-1 text-secondary">Megoldás:</span>
