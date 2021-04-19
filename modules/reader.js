@@ -52,6 +52,7 @@ export function ReaderPageScope() {
     function listeningStartSpeech() {
 
         const listeningStartBtn = document.querySelector("#listening-start-button");
+        const listeningSelectLanguage = document.querySelector("#listening-select-language");
 
         listeningStartBtn.addEventListener("click", () => {
 

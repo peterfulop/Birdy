@@ -325,26 +325,26 @@ export function DictionaryPageScope() {
 
         console.log("Edit Dictionary");
 
-        for (let i = 0; i < dictionaries.length; i++) {
-            if (dictionaries[i].id === state.selectedDictionary) {
-                console.log(dictionaries[i].id);
-                console.log(dictionaries[i].name);
-                console.log(dictionaries[i].relaseDate);
-            }
-        }
+        // for (let i = 0; i < dictionaries.length; i++) {
+        //     if (dictionaries[i].id === state.selectedDictionary) {
+        //         console.log(dictionaries[i].id);
+        //         console.log(dictionaries[i].name);
+        //         console.log(dictionaries[i].relaseDate);
+        //     }
+        // }
     };
 
     function deleteDictionary() {
 
         console.log("Delete Dictionary");
 
-        for (let i = 0; i < dictionaries.length; i++) {
-            if (dictionaries[i].id === state.selectedDictionary) {
-                console.log(dictionaries[i].id);
-                console.log(dictionaries[i].name);
-                console.log(dictionaries[i].relaseDate);
-            }
-        }
+        // for (let i = 0; i < dictionaries.length; i++) {
+        //     if (dictionaries[i].id === state.selectedDictionary) {
+        //         console.log(dictionaries[i].id);
+        //         console.log(dictionaries[i].name);
+        //         console.log(dictionaries[i].relaseDate);
+        //     }
+        // }
     };
 
 
@@ -644,6 +644,7 @@ export function DictionaryPageScope() {
     function buildDictionaryElementsPage(renderArray) {
 
         resetSelection();
+        disabledEditorMode();
 
         state.pagination.location = 1;
         state.selectedDictionaryLength = getActualDictionaryLength();
@@ -711,19 +712,23 @@ export function DictionaryPageScope() {
         if (state.filterArray.length > 0) state.filtered = true;
 
     };
-
-
     function enabledEditorMode() {
 
         const editorModeBtn = document.getElementById('edit-content-checker');
         const selectRowBtn = document.querySelectorAll('.select-element-row');
         const editorBlock = document.getElementById('editor-mode-block');
+        const editActualWordBtn = document.querySelectorAll('.edit-actual-word');
 
         editorModeBtn.addEventListener("change", () => {
 
             if (editorModeBtn.checked) {
 
                 state.editDictionaryMode = true;
+
+                for (const editBtn of editActualWordBtn) {
+                    editBtn.classList.remove('display-none');
+                }
+
                 for (const button of selectRowBtn) {
 
                     button.classList.remove('d-none');
@@ -732,23 +737,40 @@ export function DictionaryPageScope() {
                     editorBlock.classList.remove('d-none');
                     editorBlock.classList.add('d-flex');
                     const Global = global.GlobalObjectScope();
-                    Global.showDialogPanel('deleteRow');
+                    //Global.showDialogPanel('deleteRow');
+
+                    editSelectedWord();
                 }
             }
             else {
 
-                state.editDictionaryMode = false;
-                for (const button of selectRowBtn) {
-                    button.classList.add('d-none');
-                    button.classList.remove('d-flex');
-                    editorBlock.classList.add('d-none');
-                }
-                resetSelection();
+                disabledEditorMode();
             }
 
 
         })
     };
+
+    function disabledEditorMode() {
+
+        state.editDictionaryMode = false;
+
+        const editorBlock = document.getElementById('editor-mode-block');
+        const editActualWordBtn = document.querySelectorAll('.edit-actual-word');
+        const selectRowBtn = document.querySelectorAll('.select-element-row');
+
+
+        for (const editBtn of editActualWordBtn) {
+            editBtn.classList.add('display-none');
+        }
+
+        for (const button of selectRowBtn) {
+            button.classList.add('d-none');
+            button.classList.remove('d-flex');
+            editorBlock.classList.add('d-none');
+        }
+        resetSelection();
+    }
 
 
     function resetSelection() {
