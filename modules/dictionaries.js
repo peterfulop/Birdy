@@ -640,7 +640,6 @@ export function DictionaryPageScope() {
 
     };
 
-
     function buildDictionaryElementsPage(renderArray) {
 
         resetSelection();
