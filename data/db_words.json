@@ -108,5 +108,832 @@
 {"id":"107","DictionaryID":"1","Word_1":"not a goal but a means","Word_2":"nem cél, hanem eszköz","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:06:12"},
 {"id":"108","DictionaryID":"1","Word_1":"necessary","Word_2":"szükséges dolog","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:06:38"},
 {"id":"109","DictionaryID":"1","Word_1":"strict","Word_2":"szigorú, pontos","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:07:06"},
-{"id":"111","DictionaryID":"1","Word_1":"first of all","Word_2":"mindenek előtt","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:08:29"}
+{
+    "id":"111",
+    "DictionaryID":"1",
+    "Word_1":"first of all",
+    "Word_2":"mindenek előtt",
+    "Lang_1":"en-GB",
+    "Lang_2":"hu-HU",
+    "RelaseDate":"2021-04-06 22:08:29"
+},
+{
+    "id": "817",
+    "DictionaryID": "6",
+    "Word_1": "prep",
+    "Word_2": "készülés",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28 12:37:23"
+},
+{
+    "id": "818",
+    "DictionaryID": "6",
+    "Word_1": "groom prep ",
+    "Word_2": "vőlegény készülődése",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:39:22.000Z"
+},
+{
+    "id": "819",
+    "DictionaryID": "6",
+    "Word_1": "bride prep",
+    "Word_2": "menyasszony készülődése",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:39:33.000Z"
+},
+{
+    "id": "820",
+    "DictionaryID": "6",
+    "Word_1": "groom",
+    "Word_2": "vőlegény",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:39:41.000Z"
+},
+{
+    "id": "821",
+    "DictionaryID": "6",
+    "Word_1": "bride",
+    "Word_2": "menyasszony",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:39:47.000Z"
+},
+{
+    "id": "822",
+    "DictionaryID": "6",
+    "Word_1": "bridesmaid",
+    "Word_2": "koszorúslány",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:46:14.000Z"
+},
+{
+    "id": "823",
+    "DictionaryID": "6",
+    "Word_1": "best man",
+    "Word_2": "tanú",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:40:47.000Z"
+},
+{
+    "id": "824",
+    "DictionaryID": "6",
+    "Word_1": "groomsmen",
+    "Word_2": "vőfély",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:41:41.000Z"
+},
+{
+    "id": "825",
+    "DictionaryID": "6",
+    "Word_1": "couple",
+    "Word_2": "pár",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:42:37.000Z"
+},
+{
+    "id": "826",
+    "DictionaryID": "6",
+    "Word_1": "ceremony",
+    "Word_2": "szertartás",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:42:58.000Z"
+},
+{
+    "id": "827",
+    "DictionaryID": "6",
+    "Word_1": "bridal party",
+    "Word_2": "násznép",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:43:30.000Z"
+},
+{
+    "id": "828",
+    "DictionaryID": "6",
+    "Word_1": "reception",
+    "Word_2": "fogadás",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T12:46:52.000Z"
+},
+{
+    "id": "831",
+    "DictionaryID": "6",
+    "Word_1": "I mainly shoot candid.",
+    "Word_2": "Főként őszinte pillanatokat lövök.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:20:29.000Z"
+},
+{
+    "id": "832",
+    "DictionaryID": "6",
+    "Word_1": "I just want you to do stuff.",
+    "Word_2": "Csak azt szeretném, hogy valamit csináljatok.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T18:41:59.000Z"
+},
+{
+    "id": "833",
+    "DictionaryID": "6",
+    "Word_1": "You gotta hang out and chill.",
+    "Word_2": "Lazíts, és relaxálj. ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:26:39.000Z"
+},
+{
+    "id": "834",
+    "DictionaryID": "6",
+    "Word_1": "Unless I'm asking you to look at the camera, dont worry about it.",
+    "Word_2": "Ha nem kérem hogy nézz a kamerába, ne aggódj.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:27:36.000Z"
+},
+{
+    "id": "835",
+    "DictionaryID": "6",
+    "Word_1": "While we're here...",
+    "Word_2": "Amíg itt vagyunk...",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:28:46.000Z"
+},
+{
+    "id": "836",
+    "DictionaryID": "6",
+    "Word_1": " I don't like you to stop, and pose for me.",
+    "Word_2": "Nem szeretlek megállítani, és pózoltatni. ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:31:42.000Z"
+},
+{
+    "id": "837",
+    "DictionaryID": "6",
+    "Word_1": "Make a hug.",
+    "Word_2": "Öleljétek meg egymást.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:49:59.000Z"
+},
+{
+    "id": "838",
+    "DictionaryID": "6",
+    "Word_1": "Make a handshake.",
+    "Word_2": "Fogjatok kezet.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:50:11.000Z"
+},
+{
+    "id": "839",
+    "DictionaryID": "6",
+    "Word_1": "touchy",
+    "Word_2": "érzékeny",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:50:53.000Z"
+},
+{
+    "id": "840",
+    "DictionaryID": "6",
+    "Word_1": "feely",
+    "Word_2": "érzelmes",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:51:18.000Z"
+},
+{
+    "id": "842",
+    "DictionaryID": "6",
+    "Word_1": "Please, turn out toward me.",
+    "Word_2": "Kérlek, fordulj felém.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:56:14.000Z"
+},
+{
+    "id": "843",
+    "DictionaryID": "6",
+    "Word_1": "just a tad",
+    "Word_2": "csak egy picit",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:56:43.000Z"
+},
+{
+    "id": "846",
+    "DictionaryID": "6",
+    "Word_1": "No thought, just do it!",
+    "Word_2": "Ne gondolkozz, csak csináld!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T14:59:58.000Z"
+},
+{
+    "id": "847",
+    "DictionaryID": "6",
+    "Word_1": "Let's come here real quick.",
+    "Word_2": "Jöjjünk ide gyorsan.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:01:31.000Z"
+},
+{
+    "id": "848",
+    "DictionaryID": "6",
+    "Word_1": "Lets do solos with you!",
+    "Word_2": "Csináljunk egyénieket veled! ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:04:13.000Z"
+},
+{
+    "id": "849",
+    "DictionaryID": "6",
+    "Word_1": "Take a step back this way!",
+    "Word_2": "Lépj egyet hátra, ebbe az irányba!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:06:12.000Z"
+},
+{
+    "id": "850",
+    "DictionaryID": "6",
+    "Word_1": "Take a step forward!",
+    "Word_2": "Lép egyet előre!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:05:30.000Z"
+},
+{
+    "id": "851",
+    "DictionaryID": "6",
+    "Word_1": "All the rest of you guys/ladies.",
+    "Word_2": "Az összes többi srác/hölgy. ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:07:33.000Z"
+},
+{
+    "id": "852",
+    "DictionaryID": "6",
+    "Word_1": "If you have two arms up, you need to unbutton the jacket.",
+    "Word_2": "Ha mind a két kezed fent van, gombold ki a zakót.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:11:33.000Z"
+},
+{
+    "id": "853",
+    "DictionaryID": "6",
+    "Word_1": "It's gonna get weired!",
+    "Word_2": "Furcsa lesz!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:12:16.000Z"
+},
+{
+    "id": "854",
+    "DictionaryID": "6",
+    "Word_1": "Throw your left/right hand in your pocket!",
+    "Word_2": "Dugd a bal/jobb kezed a zsebedbe!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:13:13.000Z"
+},
+{
+    "id": "855",
+    "DictionaryID": "6",
+    "Word_1": "The rule for today for you is...",
+    "Word_2": "A szabály mára neked az, hogy...",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:15:16.000Z"
+},
+{
+    "id": "856",
+    "DictionaryID": "6",
+    "Word_1": "Don't worry about being perfect!",
+    "Word_2": "Ne aggódj azon, hogy tökéletes legyél!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:16:14.000Z"
+},
+{
+    "id": "857",
+    "DictionaryID": "6",
+    "Word_1": "I want you all to interacting with each other.",
+    "Word_2": "Szeretném, ha mindannyian kapcsolatba lépnétek egymással.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:17:43.000Z"
+},
+{
+    "id": "858",
+    "DictionaryID": "6",
+    "Word_1": "robes",
+    "Word_2": "köntös",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:18:33.000Z"
+},
+{
+    "id": "859",
+    "DictionaryID": "6",
+    "Word_1": "Scoot over just a little bit.",
+    "Word_2": "Csússz odébb egy kicsit. (ülésnél)",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:21:35.000Z"
+},
+{
+    "id": "860",
+    "DictionaryID": "6",
+    "Word_1": "Everyone right at the camera, nice big smiles!",
+    "Word_2": "Mindenki a kamera előtt, szép, nagy mosolyt!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:22:58.000Z"
+},
+{
+    "id": "861",
+    "DictionaryID": "6",
+    "Word_1": "Look at each other.",
+    "Word_2": "Nézzetek egymásra.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:23:58.000Z"
+},
+{
+    "id": "862",
+    "DictionaryID": "6",
+    "Word_1": "Nice group hug!",
+    "Word_2": "Szép csoportos ölelés!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:24:58.000Z"
+},
+{
+    "id": "863",
+    "DictionaryID": "6",
+    "Word_1": "Look at each other while you're hugging.",
+    "Word_2": "Nézzetek egymásra, ölelkezés közben.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:25:40.000Z"
+},
+{
+    "id": "864",
+    "DictionaryID": "6",
+    "Word_1": "Take a shot of the dress.",
+    "Word_2": "Lefotózni a ruhát.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:26:39.000Z"
+},
+{
+    "id": "865",
+    "DictionaryID": "6",
+    "Word_1": "No mess in the background of the photo.",
+    "Word_2": "Nincs rendetlenség a fotó hátterében.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:28:24.000Z"
+},
+{
+    "id": "866",
+    "DictionaryID": "6",
+    "Word_1": "dress hanger",
+    "Word_2": "ruha fogas",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:30:46.000Z"
+},
+{
+    "id": "867",
+    "DictionaryID": "6",
+    "Word_1": "belt",
+    "Word_2": "öv",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:31:08.000Z"
+},
+{
+    "id": "868",
+    "DictionaryID": "6",
+    "Word_1": "tie",
+    "Word_2": "nyakkendő",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:31:23.000Z"
+},
+{
+    "id": "869",
+    "DictionaryID": "6",
+    "Word_1": "bow tie",
+    "Word_2": "csokornyakkendő",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:31:45.000Z"
+},
+{
+    "id": "870",
+    "DictionaryID": "6",
+    "Word_1": "vest",
+    "Word_2": "mellény",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:32:08.000Z"
+},
+{
+    "id": "871",
+    "DictionaryID": "6",
+    "Word_1": "trousers",
+    "Word_2": "nadrág",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:32:30.000Z"
+},
+{
+    "id": "872",
+    "DictionaryID": "6",
+    "Word_1": "earrings",
+    "Word_2": "fülbevaló",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:33:23.000Z"
+},
+{
+    "id": "873",
+    "DictionaryID": "6",
+    "Word_1": "cuff",
+    "Word_2": "mandzsetta",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:34:00.000Z"
+},
+{
+    "id": "874",
+    "DictionaryID": "6",
+    "Word_1": "necklace",
+    "Word_2": "nyaklánc",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:34:32.000Z"
+},
+{
+    "id": "875",
+    "DictionaryID": "6",
+    "Word_1": "crown",
+    "Word_2": "korona",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:35:19.000Z"
+},
+{
+    "id": "876",
+    "DictionaryID": "6",
+    "Word_1": "lipstick",
+    "Word_2": "rúzs",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:35:41.000Z"
+},
+{
+    "id": "877",
+    "DictionaryID": "6",
+    "Word_1": "to hang the dress somewhere",
+    "Word_2": "felakasztani a ruhát valahova",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:37:14.000Z"
+},
+{
+    "id": "878",
+    "DictionaryID": "6",
+    "Word_1": "It's time for the bride to get in her dress.",
+    "Word_2": "Itt az ideje, hogy a menyasszony felvegye a ruháját.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:39:35.000Z"
+},
+{
+    "id": "879",
+    "DictionaryID": "6",
+    "Word_1": "Please, not to button it all the way up.",
+    "Word_2": "Kérlek, ne gombold be teljesen.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:41:03.000Z"
+},
+{
+    "id": "880",
+    "DictionaryID": "6",
+    "Word_1": "Please, buttoning up the dress!",
+    "Word_2": "Kérlek, gombold be a ruhát!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:42:18.000Z"
+},
+{
+    "id": "881",
+    "DictionaryID": "6",
+    "Word_1": "You dont have to stop or anithing.",
+    "Word_2": "Nem kell megállnod, vagy bármi mást csinálni.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:24:14.000Z"
+},
+{
+    "id": "882",
+    "DictionaryID": "6",
+    "Word_1": "Just go ahead a little bit.",
+    "Word_2": "Csak menj előre egy kicsit.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:44:43.000Z"
+},
+{
+    "id": "883",
+    "DictionaryID": "6",
+    "Word_1": "Button it up slowly.",
+    "Word_2": "Lassan gombold fel.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:45:16.000Z"
+},
+{
+    "id": "884",
+    "DictionaryID": "6",
+    "Word_1": "Look back for your mother.",
+    "Word_2": "Nézz vissza anyukádra.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:47:17.000Z"
+},
+{
+    "id": "885",
+    "DictionaryID": "6",
+    "Word_1": "Just joke with her/him.",
+    "Word_2": "Csak viccelődj vele.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:48:11.000Z"
+},
+{
+    "id": "886",
+    "DictionaryID": "6",
+    "Word_1": "Turn around, and get a nice a hug.",
+    "Word_2": "Fordulj meg, és öleljétek meg egymást.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:50:54.000Z"
+},
+{
+    "id": "887",
+    "DictionaryID": "6",
+    "Word_1": "give a kiss",
+    "Word_2": "puszit adni",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:51:32.000Z"
+},
+{
+    "id": "888",
+    "DictionaryID": "6",
+    "Word_1": "capture the moment",
+    "Word_2": "megragadni a pillanatot",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:52:03.000Z"
+},
+{
+    "id": "889",
+    "DictionaryID": "6",
+    "Word_1": "Please, put your jewerly on.",
+    "Word_2": "Kérlek, vedd fel az ékszereidet.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:53:42.000Z"
+},
+{
+    "id": "890",
+    "DictionaryID": "6",
+    "Word_1": "bracelet",
+    "Word_2": "karkötő",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:54:03.000Z"
+},
+{
+    "id": "891",
+    "DictionaryID": "6",
+    "Word_1": "Stand around the bride!",
+    "Word_2": "Álljatok a menyasszony köré!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:56:27.000Z"
+},
+{
+    "id": "892",
+    "DictionaryID": "6",
+    "Word_1": "Stand in a semicircle!",
+    "Word_2": "Álljatok félkörben!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:56:55.000Z"
+},
+{
+    "id": "893",
+    "DictionaryID": "6",
+    "Word_1": "Make it look perfect.",
+    "Word_2": "Hogy tökéletes legyen.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:58:00.000Z"
+},
+{
+    "id": "894",
+    "DictionaryID": "6",
+    "Word_1": "Just take your time!",
+    "Word_2": "Csak szánj rá időt!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:58:31.000Z"
+},
+{
+    "id": "895",
+    "DictionaryID": "6",
+    "Word_1": "Let's one at a time for the shoes!",
+    "Word_2": "Nézzük egyesével a cipőket!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T15:59:32.000Z"
+},
+{
+    "id": "896",
+    "DictionaryID": "6",
+    "Word_1": "Raise your legs!",
+    "Word_2": "Emeld fel a lábaid! ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:01:14.000Z"
+},
+{
+    "id": "897",
+    "DictionaryID": "6",
+    "Word_1": "Raise your hand!",
+    "Word_2": "Emeld fel a kezed!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:01:31.000Z"
+},
+{
+    "id": "898",
+    "DictionaryID": "6",
+    "Word_1": "Do you wanna be more straight?",
+    "Word_2": "Egyenesebb akarsz állni?",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:04:20.000Z"
+},
+{
+    "id": "899",
+    "DictionaryID": "6",
+    "Word_1": "Do you wanna be facing that way a little?",
+    "Word_2": "Akarsz egy kicsit arccal szemben lenni? ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:05:36.000Z"
+},
+{
+    "id": "900",
+    "DictionaryID": "6",
+    "Word_1": "I would just move you over.",
+    "Word_2": "Csak áthelyeznélek.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:06:08.000Z"
+},
+{
+    "id": "901",
+    "DictionaryID": "6",
+    "Word_1": "Try to match the bouquet.",
+    "Word_2": "Próbáld meg illeszteni a csokrot.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:08:31.000Z"
+},
+{
+    "id": "902",
+    "DictionaryID": "6",
+    "Word_1": "bouquet",
+    "Word_2": "csokor",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:08:13.000Z"
+},
+{
+    "id": "903",
+    "DictionaryID": "6",
+    "Word_1": "Try and keep the bouquets around the same level.",
+    "Word_2": "Próbáljuk meg a csokrokat azonos szinten tartani.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:09:35.000Z"
+},
+{
+    "id": "904",
+    "DictionaryID": "6",
+    "Word_1": "Eyes at me.",
+    "Word_2": "Nézzetek ide.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:10:25.000Z"
+},
+{
+    "id": "905",
+    "DictionaryID": "6",
+    "Word_1": "Everone pick a girl.",
+    "Word_2": "Mindenki válasszon egy lányt.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:11:23.000Z"
+},
+{
+    "id": "906",
+    "DictionaryID": "6",
+    "Word_1": "Laugh in her/his face.",
+    "Word_2": "Nevess az arcába.",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:11:43.000Z"
+},
+{
+    "id": "907",
+    "DictionaryID": "6",
+    "Word_1": "Warm each other up!",
+    "Word_2": "Melegítsük fel egymást!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:12:18.000Z"
+},
+{
+    "id": "908",
+    "DictionaryID": "6",
+    "Word_1": "We're start out...",
+    "Word_2": "Elkezdjük...",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:15:04.000Z"
+},
+{
+    "id": "909",
+    "DictionaryID": "6",
+    "Word_1": "with straight face",
+    "Word_2": "komoly arccal",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:16:33.000Z"
+},
+{
+    "id": "910",
+    "DictionaryID": "6",
+    "Word_1": "And then now smile at the camera!",
+    "Word_2": "És akkor most mosoly a kamerára!",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:17:19.000Z"
+},
+{
+    "id": "911",
+    "DictionaryID": "6",
+    "Word_1": "Do you want something fun, or cute together? ",
+    "Word_2": "Szeretnétek valami mulatságosat vagy aranyosat együtt?",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:19:22.000Z"
+},
+{
+    "id": "912",
+    "DictionaryID": "6",
+    "Word_1": "Could you just come over here?",
+    "Word_2": "Át tudnál jönni ide? ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-07-28T16:20:24.000Z"
+}
 ]

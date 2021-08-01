@@ -39,11 +39,15 @@ export function jsonProcessScope() {
     };
 
     function createDictionaryElementObject(sourcePuffer, array) {
+        console.log(sourcePuffer)
         for (const data of sourcePuffer) {
+            console.log(data.DictionaryID)
             let component = new DictionaryElement(data.id, data.DictionaryID, data.Word_1, data.Word_2, data.Lang_1, data.Lang_2, data.RelaseDate);
             array.push(component);
         };
         console.log('4. createDictionaryElementObject2 is ready...');
+        console.log(array)
+
     };
 
     function fillLexiconArrays() {
@@ -52,6 +56,7 @@ export function jsonProcessScope() {
                 if (dictionary.id == array_words[i].dictionaryName) {
                     dictionary.lexicon.push(array_words[i]);
                 }
+
             }
         }
         console.log('6. fillLexiconArrays is ready...');
