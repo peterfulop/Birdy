@@ -1809,7 +1809,7 @@
     "RelaseDate": "2021-07-28T16:20:24.000Z"
   },
   {
-    "id": 700,
+    "id": 200,
     "DictionaryID": 7,
     "Word_1": "real estate",
     "Word_2": "ingatlan",
@@ -1818,7 +1818,7 @@
     "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 701,
+    "id": 201,
     "DictionaryID": 7,
     "Word_1": "real estate agency",
     "Word_2": "ingatlaniroda",
@@ -1827,741 +1827,1119 @@
     "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 702,
+    "id": 202,
     "DictionaryID": 7,
     "Word_1": "instructions",
     "Word_2": "utasítás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.13 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 703,
+    "id": 203,
     "DictionaryID": 7,
     "Word_1": "condition",
     "Word_2": "feltétel",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.14 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 704,
+    "id": 204,
     "DictionaryID": 7,
     "Word_1": "sequence",
     "Word_2": "szekvencia",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.15 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 705,
+    "id": 205,
     "DictionaryID": 7,
     "Word_1": "cycle",
     "Word_2": "ciklus",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.16 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 706,
+    "id": 206,
     "DictionaryID": 7,
     "Word_1": "flow chart",
     "Word_2": "folyamatábra",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.17 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 707,
+    "id": 207,
     "DictionaryID": 7,
     "Word_1": "node",
     "Word_2": "csomópont",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.18 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 708,
+    "id": 208,
     "DictionaryID": 7,
     "Word_1": "collection",
     "Word_2": "gyűjtemény",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.19 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 709,
+    "id": 209,
     "DictionaryID": 7,
     "Word_1": "rectangle",
     "Word_2": "négyzet",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.20 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 710,
+    "id": 210,
     "DictionaryID": 7,
     "Word_1": "diamond",
     "Word_2": "rombusz",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.21 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 711,
+    "id": 211,
     "DictionaryID": 7,
     "Word_1": "circle",
     "Word_2": "kör",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.22 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 712,
+    "id": 212,
     "DictionaryID": 7,
     "Word_1": "thread",
     "Word_2": "szál",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.23 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 713,
+    "id": 213,
     "DictionaryID": 7,
     "Word_1": "currently",
     "Word_2": "jelenleg",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.24 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 714,
+    "id": 214,
     "DictionaryID": 7,
     "Word_1": "actually",
     "Word_2": "tulajdonképpen",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.25 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 715,
+    "id": 215,
     "DictionaryID": 7,
     "Word_1": "mostly",
     "Word_2": "többnyire",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.26 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 716,
+    "id": 216,
     "DictionaryID": 7,
     "Word_1": "detecting",
     "Word_2": "felismerni, észlelni",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.27 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 717,
+    "id": 217,
     "DictionaryID": 7,
     "Word_1": "independent",
     "Word_2": "független",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.02.28 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 718,
+    "id": 218,
     "DictionaryID": 7,
     "Word_1": "aim",
     "Word_2": "cél",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.01 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 719,
+    "id": 219,
     "DictionaryID": 7,
     "Word_1": "advertisement",
     "Word_2": "hirdetés",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.02 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 720,
+    "id": 220,
     "DictionaryID": 7,
     "Word_1": "colleague",
     "Word_2": "kolléga",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.03 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 721,
+    "id": 221,
     "DictionaryID": 7,
     "Word_1": "discuss",
     "Word_2": "megbeszélni",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.04 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 722,
+    "id": 222,
     "DictionaryID": 7,
     "Word_1": "task",
     "Word_2": "feladat",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.05 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 723,
+    "id": 223,
     "DictionaryID": 7,
     "Word_1": "necessary",
     "Word_2": "szükséges",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.06 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 724,
+    "id": 224,
     "DictionaryID": 7,
     "Word_1": "necessary qualification",
     "Word_2": "szükséges végzettség",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.07 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 725,
+    "id": 225,
     "DictionaryID": 7,
     "Word_1": "qualification",
     "Word_2": "végzettség",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.08 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 726,
+    "id": 226,
     "DictionaryID": 7,
     "Word_1": "competence",
     "Word_2": "kompetencia",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.09 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 727,
+    "id": 227,
     "DictionaryID": 7,
     "Word_1": "experience",
     "Word_2": "tapasztalat",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.10 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 728,
+    "id": 228,
     "DictionaryID": 7,
     "Word_1": "deadline",
     "Word_2": "határidő",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.11 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 729,
+    "id": 229,
     "DictionaryID": 7,
     "Word_1": "meanwhile",
     "Word_2": "közben",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.12 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 730,
+    "id": 230,
     "DictionaryID": 7,
     "Word_1": "rengular",
     "Word_2": "szabályos",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.13 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 731,
+    "id": 231,
     "DictionaryID": 7,
     "Word_1": "opportunity",
     "Word_2": "lehetőség",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.14 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 732,
+    "id": 232,
     "DictionaryID": 7,
     "Word_1": "candidate",
     "Word_2": "jelölt",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.15 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 733,
+    "id": 233,
     "DictionaryID": 7,
     "Word_1": "member",
     "Word_2": "tag",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.16 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 734,
+    "id": 234,
     "DictionaryID": 7,
     "Word_1": "successful",
     "Word_2": "sikeres",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.17 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 735,
+    "id": 235,
     "DictionaryID": 7,
     "Word_1": "stock maganement",
     "Word_2": "készletgazdálkodás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.18 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 736,
+    "id": 236,
     "DictionaryID": 7,
     "Word_1": "stock",
     "Word_2": "készlet",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.19 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 737,
+    "id": 237,
     "DictionaryID": 7,
     "Word_1": "further assistance",
     "Word_2": "további segítség",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.20 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 738,
+    "id": 238,
     "DictionaryID": 7,
     "Word_1": "decompress",
     "Word_2": "kitömörít",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.21 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 739,
+    "id": 239,
     "DictionaryID": 7,
     "Word_1": "compress",
     "Word_2": "tömörít",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.22 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 740,
+    "id": 240,
     "DictionaryID": 7,
     "Word_1": "inventory",
     "Word_2": "leltár",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.23 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 741,
+    "id": 241,
     "DictionaryID": 7,
     "Word_1": "storage",
     "Word_2": "raktározás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.24 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 742,
+    "id": 242,
     "DictionaryID": 7,
     "Word_1": "product tagging",
     "Word_2": "termék címkézés",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.25 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 743,
+    "id": 243,
     "DictionaryID": 7,
     "Word_1": "product cataloging",
     "Word_2": "termék katalogizálás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.26 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 744,
+    "id": 244,
     "DictionaryID": 7,
     "Word_1": "cataloging",
     "Word_2": "katalogizálás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.27 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 745,
+    "id": 245,
     "DictionaryID": 7,
     "Word_1": "user activity",
     "Word_2": "felhasználói tevékenység",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.28 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 746,
+    "id": 246,
     "DictionaryID": 7,
     "Word_1": "tracking",
     "Word_2": "követés",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.29 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 747,
+    "id": 247,
     "DictionaryID": 7,
     "Word_1": "to inform you about the fact",
     "Word_2": "tájékoztatni a tényről",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.30 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 748,
+    "id": 248,
     "DictionaryID": 7,
     "Word_1": "request",
     "Word_2": "kérés",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.03.31 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 749,
+    "id": 249,
     "DictionaryID": 7,
     "Word_1": "response",
     "Word_2": "válasz",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.01 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 750,
+    "id": 250,
     "DictionaryID": 7,
     "Word_1": "accomplish",
     "Word_2": "megvalósítani, végrahajt",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.02 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 751,
+    "id": 251,
     "DictionaryID": 7,
     "Word_1": "additional tasks",
     "Word_2": "további feladatok",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.03 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 752,
+    "id": 252,
     "DictionaryID": 7,
     "Word_1": "provide",
     "Word_2": "biztosít",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.04 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 753,
+    "id": 253,
     "DictionaryID": 7,
     "Word_1": "rough",
     "Word_2": "durva",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.05 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 754,
+    "id": 254,
     "DictionaryID": 7,
     "Word_1": "prototype",
     "Word_2": "prototípus",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.06 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 755,
+    "id": 255,
     "DictionaryID": 7,
     "Word_1": "environment",
     "Word_2": "környezet",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.07 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 756,
+    "id": 256,
     "DictionaryID": 7,
     "Word_1": "integrated development environment",
     "Word_2": "integrált fejlesztői környezet",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.08 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 757,
+    "id": 257,
     "DictionaryID": 7,
     "Word_1": "example",
     "Word_2": "példa",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.09 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 758,
+    "id": 258,
     "DictionaryID": 7,
     "Word_1": "fortunately",
     "Word_2": "szerencsére",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.10 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 759,
+    "id": 259,
     "DictionaryID": 7,
     "Word_1": "unfortunately",
     "Word_2": "sajnos",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.11 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 760,
+    "id": 260,
     "DictionaryID": 7,
     "Word_1": "requirement",
     "Word_2": "követelmény",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.12 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 761,
+    "id": 261,
     "DictionaryID": 7,
     "Word_1": "iterative process",
     "Word_2": "iteratív folyamat",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.13 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 762,
+    "id": 262,
     "DictionaryID": 7,
     "Word_1": "establish",
     "Word_2": "alapít, létrehoz",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.14 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 763,
+    "id": 263,
     "DictionaryID": 7,
     "Word_1": "constantly",
     "Word_2": "állandóan",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.15 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 764,
+    "id": 264,
     "DictionaryID": 7,
     "Word_1": "inquire",
     "Word_2": "érdeklődik",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.16 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 765,
+    "id": 265,
     "DictionaryID": 7,
     "Word_1": "however",
     "Word_2": "azonban",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.17 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 766,
+    "id": 266,
     "DictionaryID": 7,
     "Word_1": "deployment",
     "Word_2": "telepítés",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.18 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 767,
+    "id": 267,
     "DictionaryID": 7,
     "Word_1": "employee",
     "Word_2": "alkalmazott",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.19 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 768,
+    "id": 268,
     "DictionaryID": 7,
     "Word_1": "drawback",
     "Word_2": "hátrány",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.20 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 769,
+    "id": 269,
     "DictionaryID": 7,
-    "Word_1": "preference",
+    "Word_1": "advantage",
     "Word_2": "előny",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.21 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 770,
+    "id": 270,
     "DictionaryID": 7,
     "Word_1": "to operate",
     "Word_2": "üzemeltetni",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.22 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 771,
+    "id": 271,
     "DictionaryID": 7,
     "Word_1": "sorry to disturb you",
     "Word_2": "elnézést hogy zavarlak",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.23 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 772,
+    "id": 272,
     "DictionaryID": 7,
     "Word_1": "separate",
     "Word_2": "különálló",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.24 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 773,
+    "id": 273,
     "DictionaryID": 7,
     "Word_1": "several times",
     "Word_2": "többször",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.25 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 774,
+    "id": 274,
     "DictionaryID": 7,
     "Word_1": "programming methodology",
     "Word_2": "programozási módszertan",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.26 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 775,
+    "id": 275,
     "DictionaryID": 7,
     "Word_1": "sequential programing",
     "Word_2": "szekvenciális programozás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.27 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 776,
+    "id": 276,
     "DictionaryID": 7,
     "Word_1": "fundamental",
     "Word_2": "alapvető",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.28 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 777,
+    "id": 277,
     "DictionaryID": 7,
     "Word_1": "attribute",
     "Word_2": "tulajdonság",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.29 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 778,
+    "id": 278,
     "DictionaryID": 7,
     "Word_1": "fundamental attributes",
     "Word_2": "alapvető tulajdonságok",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.04.30 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 779,
+    "id": 279,
     "DictionaryID": 7,
     "Word_1": "encapsulation",
     "Word_2": "egységbe zárás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.05.01 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 780,
+    "id": 280,
     "DictionaryID": 7,
     "Word_1": "inheritance",
     "Word_2": "öröklés",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.05.02 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 781,
+    "id": 281,
     "DictionaryID": 7,
     "Word_1": "polymorphism",
     "Word_2": "polimorfizmus",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.05.03 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 782,
+    "id": 282,
     "DictionaryID": 7,
     "Word_1": "abstraction",
     "Word_2": "absztrakció,elvonatkoztatás",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.05.04 16:01"
+    "RelaseDate": "2022.02.12 16:01"
   },
   {
-    "id": 783,
+    "id": 283,
     "DictionaryID": 7,
     "Word_1": "encapsulation, inheritance, polymorphism, abstraction",
     "Word_2": "egységbe zárás, öröklés, polimorfizmus, absztrakció",
     "Lang_1": "en-UK",
     "Lang_2": "hu-HU",
-    "RelaseDate": "2022.05.05 16:01"
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 284,
+    "DictionaryID": 7,
+    "Word_1": "version control software",
+    "Word_2": "verzió kezelő szoftver",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 285,
+    "DictionaryID": 7,
+    "Word_1": "divide the tasks",
+    "Word_2": "megosztani a feladatokat",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 286,
+    "DictionaryID": 7,
+    "Word_1": "distributed",
+    "Word_2": "megosztott",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 287,
+    "DictionaryID": 7,
+    "Word_1": "centralized system",
+    "Word_2": "központosított rendszer",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 288,
+    "DictionaryID": 7,
+    "Word_1": "decentralized system",
+    "Word_2": "decentralizált rendszer",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 289,
+    "DictionaryID": 7,
+    "Word_1": "accuracy",
+    "Word_2": "pontosság",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 290,
+    "DictionaryID": 7,
+    "Word_1": "reliability",
+    "Word_2": "megbízhatóság",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 291,
+    "DictionaryID": 7,
+    "Word_1": "stress resistance",
+    "Word_2": "stressztűrő képesség",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 292,
+    "DictionaryID": 7,
+    "Word_1": "cooperation",
+    "Word_2": "együttműködés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 293,
+    "DictionaryID": 7,
+    "Word_1": "problem solving",
+    "Word_2": "probléma megoldás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 294,
+    "DictionaryID": 7,
+    "Word_1": "fully elaborated",
+    "Word_2": "teljesen kidolgozott",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 295,
+    "DictionaryID": 7,
+    "Word_1": "real venue",
+    "Word_2": "valós helyszín",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 296,
+    "DictionaryID": 7,
+    "Word_1": "vehicle",
+    "Word_2": "jármű",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 297,
+    "DictionaryID": 7,
+    "Word_1": "warehouse",
+    "Word_2": "raktár",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 298,
+    "DictionaryID": 7,
+    "Word_1": "warehouse management",
+    "Word_2": "raktárvezetés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 299,
+    "DictionaryID": 7,
+    "Word_1": "track storage",
+    "Word_2": "nyomon követni a tárolót",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 300,
+    "DictionaryID": 7,
+    "Word_1": "expenses",
+    "Word_2": "költségek",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 301,
+    "DictionaryID": 7,
+    "Word_1": "shipping",
+    "Word_2": "szállítás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 302,
+    "DictionaryID": 7,
+    "Word_1": "bar code",
+    "Word_2": "vonalkód",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 303,
+    "DictionaryID": 7,
+    "Word_1": "efficient",
+    "Word_2": "hatákony",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 304,
+    "DictionaryID": 7,
+    "Word_1": "shortage",
+    "Word_2": "hiány",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 305,
+    "DictionaryID": 7,
+    "Word_1": "report",
+    "Word_2": "riport",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 306,
+    "DictionaryID": 7,
+    "Word_1": "statement",
+    "Word_2": "kimutatás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 307,
+    "DictionaryID": 7,
+    "Word_1": "query of the stock",
+    "Word_2": "lekérdezni a készletet",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 308,
+    "DictionaryID": 7,
+    "Word_1": "certain",
+    "Word_2": "bizonyos",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 309,
+    "DictionaryID": 7,
+    "Word_1": "discount",
+    "Word_2": "kedvezmény",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 310,
+    "DictionaryID": 7,
+    "Word_1": "I would like to introduce…",
+    "Word_2": "Szeretném bemutatni…",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 311,
+    "DictionaryID": 7,
+    "Word_1": "GPS vehicle tracking system",
+    "Word_2": "GPS járműkövető rendszer",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 312,
+    "DictionaryID": 7,
+    "Word_1": "accurately",
+    "Word_2": "pontosan",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 313,
+    "DictionaryID": 7,
+    "Word_1": "maintenance",
+    "Word_2": "karbantartás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 314,
+    "DictionaryID": 7,
+    "Word_1": "broken down vehicle",
+    "Word_2": "lerobbant jármű",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 315,
+    "DictionaryID": 7,
+    "Word_1": "cargo",
+    "Word_2": "szállítmány",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 316,
+    "DictionaryID": 7,
+    "Word_1": "steering wheel",
+    "Word_2": "kormánykerék",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 317,
+    "DictionaryID": 7,
+    "Word_1": "it gives the opportunity",
+    "Word_2": "lehetősget ad",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 318,
+    "DictionaryID": 7,
+    "Word_1": "recommendation",
+    "Word_2": "ajánlás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 319,
+    "DictionaryID": 7,
+    "Word_1": "the most appropriate person",
+    "Word_2": "a legmegfelelőbb személy",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 320,
+    "DictionaryID": 7,
+    "Word_1": "appropriate",
+    "Word_2": "megfelelő",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 321,
+    "DictionaryID": 7,
+    "Word_1": "reliable",
+    "Word_2": "megbízható",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 322,
+    "DictionaryID": 7,
+    "Word_1": "up-to-date knowledge",
+    "Word_2": "naprekész tudás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 323,
+    "DictionaryID": 7,
+    "Word_1": "before release",
+    "Word_2": "megjelenés előtt",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 324,
+    "DictionaryID": 7,
+    "Word_1": "face recognising",
+    "Word_2": "arcfelismerés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 325,
+    "DictionaryID": 7,
+    "Word_1": "courier service",
+    "Word_2": "futárszolgálat",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
   }
 ]
