@@ -1,123 +1,995 @@
 [
-{"id":"1","DictionaryID":"1","Word_1":"apple","Word_2":"alma","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"2","DictionaryID":"1","Word_1":"book","Word_2":"könny","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"3","DictionaryID":"1","Word_1":"car","Word_2":"autó","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"4","DictionaryID":"1","Word_1":"dictionary","Word_2":"szótár","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"5","DictionaryID":"4","Word_1":"pome","Word_2":"alma","Lang_1":"fr-FR","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"6","DictionaryID":"4","Word_1":"amour","Word_2":"szerelem","Lang_1":"fr-FR","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"7","DictionaryID":"4","Word_1":"livre","Word_2":"könyv","Lang_1":"fr-FR","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"8","DictionaryID":"4","Word_1":"automobile","Word_2":"autó","Lang_1":"fr-FR","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"9","DictionaryID":"4","Word_1":"arbre","Word_2":"fa","Lang_1":"fr-FR","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"10","DictionaryID":"4","Word_1":"orange","Word_2":"narancs","Lang_1":"fr-FR","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"11","DictionaryID":"2","Word_1":"das Auto","Word_2":"autó","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"12","DictionaryID":"2","Word_1":"das Buch","Word_2":"könyv","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"13","DictionaryID":"2","Word_1":"die Autobahn","Word_2":"autópálya","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"14","DictionaryID":"2","Word_1":"der Highway","Word_2":"autópálya","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"15","DictionaryID":"2","Word_1":"die Schnellstraße","Word_2":"autópálya","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"16","DictionaryID":"2","Word_1":"die Freiheit","Word_2":"szabadság","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"17","DictionaryID":"2","Word_1":"die Birne","Word_2":"körte","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"18","DictionaryID":"2","Word_1":"der Wald","Word_2":"erdő","Lang_1":"de-DE","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"19","DictionaryID":"1","Word_1":"face","Word_2":"arc","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"20","DictionaryID":"1","Word_1":"wrist","Word_2":"csukló","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"21","DictionaryID":"1","Word_1":"head","Word_2":"fej","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"22","DictionaryID":"1","Word_1":"shoulder","Word_2":"váll","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"23","DictionaryID":"3","Word_1":"pomo","Word_2":"alma","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"24","DictionaryID":"3","Word_1":"auto","Word_2":"autó","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"25","DictionaryID":"3","Word_1":"pane","Word_2":"kenyér","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"26","DictionaryID":"3","Word_1":"vigneto","Word_2":"szőlő","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"27","DictionaryID":"3","Word_1":"formaggio","Word_2":"sajt","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"28","DictionaryID":"3","Word_1":"cacio","Word_2":"sajt","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"29","DictionaryID":"3","Word_1":"mare","Word_2":"tenger","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"30","DictionaryID":"3","Word_1":"maggiore","Word_2":"nagyobb","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"31","DictionaryID":"3","Word_1":"maggiore","Word_2":"idősebb","Lang_1":"it-IT","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"32","DictionaryID":"5","Word_1":"head","Word_2":"fej","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"33","DictionaryID":"5","Word_1":"tongue","Word_2":"nyelv","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"34","DictionaryID":"5","Word_1":"ear","Word_2":"fül","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"35","DictionaryID":"5","Word_1":"chest","Word_2":"mellkas","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"36","DictionaryID":"5","Word_1":"fingers","Word_2":"ujjak","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"37","DictionaryID":"5","Word_1":"wrist","Word_2":"csukló","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"38","DictionaryID":"5","Word_1":"chin","Word_2":"áll","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"39","DictionaryID":"5","Word_1":"stomach","Word_2":"has","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"40","DictionaryID":"5","Word_1":"navel","Word_2":"köldök","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"41","DictionaryID":"5","Word_1":"waist","Word_2":"derék","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"42","DictionaryID":"5","Word_1":"cheek","Word_2":"orca","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"43","DictionaryID":"5","Word_1":"face","Word_2":"arc","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"44","DictionaryID":"5","Word_1":"elbow","Word_2":"könyök","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"45","DictionaryID":"5","Word_1":"knee","Word_2":"térd","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"46","DictionaryID":"5","Word_1":"heel","Word_2":"sarok","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"47","DictionaryID":"5","Word_1":"forearm","Word_2":"alkar","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"48","DictionaryID":"5","Word_1":"rim","Word_2":"talp","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"49","DictionaryID":"5","Word_1":"hand","Word_2":"kéz","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"50","DictionaryID":"5","Word_1":"hair","Word_2":"haj","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"51","DictionaryID":"5","Word_1":"eyelashes","Word_2":"szempillák","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"52","DictionaryID":"5","Word_1":"pupil","Word_2":"pupilla","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"53","DictionaryID":"5","Word_1":"neck","Word_2":"nyak","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"54","DictionaryID":"5","Word_1":"eyelid","Word_2":"szemhéj","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"55","DictionaryID":"5","Word_1":"lip","Word_2":"ajak","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"56","DictionaryID":"5","Word_1":"mouth","Word_2":"száj","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"57","DictionaryID":"5","Word_1":"nose","Word_2":"orr","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"58","DictionaryID":"5","Word_1":"iris","Word_2":"írisz","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"59","DictionaryID":"5","Word_1":"eyebrow","Word_2":"szemöldök","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"60","DictionaryID":"5","Word_1":"forehead","Word_2":"homlok","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"61","DictionaryID":"5","Word_1":"The wite of the eye","Word_2":"szemfehérje","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"62","DictionaryID":"5","Word_1":"shoulder","Word_2":"váll","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"63","DictionaryID":"5","Word_1":"armpit","Word_2":"hónalj","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"64","DictionaryID":"5","Word_1":"back","Word_2":"hát","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"65","DictionaryID":"5","Word_1":"buttocks","Word_2":"fenék","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"66","DictionaryID":"5","Word_1":"calf","Word_2":"vádli","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"67","DictionaryID":"5","Word_1":"shin","Word_2":"lábszár, sípcsont","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 00:00:00"},
-{"id":"68","DictionaryID":"1","Word_1":"deprecated","Word_2":"elavult","Lang_1":"en-US","Lang_2":"hu-HU","RelaseDate":"2021-03-29 19:51:15"},
-{"id":"69","DictionaryID":"1","Word_1":"bundling","Word_2":"árukapcsolás, csomózás","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-03-31 18:39:10"},
-{"id":"70","DictionaryID":"1","Word_1":"elimination","Word_2":"kiesés","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-03-31 18:43:00"},
-{"id":"71","DictionaryID":"1","Word_1":"execution","Word_2":"végrehajtás","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-03-31 18:44:20"},
-{"id":"72","DictionaryID":"1","Word_1":"parsing","Word_2":"elemzés","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-03-31 18:45:08"},
-{"id":"73","DictionaryID":"1","Word_1":"dependency","Word_2":"függőség","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 16:06:55"},
-{"id":"74","DictionaryID":"1","Word_1":"parcel","Word_2":"csomag, rész, darab","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 16:07:35"},
-{"id":"75","DictionaryID":"1","Word_1":"very brief","Word_2":"nagyon rövid","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:06:48"},
-{"id":"76","DictionaryID":"1","Word_1":"received","Word_2":"elfogadott, irányadó","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:31:50"},
-{"id":"77","DictionaryID":"1","Word_1":"generally","Word_2":"általában","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:32:48"},
-{"id":"78","DictionaryID":"1","Word_1":"avoid","Word_2":"elkerül","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:33:46"},
-{"id":"79","DictionaryID":"1","Word_1":"descriptive","Word_2":"leíró","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:34:45"},
-{"id":"80","DictionaryID":"1","Word_1":"pollute","Word_2":"szennyez","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:35:32"},
-{"id":"81","DictionaryID":"1","Word_1":"principle","Word_2":"alapelv, elv, alap","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:36:05"},
-{"id":"82","DictionaryID":"1","Word_1":"encapsulate","Word_2":"magába zár, tokba zár","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:37:58"},
-{"id":"83","DictionaryID":"1","Word_1":"synthesize","Word_2":"egységbe foglal","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 17:40:11"},
-{"id":"84","DictionaryID":"1","Word_1":"mutate","Word_2":"átalakul","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:56:23"},
-{"id":"85","DictionaryID":"1","Word_1":"implement","Word_2":"végrehajt, megvalósít","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:57:02"},
-{"id":"86","DictionaryID":"1","Word_1":"regular","Word_2":"szokásos, normál, rendes","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:57:29"},
-{"id":"87","DictionaryID":"1","Word_1":"guard clauses","Word_2":"binztonsági pont","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:57:55"},
-{"id":"88","DictionaryID":"1","Word_1":"ternary operator","Word_2":"hármas operátor","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:58:13"},
-{"id":"89","DictionaryID":"1","Word_1":"multiple","Word_2":"többszörös, összetett","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:58:37"},
-{"id":"90","DictionaryID":"1","Word_1":"rejection","Word_2":"elutasítás, visszautasítás","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:58:59"},
-{"id":"91","DictionaryID":"1","Word_1":"expense","Word_2":"költség","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:59:19"},
-{"id":"92","DictionaryID":"1","Word_1":"income","Word_2":"bevétel, jövedelem","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 21:59:51"},
-{"id":"93","DictionaryID":"1","Word_1":"imperative","Word_2":"szükségszerű","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:00:13"},
-{"id":"94","DictionaryID":"1","Word_1":"declarative","Word_2":"kinyilatkoztató","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:00:33"},
-{"id":"95","DictionaryID":"1","Word_1":"explain","Word_2":"kifejez, indokol","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:00:54"},
-{"id":"96","DictionaryID":"1","Word_1":"achieve","Word_2":"elér, kivív","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:01:19"},
-{"id":"97","DictionaryID":"1","Word_1":"achieve the result","Word_2":"elérni az eredményt","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:01:50"},
-{"id":"98","DictionaryID":"1","Word_1":"fundamentally","Word_2":"alapvetően","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:02:21"},
-{"id":"99","DictionaryID":"1","Word_1":"external","Word_2":"külső","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:02:47"},
-{"id":"100","DictionaryID":"1","Word_1":"internal","Word_2":"belső","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:03:17"},
-{"id":"101","DictionaryID":"1","Word_1":"depend","Word_2":"függ","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:03:45"},
-{"id":"102","DictionaryID":"1","Word_1":"does not depend","Word_2":"nem függ","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:04:05"},
-{"id":"103","DictionaryID":"1","Word_1":"independence","Word_2":"függetlenség","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:04:26"},
-{"id":"104","DictionaryID":"1","Word_1":"mutability","Word_2":"változékonyság","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:04:46"},
-{"id":"105","DictionaryID":"1","Word_1":"immutability","Word_2":"állandóság","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:05:08"},
-{"id":"106","DictionaryID":"1","Word_1":"not a big goal","Word_2":"nem egy nagy cél","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:05:46"},
-{"id":"107","DictionaryID":"1","Word_1":"not a goal but a means","Word_2":"nem cél, hanem eszköz","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:06:12"},
-{"id":"108","DictionaryID":"1","Word_1":"necessary","Word_2":"szükséges dolog","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:06:38"},
-{"id":"109","DictionaryID":"1","Word_1":"strict","Word_2":"szigorú, pontos","Lang_1":"en-GB","Lang_2":"hu-HU","RelaseDate":"2021-04-06 22:07:06"},
-{
-    "id":"111",
-    "DictionaryID":"1",
-    "Word_1":"first of all",
-    "Word_2":"mindenek előtt",
-    "Lang_1":"en-GB",
-    "Lang_2":"hu-HU",
-    "RelaseDate":"2021-04-06 22:08:29"
-},
-{
+  {
+    "id": "1",
+    "DictionaryID": "1",
+    "Word_1": "apple",
+    "Word_2": "alma",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "2",
+    "DictionaryID": "1",
+    "Word_1": "book",
+    "Word_2": "könny",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "3",
+    "DictionaryID": "1",
+    "Word_1": "car",
+    "Word_2": "autó",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "4",
+    "DictionaryID": "1",
+    "Word_1": "dictionary",
+    "Word_2": "szótár",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "5",
+    "DictionaryID": "4",
+    "Word_1": "pome",
+    "Word_2": "alma",
+    "Lang_1": "fr-FR",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "6",
+    "DictionaryID": "4",
+    "Word_1": "amour",
+    "Word_2": "szerelem",
+    "Lang_1": "fr-FR",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "7",
+    "DictionaryID": "4",
+    "Word_1": "livre",
+    "Word_2": "könyv",
+    "Lang_1": "fr-FR",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "8",
+    "DictionaryID": "4",
+    "Word_1": "automobile",
+    "Word_2": "autó",
+    "Lang_1": "fr-FR",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "9",
+    "DictionaryID": "4",
+    "Word_1": "arbre",
+    "Word_2": "fa",
+    "Lang_1": "fr-FR",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "10",
+    "DictionaryID": "4",
+    "Word_1": "orange",
+    "Word_2": "narancs",
+    "Lang_1": "fr-FR",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "11",
+    "DictionaryID": "2",
+    "Word_1": "das Auto",
+    "Word_2": "autó",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "12",
+    "DictionaryID": "2",
+    "Word_1": "das Buch",
+    "Word_2": "könyv",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "13",
+    "DictionaryID": "2",
+    "Word_1": "die Autobahn",
+    "Word_2": "autópálya",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "14",
+    "DictionaryID": "2",
+    "Word_1": "der Highway",
+    "Word_2": "autópálya",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "15",
+    "DictionaryID": "2",
+    "Word_1": "die Schnellstraße",
+    "Word_2": "autópálya",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "16",
+    "DictionaryID": "2",
+    "Word_1": "die Freiheit",
+    "Word_2": "szabadság",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "17",
+    "DictionaryID": "2",
+    "Word_1": "die Birne",
+    "Word_2": "körte",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "18",
+    "DictionaryID": "2",
+    "Word_1": "der Wald",
+    "Word_2": "erdő",
+    "Lang_1": "de-DE",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "19",
+    "DictionaryID": "1",
+    "Word_1": "face",
+    "Word_2": "arc",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "20",
+    "DictionaryID": "1",
+    "Word_1": "wrist",
+    "Word_2": "csukló",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "21",
+    "DictionaryID": "1",
+    "Word_1": "head",
+    "Word_2": "fej",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "22",
+    "DictionaryID": "1",
+    "Word_1": "shoulder",
+    "Word_2": "váll",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "23",
+    "DictionaryID": "3",
+    "Word_1": "pomo",
+    "Word_2": "alma",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "24",
+    "DictionaryID": "3",
+    "Word_1": "auto",
+    "Word_2": "autó",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "25",
+    "DictionaryID": "3",
+    "Word_1": "pane",
+    "Word_2": "kenyér",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "26",
+    "DictionaryID": "3",
+    "Word_1": "vigneto",
+    "Word_2": "szőlő",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "27",
+    "DictionaryID": "3",
+    "Word_1": "formaggio",
+    "Word_2": "sajt",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "28",
+    "DictionaryID": "3",
+    "Word_1": "cacio",
+    "Word_2": "sajt",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "29",
+    "DictionaryID": "3",
+    "Word_1": "mare",
+    "Word_2": "tenger",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "30",
+    "DictionaryID": "3",
+    "Word_1": "maggiore",
+    "Word_2": "nagyobb",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "31",
+    "DictionaryID": "3",
+    "Word_1": "maggiore",
+    "Word_2": "idősebb",
+    "Lang_1": "it-IT",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "32",
+    "DictionaryID": "5",
+    "Word_1": "head",
+    "Word_2": "fej",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "33",
+    "DictionaryID": "5",
+    "Word_1": "tongue",
+    "Word_2": "nyelv",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "34",
+    "DictionaryID": "5",
+    "Word_1": "ear",
+    "Word_2": "fül",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "35",
+    "DictionaryID": "5",
+    "Word_1": "chest",
+    "Word_2": "mellkas",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "36",
+    "DictionaryID": "5",
+    "Word_1": "fingers",
+    "Word_2": "ujjak",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "37",
+    "DictionaryID": "5",
+    "Word_1": "wrist",
+    "Word_2": "csukló",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "38",
+    "DictionaryID": "5",
+    "Word_1": "chin",
+    "Word_2": "áll",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "39",
+    "DictionaryID": "5",
+    "Word_1": "stomach",
+    "Word_2": "has",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "40",
+    "DictionaryID": "5",
+    "Word_1": "navel",
+    "Word_2": "köldök",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "41",
+    "DictionaryID": "5",
+    "Word_1": "waist",
+    "Word_2": "derék",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "42",
+    "DictionaryID": "5",
+    "Word_1": "cheek",
+    "Word_2": "orca",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "43",
+    "DictionaryID": "5",
+    "Word_1": "face",
+    "Word_2": "arc",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "44",
+    "DictionaryID": "5",
+    "Word_1": "elbow",
+    "Word_2": "könyök",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "45",
+    "DictionaryID": "5",
+    "Word_1": "knee",
+    "Word_2": "térd",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "46",
+    "DictionaryID": "5",
+    "Word_1": "heel",
+    "Word_2": "sarok",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "47",
+    "DictionaryID": "5",
+    "Word_1": "forearm",
+    "Word_2": "alkar",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "48",
+    "DictionaryID": "5",
+    "Word_1": "rim",
+    "Word_2": "talp",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "49",
+    "DictionaryID": "5",
+    "Word_1": "hand",
+    "Word_2": "kéz",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "50",
+    "DictionaryID": "5",
+    "Word_1": "hair",
+    "Word_2": "haj",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "51",
+    "DictionaryID": "5",
+    "Word_1": "eyelashes",
+    "Word_2": "szempillák",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "52",
+    "DictionaryID": "5",
+    "Word_1": "pupil",
+    "Word_2": "pupilla",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "53",
+    "DictionaryID": "5",
+    "Word_1": "neck",
+    "Word_2": "nyak",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "54",
+    "DictionaryID": "5",
+    "Word_1": "eyelid",
+    "Word_2": "szemhéj",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "55",
+    "DictionaryID": "5",
+    "Word_1": "lip",
+    "Word_2": "ajak",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "56",
+    "DictionaryID": "5",
+    "Word_1": "mouth",
+    "Word_2": "száj",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "57",
+    "DictionaryID": "5",
+    "Word_1": "nose",
+    "Word_2": "orr",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "58",
+    "DictionaryID": "5",
+    "Word_1": "iris",
+    "Word_2": "írisz",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "59",
+    "DictionaryID": "5",
+    "Word_1": "eyebrow",
+    "Word_2": "szemöldök",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "60",
+    "DictionaryID": "5",
+    "Word_1": "forehead",
+    "Word_2": "homlok",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "61",
+    "DictionaryID": "5",
+    "Word_1": "The wite of the eye",
+    "Word_2": "szemfehérje",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "62",
+    "DictionaryID": "5",
+    "Word_1": "shoulder",
+    "Word_2": "váll",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "63",
+    "DictionaryID": "5",
+    "Word_1": "armpit",
+    "Word_2": "hónalj",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "64",
+    "DictionaryID": "5",
+    "Word_1": "back",
+    "Word_2": "hát",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "65",
+    "DictionaryID": "5",
+    "Word_1": "buttocks",
+    "Word_2": "fenék",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "66",
+    "DictionaryID": "5",
+    "Word_1": "calf",
+    "Word_2": "vádli",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "67",
+    "DictionaryID": "5",
+    "Word_1": "shin",
+    "Word_2": "lábszár, sípcsont",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 00:00:00"
+  },
+  {
+    "id": "68",
+    "DictionaryID": "1",
+    "Word_1": "deprecated",
+    "Word_2": "elavult",
+    "Lang_1": "en-US",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-29 19:51:15"
+  },
+  {
+    "id": "69",
+    "DictionaryID": "1",
+    "Word_1": "bundling",
+    "Word_2": "árukapcsolás, csomózás",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-31 18:39:10"
+  },
+  {
+    "id": "70",
+    "DictionaryID": "1",
+    "Word_1": "elimination",
+    "Word_2": "kiesés",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-31 18:43:00"
+  },
+  {
+    "id": "71",
+    "DictionaryID": "1",
+    "Word_1": "execution",
+    "Word_2": "végrehajtás",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-31 18:44:20"
+  },
+  {
+    "id": "72",
+    "DictionaryID": "1",
+    "Word_1": "parsing",
+    "Word_2": "elemzés",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-03-31 18:45:08"
+  },
+  {
+    "id": "73",
+    "DictionaryID": "1",
+    "Word_1": "dependency",
+    "Word_2": "függőség",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 16:06:55"
+  },
+  {
+    "id": "74",
+    "DictionaryID": "1",
+    "Word_1": "parcel",
+    "Word_2": "csomag, rész, darab",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 16:07:35"
+  },
+  {
+    "id": "75",
+    "DictionaryID": "1",
+    "Word_1": "very brief",
+    "Word_2": "nagyon rövid",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:06:48"
+  },
+  {
+    "id": "76",
+    "DictionaryID": "1",
+    "Word_1": "received",
+    "Word_2": "elfogadott, irányadó",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:31:50"
+  },
+  {
+    "id": "77",
+    "DictionaryID": "1",
+    "Word_1": "generally",
+    "Word_2": "általában",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:32:48"
+  },
+  {
+    "id": "78",
+    "DictionaryID": "1",
+    "Word_1": "avoid",
+    "Word_2": "elkerül",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:33:46"
+  },
+  {
+    "id": "79",
+    "DictionaryID": "1",
+    "Word_1": "descriptive",
+    "Word_2": "leíró",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:34:45"
+  },
+  {
+    "id": "80",
+    "DictionaryID": "1",
+    "Word_1": "pollute",
+    "Word_2": "szennyez",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:35:32"
+  },
+  {
+    "id": "81",
+    "DictionaryID": "1",
+    "Word_1": "principle",
+    "Word_2": "alapelv, elv, alap",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:36:05"
+  },
+  {
+    "id": "82",
+    "DictionaryID": "1",
+    "Word_1": "encapsulate",
+    "Word_2": "magába zár, tokba zár",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:37:58"
+  },
+  {
+    "id": "83",
+    "DictionaryID": "1",
+    "Word_1": "synthesize",
+    "Word_2": "egységbe foglal",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 17:40:11"
+  },
+  {
+    "id": "84",
+    "DictionaryID": "1",
+    "Word_1": "mutate",
+    "Word_2": "átalakul",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:56:23"
+  },
+  {
+    "id": "85",
+    "DictionaryID": "1",
+    "Word_1": "implement",
+    "Word_2": "végrehajt, megvalósít",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:57:02"
+  },
+  {
+    "id": "86",
+    "DictionaryID": "1",
+    "Word_1": "regular",
+    "Word_2": "szokásos, normál, rendes",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:57:29"
+  },
+  {
+    "id": "87",
+    "DictionaryID": "1",
+    "Word_1": "guard clauses",
+    "Word_2": "binztonsági pont",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:57:55"
+  },
+  {
+    "id": "88",
+    "DictionaryID": "1",
+    "Word_1": "ternary operator",
+    "Word_2": "hármas operátor",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:58:13"
+  },
+  {
+    "id": "89",
+    "DictionaryID": "1",
+    "Word_1": "multiple",
+    "Word_2": "többszörös, összetett",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:58:37"
+  },
+  {
+    "id": "90",
+    "DictionaryID": "1",
+    "Word_1": "rejection",
+    "Word_2": "elutasítás, visszautasítás",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:58:59"
+  },
+  {
+    "id": "91",
+    "DictionaryID": "1",
+    "Word_1": "expense",
+    "Word_2": "költség",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:59:19"
+  },
+  {
+    "id": "92",
+    "DictionaryID": "1",
+    "Word_1": "income",
+    "Word_2": "bevétel, jövedelem",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 21:59:51"
+  },
+  {
+    "id": "93",
+    "DictionaryID": "1",
+    "Word_1": "imperative",
+    "Word_2": "szükségszerű",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:00:13"
+  },
+  {
+    "id": "94",
+    "DictionaryID": "1",
+    "Word_1": "declarative",
+    "Word_2": "kinyilatkoztató",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:00:33"
+  },
+  {
+    "id": "95",
+    "DictionaryID": "1",
+    "Word_1": "explain",
+    "Word_2": "kifejez, indokol",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:00:54"
+  },
+  {
+    "id": "96",
+    "DictionaryID": "1",
+    "Word_1": "achieve",
+    "Word_2": "elér, kivív",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:01:19"
+  },
+  {
+    "id": "97",
+    "DictionaryID": "1",
+    "Word_1": "achieve the result",
+    "Word_2": "elérni az eredményt",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:01:50"
+  },
+  {
+    "id": "98",
+    "DictionaryID": "1",
+    "Word_1": "fundamentally",
+    "Word_2": "alapvetően",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:02:21"
+  },
+  {
+    "id": "99",
+    "DictionaryID": "1",
+    "Word_1": "external",
+    "Word_2": "külső",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:02:47"
+  },
+  {
+    "id": "100",
+    "DictionaryID": "1",
+    "Word_1": "internal",
+    "Word_2": "belső",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:03:17"
+  },
+  {
+    "id": "101",
+    "DictionaryID": "1",
+    "Word_1": "depend",
+    "Word_2": "függ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:03:45"
+  },
+  {
+    "id": "102",
+    "DictionaryID": "1",
+    "Word_1": "does not depend",
+    "Word_2": "nem függ",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:04:05"
+  },
+  {
+    "id": "103",
+    "DictionaryID": "1",
+    "Word_1": "independence",
+    "Word_2": "függetlenség",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:04:26"
+  },
+  {
+    "id": "104",
+    "DictionaryID": "1",
+    "Word_1": "mutability",
+    "Word_2": "változékonyság",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:04:46"
+  },
+  {
+    "id": "105",
+    "DictionaryID": "1",
+    "Word_1": "immutability",
+    "Word_2": "állandóság",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:05:08"
+  },
+  {
+    "id": "106",
+    "DictionaryID": "1",
+    "Word_1": "not a big goal",
+    "Word_2": "nem egy nagy cél",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:05:46"
+  },
+  {
+    "id": "107",
+    "DictionaryID": "1",
+    "Word_1": "not a goal but a means",
+    "Word_2": "nem cél, hanem eszköz",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:06:12"
+  },
+  {
+    "id": "108",
+    "DictionaryID": "1",
+    "Word_1": "necessary",
+    "Word_2": "szükséges dolog",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:06:38"
+  },
+  {
+    "id": "109",
+    "DictionaryID": "1",
+    "Word_1": "strict",
+    "Word_2": "szigorú, pontos",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:07:06"
+  },
+  {
+    "id": "111",
+    "DictionaryID": "1",
+    "Word_1": "first of all",
+    "Word_2": "mindenek előtt",
+    "Lang_1": "en-GB",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2021-04-06 22:08:29"
+  },
+  {
     "id": "817",
     "DictionaryID": "6",
     "Word_1": "prep",
@@ -125,8 +997,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28 12:37:23"
-},
-{
+  },
+  {
     "id": "818",
     "DictionaryID": "6",
     "Word_1": "groom prep ",
@@ -134,8 +1006,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:39:22.000Z"
-},
-{
+  },
+  {
     "id": "819",
     "DictionaryID": "6",
     "Word_1": "bride prep",
@@ -143,8 +1015,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:39:33.000Z"
-},
-{
+  },
+  {
     "id": "820",
     "DictionaryID": "6",
     "Word_1": "groom",
@@ -152,8 +1024,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:39:41.000Z"
-},
-{
+  },
+  {
     "id": "821",
     "DictionaryID": "6",
     "Word_1": "bride",
@@ -161,8 +1033,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:39:47.000Z"
-},
-{
+  },
+  {
     "id": "822",
     "DictionaryID": "6",
     "Word_1": "bridesmaid",
@@ -170,8 +1042,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:46:14.000Z"
-},
-{
+  },
+  {
     "id": "823",
     "DictionaryID": "6",
     "Word_1": "best man",
@@ -179,8 +1051,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:40:47.000Z"
-},
-{
+  },
+  {
     "id": "824",
     "DictionaryID": "6",
     "Word_1": "groomsmen",
@@ -188,8 +1060,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:41:41.000Z"
-},
-{
+  },
+  {
     "id": "825",
     "DictionaryID": "6",
     "Word_1": "couple",
@@ -197,8 +1069,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:42:37.000Z"
-},
-{
+  },
+  {
     "id": "826",
     "DictionaryID": "6",
     "Word_1": "ceremony",
@@ -206,8 +1078,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:42:58.000Z"
-},
-{
+  },
+  {
     "id": "827",
     "DictionaryID": "6",
     "Word_1": "bridal party",
@@ -215,8 +1087,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:43:30.000Z"
-},
-{
+  },
+  {
     "id": "828",
     "DictionaryID": "6",
     "Word_1": "reception",
@@ -224,8 +1096,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T12:46:52.000Z"
-},
-{
+  },
+  {
     "id": "831",
     "DictionaryID": "6",
     "Word_1": "I mainly shoot candid.",
@@ -233,8 +1105,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:20:29.000Z"
-},
-{
+  },
+  {
     "id": "832",
     "DictionaryID": "6",
     "Word_1": "I just want you to do stuff.",
@@ -242,8 +1114,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T18:41:59.000Z"
-},
-{
+  },
+  {
     "id": "833",
     "DictionaryID": "6",
     "Word_1": "You gotta hang out and chill.",
@@ -251,8 +1123,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:26:39.000Z"
-},
-{
+  },
+  {
     "id": "834",
     "DictionaryID": "6",
     "Word_1": "Unless I'm asking you to look at the camera, dont worry about it.",
@@ -260,8 +1132,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:27:36.000Z"
-},
-{
+  },
+  {
     "id": "835",
     "DictionaryID": "6",
     "Word_1": "While we're here...",
@@ -269,8 +1141,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:28:46.000Z"
-},
-{
+  },
+  {
     "id": "836",
     "DictionaryID": "6",
     "Word_1": " I don't like you to stop, and pose for me.",
@@ -278,8 +1150,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:31:42.000Z"
-},
-{
+  },
+  {
     "id": "837",
     "DictionaryID": "6",
     "Word_1": "Make a hug.",
@@ -287,8 +1159,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:49:59.000Z"
-},
-{
+  },
+  {
     "id": "838",
     "DictionaryID": "6",
     "Word_1": "Make a handshake.",
@@ -296,8 +1168,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:50:11.000Z"
-},
-{
+  },
+  {
     "id": "839",
     "DictionaryID": "6",
     "Word_1": "touchy",
@@ -305,8 +1177,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:50:53.000Z"
-},
-{
+  },
+  {
     "id": "840",
     "DictionaryID": "6",
     "Word_1": "feely",
@@ -314,8 +1186,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:51:18.000Z"
-},
-{
+  },
+  {
     "id": "842",
     "DictionaryID": "6",
     "Word_1": "Please, turn out toward me.",
@@ -323,8 +1195,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:56:14.000Z"
-},
-{
+  },
+  {
     "id": "843",
     "DictionaryID": "6",
     "Word_1": "just a tad",
@@ -332,8 +1204,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:56:43.000Z"
-},
-{
+  },
+  {
     "id": "846",
     "DictionaryID": "6",
     "Word_1": "No thought, just do it!",
@@ -341,8 +1213,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T14:59:58.000Z"
-},
-{
+  },
+  {
     "id": "847",
     "DictionaryID": "6",
     "Word_1": "Let's come here real quick.",
@@ -350,8 +1222,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:01:31.000Z"
-},
-{
+  },
+  {
     "id": "848",
     "DictionaryID": "6",
     "Word_1": "Lets do solos with you!",
@@ -359,8 +1231,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:04:13.000Z"
-},
-{
+  },
+  {
     "id": "849",
     "DictionaryID": "6",
     "Word_1": "Take a step back this way!",
@@ -368,8 +1240,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:06:12.000Z"
-},
-{
+  },
+  {
     "id": "850",
     "DictionaryID": "6",
     "Word_1": "Take a step forward!",
@@ -377,8 +1249,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:05:30.000Z"
-},
-{
+  },
+  {
     "id": "851",
     "DictionaryID": "6",
     "Word_1": "All the rest of you guys/ladies.",
@@ -386,8 +1258,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:07:33.000Z"
-},
-{
+  },
+  {
     "id": "852",
     "DictionaryID": "6",
     "Word_1": "If you have two arms up, you need to unbutton the jacket.",
@@ -395,8 +1267,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:11:33.000Z"
-},
-{
+  },
+  {
     "id": "853",
     "DictionaryID": "6",
     "Word_1": "It's gonna get weired!",
@@ -404,8 +1276,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:12:16.000Z"
-},
-{
+  },
+  {
     "id": "854",
     "DictionaryID": "6",
     "Word_1": "Throw your left/right hand in your pocket!",
@@ -413,8 +1285,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:13:13.000Z"
-},
-{
+  },
+  {
     "id": "855",
     "DictionaryID": "6",
     "Word_1": "The rule for today for you is...",
@@ -422,8 +1294,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:15:16.000Z"
-},
-{
+  },
+  {
     "id": "856",
     "DictionaryID": "6",
     "Word_1": "Don't worry about being perfect!",
@@ -431,8 +1303,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:16:14.000Z"
-},
-{
+  },
+  {
     "id": "857",
     "DictionaryID": "6",
     "Word_1": "I want you all to interacting with each other.",
@@ -440,8 +1312,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:17:43.000Z"
-},
-{
+  },
+  {
     "id": "858",
     "DictionaryID": "6",
     "Word_1": "robes",
@@ -449,8 +1321,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:18:33.000Z"
-},
-{
+  },
+  {
     "id": "859",
     "DictionaryID": "6",
     "Word_1": "Scoot over just a little bit.",
@@ -458,8 +1330,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:21:35.000Z"
-},
-{
+  },
+  {
     "id": "860",
     "DictionaryID": "6",
     "Word_1": "Everyone right at the camera, nice big smiles!",
@@ -467,8 +1339,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:22:58.000Z"
-},
-{
+  },
+  {
     "id": "861",
     "DictionaryID": "6",
     "Word_1": "Look at each other.",
@@ -476,8 +1348,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:23:58.000Z"
-},
-{
+  },
+  {
     "id": "862",
     "DictionaryID": "6",
     "Word_1": "Nice group hug!",
@@ -485,8 +1357,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:24:58.000Z"
-},
-{
+  },
+  {
     "id": "863",
     "DictionaryID": "6",
     "Word_1": "Look at each other while you're hugging.",
@@ -494,8 +1366,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:25:40.000Z"
-},
-{
+  },
+  {
     "id": "864",
     "DictionaryID": "6",
     "Word_1": "Take a shot of the dress.",
@@ -503,8 +1375,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:26:39.000Z"
-},
-{
+  },
+  {
     "id": "865",
     "DictionaryID": "6",
     "Word_1": "No mess in the background of the photo.",
@@ -512,8 +1384,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:28:24.000Z"
-},
-{
+  },
+  {
     "id": "866",
     "DictionaryID": "6",
     "Word_1": "dress hanger",
@@ -521,8 +1393,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:30:46.000Z"
-},
-{
+  },
+  {
     "id": "867",
     "DictionaryID": "6",
     "Word_1": "belt",
@@ -530,8 +1402,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:31:08.000Z"
-},
-{
+  },
+  {
     "id": "868",
     "DictionaryID": "6",
     "Word_1": "tie",
@@ -539,8 +1411,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:31:23.000Z"
-},
-{
+  },
+  {
     "id": "869",
     "DictionaryID": "6",
     "Word_1": "bow tie",
@@ -548,8 +1420,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:31:45.000Z"
-},
-{
+  },
+  {
     "id": "870",
     "DictionaryID": "6",
     "Word_1": "vest",
@@ -557,8 +1429,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:32:08.000Z"
-},
-{
+  },
+  {
     "id": "871",
     "DictionaryID": "6",
     "Word_1": "trousers",
@@ -566,8 +1438,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:32:30.000Z"
-},
-{
+  },
+  {
     "id": "872",
     "DictionaryID": "6",
     "Word_1": "earrings",
@@ -575,8 +1447,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:33:23.000Z"
-},
-{
+  },
+  {
     "id": "873",
     "DictionaryID": "6",
     "Word_1": "cuff",
@@ -584,8 +1456,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:34:00.000Z"
-},
-{
+  },
+  {
     "id": "874",
     "DictionaryID": "6",
     "Word_1": "necklace",
@@ -593,8 +1465,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:34:32.000Z"
-},
-{
+  },
+  {
     "id": "875",
     "DictionaryID": "6",
     "Word_1": "crown",
@@ -602,8 +1474,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:35:19.000Z"
-},
-{
+  },
+  {
     "id": "876",
     "DictionaryID": "6",
     "Word_1": "lipstick",
@@ -611,8 +1483,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:35:41.000Z"
-},
-{
+  },
+  {
     "id": "877",
     "DictionaryID": "6",
     "Word_1": "to hang the dress somewhere",
@@ -620,8 +1492,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:37:14.000Z"
-},
-{
+  },
+  {
     "id": "878",
     "DictionaryID": "6",
     "Word_1": "It's time for the bride to get in her dress.",
@@ -629,8 +1501,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:39:35.000Z"
-},
-{
+  },
+  {
     "id": "879",
     "DictionaryID": "6",
     "Word_1": "Please, not to button it all the way up.",
@@ -638,8 +1510,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:41:03.000Z"
-},
-{
+  },
+  {
     "id": "880",
     "DictionaryID": "6",
     "Word_1": "Please, buttoning up the dress!",
@@ -647,8 +1519,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:42:18.000Z"
-},
-{
+  },
+  {
     "id": "881",
     "DictionaryID": "6",
     "Word_1": "You dont have to stop or anithing.",
@@ -656,8 +1528,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:24:14.000Z"
-},
-{
+  },
+  {
     "id": "882",
     "DictionaryID": "6",
     "Word_1": "Just go ahead a little bit.",
@@ -665,8 +1537,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:44:43.000Z"
-},
-{
+  },
+  {
     "id": "883",
     "DictionaryID": "6",
     "Word_1": "Button it up slowly.",
@@ -674,8 +1546,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:45:16.000Z"
-},
-{
+  },
+  {
     "id": "884",
     "DictionaryID": "6",
     "Word_1": "Look back for your mother.",
@@ -683,8 +1555,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:47:17.000Z"
-},
-{
+  },
+  {
     "id": "885",
     "DictionaryID": "6",
     "Word_1": "Just joke with her/him.",
@@ -692,8 +1564,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:48:11.000Z"
-},
-{
+  },
+  {
     "id": "886",
     "DictionaryID": "6",
     "Word_1": "Turn around, and get a nice a hug.",
@@ -701,8 +1573,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:50:54.000Z"
-},
-{
+  },
+  {
     "id": "887",
     "DictionaryID": "6",
     "Word_1": "give a kiss",
@@ -710,8 +1582,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:51:32.000Z"
-},
-{
+  },
+  {
     "id": "888",
     "DictionaryID": "6",
     "Word_1": "capture the moment",
@@ -719,8 +1591,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:52:03.000Z"
-},
-{
+  },
+  {
     "id": "889",
     "DictionaryID": "6",
     "Word_1": "Please, put your jewerly on.",
@@ -728,8 +1600,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:53:42.000Z"
-},
-{
+  },
+  {
     "id": "890",
     "DictionaryID": "6",
     "Word_1": "bracelet",
@@ -737,8 +1609,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:54:03.000Z"
-},
-{
+  },
+  {
     "id": "891",
     "DictionaryID": "6",
     "Word_1": "Stand around the bride!",
@@ -746,8 +1618,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:56:27.000Z"
-},
-{
+  },
+  {
     "id": "892",
     "DictionaryID": "6",
     "Word_1": "Stand in a semicircle!",
@@ -755,8 +1627,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:56:55.000Z"
-},
-{
+  },
+  {
     "id": "893",
     "DictionaryID": "6",
     "Word_1": "Make it look perfect.",
@@ -764,8 +1636,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:58:00.000Z"
-},
-{
+  },
+  {
     "id": "894",
     "DictionaryID": "6",
     "Word_1": "Just take your time!",
@@ -773,8 +1645,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:58:31.000Z"
-},
-{
+  },
+  {
     "id": "895",
     "DictionaryID": "6",
     "Word_1": "Let's one at a time for the shoes!",
@@ -782,8 +1654,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T15:59:32.000Z"
-},
-{
+  },
+  {
     "id": "896",
     "DictionaryID": "6",
     "Word_1": "Raise your legs!",
@@ -791,8 +1663,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:01:14.000Z"
-},
-{
+  },
+  {
     "id": "897",
     "DictionaryID": "6",
     "Word_1": "Raise your hand!",
@@ -800,8 +1672,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:01:31.000Z"
-},
-{
+  },
+  {
     "id": "898",
     "DictionaryID": "6",
     "Word_1": "Do you wanna be more straight?",
@@ -809,8 +1681,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:04:20.000Z"
-},
-{
+  },
+  {
     "id": "899",
     "DictionaryID": "6",
     "Word_1": "Do you wanna be facing that way a little?",
@@ -818,8 +1690,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:05:36.000Z"
-},
-{
+  },
+  {
     "id": "900",
     "DictionaryID": "6",
     "Word_1": "I would just move you over.",
@@ -827,8 +1699,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:06:08.000Z"
-},
-{
+  },
+  {
     "id": "901",
     "DictionaryID": "6",
     "Word_1": "Try to match the bouquet.",
@@ -836,8 +1708,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:08:31.000Z"
-},
-{
+  },
+  {
     "id": "902",
     "DictionaryID": "6",
     "Word_1": "bouquet",
@@ -845,8 +1717,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:08:13.000Z"
-},
-{
+  },
+  {
     "id": "903",
     "DictionaryID": "6",
     "Word_1": "Try and keep the bouquets around the same level.",
@@ -854,8 +1726,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:09:35.000Z"
-},
-{
+  },
+  {
     "id": "904",
     "DictionaryID": "6",
     "Word_1": "Eyes at me.",
@@ -863,8 +1735,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:10:25.000Z"
-},
-{
+  },
+  {
     "id": "905",
     "DictionaryID": "6",
     "Word_1": "Everone pick a girl.",
@@ -872,8 +1744,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:11:23.000Z"
-},
-{
+  },
+  {
     "id": "906",
     "DictionaryID": "6",
     "Word_1": "Laugh in her/his face.",
@@ -881,8 +1753,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:11:43.000Z"
-},
-{
+  },
+  {
     "id": "907",
     "DictionaryID": "6",
     "Word_1": "Warm each other up!",
@@ -890,8 +1762,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:12:18.000Z"
-},
-{
+  },
+  {
     "id": "908",
     "DictionaryID": "6",
     "Word_1": "We're start out...",
@@ -899,8 +1771,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:15:04.000Z"
-},
-{
+  },
+  {
     "id": "909",
     "DictionaryID": "6",
     "Word_1": "with straight face",
@@ -908,8 +1780,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:16:33.000Z"
-},
-{
+  },
+  {
     "id": "910",
     "DictionaryID": "6",
     "Word_1": "And then now smile at the camera!",
@@ -917,8 +1789,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:17:19.000Z"
-},
-{
+  },
+  {
     "id": "911",
     "DictionaryID": "6",
     "Word_1": "Do you want something fun, or cute together? ",
@@ -926,8 +1798,8 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:19:22.000Z"
-},
-{
+  },
+  {
     "id": "912",
     "DictionaryID": "6",
     "Word_1": "Could you just come over here?",
@@ -935,5 +1807,761 @@
     "Lang_1": "en-GB",
     "Lang_2": "hu-HU",
     "RelaseDate": "2021-07-28T16:20:24.000Z"
-}
+  },
+  {
+    "id": 700,
+    "DictionaryID": 7,
+    "Word_1": "real estate",
+    "Word_2": "ingatlan",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 701,
+    "DictionaryID": 7,
+    "Word_1": "real estate agency",
+    "Word_2": "ingatlaniroda",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.12 16:01"
+  },
+  {
+    "id": 702,
+    "DictionaryID": 7,
+    "Word_1": "instructions",
+    "Word_2": "utasítás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.13 16:01"
+  },
+  {
+    "id": 703,
+    "DictionaryID": 7,
+    "Word_1": "condition",
+    "Word_2": "feltétel",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.14 16:01"
+  },
+  {
+    "id": 704,
+    "DictionaryID": 7,
+    "Word_1": "sequence",
+    "Word_2": "szekvencia",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.15 16:01"
+  },
+  {
+    "id": 705,
+    "DictionaryID": 7,
+    "Word_1": "cycle",
+    "Word_2": "ciklus",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.16 16:01"
+  },
+  {
+    "id": 706,
+    "DictionaryID": 7,
+    "Word_1": "flow chart",
+    "Word_2": "folyamatábra",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.17 16:01"
+  },
+  {
+    "id": 707,
+    "DictionaryID": 7,
+    "Word_1": "node",
+    "Word_2": "csomópont",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.18 16:01"
+  },
+  {
+    "id": 708,
+    "DictionaryID": 7,
+    "Word_1": "collection",
+    "Word_2": "gyűjtemény",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.19 16:01"
+  },
+  {
+    "id": 709,
+    "DictionaryID": 7,
+    "Word_1": "rectangle",
+    "Word_2": "négyzet",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.20 16:01"
+  },
+  {
+    "id": 710,
+    "DictionaryID": 7,
+    "Word_1": "diamond",
+    "Word_2": "rombusz",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.21 16:01"
+  },
+  {
+    "id": 711,
+    "DictionaryID": 7,
+    "Word_1": "circle",
+    "Word_2": "kör",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.22 16:01"
+  },
+  {
+    "id": 712,
+    "DictionaryID": 7,
+    "Word_1": "thread",
+    "Word_2": "szál",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.23 16:01"
+  },
+  {
+    "id": 713,
+    "DictionaryID": 7,
+    "Word_1": "currently",
+    "Word_2": "jelenleg",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.24 16:01"
+  },
+  {
+    "id": 714,
+    "DictionaryID": 7,
+    "Word_1": "actually",
+    "Word_2": "tulajdonképpen",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.25 16:01"
+  },
+  {
+    "id": 715,
+    "DictionaryID": 7,
+    "Word_1": "mostly",
+    "Word_2": "többnyire",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.26 16:01"
+  },
+  {
+    "id": 716,
+    "DictionaryID": 7,
+    "Word_1": "detecting",
+    "Word_2": "felismerni, észlelni",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.27 16:01"
+  },
+  {
+    "id": 717,
+    "DictionaryID": 7,
+    "Word_1": "independent",
+    "Word_2": "független",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.02.28 16:01"
+  },
+  {
+    "id": 718,
+    "DictionaryID": 7,
+    "Word_1": "aim",
+    "Word_2": "cél",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.01 16:01"
+  },
+  {
+    "id": 719,
+    "DictionaryID": 7,
+    "Word_1": "advertisement",
+    "Word_2": "hirdetés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.02 16:01"
+  },
+  {
+    "id": 720,
+    "DictionaryID": 7,
+    "Word_1": "colleague",
+    "Word_2": "kolléga",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.03 16:01"
+  },
+  {
+    "id": 721,
+    "DictionaryID": 7,
+    "Word_1": "discuss",
+    "Word_2": "megbeszélni",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.04 16:01"
+  },
+  {
+    "id": 722,
+    "DictionaryID": 7,
+    "Word_1": "task",
+    "Word_2": "feladat",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.05 16:01"
+  },
+  {
+    "id": 723,
+    "DictionaryID": 7,
+    "Word_1": "necessary",
+    "Word_2": "szükséges",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.06 16:01"
+  },
+  {
+    "id": 724,
+    "DictionaryID": 7,
+    "Word_1": "necessary qualification",
+    "Word_2": "szükséges végzettség",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.07 16:01"
+  },
+  {
+    "id": 725,
+    "DictionaryID": 7,
+    "Word_1": "qualification",
+    "Word_2": "végzettség",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.08 16:01"
+  },
+  {
+    "id": 726,
+    "DictionaryID": 7,
+    "Word_1": "competence",
+    "Word_2": "kompetencia",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.09 16:01"
+  },
+  {
+    "id": 727,
+    "DictionaryID": 7,
+    "Word_1": "experience",
+    "Word_2": "tapasztalat",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.10 16:01"
+  },
+  {
+    "id": 728,
+    "DictionaryID": 7,
+    "Word_1": "deadline",
+    "Word_2": "határidő",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.11 16:01"
+  },
+  {
+    "id": 729,
+    "DictionaryID": 7,
+    "Word_1": "meanwhile",
+    "Word_2": "közben",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.12 16:01"
+  },
+  {
+    "id": 730,
+    "DictionaryID": 7,
+    "Word_1": "rengular",
+    "Word_2": "szabályos",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.13 16:01"
+  },
+  {
+    "id": 731,
+    "DictionaryID": 7,
+    "Word_1": "opportunity",
+    "Word_2": "lehetőség",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.14 16:01"
+  },
+  {
+    "id": 732,
+    "DictionaryID": 7,
+    "Word_1": "candidate",
+    "Word_2": "jelölt",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.15 16:01"
+  },
+  {
+    "id": 733,
+    "DictionaryID": 7,
+    "Word_1": "member",
+    "Word_2": "tag",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.16 16:01"
+  },
+  {
+    "id": 734,
+    "DictionaryID": 7,
+    "Word_1": "successful",
+    "Word_2": "sikeres",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.17 16:01"
+  },
+  {
+    "id": 735,
+    "DictionaryID": 7,
+    "Word_1": "stock maganement",
+    "Word_2": "készletgazdálkodás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.18 16:01"
+  },
+  {
+    "id": 736,
+    "DictionaryID": 7,
+    "Word_1": "stock",
+    "Word_2": "készlet",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.19 16:01"
+  },
+  {
+    "id": 737,
+    "DictionaryID": 7,
+    "Word_1": "further assistance",
+    "Word_2": "további segítség",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.20 16:01"
+  },
+  {
+    "id": 738,
+    "DictionaryID": 7,
+    "Word_1": "decompress",
+    "Word_2": "kitömörít",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.21 16:01"
+  },
+  {
+    "id": 739,
+    "DictionaryID": 7,
+    "Word_1": "compress",
+    "Word_2": "tömörít",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.22 16:01"
+  },
+  {
+    "id": 740,
+    "DictionaryID": 7,
+    "Word_1": "inventory",
+    "Word_2": "leltár",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.23 16:01"
+  },
+  {
+    "id": 741,
+    "DictionaryID": 7,
+    "Word_1": "storage",
+    "Word_2": "raktározás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.24 16:01"
+  },
+  {
+    "id": 742,
+    "DictionaryID": 7,
+    "Word_1": "product tagging",
+    "Word_2": "termék címkézés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.25 16:01"
+  },
+  {
+    "id": 743,
+    "DictionaryID": 7,
+    "Word_1": "product cataloging",
+    "Word_2": "termék katalogizálás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.26 16:01"
+  },
+  {
+    "id": 744,
+    "DictionaryID": 7,
+    "Word_1": "cataloging",
+    "Word_2": "katalogizálás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.27 16:01"
+  },
+  {
+    "id": 745,
+    "DictionaryID": 7,
+    "Word_1": "user activity",
+    "Word_2": "felhasználói tevékenység",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.28 16:01"
+  },
+  {
+    "id": 746,
+    "DictionaryID": 7,
+    "Word_1": "tracking",
+    "Word_2": "követés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.29 16:01"
+  },
+  {
+    "id": 747,
+    "DictionaryID": 7,
+    "Word_1": "to inform you about the fact",
+    "Word_2": "tájékoztatni a tényről",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.30 16:01"
+  },
+  {
+    "id": 748,
+    "DictionaryID": 7,
+    "Word_1": "request",
+    "Word_2": "kérés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.03.31 16:01"
+  },
+  {
+    "id": 749,
+    "DictionaryID": 7,
+    "Word_1": "response",
+    "Word_2": "válasz",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.01 16:01"
+  },
+  {
+    "id": 750,
+    "DictionaryID": 7,
+    "Word_1": "accomplish",
+    "Word_2": "megvalósítani, végrahajt",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.02 16:01"
+  },
+  {
+    "id": 751,
+    "DictionaryID": 7,
+    "Word_1": "additional tasks",
+    "Word_2": "további feladatok",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.03 16:01"
+  },
+  {
+    "id": 752,
+    "DictionaryID": 7,
+    "Word_1": "provide",
+    "Word_2": "biztosít",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.04 16:01"
+  },
+  {
+    "id": 753,
+    "DictionaryID": 7,
+    "Word_1": "rough",
+    "Word_2": "durva",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.05 16:01"
+  },
+  {
+    "id": 754,
+    "DictionaryID": 7,
+    "Word_1": "prototype",
+    "Word_2": "prototípus",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.06 16:01"
+  },
+  {
+    "id": 755,
+    "DictionaryID": 7,
+    "Word_1": "environment",
+    "Word_2": "környezet",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.07 16:01"
+  },
+  {
+    "id": 756,
+    "DictionaryID": 7,
+    "Word_1": "integrated development environment",
+    "Word_2": "integrált fejlesztői környezet",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.08 16:01"
+  },
+  {
+    "id": 757,
+    "DictionaryID": 7,
+    "Word_1": "example",
+    "Word_2": "példa",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.09 16:01"
+  },
+  {
+    "id": 758,
+    "DictionaryID": 7,
+    "Word_1": "fortunately",
+    "Word_2": "szerencsére",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.10 16:01"
+  },
+  {
+    "id": 759,
+    "DictionaryID": 7,
+    "Word_1": "unfortunately",
+    "Word_2": "sajnos",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.11 16:01"
+  },
+  {
+    "id": 760,
+    "DictionaryID": 7,
+    "Word_1": "requirement",
+    "Word_2": "követelmény",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.12 16:01"
+  },
+  {
+    "id": 761,
+    "DictionaryID": 7,
+    "Word_1": "iterative process",
+    "Word_2": "iteratív folyamat",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.13 16:01"
+  },
+  {
+    "id": 762,
+    "DictionaryID": 7,
+    "Word_1": "establish",
+    "Word_2": "alapít, létrehoz",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.14 16:01"
+  },
+  {
+    "id": 763,
+    "DictionaryID": 7,
+    "Word_1": "constantly",
+    "Word_2": "állandóan",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.15 16:01"
+  },
+  {
+    "id": 764,
+    "DictionaryID": 7,
+    "Word_1": "inquire",
+    "Word_2": "érdeklődik",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.16 16:01"
+  },
+  {
+    "id": 765,
+    "DictionaryID": 7,
+    "Word_1": "however",
+    "Word_2": "azonban",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.17 16:01"
+  },
+  {
+    "id": 766,
+    "DictionaryID": 7,
+    "Word_1": "deployment",
+    "Word_2": "telepítés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.18 16:01"
+  },
+  {
+    "id": 767,
+    "DictionaryID": 7,
+    "Word_1": "employee",
+    "Word_2": "alkalmazott",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.19 16:01"
+  },
+  {
+    "id": 768,
+    "DictionaryID": 7,
+    "Word_1": "drawback",
+    "Word_2": "hátrány",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.20 16:01"
+  },
+  {
+    "id": 769,
+    "DictionaryID": 7,
+    "Word_1": "preference",
+    "Word_2": "előny",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.21 16:01"
+  },
+  {
+    "id": 770,
+    "DictionaryID": 7,
+    "Word_1": "to operate",
+    "Word_2": "üzemeltetni",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.22 16:01"
+  },
+  {
+    "id": 771,
+    "DictionaryID": 7,
+    "Word_1": "sorry to disturb you",
+    "Word_2": "elnézést hogy zavarlak",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.23 16:01"
+  },
+  {
+    "id": 772,
+    "DictionaryID": 7,
+    "Word_1": "separate",
+    "Word_2": "különálló",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.24 16:01"
+  },
+  {
+    "id": 773,
+    "DictionaryID": 7,
+    "Word_1": "several times",
+    "Word_2": "többször",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.25 16:01"
+  },
+  {
+    "id": 774,
+    "DictionaryID": 7,
+    "Word_1": "programming methodology",
+    "Word_2": "programozási módszertan",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.26 16:01"
+  },
+  {
+    "id": 775,
+    "DictionaryID": 7,
+    "Word_1": "sequential programing",
+    "Word_2": "szekvenciális programozás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.27 16:01"
+  },
+  {
+    "id": 776,
+    "DictionaryID": 7,
+    "Word_1": "fundamental",
+    "Word_2": "alapvető",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.28 16:01"
+  },
+  {
+    "id": 777,
+    "DictionaryID": 7,
+    "Word_1": "attribute",
+    "Word_2": "tulajdonság",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.29 16:01"
+  },
+  {
+    "id": 778,
+    "DictionaryID": 7,
+    "Word_1": "fundamental attributes",
+    "Word_2": "alapvető tulajdonságok",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.04.30 16:01"
+  },
+  {
+    "id": 779,
+    "DictionaryID": 7,
+    "Word_1": "encapsulation",
+    "Word_2": "egységbe zárás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.05.01 16:01"
+  },
+  {
+    "id": 780,
+    "DictionaryID": 7,
+    "Word_1": "inheritance",
+    "Word_2": "öröklés",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.05.02 16:01"
+  },
+  {
+    "id": 781,
+    "DictionaryID": 7,
+    "Word_1": "polymorphism",
+    "Word_2": "polimorfizmus",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.05.03 16:01"
+  },
+  {
+    "id": 782,
+    "DictionaryID": 7,
+    "Word_1": "abstraction",
+    "Word_2": "absztrakció,elvonatkoztatás",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.05.04 16:01"
+  },
+  {
+    "id": 783,
+    "DictionaryID": 7,
+    "Word_1": "encapsulation, inheritance, polymorphism, abstraction",
+    "Word_2": "egységbe zárás, öröklés, polimorfizmus, absztrakció",
+    "Lang_1": "en-UK",
+    "Lang_2": "hu-HU",
+    "RelaseDate": "2022.05.05 16:01"
+  }
 ]
